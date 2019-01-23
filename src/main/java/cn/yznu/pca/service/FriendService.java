@@ -51,7 +51,7 @@ public interface FriendService {
 
     /**
      *  添加好友方法
-     * @param user
+     * @param user ,permisssion_type ,user_two
      */
     void addFriend(User user,int user_two,int permisssion_type);
 
@@ -60,4 +60,25 @@ public interface FriendService {
      * @param username
      */
     List<User> selectFriendByUsername(String username);
+
+
+    /**
+     *  添加好友验证
+     * @param note2,userIdOne,userIdTwo
+     */
+    void addFriendVerification(String note2,int userIdOne,int userIdTwo);
+
+
+    /**
+     *  通过好友验证
+     * @param userIdOne,userIdTwo
+     */
+    void passFriendVerification(int userIdOne,int userIdTwo);
+
+
+    /**
+     *  查寻已存在的好友关系
+     * @param userIdOne,userIdTwo
+     */
+    List <UserRelation> selectExistFriend(int userIdOne,int userIdTwo);
 }
