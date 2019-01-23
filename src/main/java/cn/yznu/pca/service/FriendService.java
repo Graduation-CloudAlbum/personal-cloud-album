@@ -1,6 +1,5 @@
 package cn.yznu.pca.service;
 
-import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
 

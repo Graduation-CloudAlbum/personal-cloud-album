@@ -1,7 +1,5 @@
 package cn.yznu.pca.service;
 
-import cn.yznu.pca.model.User;
-import org.springframework.stereotype.Service;
 
 /**
  * @author yangbaiwan
