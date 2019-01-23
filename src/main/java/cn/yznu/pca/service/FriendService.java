@@ -1,5 +1,6 @@
 package cn.yznu.pca.service;
 
+import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
 
@@ -46,4 +47,17 @@ public interface FriendService {
      * @param user
      */
     List<?> selectMyStranger(User user);
+
+
+    /**
+     *  添加好友方法
+     * @param user
+     */
+    void addFriend(User user,int user_two,int permisssion_type);
+
+    /**
+     *  通过nickName查找好友
+     * @param username
+     */
+    List<User> selectFriendByUsername(String username);
 }
