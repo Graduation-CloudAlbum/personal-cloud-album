@@ -1,8 +1,10 @@
 package cn.yznu.pca.service.impl;
 
+import cn.yznu.pca.dao.FriendVerificationMapper;
 import cn.yznu.pca.dao.PermissionGroupMapper;
 import cn.yznu.pca.dao.UserMapper;
 import cn.yznu.pca.dao.UserRelationMapper;
+import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
@@ -25,6 +27,9 @@ public class FriendServiceImpl implements FriendService {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    FriendVerificationMapper friendVerificationMapper;
 
     @Override
     public List<?> selectFriendGroup(User user) {
@@ -113,9 +118,35 @@ public class FriendServiceImpl implements FriendService {
     public List<User> selectFriendByUsername(String username) {
         UserExample userExample=new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andNickNameEqualTo(username);
+        criteria.andUserNameEqualTo(username);
         List<User> list=userMapper.selectByExample(userExample);
         return list;
+    }
+
+    @Override
+    public void addFriendVerification(String note2, int userIdOne, int userIdTwo) {
+        FriendVerification friendVerification=new FriendVerification();
+        friendVerification.setStatus("0");
+        friendVerification.setUserId(userIdOne);
+        friendVerification.setFriendId(userIdTwo);
+        friendVerification.setNote(note2);
+        friendVerification.setState(0);
+        friendVerificationMapper.insert(friendVerification);
+    }
+
+    @Override
+    public void passFriendVerification(int userIdOne, int userIdTwo) {
+
+    }
+
+    @Override
+    public List <UserRelation> selectExistFriend(int userIdOne, int userIdTwo) {
+        UserRelationExample userRelationExample=new UserRelationExample();
+        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
+        criteria.andUserIdEqualTo(userIdOne);
+        criteria.andUserIdTwoEqualTo(userIdTwo);
+        List <UserRelation> userRelationList=userRelationMapper.selectByExample(userRelationExample);
+        return userRelationList;
     }
 
 }
