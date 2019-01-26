@@ -41,7 +41,7 @@
                 <i class="iconfont icon-weibiaoti--"></i> <span>我的好友</span>
             </div>
             <ul class="content-menu">
-                <li class="content-menu-li"><a>添加好友</a></li>
+                <li class="content-menu-li" id="add_friend"><a>添加好友</a></li>
                 <li class="content-menu-li"><a>创建分组</a></li>
             </ul>
             <div class="content-about">
@@ -54,6 +54,7 @@
 </div>
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/addfriend.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
 </body>
 </html>
