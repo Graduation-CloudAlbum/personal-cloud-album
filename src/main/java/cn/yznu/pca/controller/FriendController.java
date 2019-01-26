@@ -1,5 +1,6 @@
 package cn.yznu.pca.controller;
 
+import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
@@ -40,6 +41,7 @@ public class FriendController {
     @ResponseBody
     public ModelAndView myFriend(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
+        friendService.test();
         List<?> list = friendService.selectFriendGroup(user);
         ModelAndView mav = new ModelAndView("myFriend");
         JSONObject jo = new JSONObject();
@@ -125,24 +127,30 @@ public class FriendController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/addFriend/{username}")
     @ResponseBody
-    public ModelAndView addFriend(@Param("note") String note,@Param("permisssion_type") int permisssion_type,@PathVariable String username, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView addFriend(@Param("note") String note,
+                                  @Param("permisssion_type") String permisssion_type,
+                                  @PathVariable String username,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         try {
-            String username2  = new String(username.getBytes("ISO-8859-1"), "UTF-8");
-            System.out.println("用户名为"+username2);
-//            String note2  = new String(note.getBytes("ISO-8859-1"), "UTF-8");
-            System.out.println("好友请求信息为"+note);
+            String username2 = new String(username.getBytes("ISO-8859-1"), "UTF-8");
+            System.out.println("用户名为" + username2);
+            System.out.println("好友请求信息为" + note);
             List<User> list = friendService.selectFriendByUsername(username2);
+            User user2=new User();
             User user = (User) request.getSession().getAttribute("user");
             for (User attribute : list) {
-                if(friendService.selectExistFriend(user.getId(),attribute.getId()).size()>0){
+                if (friendService.selectExistFriend(user.getId(), attribute.getId()).size() > 0) {
                     System.out.println("你们已经是好友状态！！！！！");
-                }
-                else {
+                } else {
                     //添加好友
-                    friendService.addFriend(user, attribute.getId(),permisssion_type);
+                    user2.setId(attribute.getId());
+                    friendService.addFriend(user, attribute.getId(),
+                            friendService.selectAddFriendGroup(user.getId(), permisssion_type),
+                            friendService.selectAddFriendGroup(attribute.getId(), "5"));
                     //添加好友验证消息
-                    friendService.addFriendVerification(note,user.getId(),attribute.getId());
+                    friendService.addFriendVerification(note, user, user2);
                     System.out.println("请求验证消息已发送！！！！！");
                 }
             }
@@ -153,14 +161,16 @@ public class FriendController {
     }
 
 
-//    /**
-//     * 通过好友验证
-//     */
-//    @RequestMapping(method = RequestMethod.POST, value = "/addFriend/{nickname}")
-//    @ResponseBody
-//    public ModelAndView passFriendVerification(@Param("note") String note,@Param("permisssion_type") int permisssion_type,@PathVariable String nickname, HttpServletRequest request, HttpServletResponse response) {
-//        ModelAndView mav = new ModelAndView("myFriend");
-//
-//        return mav;
-//    }
+    /**
+     * 通过好友验证
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/passFriendVerification")
+    @ResponseBody
+    public ModelAndView passFriendVerification(@Param("friendVerificationId") int friendVerificationId,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) {
+        ModelAndView mav = new ModelAndView("myFriend");
+        friendService.passFriendVerification(friendVerificationId);
+        return mav;
+    }
 }
