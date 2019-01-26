@@ -5,7 +5,7 @@
     $.ajax({
         type: "post",
         async: false,
-        url: "/friend/addFriend/"+ username,
+        url: "/pca/friend/addFriend/"+ username,
         data:{"permisssion_type":permisssion_type,"note":note},
         dataType: "json",
         success: function (data) {
