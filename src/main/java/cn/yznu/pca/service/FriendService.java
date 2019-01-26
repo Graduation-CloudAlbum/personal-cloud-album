@@ -1,5 +1,6 @@
 package cn.yznu.pca.service;
 
+import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
@@ -53,7 +54,7 @@ public interface FriendService {
      *  添加好友方法
      * @param user ,permisssion_type ,user_two
      */
-    void addFriend(User user,int user_two,int permisssion_type);
+    void addFriend(User user,int user_two,int permisssionGroupId,int permisssionGroupIdTwo);
 
     /**
      *  通过nickName查找好友
@@ -66,14 +67,14 @@ public interface FriendService {
      *  添加好友验证
      * @param note2,userIdOne,userIdTwo
      */
-    void addFriendVerification(String note2,int userIdOne,int userIdTwo);
+    void addFriendVerification(String note2,User userIdOne, User userIdTwo);
 
 
     /**
      *  通过好友验证
-     * @param userIdOne,userIdTwo
+     * @param friendVerificationId
      */
-    void passFriendVerification(int userIdOne,int userIdTwo);
+    void passFriendVerification(int friendVerificationId);
 
 
     /**
@@ -81,4 +82,23 @@ public interface FriendService {
      * @param userIdOne,userIdTwo
      */
     List <UserRelation> selectExistFriend(int userIdOne,int userIdTwo);
+
+
+    /**
+     *  选中目的分组id
+     * @param userId,permisssion_type
+     */
+    int selectAddFriendGroup(int userId,String permisssion_type);
+
+
+    /**
+     *  查寻该用户下所有验证消息
+     * @param user
+     */
+    List <FriendVerification> selectAllFriendVerification(User user);
+
+
+
+    List <FriendVerification> test();
+
 }
