@@ -2,6 +2,7 @@ package cn.yznu.pca.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
@@ -22,7 +23,17 @@ public class User implements Serializable {
 
     private String userType;
 
+    private List<FriendVerification> friendVerificationList;
+
     private static final long serialVersionUID = 1L;
+
+    public List<FriendVerification> getFriendVerificationList() {
+        return friendVerificationList;
+    }
+
+    public void setFriendVerificationList(List<FriendVerification> friendVerificationList) {
+        this.friendVerificationList = friendVerificationList;
+    }
 
     public Integer getId() {
         return id;
