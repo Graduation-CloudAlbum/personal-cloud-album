@@ -12,13 +12,33 @@ public class FriendVerification implements Serializable {
 
     private Integer userId;
 
+    private User user;
+
     private Integer friendId;
+
+    private User friend;
 
     private String note;
 
     private Integer state;
 
     private static final long serialVersionUID = 1L;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public Integer getFriendId() {
+        return friendId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setFriendId(Integer friendId) {
+        this.friendId = friendId;
+    }
 
     public Integer getId() {
         return id;
@@ -44,20 +64,20 @@ public class FriendVerification implements Serializable {
         this.status = status == null ? null : status.trim();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public User getFriend() {
+        return friend;
     }
 
-    public Integer getFriendId() {
-        return friendId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setFriendId(Integer friendId) {
-        this.friendId = friendId;
+    public void setFriend(User friend) {
+        this.friend = friend;
     }
 
     public String getNote() {
@@ -75,6 +95,7 @@ public class FriendVerification implements Serializable {
     public void setState(Integer state) {
         this.state = state;
     }
+
 
 
 }
