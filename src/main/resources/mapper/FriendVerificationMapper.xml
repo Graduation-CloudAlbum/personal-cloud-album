@@ -9,6 +9,14 @@
     <result column="friend_id" property="friendId" jdbcType="INTEGER" />
     <result column="note" property="note" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
+    <association  property="user" javaType="cn.yznu.pca.model.User" >
+      <id column="id" property="id" />
+      <result column="nick_name" property="nickName" />
+    </association>
+    <association  property="friend" javaType="cn.yznu.pca.model.User" >
+      <id column="id" property="id" />
+      <result column="nick_name" property="nickName" />
+    </association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -91,6 +99,30 @@
     from friend_verification
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
+
+
+  <select id="getFvListRefUser" resultMap="BaseResultMap">
+    SELECT s.*,c.* FROM
+    USER s, friend_verification c  WHERE s.id= c.friend_id
+  </select>
+
+
+
+
+
+  <select id="selectAllFriendVerification" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from friend_verification
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from friend_verification
     where id = #{id,jdbcType=INTEGER}
@@ -106,7 +138,7 @@
       user_id, friend_id, note, 
       state)
     values (#{id,jdbcType=INTEGER}, #{cteateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{friendId,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{friendId,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR},
       #{state,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.yznu.pca.model.FriendVerification" >
