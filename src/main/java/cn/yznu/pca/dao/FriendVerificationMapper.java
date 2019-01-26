@@ -28,4 +28,6 @@ public interface FriendVerificationMapper {
     int updateByPrimaryKeySelective(FriendVerification record);
 
     int updateByPrimaryKey(FriendVerification record);
+
+    List<FriendVerification>getFvListRefUser();
 }
