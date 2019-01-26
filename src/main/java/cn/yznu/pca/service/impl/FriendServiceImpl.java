@@ -8,6 +8,7 @@ import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
+import cn.yznu.pca.model.example.FriendVerificationExample;
 import cn.yznu.pca.model.example.PermissionGroupExample;
 import cn.yznu.pca.model.example.UserExample;
 import cn.yznu.pca.model.example.UserRelationExample;
@@ -55,7 +56,7 @@ public class FriendServiceImpl implements FriendService {
     @Override
     public List<?> selectMyFamily(User user) {
         UserRelationExample userRelationExample=new UserRelationExample();
-        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
+            UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
         criteria.andUserIdEqualTo(user.getId());
         criteria.andPermissionGroupIdEqualTo(2);
         userRelationExample.setOrderByClause("id");
@@ -97,18 +98,19 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
-    public void addFriend(User user, int user_two,int permisssion_type) {
+    public void addFriend(User user, int user_two,
+                          int permisssionGroupId,int permisssionGroupIdTwo) {
         UserRelation userRelation=new UserRelation();
         UserRelation userRelation2=new UserRelation();
         userRelation.setUserId(user.getId());
         userRelation.setUserIdTwo(user_two);
         userRelation.setStatus("0");
-        userRelation.setPermissionGroupId(1);
+        userRelation.setPermissionGroupId(permisssionGroupId);
         userRelation.setPermissionGroupIdTwo(1);
         userRelation2.setUserId(user_two);
         userRelation2.setUserIdTwo(user.getId());
         userRelation2.setStatus("0");
-        userRelation2.setPermissionGroupId(permisssion_type);
+        userRelation2.setPermissionGroupId(permisssionGroupIdTwo);
         userRelation2.setPermissionGroupIdTwo(1);
         userRelationMapper.insert(userRelation);
         userRelationMapper.insert(userRelation2);
@@ -124,18 +126,26 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
-    public void addFriendVerification(String note2, int userIdOne, int userIdTwo) {
+    public void addFriendVerification(String note2, User userIdOne, User userIdTwo) {
         FriendVerification friendVerification=new FriendVerification();
+        System.out.println("addFriendVerification输出测试"+userIdOne.getId());
+        System.out.println("addFriendVerification2输出测试"+userIdTwo.getId());
         friendVerification.setStatus("0");
-        friendVerification.setUserId(userIdOne);
-        friendVerification.setFriendId(userIdTwo);
+        friendVerification.setUserId(userIdOne.getId());
+        friendVerification.setFriendId(userIdTwo.getId());
         friendVerification.setNote(note2);
         friendVerification.setState(0);
         friendVerificationMapper.insert(friendVerification);
     }
 
     @Override
-    public void passFriendVerification(int userIdOne, int userIdTwo) {
+    public void passFriendVerification(int friendVerificationId) {
+        FriendVerification friendVerification=new FriendVerification();
+        FriendVerificationExample friendVerificationExample=new FriendVerificationExample();
+        FriendVerificationExample.Criteria criteria = friendVerificationExample.createCriteria();
+        criteria.andIdEqualTo(friendVerificationId);
+        friendVerification.setState(1);
+        friendVerificationMapper.updateByExampleSelective(friendVerification,friendVerificationExample);
 
     }
 
@@ -147,6 +157,39 @@ public class FriendServiceImpl implements FriendService {
         criteria.andUserIdTwoEqualTo(userIdTwo);
         List <UserRelation> userRelationList=userRelationMapper.selectByExample(userRelationExample);
         return userRelationList;
+    }
+
+    @Override
+    public int selectAddFriendGroup(int userId, String permisssion_type) {
+        PermissionGroupExample permissionGroupExample=new PermissionGroupExample();
+        PermissionGroupExample.Criteria criteria = permissionGroupExample.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        criteria.andPermissionTypeEqualTo(permisssion_type);
+        List <PermissionGroup> permissionGroup=permissionGroupMapper.selectByExample(permissionGroupExample);
+        int permissionGroupId = 0;
+        for(PermissionGroup s:permissionGroup){
+            permissionGroupId=s.getId();
+        }
+        return permissionGroupId;
+    }
+
+    @Override
+    public List<FriendVerification> selectAllFriendVerification(User user) {
+        FriendVerificationExample friendVerificationExample=new FriendVerificationExample();
+        FriendVerificationExample.Criteria criteria = friendVerificationExample.createCriteria();
+        criteria.andFriendIdEqualTo(user.getId());
+        friendVerificationExample.setOrderByClause("id asc");
+        List <FriendVerification> list=friendVerificationMapper.selectByExample(friendVerificationExample);
+        return list;
+    }
+
+    @Override
+    public List<FriendVerification> test(  ) {
+        List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
+        for (FriendVerification s :fvListRefUser){
+            System.out.println("wwwwwwwwwwwwwww"+s.getFriend().getNickName());
+        }
+        return  fvListRefUser;
     }
 
 }
