@@ -98,7 +98,6 @@ public interface FriendService {
     List <FriendVerification> selectAllFriendVerification(User user);
 
 
-
     List <FriendVerification> test();
 
 }
