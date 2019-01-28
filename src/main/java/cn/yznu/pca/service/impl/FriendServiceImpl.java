@@ -175,11 +175,11 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public List<FriendVerification> selectAllFriendVerification(User user) {
-        FriendVerificationExample friendVerificationExample=new FriendVerificationExample();
-        FriendVerificationExample.Criteria criteria = friendVerificationExample.createCriteria();
-        criteria.andFriendIdEqualTo(user.getId());
-        friendVerificationExample.setOrderByClause("id asc");
-        List <FriendVerification> list=friendVerificationMapper.selectByExample(friendVerificationExample);
+        List <FriendVerification> list=friendVerificationMapper.selectAllFriendVerification(user.getId());
+        for (FriendVerification s:list){
+            System.out.println(s.getFriend().getId()+"Serviceimpl查询到的该用户下所有验证消息为"+s.getUser().getNickName()
+                    +"请求加你为好友"+"验证消息为"+s.getNote());
+        }
         return list;
     }
 
