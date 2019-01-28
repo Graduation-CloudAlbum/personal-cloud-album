@@ -7,14 +7,13 @@ import cn.yznu.pca.model.UserRelation;
 import cn.yznu.pca.service.FriendService;
 import cn.yznu.pca.service.UserService;
 import cn.yznu.pca.utils.ResponseUtil;
-import com.alibaba.fastjson.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -180,7 +179,7 @@ public class FriendController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/selectAllFriendVerification")
     @ResponseBody
-    public ModelAndView passFriendVerification(HttpServletRequest request,
+    public ModelAndView  passFriendVerification(HttpServletRequest request,
                                                HttpServletResponse response) {
         ModelAndView mav=new  ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
@@ -189,6 +188,19 @@ public class FriendController {
             System.out.println(s.getFriend().getId()+"查询到的该用户下所有验证消息为"+s.getUser().getNickName()
             +"请求加你为好友"+"验证消息为"+s.getNote());
         }
+        JSONObject jo = new JSONObject();
+        String jsonArray = JSON.toJSONString(friendVerifications);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+
+
+        JSONArray jsonArray2 = JSONArray.parseArray(JSON.toJSONString(friendVerifications));
+        String str =jsonArray2.toJSONString();
+        System.out.println("str的数据格式为"+str);
+        System.out.println("jsonArray2的数据格式为"+jsonArray2);
+        System.out.println("friendgroup的数据格式为"+friendgroup);
+        System.out.println("jsonArray的数据格式为"+jsonArray);
+        mav.addObject("friendgroup",friendgroup);
+        mav.addObject("str",str);
         return mav;
     }
 }
