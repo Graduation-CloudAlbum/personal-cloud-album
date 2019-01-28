@@ -173,4 +173,22 @@ public class FriendController {
         friendService.passFriendVerification(friendVerificationId);
         return mav;
     }
+
+
+    /**
+     * 查询该用户下所有朋友验证消息
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/selectAllFriendVerification")
+    @ResponseBody
+    public ModelAndView passFriendVerification(HttpServletRequest request,
+                                               HttpServletResponse response) {
+        ModelAndView mav=new  ModelAndView("myFriend");
+        User user = (User) request.getSession().getAttribute("user");
+        List<FriendVerification> friendVerifications=friendService.selectAllFriendVerification(user);
+        for (FriendVerification s:friendVerifications){
+            System.out.println(s.getFriend().getId()+"查询到的该用户下所有验证消息为"+s.getUser().getNickName()
+            +"请求加你为好友"+"验证消息为"+s.getNote());
+        }
+        return mav;
+    }
 }
