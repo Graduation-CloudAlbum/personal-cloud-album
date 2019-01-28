@@ -115,7 +115,7 @@
   <select id="selectAllFriendVerification" resultMap="BaseResultMap">
     select d.nick_name,c.note,d.id from
      friend_verification c right join user d on
-     (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER}s
+     (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER}
   </select>
 
 
