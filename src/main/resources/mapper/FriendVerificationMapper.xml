@@ -113,10 +113,9 @@
 
 
   <select id="selectAllFriendVerification" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from friend_verification
-    where id = #{id,jdbcType=INTEGER}
+    select d.nick_name,c.note,d.id from
+     friend_verification c right join user d on
+     (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER}s
   </select>
 
 
