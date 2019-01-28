@@ -1,6 +1,7 @@
 package cn.yznu.pca.dao;
 
 import cn.yznu.pca.model.FriendVerification;
+import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.example.FriendVerificationExample;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,6 @@ public interface FriendVerificationMapper {
     int updateByPrimaryKey(FriendVerification record);
 
     List<FriendVerification>getFvListRefUser();
+
+    List<FriendVerification>selectAllFriendVerification(int userid);
 }
