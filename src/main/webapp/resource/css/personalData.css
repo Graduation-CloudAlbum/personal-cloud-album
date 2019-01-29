@@ -242,11 +242,23 @@
 	background: #fff;
 	border-radius: 0.5%;
 }
-#Change-Password-input{
+#Change-Password-input1{
 	margin-left: 20px;
 	height: 40px;
 	width: 310px;
-	margin-bottom: 10px;
+	margin-bottom: 9px;
+}
+#Change-Password-input2{
+    margin-left: 20px;
+    height: 40px;
+    width: 310px;
+    margin-bottom: 10px;
+}
+#Change-Password-input3{
+    margin-left: 20px;
+    height: 40px;
+    width: 310px;
+    margin-bottom: 11px;
 }
 .Change-Password-button1{
 	width: 80px;

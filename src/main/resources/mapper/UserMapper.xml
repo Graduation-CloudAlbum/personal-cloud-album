@@ -266,11 +266,18 @@
         </set>
         where id = #{userId,jdbcType=INTEGER}
     </update>
+  <update id="changePassword">
+    update user
+    set
+      user_password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
-    <select id="selectUserById" resultType="cn.yznu.pca.model.User">
+  <select id="selectUserById" resultType="cn.yznu.pca.model.User">
       select *
        from user
       where id = #{userId,jdbcType=INTEGER}
       and user_password = #{password,jdbcType=VARCHAR}
     </select>
+
 </mapper>

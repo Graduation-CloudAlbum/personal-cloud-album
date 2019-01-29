@@ -34,6 +34,6 @@ public interface UserService {
 
     boolean modifyingData(int userId,String nickName,String synopsis);
     void changeIcon(String url);
-    void changePassword(String password);
+    boolean changePassword(int id,String password);
     User selectUserById(int id);
 }

@@ -99,9 +99,9 @@
     </div>
     <div id="Change-Password" class="Change-Password">
         <div class="popup-header"><h4>修改密码</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请输入原登录密码"  name="">
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请输入新的登录密码"  name="">
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
+        <input id="Change-Password-input1" type="text" maxlength="30" placeholder="请输入原登录密码"  name="">
+        <input id="Change-Password-input2" type="text" maxlength="30" placeholder="请输入新的登录密码"  name="">
+        <input id="Change-Password-input3" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
         <div id="Change-Password-button1" class="Change-Password-button1"><p>取消</p></div><div class="Change-Password-button2"><p>确定</p></div>
     </div>
     <div id="popLayer" class="popLayer"></div>

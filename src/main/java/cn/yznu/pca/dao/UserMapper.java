@@ -48,4 +48,6 @@ public interface UserMapper {
 
     User selectUserById(int id);
 
+    boolean changePassword(@Param("id") int id,@Param("password") String password);
+
 }
