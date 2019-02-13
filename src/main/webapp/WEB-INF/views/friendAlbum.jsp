@@ -26,10 +26,10 @@
 
 		<div class="content">
 			<div class="left">	
-				<a id="navMenu2" class="left-admin" href="<%=basePath%>/views/personalData.jsp"><img src="../img/default-c.png"><p>1732859702</p></a>
-				<a id="navMenu1" class="left-li" href="<%=basePath%>/resource/html/myAlbum.html"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
-				<a id="navMenu3" class="left-li" href="<%=basePath%>/resource/html/myFriend.html"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
-				<a id="navMenu4" class="left-li" href="../html/recycleBin.html"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
+				<a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
+				<a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+				<a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
+				<a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
 				<div class="nav-button"></div>
 			</div>
 			<!-- right -->
@@ -43,7 +43,7 @@
 				<div class="content-wrap">
 					<ul class="content-about">
 						<li class="friends-about-li">
-							<img src="../img/1.jpg">
+							<img src="<%=basePath%>/resource/img/1.jpg">
 							<p>小明</p>
 						</li>
 						
@@ -77,6 +77,6 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="../js/index.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
 </body>
 </html>
