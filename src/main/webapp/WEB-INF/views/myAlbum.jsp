@@ -23,17 +23,17 @@
 <body>
 <div class="wrapper">
     <div class="header">
-        <img src="../img/logo.png">
+        <img src="<%=basePath%>/resource/img/logo.png">
         <div class="header-right"><img src="<%=basePath%>/resource/img/default-c.png"><span id="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="../html/personalData.html"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
-            <a id="navMenu1" class="left-li" href="../html/myAlbum.html"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
-            <a id="navMenu3" class="left-li" href="../html/myFriend.html"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
-            <a id="navMenu4" class="left-li" href="../html/recycleBin.html"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
+            <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+            <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
+            <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
         </div>
         <!-- right -->
@@ -57,7 +57,7 @@
             <div class="content-wrap">
                 <ul id="myAlbum-content" class="content-about">
                     <li class="content-about-li">
-                        <img src="../img/Album-cover1.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover1.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li class="content-about-li">
-                        <img src="../img/Album-cover2.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover2.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -85,7 +85,7 @@
                         </div>
                     </li>
                     <li class="content-about-li">
-                        <img src="../img/Album-cover3.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover3.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -102,16 +102,16 @@
                 </ul>
                 <ul id="myAlbum-content2" class="content-about2 gallery">
                     <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="../img/gallery/DSC_0008-69x69.jpg" /></a>
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>
                     </div>
                     <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="../img/gallery/DSC_0014-69x69.jpg" /></a>
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>
                     </div>
                     <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="../img/gallery/DSC_0019-69x69.jpg" /></a>
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>
                     </div>
                     <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="../img/gallery/DSC_0061-69x69.jpg" /></a>
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>
                     </div>
 
                 </ul>
