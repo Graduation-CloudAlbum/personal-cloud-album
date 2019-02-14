@@ -18,12 +18,12 @@ html,body{
 }
 .header{
 	height: 50px;
-	background: #181818;
+	background: #D18B00;
 	position: relative;
 }
 .header img{
 	height: 50px;
-	background: #181818;
+	background: #D18B00;
 	margin-left: 1%;
 	float: left;
 }
@@ -32,7 +32,7 @@ html,body{
 	height:38px;
 	position: absolute;
 	width: 140px;	
-	border-left: 1px solid #101010;
+	border-left: 1px solid #D18B00;
 	text-align: center;
 	padding-top: 12.5px;
 	cursor:pointer
@@ -56,7 +56,7 @@ html,body{
 	right: 0;
 	line-height: 50px;
 	position: absolute;
-	border-left: 1px solid #101010;
+	border-left: 1px solid #D18B00;
 	text-align: center;
 	cursor:pointer
 }
@@ -70,15 +70,16 @@ html,body{
 }
 /***************************left********************************/
 .content .left{
-	border-top: 1px solid #101010;
+	border-top: 1px solid #E9E9E9;
 	width: 225px;
 	height: 100%;
 	float: left;
-	background: #181818;
+	background:#EFF4F8;
 	position: relative;
+	border-right: 1px solid #E9E9E9;
 }
 .content .left .left-admin{
-	border-bottom: 1px solid #101010;
+	border-bottom: 1px solid #E9E9E9;
 	padding-bottom: 15px;
 	cursor:pointer;
 	display: block;
@@ -90,14 +91,14 @@ html,body{
 	margin-top: 50px;	
 }
 .content .left .left-admin p{
-	color: #fff;
+	color: #454545;
 	font-size: 12px;
 	margin-top: 12px;
 }
 
 
 .content .left .left-li{
-	border-bottom: 1px solid #101010;
+	border-bottom: 1px solid #E9E9E9;
 	padding-top:20px;
 	padding-bottom: 20px;
 	padding-left: 60px;
@@ -105,10 +106,10 @@ html,body{
 	display: block;
 }
 .content .left .left-li i{
-	color: #fff;
+	color: #454545;
 }
 .content .left .left-li span{
-	color: #fff;
+	color: #454545;
 	margin-left: 15px;
 	text-align: center;
 	font-size: 16px;
@@ -119,7 +120,7 @@ html,body{
 .content .left  .nav-button{
 	width: 225px;
 	height: 40px;
-	background: red;
+	/*background: red;*/
 	bottom: 0;
 	position: fixed;
 	z-index: 5;
@@ -192,6 +193,36 @@ html,body{
 	display: block;
 }
 */
+
+/***************************************************footer、**************************************************************/
+.content-button{
+	width: 100%;
+	float: left;
+	text-align: center;
+	bottom: 50px;
+	margin-top: 25px;
+}
+.content-button .content-button-fenge{
+	height: 1px;
+	width: 100%;
+	background: #E8E8E8;
+	float: left;
+}
+.content-button span{
+	text-align: center;
+	font-size: 12px;
+	color: #99B3D4;
+}	
+.content-footer{
+	height: 80px;
+	width: 100%;
+	float: left;
+}
+.content-footer2{
+	height: 100px;
+	width: 100%;
+	float: left;
+}
 /***************************************************弹窗2、**************************************************************/
 .popup-header{
 	height: 50px;

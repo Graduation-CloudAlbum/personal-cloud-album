@@ -18,18 +18,19 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
+    <link rel="stylesheet" href="<%=basePath%>/resource/css/zoom.css" media="all" />
 </head>
 <body>
 <div class="wrapper">
     <div class="header">
-        <img src="<%=basePath%>/resource/images/logo.png">
-        <div class="header-right"><img src="<%=basePath%>/resource/images/default-c.png"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
+        <img src="<%=basePath%>/resource/img/logo.png">
+        <div class="header-right"><img src="<%=basePath%>/resource/img/default-c.png"><span id="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -56,7 +57,7 @@
             <div class="content-wrap">
                 <ul id="myAlbum-content" class="content-about">
                     <li class="content-about-li">
-                        <img src="<%=basePath%>/resource/images/Album-cover1.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover1.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -70,7 +71,7 @@
                         </div>
                     </li>
                     <li class="content-about-li">
-                        <img src="<%=basePath%>/resource/images/Album-cover2.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover2.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -84,7 +85,7 @@
                         </div>
                     </li>
                     <li class="content-about-li">
-                        <img src="<%=basePath%>/resource/images/Album-cover3.jpg">
+                        <img src="<%=basePath%>/resource/img/Album-cover3.jpg">
                         <div class="content-about-li-top">
                             <div class="content-about-li-top-a">
                                 <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
@@ -97,14 +98,21 @@
                         </div>
                     </li>
 
+
                 </ul>
-                <ul id="myAlbum-content2" class="content-about2">
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/Album-cover2.jpg"></li>
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/Album-cover3.jpg"></li>
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/heng.jpg"></li>
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/Album-cover3.jpg"></li>
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/Album-cover6.jpg"></li>
-                    <li class="content-about2-li"><img src="<%=basePath%>/resource/images/albumPhotos/Album-cover6.jpg"></li>
+                <ul id="myAlbum-content2" class="content-about2 gallery">
+                    <div class="content-about2-li">
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>
+                    </div>
+                    <div class="content-about2-li">
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>
+                    </div>
+                    <div class="content-about2-li">
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>
+                    </div>
+                    <div class="content-about2-li">
+                        <a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>
+                    </div>
 
                 </ul>
                 <div class="content-button">
@@ -112,8 +120,9 @@
                     <span id="open">(共3个相册)</span><span id="open2">(共7张照片)</span>
                 </div>
                 <div class="content-footer"></div>
-            </div>
 
+
+            </div>
         </div>
     </div>
     <!-- ***************************************************弹窗 ***************************************************-->
@@ -123,7 +132,7 @@
                 <span>上传照片至：心情</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
             </div>
             <div class="upload-photos-pop-content">
-                <form action="<%=basePath%>/image/upload"  method='post' enctype='multipart/form-data' >
+                <form action="/***/correct"  method='post' enctype='multipart/form-data' >
                     <ul  id="dd" class="upimgcontent"></ul>
                     <div id="upload-photos-pop-content-button" class="upload-photos-pop-content-button"><p>点击选择图片</p></div>
 
@@ -176,5 +185,7 @@
 </div>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myAlbum.js"></script>
+<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
+<script src="<%=basePath%>/resource/js/zoom.min.js"></script>
 </body>
 </html>
