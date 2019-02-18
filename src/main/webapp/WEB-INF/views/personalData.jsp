@@ -48,7 +48,7 @@
                 <li id="ChangetheAvatar" class="content-menu-li"><a>更换头像</a></li>
                 <li id="ChangePassword" class="content-menu-li"><a>修改密码</a></li>
                 <li class="content-menu-li"><a>邀请注册</a></li>
-                <li class="content-menu-li"><a>扩充空间</a></li>
+                <li id="Expansion" class="content-menu-li"><a>扩充空间</a></li>
             </ul>
             <div class="content-wrap">
                 <div class="content-about">
@@ -103,6 +103,20 @@
         <input id="Change-Password-input" type="text" maxlength="30" placeholder="请输入新的登录密码"  name="">
         <input id="Change-Password-input" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
         <div id="Change-Password-button1" class="Change-Password-button1"><p>取消</p></div><div class="Change-Password-button2"><p>确定</p></div>
+    </div>
+    <div class="father">
+        <div id="Buy-Expansion" class="Buy-Expansion">
+            <div class="popup-header"><h4>购买空间</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
+            <div>
+                <div class="Buy-type">黄金会员<a style="font-size: 15px;">(内包含10个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 10px;" type="radio" name="optionsRadiosinline" id="optionsRadios1" value="10" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（10元）</a> </label></div>
+
+                <div class="Buy-type">铂金会员<a style="font-size: 15px;">(内包含50个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 10px;" type="radio" name="optionsRadiosinline" id="optionsRadios2" value="50" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（50元）</a> </label></div>
+
+                <div class="Buy-type">钻石会员<a style="font-size: 15px;">(内包含100个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 54px;top: 10px;" type="radio" name="optionsRadiosinline" id="optionsRadios3" value="100" checked><a style="margin-left: 74px;font-size: 15px;">我要这个（100元）</a> </label></div>
+
+            </div>
+            <div id="Buy-Expansion-button2" class="Buy-Expansion-button2"><p>购买</p></div>
+        </div>
     </div>
     <div id="popLayer" class="popLayer"></div>
     <div id="popLayer2" class="popLayer2"></div>
