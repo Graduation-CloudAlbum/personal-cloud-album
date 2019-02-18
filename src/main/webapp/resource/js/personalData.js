@@ -66,6 +66,26 @@ iconChacha5.onclick=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('Change-Password').style.display="none";
 }
+
+var ModifyingDataButton1 = document.getElementById('Modifying-data-button1');
+ModifyingDataButton1.onclick=function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('Modifying-data').style.display="none";
+}
+
+//扩充空间
+var Expansion = document.getElementById('Expansion');
+Expansion.onclick=function(){
+    document.getElementById('Buy-Expansion').style.display="block";
+    document.getElementById('popLayer2').style.display="block";
+}
+
+//关闭扩充空间
+var iconChacha6	= document.getElementById('iconChacha6');
+iconChacha6.onclick	=function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('Buy-Expansion').style.display="none";
+}
 //个人简介 账户安全 空间容量
 var menuLi1 = document.getElementById('menuLi1');
 var menuLi2 = document.getElementById('menuLi2');
