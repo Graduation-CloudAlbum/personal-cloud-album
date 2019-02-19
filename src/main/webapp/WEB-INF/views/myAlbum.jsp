@@ -32,7 +32,7 @@
         <div class="left">
             <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
-            <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
+            <a id="navMenu3" class="left-li" href="<%=basePath%>friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
         </div>
@@ -43,8 +43,8 @@
                 <i class="iconfont icon-xiangce"></i><span>我的相册</span>
             </div>
             <ul id="myAlbum-menu1" class="content-menu">
-                <li class="content-menu-li"><a id="uploadPhoto1">上传照片</a></li>
-                <li class="content-menu-li"><a id="uploadPhoto2">创建相册</a></li>
+                <li class="content-menu-li" id="uploadPhoto1"><a>上传照片</a></li>
+                <li class="content-menu-li"  id="uploadPhoto2"><a>创建相册</a></li>
                 <li class="content-menu-li"><a>排序方式</a></li>
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
@@ -134,7 +134,8 @@
             <div class="upload-photos-pop-content">
                 <form action="/***/correct"  method='post' enctype='multipart/form-data' >
                     <ul  id="dd" class="upimgcontent"></ul>
-                    <div id="upload-photos-pop-content-button" class="upload-photos-pop-content-button"><p>点击选择图片</p></div>
+
+                    <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
 
                     <div id="upload-photos-pop-content-footer" class="upload-photos-pop-content-footer">
                         <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传500张相片</span>

@@ -6,32 +6,68 @@
 	width: 100%;
 	background: #FAFAFA;
 }
-.content-about .friends-about-li{
-	width: 150px;
-	height: 150px;
-	border: 1px solid #EAEAEA;
-	margin-right: 25px;
-	margin-bottom: 25px;
-	float: left;
-	cursor: pointer;
-	position: relative;
+.content-about .friends-content{
+    width: 60%;
+    height: 85%;
 }
-.content-about .friends-about-li img{
-	width: 100%;
-	height: 100%;
+.content-about .friends-content .friends-content-li{
+    width: 130px;
+    text-align: center;
+    height: 130px;
+    float: left;
 }
-.content-about .friends-about-li p{
-	position: absolute;
-	color: #fff;
-	font-size: 18px;
-	bottom:5px;
-	text-align: center;
-	width: 100%;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	cursor: pointer;
+.content-about .friends-content .friends-content-li img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
-.content-about .friends-about-li:hover:p{
-	
+.content-about .friends-content .friends-content-li p{
+    font-size: 16px;
+    line-height: 40px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.content-about .friends-header{
+    width: 390px;
+    height: 50px;
+    background: #FFDEAD;
+    position: absolute;
+    right:0px;
+    top:180px;
+    font-size: 18px;
+    font-family:"华文宋体";
+    line-height: 50px;
+    text-align: center;
+}
+.content-about .content-about-menu{
+    width:400px;
+    height: 400px;
+    background:#FFF8DC;
+    border: 1px #EEEEEE solid;
+    overflow-y:auto;
+    right:-10px;
+    top:229px;
+    position: absolute;
+}
+.content-about .content-about-menu .content-about-menu-li{
+    width: 85%;
+    height: 45px;
+    border: 1px #FAFAFA solid;
+    font-size: 18px;
+    font-family:"华文宋体";
+    padding-left: 8%;
+    padding-right: 8%;
+    line-height: 45px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.content-about .content-about-menu .content-about-menu-li:hover{
+    background: #FAFAFA;
 }
