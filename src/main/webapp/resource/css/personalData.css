@@ -1,291 +1,337 @@
 
 /**************************personal***********************************/
 .content-about{
-	margin-left: 30px;
-	width: 100%;
+    margin-left: 30px;
+    width: 100%;
 }
 .content-about .content-about-personal{
-	border: 1px solid #EEEEEE; 
-	width: 266px;
-	height: 338px;
-	padding-top: 40px;
-	text-align: center;
-	background: #fff;
-	float: left;
+    border: 1px solid #EEEEEE;
+    width: 266px;
+    height: 338px;
+    padding-top: 40px;
+    text-align: center;
+    background: #fff;
+    float: left;
 }
 .content-about .content-about-personal img{
-	width:150px;
-	border-radius: 50%;
+    width:150px;
+    border-radius: 50%;
 }
 .content-about .content-about-personal p{
-	color: #666666;
-	font-size: 24px;	
+    color: #666666;
+    font-size: 24px;
 }
 .content-about .content-about-personal .content-about-personal-admin{
-	margin-top: 20px;
+    margin-top: 20px;
 }
 .content-about .content-about-personal .content-about-personal-num{
-	width: 88px;
-	height: 65px;	
-	background: #FAFAFA;
-	border: 1px solid #EEE;
-	float: left;
-	margin-top: 28px;
-	overflow: hidden;
+    width: 88px;
+    height: 65px;
+    background: #FAFAFA;
+    border: 1px solid #EEE;
+    float: left;
+    margin-top: 28px;
+    overflow: hidden;
 }
 .content-about .content-about-personal .content-about-personal-num .content-about-personal-num-p1{
-	font-size: 26px;
-	padding-top: 7px;
-	color: #999999;
+    font-size: 26px;
+    padding-top: 7px;
+    color: #999999;
 }
 .content-about .content-about-personal .content-about-personal-num .content-about-personal-num-p2{
-	font-size: 12px;
-	color: #D9D0CC;
+    font-size: 12px;
+    color: #D9D0CC;
 }
 
 /************************content-about-info***********************************/
 .content-about .content-about-info{
-	width:  449px;
-	height: 338px;
-	border:1px solid #EEE;
-	background: #fff;
-	margin-left: 270px;
-	position: relative;
+    width:  449px;
+    height: 338px;
+    border:1px solid #EEE;
+    background: #fff;
+    margin-left: 270px;
+    position: relative;
 }
 .content-about .content-about-info .content-about-info-no1{
-	text-align: center;
-	line-height: 150%;
-	padding:30px;
-	height: 270px;
-	padding-top: 110px;
-	display: block;
+    text-align: center;
+    line-height: 150%;
+    padding:30px;
+    height: 270px;
+    padding-top: 110px;
+    display: block;
 }
 .content-about .content-about-info .content-about-info-no1 i{
-	font-size: 24px;
-	color: #ccc;
+    font-size: 24px;
+    color: #ccc;
 }
 .content-about .content-about-info .content-about-info-no1 span{
-	color: #666;
-	font-size: 12px;
-	line-height: 1.5em;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.5em;
 }
 .content-about .content-about-info .content-about-info-no2{
-	line-height: 40px;
-	padding:50px;
-	height: 270px;
-	padding-top: 80px;	
-	display: none;
+    line-height: 40px;
+    padding:50px;
+    height: 270px;
+    padding-top: 80px;
+    display: none;
 }
 .content-about .content-about-info .content-about-info-no2 span{
-	color: #666;
-	font-size: 16px;
+    color: #666;
+    font-size: 16px;
 }
 .content-about .content-about-info .content-about-info-no3{
-	line-height: 40px;
-	padding:50px;
-	height: 270px;
-	padding-top: 60px;	
-	display: none;
+    line-height: 40px;
+    padding:50px;
+    height: 270px;
+    padding-top: 60px;
+    display: none;
 }
 .content-about .content-about-info .content-about-info-no3 span{
-	color: #666;
-	font-size: 16px;
+    color: #666;
+    font-size: 16px;
 }
 .content-about .content-about-info .content-about-info-menu{
-	height: 66px;
-	border: 1px solid #EEE;
-	text-align: center;
-	padding-left: 26px;
-	padding-right: 26px;
-	overflow: hidden;
-	position: absolute;
-	bottom: -1px;
+    height: 66px;
+    border: 1px solid #EEE;
+    text-align: center;
+    padding-left: 26px;
+    padding-right: 26px;
+    overflow: hidden;
+    position: absolute;
+    bottom: -1px;
 }
 .content-about .content-about-info .content-about-info-menu .menuLi{
-	width: 79px;
-	float: left;
-	line-height: 65px;
-	text-align: center;
-	height: 65px;
-	border-top: 2px solid #fff;
-	color: #999;
-	margin-left: 26px;
-	margin-right: 26px;
-	cursor: pointer;
+    width: 79px;
+    float: left;
+    line-height: 65px;
+    text-align: center;
+    height: 65px;
+    border-top: 2px solid #fff;
+    color: #999;
+    margin-left: 26px;
+    margin-right: 26px;
+    cursor: pointer;
 }
 .content-about .content-about-info .content-about-info-menu .menuLis{
-	border-top: 2px solid #D84C31;
-	color: #000;
+    border-top: 2px solid #D84C31;
+    color: #000;
 }
 .content-about .content-about-info .content-about-info-menu li:hover{
-	border-top: 2px solid #EBA597;
+    border-top: 2px solid #EBA597;
 }
 .content-about .content-about-info .content-about-info-menu .menuLi2{
-	border-top: 2px solid #D84C31;
-	color: #000;
-	display: none;
+    border-top: 2px solid #D84C31;
+    color: #000;
+    display: none;
 }
 
 /***************************************************弹窗1、**************************************************************/
 #Modifying-data{
-	position:absolute;
-	left:38%; 
-	top:30%;
-	z-index: 70;
-	width: 350px;
-	height: 290px;
-	bottom: 5%;
-	display: none;
-	background: #fff;
-	border-radius: 0.5%;
+    position:absolute;
+    left:38%;
+    top:30%;
+    z-index: 70;
+    width: 350px;
+    height: 290px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
 }
 #Modifying-data-input{
-	margin-left: 20px;
-	height: 40px;
-	width: 310px;
+    margin-left: 20px;
+    height: 40px;
+    width: 310px;
 }
 #Modifying-data-textarea{
-	margin-left: 20px;
-	width: 310px;
-	height: 100px;
-	margin-top: 10px;
+    margin-left: 20px;
+    width: 310px;
+    height: 100px;
+    margin-top: 10px;
 }
 .Modifying-data-button1{
-	width: 80px;
-	background: #fff;
-	border-radius: 0.5%;
-	height: 35px;
-	margin-left: 150px;
-	border: 1px solid #DDD;
-	text-align: center;
-	margin-top: 10px;
-	cursor: pointer;
+    width: 80px;
+    background: #fff;
+    border-radius: 0.5%;
+    height: 35px;
+    margin-left: 150px;
+    border: 1px solid #DDD;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
 }
 .Modifying-data-button1 p{
-	line-height: 35px;
+    line-height: 35px;
 }
 .Modifying-data-button2{
-	width: 80px;
-	background: #00A8D8;
-	border-radius: 0.5%;
-	height: 35px;
-	position: absolute;
-	right: 20px;
-	bottom: 24px;
-	text-align: center;
-	cursor: pointer;
+    width: 80px;
+    background: #00A8D8;
+    border-radius: 0.5%;
+    height: 35px;
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    text-align: center;
+    cursor: pointer;
 }
 .Modifying-data-button2 p{
-	color: #fff;
-	line-height: 35px;
+    color: #fff;
+    line-height: 35px;
 }
 /***************************************************弹窗2、**************************************************************/
 .Change-the-Avatar{
-	position:absolute;
-	left:41%; 
-	top:28%;
-	z-index: 70;
-	width: 270px;
-	height: 320px;
-	bottom: 5%;
-	display: none;
-	background: #fff;
-	border-radius: 0.5%;
-	text-align: center;
-	padding-top: 25px;
+    position:absolute;
+    left:41%;
+    top:28%;
+    z-index: 70;
+    width: 270px;
+    height: 320px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+    text-align: center;
+    padding-top: 25px;
 }
 .Change-the-Avatar img{
-	margin-top: 20px;
-	border-radius: 50%;
-	width: 150px;
-	height: 150px;
+    margin-top: 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }
 .Change-the-Avatar .Change-the-Avatar-button1{
-	width: 80px;
-	background: #00A8D8;
-	border-radius: 0.5%;
-	height: 35px;
-	margin-left: 45px;
-	text-align: center;
-	margin-top: 25px;
-	cursor: pointer;
+    width: 80px;
+    background: #00A8D8;
+    border-radius: 0.5%;
+    height: 35px;
+    margin-left: 45px;
+    text-align: center;
+    margin-top: 25px;
+    cursor: pointer;
 }
- .Change-the-Avatar .Change-the-Avatar-button1 p{
-	line-height: 35px;
-	color: #fff;
+.Change-the-Avatar .Change-the-Avatar-button1 p{
+    line-height: 35px;
+    color: #fff;
 }
 .Change-the-Avatar .Change-the-Avatar-button2{
-	width: 80px;
-	background: #fff;
-	border-radius: 0.5%;
-	height: 35px;
-	position: absolute;
-	right: 45px;
-	bottom: 25px;
-	text-align: center;
-	cursor: pointer;
-	border: 1px solid #DDD;
+    width: 80px;
+    background: #fff;
+    border-radius: 0.5%;
+    height: 35px;
+    position: absolute;
+    right: 45px;
+    bottom: 25px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #DDD;
 }
-.Change-the-Avatar .Change-the-Avatar-button2 p{	
-	line-height: 35px;
+.Change-the-Avatar .Change-the-Avatar-button2 p{
+    line-height: 35px;
 }
 /***************************************************弹窗3、**************************************************************/
 .Change-Password{
-	position:absolute;
-	left:38%; 
-	top:31%;
-	z-index: 70;
-	width: 360px;
-	height: 270px;
-	bottom: 5%;
-	display: none;
-	background: #fff;
-	border-radius: 0.5%;
+    position:absolute;
+    left:38%;
+    top:31%;
+    z-index: 70;
+    width: 360px;
+    height: 270px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
 }
-#Change-Password-input1{
-	margin-left: 20px;
-	height: 40px;
-	width: 310px;
-	margin-bottom: 9px;
-}
-#Change-Password-input2{
+#Change-Password-input{
     margin-left: 20px;
     height: 40px;
     width: 310px;
     margin-bottom: 10px;
 }
-#Change-Password-input3{
-    margin-left: 20px;
-    height: 40px;
-    width: 310px;
-    margin-bottom: 11px;
-}
 .Change-Password-button1{
-	width: 80px;
-	background: #fff;
-	border-radius: 0.5%;
-	height: 35px;
-	margin-left: 150px;
-	border: 1px solid #DDD;
-	text-align: center;
-	margin-top: 4px;
-	cursor: pointer;
+    width: 80px;
+    background: #fff;
+    border-radius: 0.5%;
+    height: 35px;
+    margin-left: 150px;
+    border: 1px solid #DDD;
+    text-align: center;
+    margin-top: 4px;
+    cursor: pointer;
 }
 .Change-Password-button1 p{
-	line-height: 35px;
+    line-height: 35px;
 }
 .Change-Password-button2{
-	width: 80px;
-	background: #00A8D8;
-	border-radius: 0.5%;
-	height: 35px;
-	position: absolute;
-	right: 30px;
-	bottom: 15px;
-	text-align: center;
-	cursor: pointer;
+    width: 80px;
+    background: #00A8D8;
+    border-radius: 0.5%;
+    height: 35px;
+    position: absolute;
+    right: 30px;
+    bottom: 15px;
+    text-align: center;
+    cursor: pointer;
 }
 .Change-Password-button2 p{
-	color: #fff;
-	line-height: 35px;
+    color: #fff;
+    line-height: 35px;
+}
+
+/***************************************************弹窗3、**************************************************************/
+
+#Buy-Expansion{
+    position:absolute;
+    margin: 0 auto;
+    top:30%;
+    z-index: 70;
+    width: 700px;
+    height: 290px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+
+.Buy-Expansion-button1{
+    width: 80px;
+    background: #fff;
+    border-radius: 0.5%;
+    height: 35px;
+    margin-left: 150px;
+    border: 1px solid #DDD;
+    text-align: center;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.Buy-Expansion-button1 p{
+    line-height: 35px;
+}
+
+.Buy-Expansion-button2{
+    width: 80px;
+    background: #00A8D8;
+    border-radius: 0.5%;
+    height: 35px;
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+.Buy-Expansion-button2 p{
+    color: #fff;
+    line-height: 35px;
+}
+.father{
+    display:flex;
+    justify-content:center;
+
+}
+.Buy-type{
+    margin-left: 12%;
+    color: red;
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
 }

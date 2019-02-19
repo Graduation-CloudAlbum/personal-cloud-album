@@ -1,0 +1,428 @@
+#myAlbum-menu1{
+	display: block;
+}
+#myAlbum-menu2{
+	display: none;
+}
+/***************************************************content1、**************************************************************/
+#myAlbum-content{
+	display: block;
+}
+.content-about{
+	margin-left: 25px;
+	width: 100%;
+	background: #FAFAFA;
+}
+.content-about .content-about-li{
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 25px;
+	position: relative;
+}
+.content-about .content-about-li img{
+	width: 230px;
+	height: 330px;
+	background: #fff;
+}
+.content-about .content-about-li-top{
+	top:0;
+    height: 330px;
+    position: absolute;
+    width: 230px;
+}
+.content-about .content-about-li-top .content-about-li-top-a{
+	width: 100%;
+	height: 270px;
+	padding-left: 10px;
+	padding-top: 80%;
+}
+.content-about .content-about-li-top .content-about-li-top-a a{
+	border: 1px solid #fff;
+	border-radius: 50%;
+	display: block;
+	opacity: 0;
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-left: 25px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+.content-about .content-about-li-top .content-about-li-top-a .icon1{
+	font-size: 18px;
+	line-height: 30px;
+}
+.content-about .content-about-li-top .content-about-li-top-a .icon2{
+	margin-top: -15px;
+	margin-left: 25px;
+	margin-right: 0px;
+	font-size: 24px;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+}
+.content-about .content-about-li-top .bottun-title{
+	width: 100%;
+	padding-left: 15px;
+	height: 60px;
+	float: left;
+	padding-top: 5px;
+	color: #787878;
+}
+.content-about .content-about-li-top .bottun-title .bottun-title-p1{
+	font-size: 20px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+.content-about .content-about-li-top .bottun-title .bottun-title-p2{
+	font-size: 12px;
+
+}
+.content-about .content-about-li-top:hover{
+	background: #000;
+	opacity: 0.5;
+}
+.content-about .content-about-li-top:hover .content-about-li-top-a a{
+	opacity: 1;
+}
+.content-about .content-about-li-top .content-about-li-top-a a:hover{
+	background: #fff;
+	color: #454545;
+}
+.content-about .content-about-li-top:hover .bottun-title{
+	color: #fff;
+}
+.content-about .content-about-li-top .bottun-title .bottun-title-p1:hover{
+	text-decoration: underline;
+}
+/***************************************************content2、**************************************************************/
+#myAlbum-content2{
+	display: none;
+}
+.content-about2{
+	margin-left: 25px;
+	width: 100%;
+	background: #FAFAFA;
+}
+.content-about2-li{
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	position: relative;
+	width: 245px;
+	height: 245px;
+	overflow: hidden;
+}
+.content-about2 .content-about2-li img{
+	/*width: 250px;
+	height: 250px;*/
+	width: 100%;
+	height: 100%;
+	background: #fff;
+}
+/*****************************************************button*************************************************/
+#open2{
+	display: none;
+}
+/*#open2{
+	display: none;
+}
+.content-button{
+	width: 100%;
+	float: left;
+	text-align: center;
+	bottom: 50px;
+	margin-top: 25px;
+}
+.content-button .content-button-fenge{
+	height: 1px;
+	width: 100%;
+	background: #E8E8E8;
+	float: left;
+}
+.content-button span{
+	text-align: center;
+	font-size: 12px;
+	color: #99B3D4;
+}	
+*/
+/***************************************************弹窗1、**************************************************************/
+#upload-photos{
+	display: none;
+}
+.upload-photos{
+	position:absolute;
+	left:2%; 
+	top:5%;
+	z-index: 50;
+	width: 96%;
+	height: 92%;
+	bottom: 5%;
+}
+.upload-photos-pop{
+	width: 100%;
+	height: 100%;
+	left: 5%;
+	top:5%; 
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-header{
+	height: 60px;
+	width: 100%;
+	background: #fff;
+	border:1px solid #EEE;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-header span{
+	font-size: 24px;
+	line-height: 60px;
+	margin-left: 10px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-header i{
+	font-size: 24px;
+	font-weight: normal;
+	position: absolute;
+	right: 15px;
+	line-height: 60px;
+	color: #CCCCCC;
+	cursor: pointer;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content{
+	background: #F5F5F5;
+	width: 100%;
+	height: 90%;
+	text-align: center;
+	position: relative;
+}
+.upimgcontent{
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-bottom: 15px;
+	overflow: auto;
+	width: 100%;
+	height: 546px;
+}
+.upimgcontent .img-wrap{
+	width: 170px;
+	float: left;
+	height: 180px;
+	margin-left: 10px;
+	margin-top: 10px;
+	position: relative;
+}
+.upimgcontent .img-wrap img{
+	width: 100%;
+	height: 100%;
+}
+.upimgcontent .img-wrap .close{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: none;
+}
+.img-button{
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	bottom:0px;
+	text-align: center;
+	display: none;
+	background:#000;
+    opacity:0.6;
+}
+.img-button p{
+	color: #fff;
+	font-size: 18px;
+}
+.upimgcontent .img-wrap:hover .close{
+	display: block;
+}
+/*.upimgcontent .img-wrap:hover{
+	background:#000;
+    opacity:0.9;
+}*/
+.upimgcontent .img-wrap:hover .img-button{
+	display: block;
+}
+.inputfile {
+    opacity: 0;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-button{
+	background: #00A8D8;
+	width: 180px;
+	height: 50px;
+	border-radius: 2%;
+	position: absolute;
+	margin-top: -18%;
+	margin-left: -7%;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-button p{
+	font-size: 20px;
+	color: #fff;
+	line-height: 50px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer{
+	height: 60px;
+	width: 100%;
+	border:1px solid #EEE;
+	background: #DADADA;
+	position: absolute;
+	bottom: 0px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer span{
+	color: #9999B1;
+	line-height: 55px;
+	font-size: 16px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2{
+	height: 60px;
+	width: 100%;
+	border:1px solid #EEE;
+	background: #fff;
+	position: absolute;
+	bottom: 0px;
+	display: none;
+	text-align: left;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2 span{
+	color: #9999B1;
+	line-height: 55px;
+	font-size: 16px;
+	margin-left: 20px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2 .footer-button2{
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+}
+.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2 .footer-button1{
+	position: absolute;
+	right: 120px;
+	bottom: 10px;
+}
+
+/***************************************************弹窗2、**************************************************************/
+#upload-photos-choose{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;
+}
+.upload-photos-choose .select-first{
+	margin-left: 20px;
+	width: 260px;
+	height: 40px;
+	float: left;
+	padding-left: 10px;
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+.upload-photos-choose .select-first p{
+	font-size: 18px;
+	color: #976666;
+	line-height: 40px;
+}
+.upload-photos-choose .select-right{
+	width: 50px;
+	height: 40px;
+	float: left;
+	padding-left: 16px;
+	line-height: 40px;
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+.upload-photos-choose .select-right span{
+	color: #E0E0E0;
+}
+.upload-photos-choose .select-button{
+	background: #00A8D8;
+	width: 80px;
+	height: 35px;
+	border-radius: 2%;
+	position: absolute;
+	margin-top: 17%;
+	margin-left: 39%;
+	text-align: center;
+	cursor: pointer;
+}
+.upload-photos-choose .select-button p{
+	color: #fff;
+	font-size: 16px;
+	line-height: 35px;
+}
+
+/***************************************************弹窗3、**************************************************************/
+#Create-Album{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;
+}
+#Create-Album-input{
+	margin-left: 20px;
+	height: 40px;
+	width: 310px;
+}
+.Create-Album-button1{
+	width: 80px;
+	background: #fff;
+	border-radius: 0.5%;
+	height: 35px;
+	margin-left: 150px;
+	border: 1px solid #DDD;
+	text-align: center;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.Create-Album-button1 p{
+	line-height: 35px;
+}
+.Create-Album-button2{
+	width: 80px;
+	background: #00A8D8;
+	border-radius: 0.5%;
+	height: 35px;
+	position: absolute;
+	right: 20px;
+	bottom: 24px;
+	text-align: center;
+	cursor: pointer;
+}
+.Create-Album-button2 p{
+	color: #fff;
+	line-height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

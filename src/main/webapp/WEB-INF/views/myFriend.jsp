@@ -15,9 +15,10 @@
     <meta charset="UTF-8">
     <title>myFriend</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myFriend.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
+
 </head>
 <body>
 <div class="wrapper">
@@ -29,7 +30,7 @@
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="../img/default-c.png"><p>1732859702</p></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/4.jpg"><p>1732859702</p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -45,40 +46,40 @@
                 <li class="content-menu-li"><a>添加好友</a></li>
             </ul>
             <div class="content-wrap">
-                <ul class="content-about">
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/1.jpg">
-                        <p>江川	</p>
-                    </li>
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/3.jpg">
-                        <p>三生三世十里桃花啊</p>
-                    </li>
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/2.jpg">
-                        <p>吴磊	</p>
-                    </li>
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/4.jpg">
-                        <p>迪丽热巴</p>
-                    </li>
-
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/5.jpg">
-                        <p>胡歌</p>
-                    </li>
-                    <li class="friends-about-li">
-                        <img src="<%=basePath%>/resource/img/6.jpg">
-                        <p>西门吹雪</p>
-                    </li>
+                <div class="content-about">
+                    <ul class="friends-content">
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/3.jpg"><p>wds djsh sdsjh dj sd</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/2.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/5.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/3.jpg"><p>dh sdh sdh d</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/6.jpg"><p>我的青春我做主我的青春我做主</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/7.jpg"><p>Jehed</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/2.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>dshghs</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
+                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
+                    </ul>
 
 
-                </ul>
-                <div class="content-button">
-                    <div class="content-button-fenge"></div>
-                    <span>(共50个好友)</span>
+                    <div class="friends-header">我的好友列表</div>
+                    <ul class="content-about-menu">
+                        <li class="content-about-menu-li">家人</li>
+                        <li class="content-about-menu-li">朋友</li>
+                        <li class="content-about-menu-li">大学同学</li>
+                        <li class="content-about-menu-li">陌生人</li>
+                        <li class="content-about-menu-li">兄弟</li>
+                        <li class="content-about-menu-li">同事</li>
+                        <li class="content-about-menu-li">老师</li>
+                        <li class="content-about-menu-li">北京同事</li>
+                        <li class="content-about-menu-li">上海同事</li>
+                        <li class="content-about-menu-li">重庆同事</li>
+                    </ul>
                 </div>
-                <div class="content-footer2"></div>
+
             </div>
 
 
