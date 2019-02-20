@@ -42,19 +42,16 @@ public class FriendController {
         User user = (User) request.getSession().getAttribute("user");
         friendService.test();
         List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectAllMyFriend(user);
         ModelAndView mav = new ModelAndView("myFriend");
-        JSONObject jo = new JSONObject();
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-//        response转发Jason数据方法
-//        try {
-//            ResponseUtil.write(response, jo);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println("66666666666666666666666666");
-//        }
+
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
         mav.addObject("FriendGroup", list);
         mav.addObject("friendgroup", friendgroup);
+        mav.addObject("allfriend", allfriend);
         return mav;
     }
 
