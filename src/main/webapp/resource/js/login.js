@@ -8,7 +8,7 @@ $("#login_btn").click(function(){
             dataType: "json",
             complete:function(result) {
                 if (result.responseText=="success") {
-                    window.location.href="/pca/user/myAlbum";
+                    window.location.href="/pca/album/albumInfo";
                 } else {
                     alert("用户名或密码错误 请重试");
                     $("#username").val("");
