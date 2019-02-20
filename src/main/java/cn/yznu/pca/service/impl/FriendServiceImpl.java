@@ -33,6 +33,15 @@ public class FriendServiceImpl implements FriendService {
     FriendVerificationMapper friendVerificationMapper;
 
     @Override
+    public List<?> selectAllMyFriend(User user) {
+        List <UserRelation> list=userRelationMapper.selectAllMyFriend(user.getId());
+        for (UserRelation s:list){
+            System.out.println(s.getFriend().getNickName()+"Serviceimpl查询到的该用户下所有验证消息为"+s.getFriend().getUserIcon());
+        }
+        return  list;
+    }
+
+    @Override
     public List<?> selectFriendGroup(User user) {
         PermissionGroupExample permissionGroupExample=new PermissionGroupExample();
         PermissionGroupExample.Criteria criteria = permissionGroupExample.createCriteria();
