@@ -10,6 +10,7 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User  user= (User) request.getSession().getAttribute("user");
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -48,35 +49,18 @@
             <div class="content-wrap">
                 <div class="content-about">
                     <ul class="friends-content">
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/3.jpg"><p>wds djsh sdsjh dj sd</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/2.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/5.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/3.jpg"><p>dh sdh sdh d</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/6.jpg"><p>我的青春我做主我的青春我做主</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/7.jpg"><p>Jehed</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/2.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/4.jpg"><p>dshghs</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
-                        <li class="friends-content-li"><img src="<%=basePath%>/resource/img/1.jpg"><p>张三</p></li>
+                        <c:forEach items="${allfriend}" var="node">
+                            <li class="friends-content-li"><img src="<%=basePath%>${node.friend.userIcon}"><p>${node.friend.nickName}</p></li>
+                        </c:forEach>
                     </ul>
 
 
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
-                        <li class="content-about-menu-li">家人</li>
-                        <li class="content-about-menu-li">朋友</li>
-                        <li class="content-about-menu-li">大学同学</li>
-                        <li class="content-about-menu-li">陌生人</li>
-                        <li class="content-about-menu-li">兄弟</li>
-                        <li class="content-about-menu-li">同事</li>
-                        <li class="content-about-menu-li">老师</li>
-                        <li class="content-about-menu-li">北京同事</li>
-                        <li class="content-about-menu-li">上海同事</li>
-                        <li class="content-about-menu-li">重庆同事</li>
+                        <c:forEach items="${friendgroup}" var="friendgroup">
+                            <li href="<%=basePath%>/friend/${friendgroup.permissionType}"
+                                class="content-about-menu-li">${friendgroup.permissionType}</li>
+                        </c:forEach>
                     </ul>
                 </div>
 
