@@ -1,14 +1,17 @@
-<%@ page import="cn.yznu.pca.model.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ybw
   Date: 2018-11-28
   Time: 10:27
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="cn.yznu.pca.model.User" %>
+<%@ page import="cn.yznu.pca.model.Album" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User user= (User) request.getSession().getAttribute("user");
+    Album album= (Album) request.getSession().getAttribute("album");
 %>
 <html lang="en">
 <head>
@@ -24,14 +27,14 @@
 <div class="wrapper">
     <div class="header">
         <img src="<%=basePath%>/resource/img/logo.png">
-        <div class="header-right"><img src="<%=basePath%>/resource/img/default-c.png"><span id="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
+        <div class="header-right"><img src="<%=basePath%>/resource/img/default-c.png"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p>1732859702</p></a>
-            <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu1" class="left-li" href="<%=basePath%>/album/albumInfo"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
