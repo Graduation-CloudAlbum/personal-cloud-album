@@ -13,6 +13,12 @@ import java.util.List;
  */
 public interface FriendService {
     /**
+     *  查找所有
+     * @param user
+     */
+    List<?> selectAllMyFriend(User user);
+
+    /**
      *  查找分组
      * @param user
      */
