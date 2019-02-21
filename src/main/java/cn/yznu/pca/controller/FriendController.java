@@ -46,7 +46,6 @@ public class FriendController {
         ModelAndView mav = new ModelAndView("myFriend");
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
         mav.addObject("FriendGroup", list);
@@ -63,10 +62,15 @@ public class FriendController {
     public ModelAndView selectMyFriend(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
-        List<UserRelation> list = friendService.selectMyFriend(user);
-        for (UserRelation attribute : list) {
-            System.out.println("该用户的好友有" + attribute.getUserIdTwo());
-        }
+        int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"我的好友");
+        List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        mav.addObject("allfriend", allfriend);
+        mav.addObject("friendgroup", friendgroup);
         return mav;
     }
 
@@ -78,7 +82,15 @@ public class FriendController {
     public ModelAndView selectMyFamily(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
-        List<?> list = friendService.selectMyFamily(user);
+        int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"我的家人");
+        List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        mav.addObject("allfriend", allfriend);
+        mav.addObject("friendgroup", friendgroup);
         return mav;
     }
 
@@ -90,7 +102,15 @@ public class FriendController {
     public ModelAndView selectMyColleague(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
-        List<?> list = friendService.selectMyColleague(user);
+        int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"我的同事");
+        List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        mav.addObject("allfriend", allfriend);
+        mav.addObject("friendgroup", friendgroup);
         return mav;
     }
 
@@ -102,7 +122,15 @@ public class FriendController {
     public ModelAndView selectMyClassmate(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
-        List<?> list = friendService.selectMyClassmate(user);
+        int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"我的同学");
+        List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        mav.addObject("allfriend", allfriend);
+        mav.addObject("friendgroup", friendgroup);
         return mav;
     }
 
@@ -114,7 +142,15 @@ public class FriendController {
     public ModelAndView selectMyStranger(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
-        List<?> list = friendService.selectMyStranger(user);
+        int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"陌生人");
+        List<?> list = friendService.selectFriendGroup(user);
+        List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        mav.addObject("allfriend", allfriend);
+        mav.addObject("friendgroup", friendgroup);
         return mav;
     }
 
