@@ -58,8 +58,11 @@
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
                         <c:forEach items="${friendgroup}" var="friendgroup">
-                            <li href="<%=basePath%>/friend/${friendgroup.permissionType}"
-                                class="content-about-menu-li">${friendgroup.permissionType}</li>
+                            <%--<li href="<%=basePath%>/friend/${friendgroup.permissionType}"--%>
+                                <%--class="content-about-menu-li">${friendgroup.permissionType}</li>--%>
+
+                            <li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>
+
                         </c:forEach>
                     </ul>
                 </div>
@@ -92,5 +95,6 @@
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/addfriend.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/myFriend.js"></script>
 </body>
 </html>
