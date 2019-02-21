@@ -70,16 +70,11 @@ public class UserController {
         user1.getUserIcon();
         int albumNum=albumService.getAlbumNum(id);
         int imageNum=imageService.getImageNum(id);
-        //mav.addObject(albumNum);
-        //mav.addObject(imageNum);
         request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
         return "personalData";
     }
-
-
-
     @RequestMapping("/myAlbum")
     public  String myAlbum(){
         return "myAlbum";
@@ -163,10 +158,22 @@ public class UserController {
         //imageService.upload(image);
         return "";
     }
+    @ResponseBody
     @RequestMapping("/changePassword")
-    public String changePassword(){
+    public String changePassword(@Param("oldPassword")String oldPassword,
+                                 @Param("newPasssword1")String newPassword1,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        String password=user.getUserPassword();
+        //将用户输入的密码进行MD5转码后比较
+        String oldp=MD5Util.md5Jdk(oldPassword);
+        if (password.equals(oldp)){
+            userService.changePassword(user.getId(),MD5Util.md5Jdk(newPassword1));
+            return "success";
+        }else {
+            return "fail";
+        }
 
-        return "";
+
     }
     @ResponseBody
     @RequestMapping("/modifyingData")

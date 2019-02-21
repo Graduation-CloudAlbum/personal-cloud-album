@@ -3,7 +3,7 @@ package cn.yznu.pca.utils;
 import java.security.MessageDigest;
 
 /**
- * MD5加密工具类
+ * MD5加密工具类,32位小写
  * @author yangbaiwan
  * @date 2018-08-24
  */

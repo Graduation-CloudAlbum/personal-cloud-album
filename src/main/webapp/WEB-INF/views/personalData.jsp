@@ -33,7 +33,7 @@
     <div class="content">
         <div class="left">
             <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user1.getNickName()%></p></a>
-            <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+            <a id="navMenu1" class="left-li" href="<%=basePath%>/album/albumInfo"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
@@ -99,9 +99,9 @@
     </div>
     <div id="Change-Password" class="Change-Password">
         <div class="popup-header"><h4>修改密码</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请输入原登录密码"  name="">
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请输入新的登录密码"  name="">
-        <input id="Change-Password-input" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
+        <input class="Change-Password-input" type="text" maxlength="30" placeholder="请输入原登录密码"  name="">
+        <input class="Change-Password-input" type="text" maxlength="30" placeholder="请输入新的登录密码"  name="">
+        <input class="Change-Password-input" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
         <div id="Change-Password-button1" class="Change-Password-button1"><p>取消</p></div><div class="Change-Password-button2"><p>确定</p></div>
     </div>
     <div class="father">

@@ -13,6 +13,12 @@ import java.util.List;
  */
 public interface FriendService {
     /**
+     *  查找所有
+     * @param user
+     */
+    List<?> selectAllMyFriend(User user);
+
+    /**
      *  查找分组
      * @param user
      */
@@ -22,33 +28,7 @@ public interface FriendService {
      *  查找好友分组下所有好友
      * @param user
      */
-    List<UserRelation> selectMyFriend(User user);
-
-    /**
-     *  查找家人分组下所有好友
-     * @param user
-     */
-    List<?> selectMyFamily(User user);
-
-    /**
-     *  查找同事分组下所有好友
-     * @param user
-     */
-    List<?> selectMyColleague(User user);
-
-
-    /**
-     *  查找同学分组下所有好友
-     * @param user
-     */
-    List<?> selectMyClassmate(User user);
-
-    /**
-     *  查找同学分组下所有好友
-     * @param user
-     */
-    List<?> selectMyStranger(User user);
-
+    List<UserRelation> selectMyFriend(User user,int i);
 
     /**
      *  添加好友方法
@@ -96,6 +76,13 @@ public interface FriendService {
      * @param user
      */
     List <FriendVerification> selectAllFriendVerification(User user);
+
+
+    /**
+     *  通过permissiontype和userid确定好友分组唯一id
+     * @param user
+     */
+    int selectPermissionGroupId(User user,String type);
 
 
     List <FriendVerification> test();

@@ -30,4 +30,6 @@ public interface AlbumMapper {
     int updateByPrimaryKey(Album record);
 
     int countAlbum(Integer userId);
+
+    List selectAlbumInfo(Integer userId);
 }

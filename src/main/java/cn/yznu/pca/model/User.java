@@ -25,7 +25,17 @@ public class User implements Serializable {
 
     private List<FriendVerification> friendVerificationList;
 
+    private List<UserRelation> userRelationList;
+
     private static final long serialVersionUID = 1L;
+
+    public void setUserRelationList(List<UserRelation> userRelationList) {
+        this.userRelationList = userRelationList;
+    }
+
+    public List<UserRelation> getUserRelationList() {
+        return userRelationList;
+    }
 
     public List<FriendVerification> getFriendVerificationList() {
         return friendVerificationList;

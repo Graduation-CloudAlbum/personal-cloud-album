@@ -33,6 +33,12 @@ public class FriendServiceImpl implements FriendService {
     FriendVerificationMapper friendVerificationMapper;
 
     @Override
+    public List<?> selectAllMyFriend(User user) {
+        List <UserRelation> list=userRelationMapper.selectAllMyFriend(user.getId());
+        return  list;
+    }
+
+    @Override
     public List<?> selectFriendGroup(User user) {
         PermissionGroupExample permissionGroupExample=new PermissionGroupExample();
         PermissionGroupExample.Criteria criteria = permissionGroupExample.createCriteria();
@@ -43,57 +49,8 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
-    public List<UserRelation> selectMyFriend(User user) {
-        UserRelationExample userRelationExample=new UserRelationExample();
-        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
-        criteria.andUserIdEqualTo(user.getId());
-        criteria.andPermissionGroupIdEqualTo(1);
-        userRelationExample.setOrderByClause("id");
-        List<UserRelation> list = userRelationMapper.selectByExample(userRelationExample);
-        return list;
-    }
-
-    @Override
-    public List<?> selectMyFamily(User user) {
-        UserRelationExample userRelationExample=new UserRelationExample();
-            UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
-        criteria.andUserIdEqualTo(user.getId());
-        criteria.andPermissionGroupIdEqualTo(2);
-        userRelationExample.setOrderByClause("id");
-        List<?> list = userRelationMapper.selectByExample(userRelationExample);
-        return list;
-    }
-
-    @Override
-    public List<?> selectMyColleague(User user) {
-        UserRelationExample userRelationExample=new UserRelationExample();
-        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
-        criteria.andUserIdEqualTo(user.getId());
-        criteria.andPermissionGroupIdEqualTo(3);
-        userRelationExample.setOrderByClause("id");
-        List<?> list = userRelationMapper.selectByExample(userRelationExample);
-        return list;
-    }
-
-    @Override
-    public List<?> selectMyClassmate(User user) {
-        UserRelationExample userRelationExample=new UserRelationExample();
-        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
-        criteria.andUserIdEqualTo(user.getId());
-        criteria.andPermissionGroupIdEqualTo(4);
-        userRelationExample.setOrderByClause("id");
-        List<?> list = userRelationMapper.selectByExample(userRelationExample);
-        return list;
-    }
-
-    @Override
-    public List<?> selectMyStranger(User user) {
-        UserRelationExample userRelationExample=new UserRelationExample();
-        UserRelationExample.Criteria criteria = userRelationExample.createCriteria();
-        criteria.andUserIdEqualTo(user.getId());
-        criteria.andPermissionGroupIdEqualTo(5);
-        userRelationExample.setOrderByClause("id");
-        List<?> list = userRelationMapper.selectByExample(userRelationExample);
+    public List<UserRelation> selectMyFriend(User user,int i) {
+        List <UserRelation> list=userRelationMapper.selectMyFriend(user.getId(),i);
         return list;
     }
 
@@ -181,6 +138,20 @@ public class FriendServiceImpl implements FriendService {
                     +"请求加你为好友"+"验证消息为"+s.getNote());
         }
         return list;
+    }
+
+    @Override
+    public int selectPermissionGroupId(User user,String type) {
+        PermissionGroupExample permissionGroupExample=new PermissionGroupExample();
+        PermissionGroupExample.Criteria criteria = permissionGroupExample.createCriteria();
+        criteria.andUserIdEqualTo(user.getId());
+        criteria.andPermissionTypeEqualTo(type);
+        List <PermissionGroup> permissionGroup=permissionGroupMapper.selectByExample(permissionGroupExample);
+        int permissionGroupId = 0;
+        for(PermissionGroup s:permissionGroup){
+            permissionGroupId=s.getId();
+        }
+        return permissionGroupId;
     }
 
     @Override

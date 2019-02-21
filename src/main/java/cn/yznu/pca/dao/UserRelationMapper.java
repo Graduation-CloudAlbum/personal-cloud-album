@@ -1,5 +1,6 @@
 package cn.yznu.pca.dao;
 
+import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserRelation;
 import cn.yznu.pca.model.example.UserRelationExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,8 @@ public interface UserRelationMapper {
     int updateByPrimaryKeySelective(UserRelation record);
 
     int updateByPrimaryKey(UserRelation record);
+
+    List<UserRelation>selectAllMyFriend(int userid);
+
+    List<UserRelation>selectMyFriend(@Param("user_id") int user_id,@Param("permission_group_id") int permission_group_id);
 }

@@ -18,6 +18,26 @@ public class UserRelation implements Serializable {
 
     private Integer permissionGroupIdTwo;
 
+    private User user;
+
+    private User friend;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setFriend(User friend) {
+        this.friend = friend;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public User getFriend() {
+        return friend;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

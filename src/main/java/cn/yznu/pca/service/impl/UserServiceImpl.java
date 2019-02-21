@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePassword(String password) {
-
+    public boolean changePassword(int id,String password) {
+        return mapper.changePassword(id,password);
     }
 
     @Override
