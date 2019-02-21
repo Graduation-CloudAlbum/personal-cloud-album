@@ -54,7 +54,7 @@
     position: absolute;
 }
 .content-about .content-about-menu .content-about-menu-li{
-    width: 85%;
+    width: 100%;
     height: 45px;
     border: 1px #FAFAFA solid;
     font-size: 18px;
@@ -71,3 +71,97 @@
 .content-about .content-about-menu .content-about-menu-li:hover{
     background: #FAFAFA;
 }
+/***********************************弹窗创建分组***************************************************/
+#Create-friends{
+    position:absolute;
+    left:40%;
+    top:38%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+#Create-friends-input{
+    margin-left: 20px;
+    height: 40px;
+    width: 310px;
+}
+.Create-friends-button1{
+    width: 80px;
+    background: #fff;
+    border-radius: 0.5%;
+    height: 35px;
+    margin-left: 150px;
+    border: 1px solid #DDD;
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.Create-friends-button1 p{
+    line-height: 35px;
+}
+.Create-friends-button2{
+    width: 80px;
+    background: #00A8D8;
+    border-radius: 0.5%;
+    height: 35px;
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+.Create-friends-button2 p{
+    color: #fff;
+    line-height: 35px;
+}
+/***********************************弹窗添加好友***************************************************/
+#Create-for-friends{
+    position:absolute;
+    left:40%;
+    top:38%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+#Create-for-friends-input{
+    margin-left: 20px;
+    height: 40px;
+    width: 310px;
+}
+/*.Create-friends-button1{*/
+    /*width: 80px;*/
+    /*background: #fff;*/
+    /*border-radius: 0.5%;*/
+    /*height: 35px;*/
+    /*margin-left: 150px;*/
+    /*border: 1px solid #DDD;*/
+    /*text-align: center;*/
+    /*margin-top: 15px;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.Create-friends-button1 p{*/
+    /*line-height: 35px;*/
+/*}*/
+/*.Create-friends-button2{*/
+    /*width: 80px;*/
+    /*background: #00A8D8;*/
+    /*border-radius: 0.5%;*/
+    /*height: 35px;*/
+    /*position: absolute;*/
+    /*right: 20px;*/
+    /*bottom: 24px;*/
+    /*text-align: center;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.Create-friends-button2 p{*/
+    /*color: #fff;*/
+    /*line-height: 35px;*/
+/*}*/
