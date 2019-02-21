@@ -18,7 +18,7 @@ function selectOnde(permissionType) {
         type:"POST",
         // url:url,
         url:"/pca/friend"+"/"+permissionType,
-        data:{"modifyingData":permissionType},
+        data:{"permissionType":permissionType},
         dataType: "json",
         complete:function(result) {
 
