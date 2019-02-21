@@ -1,28 +1,13 @@
 function selectOnde(permissionType) {
-
-    alert(permissionType);
-    // if (permissionType==0){
-    //     url="/pca/friend/selectMyFriend";
-    //     alert(url);
-    // }else if (permissionType==1){
-    //     url="/pca/friend/selectMyFamily"
-    //     alert(url);
-    // } else if (permissionType==2){
-    //     url="/pca/friend/selectMyClassmate";
-    //     alert(url);
-    // } else {
-    //     url="/pca/friend/selectMyStranger";
-    //     alert(url);
-    // }
-    $.ajax({
-        type:"POST",
-        // url:url,
-        url:"/pca/friend"+"/"+permissionType,
-        data:{"permissionType":permissionType},
-        dataType: "json",
-        complete:function(result) {
-
-        }
-    });
-
+    if (permissionType==("我的好友")){
+        window.location.href="/pca/friend/selectMyFriend"
+    }else if (permissionType==("我的家人")){
+        window.location.href="/pca/friend/selectMyFamily"
+    } else if (permissionType==("我的同事")){
+        window.location.href="/pca/friend/selectMyColleague"
+    } else if (permissionType==("我的同学")){
+        window.location.href="/pca/friend/selectMyClassmate"
+    } else {
+        window.location.href="/pca/friend/selectMyStranger"
+    }
 }
