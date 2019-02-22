@@ -83,7 +83,7 @@
         <div class="popup-header"><h4>创建分组</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
         <div class="qq">
             <div id="select-first" class="select-first"><p>选择分组</p></div>
-            <div class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+            <div id="select-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
             <ul id="menu-group" class="menu-group">
                 <li class="menu-group-li">陌生人</li>
                 <li class="menu-group-li">家人</li>

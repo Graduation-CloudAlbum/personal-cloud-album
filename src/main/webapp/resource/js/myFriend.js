@@ -20,9 +20,13 @@ menuFrends1.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
 }
 var selectFirst = document.getElementById('select-first');
+var selectRight = document.getElementById('select-right');
 var menuGroup = document.getElementById('menu-group');
 var menuGroupLi = menuGroup.getElementsByTagName('li');
 var aLi="";
+selectRight.onclick = function(){
+    menuGroup.style.display="block"
+}
 for(var i=0;i<menuGroupLi.length;i++){
     menuGroupLi[i].index = i;
     menuGroupLi[i].onclick = function(){
@@ -31,6 +35,7 @@ for(var i=0;i<menuGroupLi.length;i++){
             selectFirst.innerHTML=aLi;
             return selectFirst.innerHTML;
         })(this.index);
+        menuGroup.style.display="none"
         selectFirst.innerHTML=str
     }
 }

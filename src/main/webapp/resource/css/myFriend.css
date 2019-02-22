@@ -130,15 +130,6 @@
     background: #fff;
     cursor: pointer;
 }
-.select-first:hover~.menu-group{
-    display: block;
-}
-.select-right:hover~.menu-group{
-    display: block;
-}
-.menu-group:hover{
-    display: block;
-}
 .menu-group .menu-group-li:hover{
     background: #FAFAFA;
 }
