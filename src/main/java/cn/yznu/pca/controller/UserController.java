@@ -109,6 +109,7 @@ public class UserController {
         user.setUserName(username);
         //对密码进行MD5加密
         user.setUserPassword(MD5Util.md5Jdk(password));
+        System.out.println(MD5Util.md5Jdk(password));
         userService.register(user);
         return "success";
     }
