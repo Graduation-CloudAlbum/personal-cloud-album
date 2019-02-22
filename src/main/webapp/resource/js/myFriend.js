@@ -19,13 +19,30 @@ menuFrends1.onclick=function(){
     document.getElementById('Create-friends').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
+var selectFirst = document.getElementById('select-first');
+var menuGroup = document.getElementById('menu-group');
+var menuGroupLi = menuGroup.getElementsByTagName('li');
+var aLi="";
+for(var i=0;i<menuGroupLi.length;i++){
+    menuGroupLi[i].index = i;
+    menuGroupLi[i].onclick = function(){
+        str = (function(i){
+            aLi=menuGroupLi[i].innerHTML;
+            selectFirst.innerHTML=aLi;
+            return selectFirst.innerHTML;
+        })(this.index);
+        selectFirst.innerHTML=str
+    }
+}
 iconChacha4.onclick=function(){
     document.getElementById('Create-friends').style.display="none";
     document.getElementById('popLayer2').style.display="none";
+    selectFirst.innerHTML="选择分组";
 }
 CreateFriendsButton1.onclick=function(){
     document.getElementById('Create-friends').style.display="none";
     document.getElementById('popLayer2').style.display="none";
+    selectFirst.innerHTML="选择分组";
 }
 //添加好友Create-for-friends
 var menuFrends2 = document.getElementById('menu-frends2');

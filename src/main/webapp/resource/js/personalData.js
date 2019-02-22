@@ -74,9 +74,9 @@ cancel.onclick=function(){
 }
 //确定更改
 $(".Change-Password-button2").click(function () {
-    var oldPassword=$.trim($("#input1").val());
-    var newPassword1=$.trim($("#input2").val());
-    var newPassword2=$.trim($("#input3").val());
+    var oldPassword=$.trim($("#Change-Password-input1").val());
+    var newPassword1=$.trim($("#Change-Password-input2").val());
+    var newPassword2=$.trim($("#Change-Password-input3").val());
     if (newPassword1==newPassword2){
         $.ajax({
             type:"POST",
@@ -89,9 +89,9 @@ $(".Change-Password-button2").click(function () {
                     window.location.href="/pca/user/login";
                 } else {
                     alert("您输入的密码有误，请重试");
-                    $("#input1").val("");
-                    $("#input2").val("");
-                    $("#input3").val("");
+                    $("#Change-Password-input1").val("");
+                    $("#Change-Password-input2").val("");
+                    $("#Change-Password-input3").val("");
                 }
             }
         });
