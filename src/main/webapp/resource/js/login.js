@@ -31,7 +31,7 @@ $("#login_btn").click(function(){
                         dataType: "json",
                         success: function (data) {
 
-                            $("#myAlbum-content").html('1345679984545454');
+                            alert("45666666");
                             // var h = "";
                             // //追加到album页面
                             // alert("#myAlbum-content");
@@ -56,6 +56,7 @@ $("#login_btn").click(function(){
                             //         + "</li>"
                             // }
                             // $("#myAlbum-content").html(h);
+                            //window.location.href="/pca/user/myAlbum?data="+data;
                             window.location.href="/pca/user/myAlbum";
                         }
                     });

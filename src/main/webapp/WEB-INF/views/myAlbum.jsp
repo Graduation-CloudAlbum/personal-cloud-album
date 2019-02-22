@@ -68,7 +68,7 @@
                                 <a class="iconfont iconfont icon-point icon1" title="相册信息"></a><!-- data-event="albumdel" -->
                             </div>
                             <div class="bottun-title">
-                                <p class="bottun-title-p1">心情</p>
+                                <p id="12" class="bottun-title-p1">心情</p>
                                 <p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>23图</p>
                             </div>
                         </div>

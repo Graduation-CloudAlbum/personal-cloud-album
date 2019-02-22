@@ -118,6 +118,12 @@ function setImagePreviews(){
 	}
 	return true;
 }
+// $().ready(function () {
+//     var url=window.location.href;
+//     var records=url.split("?");
+//     var obj=eval('(' + records.album[1] + ')');
+//     alert(obj.albumName);
+// });
 
 
 
