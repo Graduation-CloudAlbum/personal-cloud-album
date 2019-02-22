@@ -97,9 +97,9 @@ $(".Change-Password-button2").click(function () {
         });
     } else {
         alert("您输入的两次密码不一致，请重试");
-        $("#Change-Password-input1").val("");
-        $("#Change-Password-input2").val("");
-        $("#Change-Password-input3").val("");
+        $("#input1").val("");
+        $("#input2").val("");
+        $("#input3").val("");
     }
 
 });
