@@ -8,7 +8,7 @@
         if ((/^[a-z0-9_-]{4,8}$/).test($("#username").val())){
             $.ajax({
                 type:"POST",
-                url:"/user/isExist",
+                url:"/pca/user/isExist",
                 data:{"username":username},
                 dataType:"json",
                 complete:function(result) {
@@ -57,13 +57,13 @@ $("#reg").click(function(){
         var password = $.trim($("#password").val());
             $.ajax({
                 type:"POST",
-                url:"/user/doRegister",
+                url:"/pca/user/doRegister",
                 data:{"username":username,"password":password},
                 dataType: "json",
                 complete:function(result) {
                     if (result.responseText=="success") {
                        alert("注册成功");
-                        window.location.href="/user/login";
+                        window.location.href="/pca/user/login";
                     } else {
                       alert("注册失败");
                       //$("#alertMessage").show();

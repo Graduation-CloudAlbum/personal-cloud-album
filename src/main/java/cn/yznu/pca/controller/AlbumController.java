@@ -1,13 +1,15 @@
 package cn.yznu.pca.controller;
-import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangbaiwan
@@ -24,17 +26,18 @@ public class AlbumController {
      * @return
      */
     @RequestMapping("/albumInfo")
-    public  String   AlbumInfo(HttpServletRequest request){
+    @ResponseBody
+    public  Map<String,Object>   AlbumInfo(HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
         List albumlist =albumService.getAlbumInfo(user.getId());
-       // System.out.println("albumSize"+albumlist.size()+albumlist.listIterator());
-        for(int i = 0 ; i < albumlist.size() ; i++) {
-           // System.out.println(albumlist.get(i));
-            Album album= (Album) albumlist.get(i);
-            System.out.println(album.getAlbumName());
-            request.getSession().setAttribute("album",album);
-        }
+        Map<String,Object> map=new HashMap<String, Object>();
+        //for(int i = 0 ; i < albumlist.size() ; i++) {
+        //    Album album= (Album) albumlist.get(i);
+        //    System.out.println(album.getAlbumName());
+        //    request.getSession().setAttribute("album",album);
+        //}
+        map.put("album",albumlist);
+        return  map;
 
-        return  "myAlbum";
     }
 }

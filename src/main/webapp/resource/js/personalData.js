@@ -55,7 +55,7 @@ ChangetheAvatarButton2.onclick=function(){
     document.getElementById('Change-the-Avatar').style.display="none";
 }
 //修改密码
-var ChangePassword = document.getElementById('ChangePassword');//
+var ChangePassword = document.getElementById('ChangePassword');
 ChangePassword.onclick=function(){
     document.getElementById('Change-Password').style.display="block";
     document.getElementById('popLayer2').style.display="block";
@@ -66,13 +66,43 @@ iconChacha5.onclick=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('Change-Password').style.display="none";
 }
-
-var ModifyingDataButton1 = document.getElementById('Modifying-data-button1');
-ModifyingDataButton1.onclick=function(){
+//取消更改密码
+var cancel = document.getElementById('Change-Password-button1');
+cancel.onclick=function(){
     document.getElementById('popLayer2').style.display="none";
-    document.getElementById('Modifying-data').style.display="none";
+    document.getElementById('Change-Password').style.display="none";
 }
+//确定
+$(".Change-Password-button2").click(function () {
+    var oldPassword=$.trim($("#Change-Password-input1").val());
+    var newPassword1=$.trim($("#Change-Password-input2").val());
+    var newPassword2=$.trim($("#Change-Password-input3").val());
+    if (newPassword1==newPassword2){
+        $.ajax({
+            type:"POST",
+            url:"/pca/user/changePassword",
+            data:{"oldPassword":oldPassword,"newPassword1":newPassword1},
+            dataType: "json",
+            complete:function(result) {
+                if (result.responseText=="success") {
+                    alert("修改成功,您的新密码已生效,请重新登录");
+                    window.location.href="/pca/user/login";
+                } else {
+                    alert("您输入的密码有误，请重试");
+                    $("#Change-Password-input1").val("");
+                    $("#Change-Password-input2").val("");
+                    $("#Change-Password-input3").val("");
+                }
+            }
+        });
+    } else {
+        alert("您输入的两次密码不一致，请重试");
+        $("#Change-Password-input1").val("");
+        $("#Change-Password-input2").val("");
+        $("#Change-Password-input3").val("");
+    }
 
+});
 //扩充空间
 var Expansion = document.getElementById('Expansion');
 Expansion.onclick=function(){
