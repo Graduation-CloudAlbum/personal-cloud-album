@@ -43,8 +43,8 @@
                 <i class="iconfont icon-weibiaoti--"></i> <span>我的好友</span>
             </div>
             <ul class="content-menu">
-                <li class="content-menu-li"><a>创建分组</a></li>
-                <li class="content-menu-li"><a>添加好友</a></li>
+                <li id="menu-frends1" class="content-menu-li"><a>创建分组</a></li>
+                <li id="menu-frends2" class="content-menu-li"><a>添加好友</a></li>
             </ul>
             <div class="content-wrap">
                 <div class="content-about">
@@ -81,7 +81,15 @@
     <!-- ***************************************************弹窗创建分组 ***************************************************-->
     <div id="Create-friends">
         <div class="popup-header"><h4>创建分组</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
-        <input id="Create-friends-input" type="text" placeholder="请输入1-30位字符名称的相册"  name="">
+        <div class="qq">
+            <div id="select-first" class="select-first"><p>选择分组</p></div>
+            <div class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+            <ul id="menu-group" class="menu-group">
+                <li class="menu-group-li">陌生人</li>
+                <li class="menu-group-li">家人</li>
+                <li class="menu-group-li">同事</li>
+            </ul>
+        </div>
         <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div class="Create-friends-button2"><p>确定</p></div>
     </div>
     <!-- ***************************************************弹窗添加好友 ***************************************************-->
@@ -105,7 +113,6 @@
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/addfriend.js"></script>
-<script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myFriend.js"></script>
 </body>
 </html>
