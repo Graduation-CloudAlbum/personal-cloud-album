@@ -73,33 +73,33 @@
                             </div>
                         </div>
                     </li>
-                    <li class="content-about-li">
-                        <img src="<%=basePath%>/resource/img/Album-cover2.jpg">
-                        <div class="content-about-li-top">
-                            <div class="content-about-li-top-a">
-                                <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
-                                <a class="iconfont icon-fenxiang1 icon2" title="分享相册"></a>
-                                <a class="iconfont iconfont icon-point icon1" title="相册信息"></a><!-- data-event="albumdel" -->
-                            </div>
-                            <div class="bottun-title">
-                                <p class="bottun-title-p1">心情</p>
-                                <p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>23图</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="content-about-li">
-                        <img src="<%=basePath%>/resource/img/Album-cover3.jpg">
-                        <div class="content-about-li-top">
-                            <div class="content-about-li-top-a">
-                                <a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>
-                                <a class="iconfont icon-fenxiang1 icon2" title="分享相册"></a>
-                                <a class="iconfont iconfont icon-point icon1" title="相册信息"></a><!-- data-event="albumdel" -->
-                            </div>
-                            <div class="bottun-title">
-                                <p class="bottun-title-p1">我的青春我做主</p>
-                                <p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>5图</p></div>
-                        </div>
-                    </li>
+                    <%--<li class="content-about-li">--%>
+                        <%--<img src="<%=basePath%>/resource/img/Album-cover2.jpg">--%>
+                        <%--<div class="content-about-li-top">--%>
+                            <%--<div class="content-about-li-top-a">--%>
+                                <%--<a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>--%>
+                                 <%--<a class="iconfont icon-fenxiang1 icon2" title="分享相册"></a>--%>
+                                <%--<a class="iconfont iconfont icon-point icon1" title="相册信息"></a><!-- data-event="albumdel" -->--%>
+                            <%--</div>--%>
+                            <%--<div class="bottun-title">--%>
+                                <%--<p class="bottun-title-p1">心情</p>--%>
+                                <%--<p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>23图</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li class="content-about-li">--%>
+                        <%--<img src="<%=basePath%>/resource/img/Album-cover3.jpg">--%>
+                        <%--<div class="content-about-li-top">--%>
+                            <%--<div class="content-about-li-top-a">--%>
+                                <%--<a class="iconfont icon-huishouzhan1 icon1" title="删除相册"></a>--%>
+                                <%--<a class="iconfont icon-fenxiang1 icon2" title="分享相册"></a>--%>
+                                <%--<a class="iconfont iconfont icon-point icon1" title="相册信息"></a><!-- data-event="albumdel" -->--%>
+                            <%--</div>--%>
+                            <%--<div class="bottun-title">--%>
+                                <%--<p class="bottun-title-p1">我的青春我做主</p>--%>
+                                <%--<p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>5图</p></div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
 
 
                 </ul>
@@ -187,7 +187,7 @@
 
 
 </div>
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myAlbum.js"></script>
 <script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
 <script src="<%=basePath%>/resource/js/zoom.min.js"></script>
