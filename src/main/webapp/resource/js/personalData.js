@@ -101,7 +101,6 @@ $(".Change-Password-button2").click(function () {
         $("#Change-Password-input2").val("");
         $("#Change-Password-input3").val("");
     }
-
 });
 //扩充空间
 var Expansion = document.getElementById('Expansion');
