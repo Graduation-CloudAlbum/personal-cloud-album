@@ -78,7 +78,18 @@
 
 
 
-
+    <!-- ***************************************************弹窗创建分组 ***************************************************-->
+    <div id="Create-friends">
+        <div class="popup-header"><h4>创建分组</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
+        <input id="Create-friends-input" type="text" placeholder="请输入1-30位字符名称的相册"  name="">
+        <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div class="Create-friends-button2"><p>确定</p></div>
+    </div>
+    <!-- ***************************************************弹窗添加好友 ***************************************************-->
+    <div id="Create-for-friends">
+        <div class="popup-header"><h4>添加好友</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
+        <input id="Create-for-friends-input" type="text" placeholder="请输入朋友名称"  name="">
+        <div class="Create-friends-button1" id="Create-for-friends-button1"><p>取消</p></div><div class="Create-friends-button2"><p>确定</p></div>
+    </div>
 
 
 

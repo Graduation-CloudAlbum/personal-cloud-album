@@ -53,6 +53,6 @@
     <div id="popLayer2" class="popLayer2"></div>
 </div>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/recycle.js"></script>
 </body>
 </html>
