@@ -256,4 +256,12 @@
     user_relation c right join user d on
     (c.user_id_two=d.id) where user_id=#{id,jdbcType=INTEGER}
   </select>
+
+  <!--查找我的好友-->
+  <select id="selectMyFriend" resultMap="BaseResultMap">
+    select d.nick_name,d.user_icon from
+    user_relation c right join user d on
+    (c.user_id_two=d.id) where user_id=#{user_id,jdbcType=INTEGER} and permission_group_id=#{permission_group_id,jdbcType=INTEGER}
+  </select>
+
 </mapper>
