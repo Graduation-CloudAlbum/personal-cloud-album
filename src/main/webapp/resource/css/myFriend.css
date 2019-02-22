@@ -84,10 +84,63 @@
     background: #fff;
     border-radius: 0.5%;
 }
-#Create-friends-input{
+.select-first{
     margin-left: 20px;
+    width: 260px;
     height: 40px;
+    float: left;
+    padding-left: 10px;
+    border-left: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    font-size: 18px;
+    color: #976666;
+    line-height: 40px;
+}.select-right{
+    width: 50px;
+    height: 40px;
+    float: left;
+    padding-left: 16px;
+    line-height: 40px;
+    border-right: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+}
+.select-right span{
+    color: #E0E0E0;
+}
+.menu-group{
     width: 310px;
+    position: absolute;
+    top:105px;
+    right: 20px;
+    z-index: 150;
+    display: none;
+}
+.menu-group .menu-group-li{
+    width: 100%;
+    padding-left: 10px;
+    height: 40px;
+    border: 1px #DDD solid;
+    font-size: 18px;
+    color: #787878;
+    line-height: 40px;
+    background: #fff;
+    cursor: pointer;
+}
+.select-first:hover~.menu-group{
+    display: block;
+}
+.select-right:hover~.menu-group{
+    display: block;
+}
+.menu-group:hover{
+    display: block;
+}
+.menu-group .menu-group-li:hover{
+    background: #FAFAFA;
 }
 .Create-friends-button1{
     width: 80px;
@@ -97,8 +150,10 @@
     margin-left: 150px;
     border: 1px solid #DDD;
     text-align: center;
-    margin-top: 15px;
     cursor: pointer;
+    position: absolute;
+    right: 120px;
+    bottom: 24px;
 }
 .Create-friends-button1 p{
     line-height: 35px;
