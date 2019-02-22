@@ -75,7 +75,7 @@ public class UserController {
         request.getSession().setAttribute("imageNum",imageNum);
         return "personalData";
     }
-    @RequestMapping("/myAlbum/{data}")
+    @RequestMapping("/myAlbum")
     public  String myAlbum(){
         return "myAlbum";
     }
