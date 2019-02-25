@@ -83,14 +83,18 @@
         <div class="popup-header"><h4>创建分组</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
         <div class="qq">
             <div id="select-first" class="select-first"><p>选择分组</p></div>
-            <div id="select-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+            <div id="select-right" class="select-right">
+                <span>
+                    <i class="iconfont icon-iconfontjiantou jiantou"></i>
+                </span>
+            </div>
             <ul id="menu-group" class="menu-group">
-                <li class="menu-group-li">陌生人</li>
-                <li class="menu-group-li">家人</li>
-                <li class="menu-group-li">同事</li>
+                <li id="select-second" class="menu-group-li">我的家人</li>
+                <li id="select-third" class="menu-group-li">我的同事</li>
+                <li id="select-four" class="menu-group-li">我的同学</li>
             </ul>
         </div>
-        <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div class="Create-friends-button2"><p>确定</p></div>
+        <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div id="Create-friends-button2" class="Create-friends-button2"><p>确定</p></div>
     </div>
     <!-- ***************************************************弹窗添加好友 ***************************************************-->
     <div id="Create-for-friends">
