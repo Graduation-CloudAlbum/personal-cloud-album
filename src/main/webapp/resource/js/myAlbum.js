@@ -118,12 +118,35 @@ function setImagePreviews(){
 	}
 	return true;
 }
-// $().ready(function () {
-//     var url=window.location.href;
-//     var records=url.split("?");
-//     var obj=eval('(' + records.album[1] + ')');
-//     alert(obj.albumName);
-// });
+$().ready(function () {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/album/albumInfo",
+        dataType: "json",
+        success: function (data) {
+            //追加到album页面
+            var h = "";
+            for (var i = 0; i < data.album.length; i++) {
+                h += "<li class='content-about-li'>"
+                    + "<img src='<%=basePath%>/resource/img/Album-cover1.jpg'>"
+                    + "<div class='content-about-li-top'>"
+                    + "<div class='content-about-li-top-a'>"
+                    + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
+                    + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                    + "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
+                    + "</div>"
+                    + "<div class='bottun-title'>"
+                    + "<p class='bottun-title-p1'>"+data.album[i].albumName+"</p>"
+                    + " <p class='bottun-title-p2'>"+data.album[i].createTime+"<i class='iconfont icon-vertical_line'></i>23图</p>"
+                    + "</div>"
+                    + "</div>"
+                    + "</li>"
+            }
+            $("#myAlbum-content").html(h);
+        }
+    });
+});
 
 
 
