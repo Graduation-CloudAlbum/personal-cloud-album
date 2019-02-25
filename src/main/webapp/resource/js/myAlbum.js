@@ -118,18 +118,31 @@ function setImagePreviews(){
 	}
 	return true;
 }
-$().ready(function () {
+//时间格式处理
+function fmtDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+}
+//动态加载首页相册
+$().ready(function getAlbum() {
     $.ajax({
         async : false,
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
-        success: function (data) {
+        success: function (data){
             //追加到album页面
             var h = "";
+            var createtime="";
+            var resource="<%=basePath%>/resource/img/Album-cover1.jpg";
             for (var i = 0; i < data.album.length; i++) {
+                var imageNum=data.imageNum[i];
+                createtime=fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
-                    + "<img src='<%=basePath%>/resource/img/Album-cover1.jpg'>"
+                    + "<img src='"+resource+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
@@ -138,7 +151,7 @@ $().ready(function () {
                     + "</div>"
                     + "<div class='bottun-title'>"
                     + "<p class='bottun-title-p1'>"+data.album[i].albumName+"</p>"
-                    + " <p class='bottun-title-p2'>"+data.album[i].createTime+"<i class='iconfont icon-vertical_line'></i>23图</p>"
+                    + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
                     + "</div>"
                     + "</div>"
                     + "</li>"
@@ -147,7 +160,9 @@ $().ready(function () {
         }
     });
 });
-
+$("#navMenu1").click(function () {
+	 getAlbum();
+});
 
 
 

@@ -69,7 +69,7 @@ public class UserController {
         user1.getSynopsis();
         user1.getUserIcon();
         int albumNum=albumService.getAlbumNum(id);
-        int imageNum=imageService.getImageNum(id);
+        int imageNum=imageService.getAllImageNum(id);
         request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);

@@ -1,10 +1,11 @@
-<%@ page import="cn.yznu.pca.model.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ybw
   Date: 2018-11-28
   Time: 10:25
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="cn.yznu.pca.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
