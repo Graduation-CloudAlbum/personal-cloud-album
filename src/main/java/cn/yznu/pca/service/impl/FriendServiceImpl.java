@@ -155,6 +155,30 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
+    public boolean createFriendsGroup(User user, String groupname) {
+        PermissionGroup permissionGroup=new PermissionGroup();
+        permissionGroup.setPermissionType(groupname);
+        permissionGroup.setUserId(user.getId());
+        permissionGroup.setStatus("0");
+        permissionGroupMapper.insert(permissionGroup);
+        return true;
+    }
+
+    @Override
+    public boolean checkFriendsGroup(User user, String groupname) {
+        PermissionGroupExample permissionGroupExample=new PermissionGroupExample();
+        PermissionGroupExample.Criteria criteria = permissionGroupExample.createCriteria();
+        criteria.andUserIdEqualTo(user.getId());
+        criteria.andPermissionTypeEqualTo(groupname);
+        List <PermissionGroup> permissionGroup=permissionGroupMapper.selectByExample(permissionGroupExample);
+        if(permissionGroup.size()==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
     public List<FriendVerification> test(  ) {
         List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
         for (FriendVerification s :fvListRefUser){
