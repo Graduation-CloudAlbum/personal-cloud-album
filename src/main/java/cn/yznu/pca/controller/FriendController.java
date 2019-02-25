@@ -236,4 +236,24 @@ public class FriendController {
         mav.addObject("str",str);
         return mav;
     }
+
+
+    /**
+     * 创建好友分组
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/createFriendGroup")
+    @ResponseBody
+    public boolean createFriendGroup(@Param("groupName") String groupName,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        boolean date2=friendService.checkFriendsGroup(user,groupName);
+        if(date2){
+            friendService.createFriendsGroup(user,groupName);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
