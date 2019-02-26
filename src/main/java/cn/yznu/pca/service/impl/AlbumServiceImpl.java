@@ -1,6 +1,7 @@
 package cn.yznu.pca.service.impl;
 
 import cn.yznu.pca.dao.AlbumMapper;
+import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,15 @@ public class AlbumServiceImpl implements AlbumService {
     public List getAlbumInfo(int userId) {
 
         return mapper.selectAlbumInfo(userId);
+    }
+
+    @Override
+    public int createAlbum(Album album) {
+        return mapper.insert(album);
+    }
+
+    @Override
+    public int deleteAlbum(int id) {
+        return mapper.deleteByPrimaryKey(id);
     }
 }

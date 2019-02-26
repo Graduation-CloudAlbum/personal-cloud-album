@@ -40,6 +40,18 @@ var uploadPhoto2 = document.getElementById('uploadPhoto2');//Create-Album
 uploadPhoto2.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     document.getElementById('Create-Album').style.display="block";
+    var albumName=$.trim($("#Create-Album-input").val());
+    $.ajax({
+        type:"post",
+        url:"/pca/album/createAlbum",
+        data: {
+            "albumName": albumName,
+            dataType: "json",
+            success: function (data) {
+
+            }
+        }
+    });
 }
 //关闭创建相册
 var iconChacha3 = document.getElementById('iconChacha3');

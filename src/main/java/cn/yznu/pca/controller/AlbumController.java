@@ -27,7 +27,7 @@ public class AlbumController {
     private ImageService imageService;
 
     /**
-     * 相册相关信息
+     * 首页相册内容
      * @return
      */
     @RequestMapping("/albumInfo")
@@ -44,7 +44,9 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+        //所有相册数量
         int allAlbumNum=albumService.getAlbumNum(user.getId());
+        //所有照片数量
         int allImageNum=imageService.getAllImageNum(user.getId());
         map.put("album",albumlist);
         map.put("imageNum",list);
@@ -52,5 +54,17 @@ public class AlbumController {
         map.put("allImageNum",allImageNum);
         return  map;
 
+    }
+
+    @RequestMapping("/createAlbum")
+    @ResponseBody
+    public int createAlbum(){
+
+        return 0;
+    }
+    @RequestMapping("/deleteAlbum")
+    @ResponseBody
+    public int deleteAlbum(){
+        return 0;
     }
 }
