@@ -62,6 +62,7 @@ var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
 
+
 for(var i=0;i<myAlbumLi.length;i++){
 	myAlbumLi[i].onclick=function(){
 		myAlbumMenu1.style.display="none";
@@ -137,7 +138,7 @@ $().ready(function getAlbum() {
             //追加到album页面
             var h = "";
             var createtime="";
-            var resource="<%=basePath%>/resource/img/Album-cover1.jpg";
+            var resource="/resource/img/Album-cover1.jpg";
             for (var i = 0; i < data.album.length; i++) {
                 var imageNum=data.imageNum[i];
                 createtime=fmtDate(data.album[i].createTime);
