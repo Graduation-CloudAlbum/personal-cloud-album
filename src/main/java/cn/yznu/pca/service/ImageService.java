@@ -11,8 +11,9 @@ import java.util.List;
  */
 public interface ImageService {
     /**
-     * 获取所有照片
-     * @return
+     * 用户所有照片
+     * @param id 用户id
+     * @return list
      */
     List<Image> getAllImages(Integer id);
 
@@ -30,5 +31,18 @@ public interface ImageService {
      */
     int download(Image image);
 
-    int getImageNum(int userId);
+    /**
+     * 用户所有照片数量
+     * @param userId 用户id
+     * @return 所有照片数量
+     */
+    int getAllImageNum(int userId);
+
+    /**
+     * 获取用户在某个相册里的所有照片数量
+     * @param userId 用户id
+     * @param albumId 相册id
+     * @return 照片树龄
+     */
+    int imageNum(int userId,int albumId);
 }

@@ -36,9 +36,14 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public int getImageNum(int userId) {
+    public int getAllImageNum(int userId) {
 
-        return  imageMapper.getImageNum(userId);
+        return  imageMapper.getAllImageNum(userId);
+    }
+
+    @Override
+    public int imageNum(int userId, int albumId) {
+        return imageMapper.getImageNum(userId,albumId);
     }
 
 

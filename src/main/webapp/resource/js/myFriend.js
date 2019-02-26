@@ -14,6 +14,7 @@ function selectOnde(permissionType) {
 //点击添加分组
 var menuFrends1 = document.getElementById('menu-frends1');
 var CreateFriendsButton1 = document.getElementById('Create-friends-button1');
+var CreateFriendsButton2 = document.getElementById('Create-friends-button2');
 var iconChacha4 = document.getElementById('iconChacha4');
 menuFrends1.onclick=function(){
     document.getElementById('Create-friends').style.display="block";
@@ -24,6 +25,7 @@ var selectRight = document.getElementById('select-right');
 var menuGroup = document.getElementById('menu-group');
 var menuGroupLi = menuGroup.getElementsByTagName('li');
 var aLi="";
+var groupName;
 selectRight.onclick = function(){
     menuGroup.style.display="block"
 }
@@ -37,6 +39,7 @@ for(var i=0;i<menuGroupLi.length;i++){
         })(this.index);
         menuGroup.style.display="none"
         selectFirst.innerHTML=str
+        groupName=str
     }
 }
 iconChacha4.onclick=function(){
@@ -48,6 +51,27 @@ CreateFriendsButton1.onclick=function(){
     document.getElementById('Create-friends').style.display="none";
     document.getElementById('popLayer2').style.display="none";
     selectFirst.innerHTML="选择分组";
+}
+CreateFriendsButton2.onclick=function () {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/friend/createFriendGroup",
+        data:{"groupName":groupName},
+        dataType: "json",
+        success: function (data) {
+            if(data){
+                alert("添加成功")
+                window.location.href="/pca/friend/myFriend"
+            }
+            else {
+                alert("您已有该分组，不可重复添加")
+                window.location.href="/pca/friend/myFriend"
+            }
+        }
+
+    });
+
 }
 //添加好友Create-for-friends
 var menuFrends2 = document.getElementById('menu-frends2');

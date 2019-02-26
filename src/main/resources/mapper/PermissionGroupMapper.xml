@@ -100,13 +100,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.yznu.pca.model.PermissionGroup" >
-    insert into permission-group (id, create_time, status, 
+    insert into permission_group (id, create_time, status,
       permission_type, user_id)
     values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
       #{permissionType,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.yznu.pca.model.PermissionGroup" >
-    insert into permission-group
+    insert into permission_group
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,

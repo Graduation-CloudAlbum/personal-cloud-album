@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface FriendService {
     /**
-     *  查找所有
+     *  查找所有用户好友
      * @param user
      */
     List<?> selectAllMyFriend(User user);
@@ -84,6 +84,18 @@ public interface FriendService {
      */
     int selectPermissionGroupId(User user,String type);
 
+
+    /**
+     *  添加好友分组
+     * @param user
+     */
+    boolean createFriendsGroup(User user,String groupname);
+
+    /**
+     *  检查是否已有该分组
+     * @param user
+     */
+    boolean checkFriendsGroup(User user,String groupname);
 
     List <FriendVerification> test();
 

@@ -31,5 +31,7 @@ public interface ImageMapper {
 
     List<Image> selectAllImage(@Param("status")String status,@Param("user_id")Integer user_id);
 
-    int getImageNum(Integer userId);
+    int getAllImageNum(Integer userId);
+
+    int getImageNum(@Param("userId")Integer userId,@Param("albumId")Integer albumId);
 }
