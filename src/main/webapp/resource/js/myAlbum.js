@@ -71,7 +71,7 @@ $().ready(function getAlbum() {
         url: "/pca/album/albumInfo",
         dataType: "json",
         success: function (data){
-            //追加到album页面
+            //加载相册 到album页面
             var h = "";
             var createtime="";
             var resource="/pca/resource/img/Album-cover1.jpg";
