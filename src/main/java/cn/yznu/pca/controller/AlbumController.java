@@ -44,8 +44,12 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+        int allAlbumNum=albumService.getAlbumNum(user.getId());
+        int allImageNum=imageService.getAllImageNum(user.getId());
         map.put("album",albumlist);
         map.put("imageNum",list);
+        map.put("allAlbumNum",allAlbumNum);
+        map.put("allImageNum",allImageNum);
         return  map;
 
     }

@@ -36,7 +36,7 @@
     <div class="content">
         <div class="left">
             <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p><%=user.getNickName()%></p></a>
-            <a id="navMenu1" class="left-li" href=""><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+            <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
@@ -122,7 +122,7 @@
                 </ul>
                 <div class="content-button">
                     <div class="content-button-fenge"></div>
-                    <span id="open">(共<%=albumNum%>个相册)</span><span id="open2">(共"<%=imageNum%>"张照片)</span>
+                    <span id="open">(共个相册)</span><span id="open2">(共张照片)</span>
                 </div>
                 <div class="content-footer"></div>
 

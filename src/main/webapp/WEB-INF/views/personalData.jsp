@@ -10,7 +10,7 @@
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User user= (User) request.getSession().getAttribute("user");
-    User user1= (User) request.getSession().getAttribute("user1");
+    //User user1= (User) request.getSession().getAttribute("user1");
     Object albumNum=request.getSession().getAttribute("albumNum");
     Object imageNum=request.getSession().getAttribute("imageNum");
 %>
@@ -27,14 +27,14 @@
 <div class="wrapper">
     <div class="header">
         <img src="<%=basePath%>/resource/images/logo.png">
-        <div class="header-right"><img src="<%=basePath%>/resource/images/default-c.png"><span id="aa"><%=user1.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
+        <div class="header-right"><img src="<%=basePath%>/resource/images/default-c.png"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user1.getNickName()%></p></a>
-            <a id="navMenu1" class="left-li" href="<%=basePath%>/album/albumInfo"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
@@ -54,18 +54,18 @@
             <div class="content-wrap">
                 <div class="content-about">
                     <div class="content-about-personal">
-                        <img src="<%=basePath%>/resource/images/default-c.png"><p class="content-about-personal-admin"><%=user1.getNickName()%></p>
+                        <img src="<%=basePath%>/resource/images/default-c.png"><p class="content-about-personal-admin"><%=user.getNickName()%></p>
                         <div class="content-about-personal-num"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
                         <div class="content-about-personal-num"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
                         <div class="content-about-personal-num"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">分享辑</p></div>
                     </div>
                     <div class="content-about-info">
                         <div id="content-about-info-no1" class="content-about-info-no1">
-                            <i class="iconfont icon-baojiaquotation2"></i><span><%=user1.getSynopsis()%></span><i class="iconfont icon-baojiaquotation"></i>
+                            <i class="iconfont icon-baojiaquotation2"></i><span><%=user.getSynopsis()%></span><i class="iconfont icon-baojiaquotation"></i>
                         </div>
                         <div id="content-about-info-no2" class="content-about-info-no2">
-                            <p><span>登陆账号：<span><%=user1.getUserName()%></span></span></p>
-                            <p><span>注册日期：<span><%=user1.getCreateTime()%></span></span></p>
+                            <p><span>登陆账号：<span><%=user.getUserName()%></span></span></p>
+                            <p><span>注册日期：<span><%=user.getCreateTime()%></span></span></p>
                             <p><span>上册登陆：新加坡 XX XX (查看详细)</span></p>
                         </div>
                         <div id="content-about-info-no3" class="content-about-info-no3">
@@ -87,8 +87,8 @@
     <!-- ***************************************************弹窗 ***************************************************-->
     <div id="Modifying-data" class="Modifying-data">
         <div class="popup-header"><h4>修改资料</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
-        <input id="Modifying-data-input" type="text" maxlength="30" placeholder="请输入1-30位字符的昵称"  name="" value="<%=user1.getNickName()%>">
-        <textarea id="Modifying-data-textarea" rows="4" cols="18" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name=""><%=user1.getSynopsis()%></textarea>
+        <input id="Modifying-data-input" type="text" maxlength="30" placeholder="请输入1-30位字符的昵称"  name="" value="<%=user.getNickName()%>">
+        <textarea id="Modifying-data-textarea" rows="4" cols="18" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name=""><%=user.getSynopsis()%></textarea>
         <div id="Modifying-data-button1" class="Modifying-data-button1"><p>取消</p></div>
         <div class="Modifying-data-button2"><p>确定</p></div>
     </div>
