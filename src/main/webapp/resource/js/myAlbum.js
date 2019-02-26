@@ -52,6 +52,7 @@ CreateAlbumButton1.onclick=function(){
 	document.getElementById('popLayer2').style.display="none";
 	document.getElementById('Create-Album').style.display="none";
 }
+
 //点击相册
 //myAlbum-menu1
 var myAlbumContent=document.getElementById('myAlbum-content');
@@ -61,18 +62,67 @@ var myAlbumMenu1=document.getElementById('myAlbum-menu1');
 var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
+var aLi=""
+//动态加载首页相册
+$().ready(function getAlbum() {
+	$.ajax({
+		async : false,
+		type: "post",
+		url: "/pca/album/albumInfo",
+		dataType: "json",
+		success: function (data){
+			//追加到album页面
+			var h = "";
+			var createtime="";
+			var resource="/resource/img/Album-cover1.jpg";
+			for (var i = 0; i < data.album.length; i++) {
+				var imageNum=data.imageNum[i];
+				createtime=fmtDate(data.album[i].createTime);
+				h += "<li class='content-about-li'>"
+					+ "<img src='"+resource+"'>"
+					+ "<div class='content-about-li-top'>"
+					+ "<div class='content-about-li-top-a'>"
+					+ "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
+					+ "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+					+ "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
+					+ "</div>"
+					+ "<div class='bottun-title'>"
+					+ "<p class='bottun-title-p1'>"+data.album[i].albumName+"</p>"
+					+ " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
+					+ "</div>"
+					+ "</div>"
+					+ "</li>"
+			}
+			$("#myAlbum-content").html(h);
+			console.log(myAlbumLi.length)
+			console.log(myAlbumLi)
+			for(var i=0;i<myAlbumLi.length;i++){
+				myAlbumLi[i].index = i;
+				myAlbumLi[i].onclick=function(){
+					console.log("asgad")
+					myAlbumMenu1.style.display="none";
+					myAlbumContent.style.display="none";
+					open.style.display="none";
 
+					myAlbumMenu2.style.display="block";
+					myAlbumContent2.style.display="block";
+					open2.style.display="block";
 
-for(var i=0;i<myAlbumLi.length;i++){
-	myAlbumLi[i].onclick=function(){
-		myAlbumMenu1.style.display="none";
-		myAlbumMenu2.style.display="block";
-		myAlbumContent.style.display="none";
-		myAlbumContent2.style.display="block";
-		open.style.display="none";
-		open2.style.display="block";
-	}
-}
+					str = (function(i){
+						aLi=i;
+						return aLi;
+					})(this.index);
+					aLi=str;
+					console.log(aLi)
+				}
+			}
+
+		}
+	});
+});
+$("#navMenu1").click(function () {
+	getAlbum();
+});
 
 //上传图片
 var uploadPhotosPopContentButton =document.getElementById('upload-photos-pop-content-button');
@@ -127,43 +177,6 @@ function fmtDate(obj){
     var d = "0"+date.getDate();
     return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
 }
-//动态加载首页相册
-$().ready(function getAlbum() {
-    $.ajax({
-        async : false,
-        type: "post",
-        url: "/pca/album/albumInfo",
-        dataType: "json",
-        success: function (data){
-            //追加到album页面
-            var h = "";
-            var createtime="";
-            var resource="/resource/img/Album-cover1.jpg";
-            for (var i = 0; i < data.album.length; i++) {
-                var imageNum=data.imageNum[i];
-                createtime=fmtDate(data.album[i].createTime);
-                h += "<li class='content-about-li'>"
-                    + "<img src='"+resource+"'>"
-                    + "<div class='content-about-li-top'>"
-                    + "<div class='content-about-li-top-a'>"
-                    + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
-                    + "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
-                    + "</div>"
-                    + "<div class='bottun-title'>"
-                    + "<p class='bottun-title-p1'>"+data.album[i].albumName+"</p>"
-                    + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
-                    + "</div>"
-                    + "</div>"
-                    + "</li>"
-            }
-            $("#myAlbum-content").html(h);
-        }
-    });
-});
-$("#navMenu1").click(function () {
-	 getAlbum();
-});
 
 
 
