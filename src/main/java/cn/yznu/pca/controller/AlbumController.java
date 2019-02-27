@@ -3,10 +3,13 @@ import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -32,7 +35,7 @@ public class AlbumController {
      */
     @RequestMapping("/albumInfo")
     @ResponseBody
-    public  Map<String,Object>   AlbumInfo(HttpServletRequest request){
+    public  Map<String,Object>   AlbumInfo( HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
         List albumlist =albumService.getAlbumInfo(user.getId());
         Map<String,Object> map=new HashMap<>();
@@ -56,11 +59,30 @@ public class AlbumController {
 
     }
 
+    /**
+     * 新建相册
+     * @param albumName 相册名
+     * @param request
+     * @return
+     */
     @RequestMapping("/createAlbum")
     @ResponseBody
-    public int createAlbum(){
+    public int createAlbum(@Param("albumName") String albumName, HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        Album album=new Album();
+        album.setAlbumName(albumName);
+        album.setUserId(userId);
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        //大于0表示相册名已存在
+        if (albumlist.size()>0){
+            return 0;
+        }else{
+            //创建相册
+            albumService.createAlbum(album);
+            return 1;
+        }
 
-        return 0;
     }
     @RequestMapping("/deleteAlbum")
     @ResponseBody

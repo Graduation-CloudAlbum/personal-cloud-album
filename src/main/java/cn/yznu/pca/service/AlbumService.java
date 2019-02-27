@@ -36,4 +36,12 @@ public interface AlbumService {
      * @return
      */
     int deleteAlbum(int id);
+
+    /**
+     * 通过相册名查找相册
+     * @param userId 用户id
+     * @param albumName 相册名
+     * @return
+     */
+    List selectAlbumByName(int userId,String albumName);
 }

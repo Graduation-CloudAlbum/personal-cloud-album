@@ -40,19 +40,26 @@ var uploadPhoto2 = document.getElementById('uploadPhoto2');//Create-Album
 uploadPhoto2.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     document.getElementById('Create-Album').style.display="block";
+}
+
+$("#Create-Album-button2").click(function () {
     var albumName=$.trim($("#Create-Album-input").val());
     $.ajax({
         type:"post",
         url:"/pca/album/createAlbum",
-        data: {
-            "albumName": albumName,
-            dataType: "json",
-            success: function (data) {
-
+        data: {"albumName": albumName},
+        dataType: "json",
+        success: function (data) {
+            if (data==1){
+                alert("新建成功");
+                window.location.href="/pca/user/myAlbum";
+            }else{
+                alert("该相册已存在，换个名称试试");
+                $("#Create-Album-input").val("");
+               }
             }
-        }
     });
-}
+});
 //关闭创建相册
 var iconChacha3 = document.getElementById('iconChacha3');
 iconChacha3.onclick=function(){
