@@ -97,11 +97,84 @@
         <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div id="Create-friends-button2" class="Create-friends-button2"><p>确定</p></div>
     </div>
     <!-- ***************************************************弹窗添加好友 ***************************************************-->
-    <div id="Create-for-friends">
-        <div class="popup-header"><h4>添加好友</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
-        <input id="Create-for-friends-input" type="text" placeholder="请输入朋友名称"  name="">
-        <div class="Create-friends-button1" id="Create-for-friends-button1"><p>取消</p></div><div class="Create-friends-button2"><p>确定</p></div>
-    </div>
+   <div id="create-friends" class="create-friends">
+            <div class="create-friends-pop">
+                <div class="create-friends-pop-header">
+                    <span>添加好友</span><i id="iconChacha5" class="iconfont icon-chacha1"></i>
+                </div>
+                <div class="create-friends-pop-content">
+                    <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="">    
+                    <div id="search-i" class="search-i"><span class="icon iconfont">&#xe60b;</span></div>
+                    <ul id="search-content" class="search-content">
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                            <img src="../img/1.jpg">
+                            <p class="search-content-name">江川</p>
+                            <p class="search-content-title-name">请输入验证消息：</p>
+                            <textarea class="search-text" rows="3" cols="20"></textarea>
+                            <div class="Create-friends-button2 send"><p>添加</p></div>
+                        </li>
+                        <li class="search-content-li">
+                                <img src="../img/1.jpg">
+                                <p class="search-content-name">江川</p>
+                                <p class="search-content-title-name">请输入验证消息：</p>
+                                <textarea class="search-text" rows="3" cols="20"></textarea>
+                                <div class="Create-friends-button2 send"><p>添加</p></div>
+                            </li>
+                            <li class="search-content-li">
+                                <img src="../img/1.jpg">
+                                <p class="search-content-name">江川</p>
+                                <p class="search-content-title-name">请输入验证消息：</p>
+                                <textarea class="search-text" rows="3" cols="20"></textarea>
+                                <div class="Create-friends-button2 send"><p>添加</p></div>
+                            </li>
+                            <li class="search-content-li">
+                                <img src="../img/1.jpg">
+                                <p class="search-content-name">江川</p>
+                                <p class="search-content-title-name">请输入验证消息：</p>
+                                <textarea class="search-text" rows="3" cols="20"></textarea>
+                                <div class="Create-friends-button2 send"><p>添加</p></div>
+                            </li>
+                                
+                    </ul>
+
+                </div>
+            </div>
+        </div>
 
 
 
