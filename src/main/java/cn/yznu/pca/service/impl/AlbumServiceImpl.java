@@ -39,4 +39,9 @@ public class AlbumServiceImpl implements AlbumService {
     public int deleteAlbum(int id) {
         return mapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List selectAlbumByName(int userId, String albumName) {
+        return mapper.selectAlbumByName(userId,albumName);
+    }
 }

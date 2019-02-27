@@ -32,4 +32,6 @@ public interface AlbumMapper {
     int countAlbum(Integer userId);
 
     List selectAlbumInfo(Integer userId);
+
+    List selectAlbumByName(@Param("userId")int userId,@Param("albumName")String albumName);
 }
