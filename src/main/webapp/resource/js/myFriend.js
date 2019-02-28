@@ -17,7 +17,7 @@ var CreateFriendsButton1 = document.getElementById('Create-friends-button1');
 var CreateFriendsButton2 = document.getElementById('Create-friends-button2');
 var iconChacha4 = document.getElementById('iconChacha4');
 menuFrends1.onclick=function(){
-    document.getElementById('Create-friends').style.display="block";
+    document.getElementById('Create-friends-group').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
 var selectFirst = document.getElementById('select-first');
@@ -43,12 +43,12 @@ for(var i=0;i<menuGroupLi.length;i++){
     }
 }
 iconChacha4.onclick=function(){
-    document.getElementById('Create-friends').style.display="none";
+    document.getElementById('Create-friends-group').style.display="none";
     document.getElementById('popLayer2').style.display="none";
     selectFirst.innerHTML="选择分组";
 }
 CreateFriendsButton1.onclick=function(){
-    document.getElementById('Create-friends').style.display="none";
+    document.getElementById('Create-friends-group').style.display="none";
     document.getElementById('popLayer2').style.display="none";
     selectFirst.innerHTML="选择分组";
 }
