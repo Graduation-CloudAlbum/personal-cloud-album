@@ -65,18 +65,18 @@
 
                 </ul>
                 <ul id="myAlbum-content2" class="content-about2 gallery">
-                    <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>
-                    </div>
-                    <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>
-                    </div>
-                    <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>
-                    </div>
-                    <div class="content-about2-li">
-                        <a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>
-                    </div>
+                    <%--<div class="content-about2-li">--%>
+                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>--%>
+                    <%--</div>--%>
+                    <%--<div class="content-about2-li">--%>
+                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>--%>
+                    <%--</div>--%>
+                    <%--<div class="content-about2-li">--%>
+                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>--%>
+                    <%--</div>--%>
+                    <%--<div class="content-about2-li">--%>
+                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>--%>
+                    <%--</div>--%>
 
                 </ul>
                 <div class="content-button">

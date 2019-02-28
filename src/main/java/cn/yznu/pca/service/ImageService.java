@@ -11,11 +11,13 @@ import java.util.List;
  */
 public interface ImageService {
     /**
-     * 用户所有照片
-     * @param id 用户id
+     * 用户在某个相册的照片
+     * @param status 照片位置（相册回收站）
+     * @param userId 用户id
+     * @param albumId 相册id
      * @return list
      */
-    List<Image> getAllImages(Integer id);
+    List getImage(String status,Integer userId, Integer albumId);
 
     /**
      * 上传照片

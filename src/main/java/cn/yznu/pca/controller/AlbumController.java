@@ -30,7 +30,7 @@ public class AlbumController {
     private ImageService imageService;
 
     /**
-     * 首页相册内容
+     * 首页展示的相册
      * @return
      */
     @RequestMapping("/albumInfo")

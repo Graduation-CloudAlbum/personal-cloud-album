@@ -180,11 +180,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <select id="selectAllImage" resultType="cn.yznu.pca.model.Image">
-    select  id,create_time as createTime,status,image_name as imageName,image_size as imageSize,
-     url,upload_time as uploadTime,user_id as userId,album_id AS albumId
+  <select id="selectImage" resultMap="BaseResultMap" parameterType="cn.yznu.pca.model.Image">
+select *
      from image  where status = #{status,jdbcType=VARCHAR} and
-    user_id = #{user_id,jdbcType=INTEGER} order by create_time asc ,id asc
+    user_id = #{userId,jdbcType=INTEGER} and album_id = #{albumId,jdbcType=INTEGER}
   </select>
 
   <update id="updateByExampleSelective" parameterType="map" >

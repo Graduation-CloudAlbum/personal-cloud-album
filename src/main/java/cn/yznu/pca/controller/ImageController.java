@@ -1,8 +1,10 @@
 package cn.yznu.pca.controller;
 
 
+import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.UserService;
 import cn.yznu.pca.utils.DateUtil;
@@ -10,6 +12,7 @@ import cn.yznu.pca.utils.MD5Util;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,12 +20,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author yangbaiwan
@@ -36,6 +38,8 @@ public class ImageController {
     ImageService imageService;
     @Autowired
     UserService userService;
+    @Autowired
+    AlbumService albumService;
 
     @RequestMapping("/goUpload")
     public String goUpload(Model model,HttpServletRequest request ){
@@ -47,15 +51,21 @@ public class ImageController {
         return "upload";
     }
 
-    @RequestMapping("/getAll")
-    public String getAllImage(Model model,HttpServletRequest request ){
-        String username= (String) request.getSession().getAttribute("username");
-        String password= (String) request.getSession().getAttribute("password");
-        String md5pwd=MD5Util.md5Jdk(password);
-        User user=userService.checkLogin(username,md5pwd);
-        List<Image> list=imageService.getAllImages(user.getId());
-        model.addAttribute("imageList",list);
-        return "myAlbum";
+    @RequestMapping("/getImage")
+    @ResponseBody
+    public Map getImage(@Param("albumName") String albumName, HttpServletRequest request ){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        System.out.println("相册名是："+albumName);
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        Album album = (Album) albumlist.get(0);
+        int albumId=album.getId();
+        String  satus="0";
+        //List<Image> list=imageService.getImage(satus,userId,albumId);
+        List list=imageService.getImage(satus,userId,albumId);
+        Map map=new HashMap();
+        map.put("imageList",list);
+        return map;
     }
 
     @RequestMapping("/upload")

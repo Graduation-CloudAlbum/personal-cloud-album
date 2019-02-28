@@ -29,7 +29,7 @@ public interface ImageMapper {
 
     int updateByPrimaryKey(Image record);
 
-    List<Image> selectAllImage(@Param("status")String status,@Param("user_id")Integer user_id);
+    List selectImage(@Param("status")String status,@Param("userId")Integer userId,@Param("albumId")Integer albumId);
 
     int getAllImageNum(Integer userId);
 

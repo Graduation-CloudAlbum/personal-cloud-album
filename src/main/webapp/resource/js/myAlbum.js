@@ -81,7 +81,7 @@ var myAlbumMenu1=document.getElementById('myAlbum-menu1');
 var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
-var aLi=""
+var aLi="";
 //动态加载首页相册
 $().ready(function getAlbum() {
     $.ajax({
@@ -111,6 +111,8 @@ $().ready(function getAlbum() {
                     + "</div>"
                     + "</div>"
                     + "</li>"
+                $("#open").html("共"+data.album.length+"个相册");
+
             }
             $("#myAlbum-content").html(h);
             for(var i=0;i<myAlbumLi.length;i++){
@@ -130,11 +132,43 @@ $().ready(function getAlbum() {
                     })(this.index);
                     aLi=str;
                 }
+
             }
 
         }
     });
 });
+
+$("#myAlbum-content").click(function () {
+    alert(aLi);
+    var albumName=$.trim($(".bottun-title-p1").html());
+    $.ajax({
+        type:"post",
+        url:"/pca/image/getImage",
+        data: {"albumName": albumName},
+        dataType: "json",
+        success: function (data) {
+            alert(albumName);
+            var h = "";
+            for (var i = 0; i < data.imageList.length; i++) {
+                h +="<div class='content-about2-li'>"
+
+                    +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
+                    +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg' /></a>"
+
+                    // + "<img src='"+resource+"'>"
+
+                    + "</div>"
+                $("#open2").html("共"+ data.imageList.length+"张照片");
+            }
+            $("#myAlbum-content2").html(h);
+
+
+        }
+    });
+
+});
+
 $("#navMenu1").click(function () {
     getAlbum();
 });

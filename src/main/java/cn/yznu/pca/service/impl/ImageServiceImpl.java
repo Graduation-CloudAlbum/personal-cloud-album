@@ -19,9 +19,9 @@ public class ImageServiceImpl implements ImageService {
     private ImageMapper imageMapper;
 
     @Override
-    public List<Image> getAllImages(Integer user_id) {
-        List<Image> imageList=imageMapper.selectAllImage("0",user_id);
-        return imageList;
+    public List getImage(String status,Integer userId, Integer albumId) {
+
+        return imageMapper.selectImage(status,userId,albumId);
     }
 
     @Override
