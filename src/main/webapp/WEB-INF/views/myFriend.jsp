@@ -97,84 +97,25 @@
         <div class="Create-friends-button1" id="Create-friends-button1"><p>取消</p></div><div id="Create-friends-button2" class="Create-friends-button2"><p>确定</p></div>
     </div>
     <!-- ***************************************************弹窗添加好友 ***************************************************-->
-   <div id="create-friends" class="create-friends">
-            <div class="create-friends-pop">
-                <div class="create-friends-pop-header">
-                    <span>添加好友</span><i id="iconChacha5" class="iconfont icon-chacha1"></i>
-                </div>
-                <div class="create-friends-pop-content">
-                    <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="">    
-                    <div id="search-i" class="search-i"><span class="icon iconfont">&#xe60b;</span></div>
-                    <ul id="search-content" class="search-content">
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                            <img src="../img/1.jpg">
-                            <p class="search-content-name">江川</p>
-                            <p class="search-content-title-name">请输入验证消息：</p>
-                            <textarea class="search-text" rows="3" cols="20"></textarea>
-                            <div class="Create-friends-button2 send"><p>添加</p></div>
-                        </li>
-                        <li class="search-content-li">
-                                <img src="../img/1.jpg">
-                                <p class="search-content-name">江川</p>
-                                <p class="search-content-title-name">请输入验证消息：</p>
-                                <textarea class="search-text" rows="3" cols="20"></textarea>
-                                <div class="Create-friends-button2 send"><p>添加</p></div>
-                            </li>
-                            <li class="search-content-li">
-                                <img src="../img/1.jpg">
-                                <p class="search-content-name">江川</p>
-                                <p class="search-content-title-name">请输入验证消息：</p>
-                                <textarea class="search-text" rows="3" cols="20"></textarea>
-                                <div class="Create-friends-button2 send"><p>添加</p></div>
-                            </li>
-                            <li class="search-content-li">
-                                <img src="../img/1.jpg">
-                                <p class="search-content-name">江川</p>
-                                <p class="search-content-title-name">请输入验证消息：</p>
-                                <textarea class="search-text" rows="3" cols="20"></textarea>
-                                <div class="Create-friends-button2 send"><p>添加</p></div>
-                            </li>
-                                
-                    </ul>
-
-                </div>
-            </div>
+    <div id="friendVerification">
+        <div class="popup-header"><h4>添加好友 —— 江川</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
+        <div id="Verification-text" class="Verification-text">
+            <p class="Verification-title">请输入验证消息：</p>
+            <textarea id="textarea-txt" class="search-text" rows="3" >我是...</textarea>
+            <div id="Verification-next" class="Create-friends-button2"><p>下一步</p></div>
         </div>
+        <div id="Verification-group">
+            <p class="Verification-title2">请选择列表：</p>
+            <div id="friendVerification-left" class="select-first"><p>我的分组</p></div>
+            <div id="friendVerification-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+            <ul id="friendVerification-group" class="menu-group friendVerification-group">
+                <li class="menu-group-li">陌生人</li>
+                <li class="menu-group-li">家人</li>
+                <li class="menu-group-li">同事</li>
+            </ul>
+            <div class="Create-friends-button1" id="friendVerification-button1"><p>返回</p></div><div id="friendVerification-button2" class="Create-friends-button2"><p>确定</p></div>
+        </div>
+    </div>
 
 
 
