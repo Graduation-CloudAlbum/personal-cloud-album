@@ -1,12 +1,8 @@
 package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.FriendVerification;
-import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
-import cn.yznu.pca.model.UserRelation;
 import cn.yznu.pca.service.FriendService;
-import cn.yznu.pca.service.UserService;
-import cn.yznu.pca.utils.ResponseUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -19,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author jiangchuan
@@ -255,5 +253,22 @@ public class FriendController {
         else{
             return false;
         }
+    }
+
+    /**
+     * 搜索好友
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/searchFriends")
+    @ResponseBody
+    public Map<String,?> searchFriends(@Param("friendName") String friendName,
+                                       HttpServletRequest request,
+                                       HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        List<?> users=friendService.searchFriends(friendName);
+//        String jsonArray = JSON.toJSONString(users);
+//        JSONArray users2 = JSONArray.parseArray(jsonArray);
+        Map<String, List<?>> maps=new HashMap<>();
+        maps.put("users",users);
+        return maps;
     }
 }
