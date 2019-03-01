@@ -62,6 +62,7 @@ uploadPhoto2.onclick=function(){
     document.getElementById('Create-Album').style.display="block";
 }
 
+
 $("#Create-Album-button2").click(function () {
     var albumName=$.trim($("#Create-Album-input").val());
     $.ajax({
