@@ -179,6 +179,15 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
+    public List<User> searchFriends(String friendName) {
+        UserExample userExample=new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andNickNameEqualTo(friendName);
+        List <User> users=userMapper.selectByExample(userExample);
+        return users;
+    }
+
+    @Override
     public List<FriendVerification> test(  ) {
         List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
         for (FriendVerification s :fvListRefUser){

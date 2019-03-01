@@ -97,6 +97,12 @@ public interface FriendService {
      */
     boolean checkFriendsGroup(User user,String groupname);
 
+    /**
+     *  根据好友名称查找好友
+     * @param friendName
+     */
+    List<User> searchFriends(String friendName);
+
     List <FriendVerification> test();
 
 }

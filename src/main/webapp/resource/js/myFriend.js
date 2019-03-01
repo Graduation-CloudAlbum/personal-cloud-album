@@ -87,8 +87,33 @@ iconChacha5.onclick = function(){
 };
 ////搜索
 var searchI = document.getElementById('search-i');
+var friendName;
 searchI.onclick = function(){
-    document.getElementById('search-content').style.display="block";
+    friendName=$("#Create-friends-input").val();
+    var h="";
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/friend/searchFriends",
+        data:{"friendName":friendName},
+        dataType: "json",
+        success: function (data) {
+            if(data.users.length!=0){
+                console.log(data)
+                 for(var i=0;i<data.users.length;i++){
+                       h+="<img src='data.users[i].userIcon'>"
+                        + "<p class='search-content-name'>"+data.users[i].nickName+"</p>"
+                        + "<p class='search-content-name2'>"+data.users[i].userName+"</p>"
+                        + "<div class='Create-friends-button2 create-jia'><p>加好友</p></div>"
+                     $("#search-content").html(h);
+                 }
+                document.getElementById('search-content').style.display="block";
+            }
+            else {
+                alert("您查找的用户不存在")
+            }
+        }
+    });
 }
 var searchContent = document.getElementById('search-content');
 var searchContentLi=searchContent.getElementsByTagName('li');

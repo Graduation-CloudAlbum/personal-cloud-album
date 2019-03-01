@@ -58,11 +58,7 @@
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
                         <c:forEach items="${friendgroup}" var="friendgroup">
-                            <%--<li href="<%=basePath%>/friend/${friendgroup.permissionType}"--%>
-                                <%--class="content-about-menu-li">${friendgroup.permissionType}</li>--%>
-
                             <li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>
-
                         </c:forEach>
                     </ul>
                 </div>
@@ -103,22 +99,17 @@
                 <span>添加好友</span><i id="iconChacha5" class="iconfont icon-chacha1"></i>
             </div>
             <div class="create-friends-pop-content">
-                <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="">    
+                <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="Create-friends-input">
                 <div id="search-i" class="search-i"><span class="icon iconfont">&#xe60b;</span></div>
                 <ul id="search-content" class="search-content">
-                    <li class="search-content-li">
-                        <img src="../img/1.jpg">
-                        <p class="search-content-name">江川</p>
-                        <p class="search-content-name2">11234253426</p>
-                        <div class="Create-friends-button2 create-jia"><p>加好友</p></div>
-                    </li>
-                    <li class="search-content-li">
-                        <img src="../img/1.jpg">
-                        <p class="search-content-name">江川</p>
-                        <p class="search-content-name2">11234253426</p>
-                        <div class="Create-friends-button2 create-jia"><p>加好友</p></div>
-                    </li>                   
-                            
+                    <c:forEach items="${data}" var="data">
+                        <li class="search-content-li">
+                            <img src="<%=basePath%>${data.users.userIcon}">
+                            <p class="search-content-name">${data.users.nickName}</p>
+                            <p class="search-content-name2">${data.users.userName}</p>
+                            <div class="Create-friends-button2 create-jia"><p>加好友</p></div>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
