@@ -41,16 +41,6 @@ public class ImageController {
     @Autowired
     AlbumService albumService;
 
-    @RequestMapping("/goUpload")
-    public String goUpload(Model model,HttpServletRequest request ){
-        String username= (String) request.getSession().getAttribute("username");
-        String password= (String) request.getSession().getAttribute("password");
-        String md5pwd=MD5Util.md5Jdk(password);
-        User user=userService.checkLogin(username,md5pwd);
-        model.addAttribute("user",user);
-        return "upload";
-    }
-
     @RequestMapping("/getImage")
     @ResponseBody
     public Map getImage(@Param("albumName") String albumName, HttpServletRequest request ){
@@ -61,19 +51,30 @@ public class ImageController {
         Album album = (Album) albumlist.get(0);
         int albumId=album.getId();
         String  satus="0";
-        //List<Image> list=imageService.getImage(satus,userId,albumId);
         List list=imageService.getImage(satus,userId,albumId);
         Map map=new HashMap();
         map.put("imageList",list);
         return map;
     }
+    @RequestMapping("/goUpload")
+    @ResponseBody
+    public String goUpload(Model model,HttpServletRequest request ){
+    //    String username= (String) request.getSession().getAttribute("username");
+    //    String password= (String) request.getSession().getAttribute("password");
+    //    String md5pwd=MD5Util.md5Jdk(password);
+    //    User user=userService.checkLogin(username,md5pwd);
+            User user= (User) request.getSession().getAttribute("user");
+        model.addAttribute("user",user);
+        return "upload";
+    }
 
     @RequestMapping("/upload")
     public String upload(HttpServletRequest request ,Image image, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
-        String username= (String) request.getSession().getAttribute("username");
-        String password= (String) request.getSession().getAttribute("password");
-        String md5pwd=MD5Util.md5Jdk(password);
-        User user=userService.checkLogin(username,md5pwd);
+        //String username= (String) request.getSession().getAttribute("username");
+        //String password= (String) request.getSession().getAttribute("password");
+        //String md5pwd=MD5Util.md5Jdk(password);
+        User user= (User) request.getSession().getAttribute("user");
+        //User user=userService.checkLogin(username,md5pwd);
         //获取用户ID,并设置照片关联用户
         image.setUserId(user.getId());
         //设置本地保存路径
@@ -85,9 +86,9 @@ public class ImageController {
         //获取文件的扩展名
         String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
         //设置图片上传的虚拟路径
-        //String url = "/upload/";
-        String url =request.getSession().getServletContext()
-                .getRealPath("/upload");
+        String url = "/upload/";
+        //String url =request.getSession().getServletContext()
+        //        .getRealPath("/upload");
         //以绝对路径保存重名命后的图片
         pictureFile.transferTo(new File(localPath+"/"+name + "." + ext));
         //保存图片信息到数据库
@@ -96,7 +97,7 @@ public class ImageController {
         image.setImageSize(fileSize);
         imageService.upload(image);
         //重定向到查询所有图片的Controller，测试图片回显
-        return "redirect:/image/getAll";
+        return "myAlbum";
     }
 
 

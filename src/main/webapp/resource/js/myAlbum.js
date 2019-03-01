@@ -16,6 +16,26 @@ uploadPhoto3.onclick=function(){
     // document.getElementById('popLayer2').style.display="block";
     // document.getElementById('upload-photos-choose').style.display="block";
 }
+//在主页点击上传按钮，绘制带相册名的下拉选择框
+$("#uploadPhoto1").click(function () {
+    alert("点击了上传图片按钮");
+    $.ajax({
+        type: "post",
+        url: "/pca/album/albumInfo",
+        dataType: "json",
+        success: function (data){
+            // var h = "";
+            // for (var i = 0; i < data.album.length; i++) {
+            //     var albumName=data.album[i].albumName;
+            //     h +=
+                    // + "<div class='select-first'>"
+                    // + "<p>"+albumName+"</p>"
+                    // + "</div>"
+            // }
+            // $(".select-first").html(h);
+    }
+    });
+});
 //关闭上传照片
 iconChacha1.onclick=function(){
     document.getElementById('upload-photos').style.display="none";
@@ -151,12 +171,15 @@ $("#myAlbum-content").click(function () {
             alert(albumName);
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
+                var url=data.imageList[i].url;
                 h +="<div class='content-about2-li'>"
 
-                    +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
-                    +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg' /></a>"
+                    +"<a href='"+url+"'>"
+                    +"<img src='"+url+"'/></a>"
 
-                    // + "<img src='"+resource+"'>"
+                    // +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
+                    // +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg'></a>"
+
 
                     + "</div>"
                 $("#open2").html("共"+ data.imageList.length+"张照片");

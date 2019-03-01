@@ -11,9 +11,6 @@
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User user= (User) request.getSession().getAttribute("user");
-    Album album= (Album) request.getSession().getAttribute("album");
-    Object albumNum=request.getSession().getAttribute("albumNum");
-    Object imageNum=request.getSession().getAttribute("imageNum");
 %>
 <html lang="en">
 <head>
@@ -93,10 +90,10 @@
     <div id="upload-photos" class="upload-photos">
         <div class="upload-photos-pop">
             <div class="upload-photos-pop-header">
-                <span>上传照片至：心情</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
+                <span>上传照片至：</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
             </div>
             <div class="upload-photos-pop-content">
-                <form action="/***/correct"  method='post' enctype='multipart/form-data' >
+                <form action="/image/upload"  method='post' enctype='multipart/form-data' >
                     <ul  id="dd" class="upimgcontent"></ul>
 
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
