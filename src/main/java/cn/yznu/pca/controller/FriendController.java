@@ -264,7 +264,7 @@ public class FriendController {
                                        HttpServletRequest request,
                                        HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
-        List<?> users=friendService.searchFriends(friendName);
+        List<User> users=friendService.searchFriends(friendName);
 //        String jsonArray = JSON.toJSONString(users);
 //        JSONArray users2 = JSONArray.parseArray(jsonArray);
         Map<String, List<?>> maps=new HashMap<>();
