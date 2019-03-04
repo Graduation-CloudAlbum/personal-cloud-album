@@ -11,31 +11,31 @@ import java.util.List;
 public interface AlbumService {
     /**
      * 获取用户相册数量
-     * @param userId
+     * @param userId 用户id
      * @return
      */
     int getAlbumNum(int userId);
 
     /**
      * 获取用户相册内容
-     * @param userId
+     * @param userId 用户id
      * @return
      */
-    List getAlbumInfo(int userId);
+    List getAlbum(int userId);
 
     /**
      * 创建相册
-     * @param albumName
+     * @param albumName 相册名
      * @return
      */
     int createAlbum(Album albumName);
 
     /**
      * 删除相册
-     * @param id
+     * @param albumId 相册id
      * @return
      */
-    int deleteAlbum(int id);
+    int deleteAlbum(int albumId,String status);
 
     /**
      * 通过相册名查找相册

@@ -25,7 +25,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List getAlbumInfo(int userId) {
+    public List getAlbum(int userId) {
 
         return mapper.selectAlbumInfo(userId);
     }
@@ -36,8 +36,8 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public int deleteAlbum(int id) {
-        return mapper.deleteByPrimaryKey(id);
+    public int deleteAlbum(int albumId,String status) {
+        return mapper.updateById(status,albumId);
     }
 
     @Override

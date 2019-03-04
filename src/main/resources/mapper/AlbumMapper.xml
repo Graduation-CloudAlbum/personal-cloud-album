@@ -225,6 +225,12 @@
       user_id = #{userId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateById" parameterType="cn.yznu.pca.model.Album">
+    update album
+    set
+      status = #{status,jdbcType=VARCHAR},
+    where id = #{albumId,jdbcType=INTEGER}
+  </update>
 
   <select id="countAlbum" parameterType="cn.yznu.pca.model.Album" resultType="java.lang.Integer" >
     select count(*) from album where  user_id = #{userId,jdbcType=INTEGER}

@@ -96,12 +96,12 @@ public class ImageController {
         image.setUrl(url+name+"." + ext);
         image.setImageSize(fileSize);
         imageService.upload(image);
-        //重定向到查询所有图片的Controller，测试图片回显
+        //返回到相册，测试图片回显
         return "myAlbum";
     }
 
 
-    @RequestMapping(value="/download")
+    @RequestMapping("/download")
     public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("filename") String filename, Model model)throws Exception {
         //文件下载路径,图片文件夹真实路径
         String path = request.getServletContext().getRealPath("/upload/");

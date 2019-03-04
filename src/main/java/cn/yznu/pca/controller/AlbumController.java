@@ -29,14 +29,14 @@ public class AlbumController {
     private ImageService imageService;
 
     /**
-     * 首页展示的相册
+     * 首页展示的相册（查看相册）
      * @return
      */
     @RequestMapping("/albumInfo")
     @ResponseBody
     public  Map<String,Object>   AlbumInfo( HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
-        List albumlist =albumService.getAlbumInfo(user.getId());
+        List albumlist =albumService.getAlbum(user.getId());
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
@@ -84,9 +84,36 @@ public class AlbumController {
         }
 
     }
+
+    /**
+     * 删除相册，采用逻辑删除方式，删除后置于回收站
+     * @param albumName
+     * @param request
+     * @return
+     */
     @RequestMapping("/deleteAlbum")
     @ResponseBody
-    public int deleteAlbum(){
+    public int deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List albumlist =albumService.getAlbum(user.getId());
+        Album album= (Album) albumlist.get(0);
+        int albumId=album.getId();
+
+
+
+
+        return 0;
+    }
+
+    /**
+     * 相册重命名
+     * @param newAlbumName
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateAlbum")
+    @ResponseBody
+    public int updateAlbum(@Param("newAlbumName") String newAlbumName, HttpServletRequest request){
         return 0;
     }
 }

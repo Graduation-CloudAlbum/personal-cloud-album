@@ -34,4 +34,6 @@ public interface AlbumMapper {
     List selectAlbumInfo(Integer userId);
 
     List selectAlbumByName(@Param("userId")int userId,@Param("albumName")String albumName);
+
+    int updateById(@Param("status")String status,@Param("albumId")int albumId);
 }
