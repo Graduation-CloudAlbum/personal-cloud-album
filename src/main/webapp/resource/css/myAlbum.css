@@ -324,12 +324,11 @@
 	border-left: 1px solid #DDD;
 	border-top: 1px solid #DDD;
 	border-bottom: 1px solid #DDD;
-}
-.upload-photos-choose .select-first p{
 	font-size: 18px;
 	color: #976666;
 	line-height: 40px;
 }
+
 .upload-photos-choose .select-right{
 	width: 50px;
 	height: 40px;
@@ -342,6 +341,31 @@
 }
 .upload-photos-choose .select-right span{
 	color: #E0E0E0;
+}
+#upload-photos-group{
+	display: none;
+}
+.menu-group{
+	width: 310px;
+	position: absolute;
+	top:105px;
+	right: 20px;
+	z-index: 150;
+	display: none;
+}
+.menu-group .menu-group-li{
+	width: 100%;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px #DDD solid;
+	font-size: 18px;
+	color: #787878;
+	line-height: 40px;
+	background: #fff;
+	cursor: pointer;
+}
+.menu-group .menu-group-li:hover{
+	background: #FAFAFA;
 }
 .upload-photos-choose .select-button{
 	background: #00A8D8;
@@ -359,7 +383,6 @@
 	font-size: 16px;
 	line-height: 35px;
 }
-
 /***************************************************弹窗3、**************************************************************/
 #Create-Album{
 	position:absolute;

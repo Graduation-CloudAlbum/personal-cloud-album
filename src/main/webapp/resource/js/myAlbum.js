@@ -16,6 +16,29 @@ uploadPhoto3.onclick=function(){
     // document.getElementById('popLayer2').style.display="block";
     // document.getElementById('upload-photos-choose').style.display="block";
 }
+
+var uploadPhotosLeft = document.getElementById('upload-photos-left');
+var uploadPhotosRight = document.getElementById('upload-photos-right');
+var uploadPhotosGroup = document.getElementById('upload-photos-group');
+var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
+
+var bLi="";
+uploadPhotosRight.onclick = function(){
+    uploadPhotosGroup.style.display="block"
+}
+for(var i=0;i<uploadPhotosGroupLi.length;i++){
+    uploadPhotosGroupLi[i].index = i;
+    uploadPhotosGroupLi[i].onclick = function(){
+        str = (function(i){
+            bLi=uploadPhotosGroupLi[i].innerHTML;
+            uploadPhotosLeft.innerHTML=bLi;
+            return uploadPhotosLeft.innerHTML;
+        })(this.index);
+        uploadPhotosGroup.style.display="none"
+        uploadPhotosLeft.innerHTML=str
+    }
+}
+
 //在主页点击上传按钮，绘制带相册名的下拉选择框
 $("#uploadPhoto1").click(function () {
     alert("点击了上传图片按钮");
@@ -40,6 +63,7 @@ $("#uploadPhoto1").click(function () {
 iconChacha1.onclick=function(){
     document.getElementById('upload-photos').style.display="none";
     document.getElementById('popLayer').style.display="none";
+    uploadPhotosLeft.innerHTML="我的相册";
 }
 //关闭选择相册弹出框
 var iconChacha2 = document.getElementById('iconChacha2');
@@ -48,6 +72,7 @@ iconChacha2.onclick=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('upload-photos').style.display="none";
     document.getElementById('popLayer').style.display="none";
+    uploadPhotosLeft.innerHTML="我的相册";
 }
 //上传照片下一步
 var selectButton = document.getElementById('select-button');
