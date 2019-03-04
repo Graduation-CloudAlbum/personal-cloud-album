@@ -16,6 +16,7 @@ import cn.yznu.pca.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -179,11 +180,19 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
-    public List<User> searchFriends(String friendName) {
-        UserExample userExample=new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andNickNameEqualTo(friendName);
-        List <User> users=userMapper.selectByExample(userExample);
+    public List<User> searchFriends(String nickName) {
+//        UserExample userExample=new UserExample();
+//        UserExample.Criteria criteria = userExample.createCriteria();
+//        criteria.andNickNameEqualTo(friendName);
+//        List <User> users=userMapper.selectByExample(userExample);
+//        for(User s:users){
+//            System.out.println("service输出的值"+s.getUserIcon());
+//        }
+        List <User> users=userMapper.searchFriends(nickName);
+        for(User s:users){
+            System.out.println("搜索条件是"+nickName);
+            System.out.println("service输出的值"+s.getUserIcon());
+        }
         return users;
     }
 
