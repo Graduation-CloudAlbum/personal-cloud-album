@@ -99,9 +99,9 @@ public interface FriendService {
 
     /**
      *  根据好友名称查找好友
-     * @param friendName
+     * @param nickName
      */
-    List<User> searchFriends(String friendName);
+    List<User> searchFriends(String nickName);
 
     List <FriendVerification> test();
 
