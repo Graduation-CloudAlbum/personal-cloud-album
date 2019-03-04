@@ -50,4 +50,5 @@ public interface UserMapper {
 
     boolean changePassword(@Param("id") int id,@Param("password") String password);
 
+    List<User>searchFriends(@Param("nickName") String nickName);
 }
