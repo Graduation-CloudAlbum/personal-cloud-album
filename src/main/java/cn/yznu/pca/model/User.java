@@ -101,7 +101,9 @@ public class User implements Serializable {
         this.userType = userType == null ? null : userType.trim();
     }
 
-    public String getUserIcon(){ return userIcon;}
+    public String getUserIcon() {
+        return userIcon;
+    }
 
     public void setUserIcon(String userIcon){this.userIcon = userIcon == null ? null : userIcon.trim();}
 
