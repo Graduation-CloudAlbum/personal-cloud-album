@@ -8,9 +8,9 @@
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
     <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="user_icon" property="userIcon" jdbcType="VARCHAR" />
+    <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
     <result column="user_type" property="userType" jdbcType="VARCHAR" />
-      <result column="user_icon" property="userIcon" jdbcType="VARCHAR" />
-      <result column="synopsis" property="synopsis" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -279,5 +279,11 @@
       where id = #{userId,jdbcType=INTEGER}
       and user_password = #{password,jdbcType=VARCHAR}
     </select>
+
+  <select id="searchFriends" resultMap="BaseResultMap">
+    select *
+    from user
+    where nick_name = #{nickName,jdbcType=VARCHAR}
+  </select>
 
 </mapper>
