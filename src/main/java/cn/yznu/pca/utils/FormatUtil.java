@@ -1,7 +1,7 @@
 package cn.yznu.pca.utils;
 
 /**
- * 图片大小处理工具类
+ * 图片大小转换工具类
  * @author yangbaiwan
  * @date 2018-11-07
  */

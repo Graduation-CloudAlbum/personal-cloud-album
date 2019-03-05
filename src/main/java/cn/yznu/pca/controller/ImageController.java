@@ -7,8 +7,6 @@ import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.UserService;
-import cn.yznu.pca.utils.DateUtil;
-import cn.yznu.pca.utils.MD5Util;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;

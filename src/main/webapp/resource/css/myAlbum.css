@@ -305,7 +305,7 @@
 /***************************************************弹窗2、**************************************************************/
 #upload-photos-choose{
 	position:absolute;
-	left:40%; 
+	left:40%;
 	top:38%;
 	z-index: 70;
 	width: 350px;
@@ -342,18 +342,17 @@
 .upload-photos-choose .select-right span{
 	color: #E0E0E0;
 }
-#upload-photos-group{
+#upload-menu-group{
 	display: none;
 }
-.menu-group{
+.upload-menu-group{
 	width: 310px;
 	position: absolute;
 	top:105px;
 	right: 20px;
 	z-index: 150;
-	display: none;
 }
-.menu-group .menu-group-li{
+.upload-menu-group-li{
 	width: 100%;
 	padding-left: 10px;
 	height: 40px;
@@ -364,7 +363,7 @@
 	background: #fff;
 	cursor: pointer;
 }
-.menu-group .menu-group-li:hover{
+.upload-menu-group .upload-menu-group-li:hover{
 	background: #FAFAFA;
 }
 .upload-photos-choose .select-button{
@@ -383,6 +382,7 @@
 	font-size: 16px;
 	line-height: 35px;
 }
+
 /***************************************************弹窗3、**************************************************************/
 #Create-Album{
 	position:absolute;

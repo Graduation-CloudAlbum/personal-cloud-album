@@ -19,43 +19,52 @@ uploadPhoto3.onclick=function(){
 
 var uploadPhotosLeft = document.getElementById('upload-photos-left');
 var uploadPhotosRight = document.getElementById('upload-photos-right');
-var uploadPhotosGroup = document.getElementById('upload-photos-group');
+var uploadPhotosGroup = document.getElementById('upload-menu-group');
 var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
 
 var bLi="";
-uploadPhotosRight.onclick = function(){
-    uploadPhotosGroup.style.display="block"
-}
-for(var i=0;i<uploadPhotosGroupLi.length;i++){
-    uploadPhotosGroupLi[i].index = i;
-    uploadPhotosGroupLi[i].onclick = function(){
-        str = (function(i){
-            bLi=uploadPhotosGroupLi[i].innerHTML;
-            uploadPhotosLeft.innerHTML=bLi;
-            return uploadPhotosLeft.innerHTML;
-        })(this.index);
-        uploadPhotosGroup.style.display="none"
-        uploadPhotosLeft.innerHTML=str
-    }
-}
+// uploadPhotosRight.onclick = function(){
+//     uploadPhotosGroup.style.display="block"
+// }
+// for(var i=0;i<uploadPhotosGroupLi.length;i++){
+//     uploadPhotosGroupLi[i].index = i;
+//     uploadPhotosGroupLi[i].onclick = function(){
+//         str = (function(i){
+//             bLi=uploadPhotosGroupLi[i].innerHTML;
+//             uploadPhotosLeft.innerHTML=bLi;
+//             return uploadPhotosLeft.innerHTML;
+//         })(this.index);
+//         uploadPhotosGroup.style.display="none"
+//         uploadPhotosLeft.innerHTML=str
+//     }
+// }
 
 //在主页点击上传按钮，绘制带相册名的下拉选择框
-$("#uploadPhoto1").click(function () {
-    alert("点击了上传图片按钮");
+$("#upload-photos-right").click(function () {
     $.ajax({
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
         success: function (data){
-            // var h = "";
-            // for (var i = 0; i < data.album.length; i++) {
-            //     var albumName=data.album[i].albumName;
-            //     h +=
-                    // + "<div class='select-first'>"
-                    // + "<p>"+albumName+"</p>"
-                    // + "</div>"
-            // }
-            // $(".select-first").html(h);
+            uploadPhotosGroup.style.display="block"
+            var h = "";
+            for (var i = 0; i < data.album.length; i++) {
+                var albumName=data.album[i].albumName;
+                h += "<li class='upload-menu-group-li'>"+albumName+"</li>"
+            }
+            $("#upload-menu-group").html(h);
+            for(var i=0;i<uploadPhotosGroupLi.length;i++){
+                uploadPhotosGroupLi[i].index = i;
+                uploadPhotosGroupLi[i].onclick = function(){
+                    str = (function(i){
+                        bLi=uploadPhotosGroupLi[i].innerHTML;
+                        uploadPhotosLeft.innerHTML=bLi;
+                        return uploadPhotosLeft.innerHTML;
+                    })(this.index);
+                    uploadPhotosGroup.style.display="none"
+                    uploadPhotosLeft.innerHTML=str
+                }
+            }
     }
     });
 });
@@ -86,8 +95,6 @@ uploadPhoto2.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     document.getElementById('Create-Album').style.display="block";
 }
-
-
 $("#Create-Album-button2").click(function () {
     var albumName=$.trim($("#Create-Album-input").val());
     $.ajax({
@@ -142,17 +149,21 @@ $().ready(function getAlbum() {
             var resource="/pca/resource/img/Album-cover1.jpg";
             for (var i = 0; i < data.album.length; i++) {
                 var imageNum=data.imageNum[i];
+                 albumName=data.album[i].albumName;
                 createtime=fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
                     + "<img src='"+resource+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                    + "<a class='iconfont icon-fenxiang1 icon2' title='重命名相册'></a>"
                     + "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<p class='bottun-title-p1'>"+data.album[i].albumName+"</p>"
+
+                // onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)"
+
+                    + "<p class='bottun-title-p1'>"+albumName+"</p>"
                     + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
                     + "</div>"
                     + "</div>"
@@ -161,6 +172,12 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
+            // $('#myAlbum-content').on('click','p[class=bottun-title-p1]',function (e){
+            //     console.log($(this));
+            //     alert($(this));
+            // });
+
+
             for(var i=0;i<myAlbumLi.length;i++){
                 myAlbumLi[i].index = i;
                 myAlbumLi[i].onclick=function(){
@@ -184,9 +201,7 @@ $().ready(function getAlbum() {
         }
     });
 });
-
 $("#myAlbum-content").click(function () {
-    alert(aLi);
     var albumName=$.trim($(".bottun-title-p1").html());
     $.ajax({
         type:"post",
@@ -275,7 +290,6 @@ function fmtDate(obj){
     var d = "0"+date.getDate();
     return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
 }
-
 
 
 

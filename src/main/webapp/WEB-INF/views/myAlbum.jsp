@@ -119,10 +119,10 @@
             <div class="popup-header"><h4>选择相册</h4><i id="iconChacha2" class="iconfont icon-chacha1"></i></div>
             <div id="upload-photos-left" class="select-first">我的相册</div>
             <div id="upload-photos-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
-            <ul id="upload-photos-group" class="menu-group upload-photos-group">
-                <li class="menu-group-li">陌生人</li>
-                <li class="menu-group-li">家人</li>
-                <li class="menu-group-li">同事</li>
+            <ul id="upload-menu-group" class="upload-menu-group">
+                <%--<li class="upload-menu-group-li">陌生人</li>--%>
+                <%--<li class="upload-menu-group-li">家人</li>--%>
+                <%--<li class="upload-menu-group-li">同事</li>--%>
             </ul>
             <div id="select-button" class="select-button"><p>下一步</p></div>
         </div>
