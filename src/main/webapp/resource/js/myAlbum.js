@@ -135,6 +135,7 @@ var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
 var aLi="";
+var a="";
 //动态加载首页相册
 $().ready(function getAlbum() {
     $.ajax({
@@ -172,43 +173,6 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
-            // $('#myAlbum-content').on('click','p[class=bottun-title-p1]',function (e){
-            //     console.log($(this));
-            //     alert($(this));
-            // });
-            //点击相册展示图片
-            $(".content-about-li").click(function () {
-                var albumName=$.trim($(".bottun-title-p1").html());
-                $.ajax({
-                    type:"post",
-                    url:"/pca/image/getImage",
-                    data: {"albumName": albumName},
-                    dataType: "json",
-                    success: function (data) {
-                        alert(albumName);
-                        var h = "";
-                        for (var i = 0; i < data.imageList.length; i++) {
-                            var url=data.imageList[i].url;
-                            h +="<div class='content-about2-li'>"
-
-                                +"<a href='"+url+"'>"
-                                +"<img src='"+url+"'/></a>"
-
-                                // +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
-                                // +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg'></a>"
-
-
-                                + "</div>"
-                            $("#open2").html("共"+ data.imageList.length+"张照片");
-                        }
-                        $("#myAlbum-content2").html(h);
-
-
-                    }
-                });
-
-            });
-
 
             for(var i=0;i<myAlbumLi.length;i++){
                 myAlbumLi[i].index = i;
@@ -226,6 +190,10 @@ $().ready(function getAlbum() {
                         return aLi;
                     })(this.index);
                     aLi=str;
+
+                    var aP = this.getElementsByTagName('p');
+                    a=aP[0].innerHTML;
+
                 }
 
             }
@@ -233,37 +201,37 @@ $().ready(function getAlbum() {
         }
     });
 });
-// $("#myAlbum-content").click(function () {
-//     var albumName=$.trim($(".bottun-title-p1").html());
-//     $.ajax({
-//         type:"post",
-//         url:"/pca/image/getImage",
-//         data: {"albumName": albumName},
-//         dataType: "json",
-//         success: function (data) {
-//             alert(albumName);
-//             var h = "";
-//             for (var i = 0; i < data.imageList.length; i++) {
-//                 var url=data.imageList[i].url;
-//                 h +="<div class='content-about2-li'>"
-//
-//                     +"<a href='"+url+"'>"
-//                     +"<img src='"+url+"'/></a>"
-//
-//                     // +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
-//                     // +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg'></a>"
-//
-//
-//                     + "</div>"
-//                 $("#open2").html("共"+ data.imageList.length+"张照片");
-//             }
-//             $("#myAlbum-content2").html(h);
-//
-//
-//         }
-//     });
-//
-// });
+$("#myAlbum-content").click(function () {
+    var albumName=$.trim($(".bottun-title-p1").html());
+    $.ajax({
+        type:"post",
+        url:"/pca/image/getImage",
+        data: {"albumName": albumName},
+        dataType: "json",
+        success: function (data) {
+            alert(albumName);
+            var h = "";
+            for (var i = 0; i < data.imageList.length; i++) {
+                var url=data.imageList[i].url;
+                h +="<div class='content-about2-li'>"
+
+                    +"<a href='"+url+"'>"
+                    +"<img src='"+url+"'/></a>"
+
+                    // +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
+                    // +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg'></a>"
+
+
+                    + "</div>"
+                $("#open2").html("共"+ data.imageList.length+"张照片");
+            }
+            $("#myAlbum-content2").html(h);
+
+
+        }
+    });
+
+});
 
 $("#navMenu1").click(function () {
     getAlbum();
