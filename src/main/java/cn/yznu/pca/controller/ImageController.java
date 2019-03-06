@@ -13,7 +13,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,25 +55,32 @@ public class ImageController {
     }
     @RequestMapping("/goUpload")
     @ResponseBody
-    public String goUpload(Model model,HttpServletRequest request ){
+    public int goUpload(@Param("albumName") String albumName,HttpServletRequest request ){
     //    String username= (String) request.getSession().getAttribute("username");
     //    String password= (String) request.getSession().getAttribute("password");
     //    String md5pwd=MD5Util.md5Jdk(password);
     //    User user=userService.checkLogin(username,md5pwd);
-            User user= (User) request.getSession().getAttribute("user");
-        model.addAttribute("user",user);
-        return "upload";
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        System.out.println("页面传过来的相册名是："+albumName);
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        Album album = (Album) albumlist.get(0);
+        int albumId=album.getId();
+        System.out.println("获取的相册id是"+albumId);
+        request.getSession().setAttribute("albumId",albumId);
+        return albumId;
     }
 
     @RequestMapping("/upload")
-    public String upload(HttpServletRequest request ,Image image, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
-        //String username= (String) request.getSession().getAttribute("username");
-        //String password= (String) request.getSession().getAttribute("password");
-        //String md5pwd=MD5Util.md5Jdk(password);
+    public String upload( HttpServletRequest request ,Image image, @RequestParam(value="files")MultipartFile pictureFile) throws Exception{
+
         User user= (User) request.getSession().getAttribute("user");
-        //User user=userService.checkLogin(username,md5pwd);
-        //获取用户ID,并设置照片关联用户
-        image.setUserId(user.getId());
+        int albumId= (int) request.getSession().getAttribute("albumId");
+        //获取用户ID,并设置照片所属用户
+        int userId=user.getId();
+        image.setUserId(userId);
+        //设置照片所在相册
+        image.setAlbumId(albumId);
         //设置本地保存路径
         String localPath="F:\\demos\\upload\\";
         //使用UUID给图片重命名，并去掉四个“-”
@@ -93,6 +99,63 @@ public class ImageController {
         image.setImageName(name);
         image.setUrl(url+name+"." + ext);
         image.setImageSize(fileSize);
+        imageService.upload(image);
+        //返回到相册，测试图片回显
+        return "myAlbum";
+    }
+    @RequestMapping("/uploadMany")
+    public String uploadMany( HttpServletRequest request ,Image image, @RequestParam(value="files",required=false)MultipartFile[] pictureFile) throws Exception{
+        //定义序号
+        int count=1;
+        for (MultipartFile mf : pictureFile) {
+            if (!mf.isEmpty()) {
+                User user = (User) request.getSession().getAttribute("user");
+                int albumId = (int) request.getSession().getAttribute("albumId");
+                //获取用户ID,并设置照片所属用户
+                int userId = user.getId();
+                //image.setUserId(userId);
+                ////设置照片所在相册
+                //image.setAlbumId(albumId);
+                //设置本地保存路径
+                String localPath = "F:\\demos\\upload\\";
+                //使用UUID给图片重命名，并去掉四个“-”
+                String name = UUID.randomUUID().toString().replaceAll("-", "");
+                //获取照片大小,以B/KB/MB为单位保存
+                String fileSize = FormatUtil.format(mf.getSize());
+                //获取文件的扩展名
+                String ext = FilenameUtils.getExtension(mf.getOriginalFilename());
+                //设置图片上传的虚拟路径
+                String url = "/upload/";
+                //String url =request.getSession().getServletContext()
+                //        .getRealPath("/upload");
+                //以绝对路径保存重名命后的图片
+                mf.transferTo(new File(localPath + "/" + name + "." + ext));
+                //保存图片信息到数据库
+                //image.setImageName(name);
+                ////image.setUrl(url + name + "." + ext);
+                //image.setImageSize(fileSize);
+                if (count == 1) {
+                    image.setUserId(userId);
+                    image.setAlbumId(albumId);
+                    image.setImageName(name);
+                    image.setImageSize(fileSize);
+                    image.setUrl(url + name + "." + ext);
+                } else if (count == 2) {
+                    image.setUserId(userId);
+                    image.setAlbumId(albumId);
+                    image.setImageName(name);
+                    image.setImageSize(fileSize);
+                    image.setUrl(url + name + "." + ext);
+                } else if (count == 3) {
+                    image.setUserId(userId);
+                    image.setAlbumId(albumId);
+                    image.setImageName(name);
+                    image.setImageSize(fileSize);
+                    image.setUrl(url + name + "." + ext);
+                }
+            }
+            count++;
+        }
         imageService.upload(image);
         //返回到相册，测试图片回显
         return "myAlbum";

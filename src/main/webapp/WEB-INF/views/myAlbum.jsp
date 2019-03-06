@@ -78,7 +78,7 @@
                 </ul>
                 <div class="content-button">
                     <div class="content-button-fenge"></div>
-                    <span id="open">(共个相册)</span><span id="open2">(共张照片)</span>
+                    <span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
                 </div>
                 <div class="content-footer"></div>
 
@@ -90,10 +90,10 @@
     <div id="upload-photos" class="upload-photos">
         <div class="upload-photos-pop">
             <div class="upload-photos-pop-header">
-                <span>上传照片至：</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
+                <span id="upload-album-choose">上传照片至:</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
             </div>
             <div class="upload-photos-pop-content">
-                <form action="/image/upload"  method='post' enctype='multipart/form-data' >
+                <form action="/pca/image/uploadMany"  method='post' enctype='multipart/form-data' >
                     <ul  id="dd" class="upimgcontent"></ul>
 
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
@@ -117,7 +117,7 @@
     <!-- ***************************************************弹窗 ***************************************************-->
     <div id="upload-photos-choose" class="upload-photos-choose">
             <div class="popup-header"><h4>选择相册</h4><i id="iconChacha2" class="iconfont icon-chacha1"></i></div>
-            <div id="upload-photos-left" class="select-first">我的相册</div>
+            <div id="upload-photos-left" class="select-first">请选择相册</div>
             <div id="upload-photos-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
             <ul id="upload-menu-group" class="upload-menu-group">
                 <%--<li class="upload-menu-group-li">陌生人</li>--%>

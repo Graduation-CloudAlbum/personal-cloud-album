@@ -2,14 +2,14 @@ var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
 var iconChacha1 = document.getElementById('icon-chacha1');
 var popLayer = document.getElementById('popLayer');//upload-photos-choose
-//点击上传照片
+//在首页点击上传照片
 uploadPhoto1.onclick=function(){
     document.getElementById('upload-photos').style.display="block";
     document.getElementById('popLayer').style.display="block";
     document.getElementById('popLayer2').style.display="block";
     document.getElementById('upload-photos-choose').style.display="block";
 }
-//点击上传照片
+//在相册中点击上传照片
 uploadPhoto3.onclick=function(){
     document.getElementById('upload-photos').style.display="block";
     document.getElementById('popLayer').style.display="block";
@@ -23,6 +23,7 @@ var uploadPhotosGroup = document.getElementById('upload-menu-group');
 var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
 
 var bLi="";
+var chooseName="";
 // uploadPhotosRight.onclick = function(){
 //     uploadPhotosGroup.style.display="block"
 // }
@@ -39,9 +40,10 @@ var bLi="";
 //     }
 // }
 
-//在主页点击上传按钮，绘制带相册名的下拉选择框
+//在主页点击“上传照片”按钮，动态加载可选择的相册
 $("#upload-photos-right").click(function () {
     $.ajax({
+        async : false,
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
@@ -56,23 +58,48 @@ $("#upload-photos-right").click(function () {
             for(var i=0;i<uploadPhotosGroupLi.length;i++){
                 uploadPhotosGroupLi[i].index = i;
                 uploadPhotosGroupLi[i].onclick = function(){
-                    str = (function(i){
+                    str= (function(i){
                         bLi=uploadPhotosGroupLi[i].innerHTML;
                         uploadPhotosLeft.innerHTML=bLi;
                         return uploadPhotosLeft.innerHTML;
                     })(this.index);
                     uploadPhotosGroup.style.display="none"
-                    uploadPhotosLeft.innerHTML=str
+                    uploadPhotosLeft.innerHTML=str;
+                     chooseName=str;
+                    return chooseName;
                 }
+
             }
-    }
+         }
     });
+
 });
+$("#select-button").click(function () {
+    $("#upload-album-choose").html("<span>上传照片至："+chooseName+"</span>");
+    $.ajax({
+        type: "post",
+        url: "/pca/image/goUpload",
+        data: {"albumName": chooseName},
+        dataType: "json",
+        success: function (data){
+
+        }
+    });
+
+
+    $("#icon-chacha1").click(function () {
+        $("#upload-album-choose").html("<span>上传照片至：</span>");
+    });
+
+});
+
+
 //关闭上传照片
 iconChacha1.onclick=function(){
     document.getElementById('upload-photos').style.display="none";
     document.getElementById('popLayer').style.display="none";
     uploadPhotosLeft.innerHTML="我的相册";
+
 }
 //关闭选择相册弹出框
 var iconChacha2 = document.getElementById('iconChacha2');
@@ -135,7 +162,8 @@ var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
 var aLi="";
-var a="";
+//首页点击的相册名
+var aName="";
 //动态加载首页相册
 $().ready(function getAlbum() {
     $.ajax({
@@ -161,9 +189,6 @@ $().ready(function getAlbum() {
                     + "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-
-                // onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)"
-
                     + "<p class='bottun-title-p1'>"+albumName+"</p>"
                     + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
                     + "</div>"
@@ -173,7 +198,6 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
-
             for(var i=0;i<myAlbumLi.length;i++){
                 myAlbumLi[i].index = i;
                 myAlbumLi[i].onclick=function(){
@@ -192,7 +216,7 @@ $().ready(function getAlbum() {
                     aLi=str;
 
                     var aP = this.getElementsByTagName('p');
-                    a=aP[0].innerHTML;
+                    aName=aP[0].innerHTML;
 
                 }
 
@@ -201,15 +225,15 @@ $().ready(function getAlbum() {
         }
     });
 });
+//点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
 $("#myAlbum-content").click(function () {
-    var albumName=$.trim($(".bottun-title-p1").html());
+    var albumName=aName;
     $.ajax({
         type:"post",
         url:"/pca/image/getImage",
         data: {"albumName": albumName},
         dataType: "json",
         success: function (data) {
-            alert(albumName);
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
                 var url=data.imageList[i].url;
@@ -217,11 +241,6 @@ $("#myAlbum-content").click(function () {
 
                     +"<a href='"+url+"'>"
                     +"<img src='"+url+"'/></a>"
-
-                    // +"<a href='/pca/resource/img/gallery/DSC_0008-660x441.jpg'>"
-                    // +"<img src='/pca/resource/img/gallery/DSC_0008-69x69.jpg'></a>"
-
-
                     + "</div>"
                 $("#open2").html("共"+ data.imageList.length+"张照片");
             }
@@ -232,7 +251,7 @@ $("#myAlbum-content").click(function () {
     });
 
 });
-
+//在左侧导航栏点击“我的相册”时调用相册获取方法
 $("#navMenu1").click(function () {
     getAlbum();
 });
@@ -282,7 +301,7 @@ function setImagePreviews(){
     }
     return true;
 }
-//时间格式处理
+//时间格式处理，将时间戳转换成yyyy-mm-dd格式
 function fmtDate(obj){
     var date =  new Date(obj);
     var y = 1900+date.getYear();
