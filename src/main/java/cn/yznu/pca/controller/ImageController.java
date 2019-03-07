@@ -26,7 +26,7 @@ import java.util.*;
 /**
  * @author yangbaiwan
  * @date 2018-09-28
- * 图片上传实现原理：提交图片到某个文件夹并返回图片路径 ，将路径保存到数据库
+ * 图片上传实现原理：提交图片到某个磁盘文件夹中并返回图片路径 ，将路径保存到数据库
  */
 @Controller
 @RequestMapping("/image")
@@ -56,10 +56,6 @@ public class ImageController {
     @RequestMapping("/goUpload")
     @ResponseBody
     public int goUpload(@Param("albumName") String albumName,HttpServletRequest request ){
-    //    String username= (String) request.getSession().getAttribute("username");
-    //    String password= (String) request.getSession().getAttribute("password");
-    //    String md5pwd=MD5Util.md5Jdk(password);
-    //    User user=userService.checkLogin(username,md5pwd);
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         System.out.println("页面传过来的相册名是："+albumName);
@@ -71,99 +67,58 @@ public class ImageController {
         return albumId;
     }
 
+    /**
+     * 上传照片
+     * @param request
+     * @param image
+     * @param pictureFile
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/upload")
-    public String upload( HttpServletRequest request ,Image image, @RequestParam(value="files")MultipartFile pictureFile) throws Exception{
-
-        User user= (User) request.getSession().getAttribute("user");
-        int albumId= (int) request.getSession().getAttribute("albumId");
-        //获取用户ID,并设置照片所属用户
-        int userId=user.getId();
-        image.setUserId(userId);
-        //设置照片所在相册
-        image.setAlbumId(albumId);
-        //设置本地保存路径
-        String localPath="F:\\demos\\upload\\";
-        //使用UUID给图片重命名，并去掉四个“-”
-        String name = UUID.randomUUID().toString().replaceAll("-", "");
-        //获取照片大小,以B/KB/MB为单位保存
-        String fileSize =FormatUtil.format(pictureFile.getSize()) ;
-        //获取文件的扩展名
-        String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
-        //设置图片上传的虚拟路径
-        String url = "/upload/";
-        //String url =request.getSession().getServletContext()
-        //        .getRealPath("/upload");
-        //以绝对路径保存重名命后的图片
-        pictureFile.transferTo(new File(localPath+"/"+name + "." + ext));
-        //保存图片信息到数据库
-        image.setImageName(name);
-        image.setUrl(url+name+"." + ext);
-        image.setImageSize(fileSize);
-        imageService.upload(image);
-        //返回到相册，测试图片回显
-        return "myAlbum";
-    }
-    @RequestMapping("/uploadMany")
     public String uploadMany( HttpServletRequest request ,Image image, @RequestParam(value="files",required=false)MultipartFile[] pictureFile) throws Exception{
-        //定义序号
-        int count=1;
-        for (MultipartFile mf : pictureFile) {
-            if (!mf.isEmpty()) {
+        for (int i = 0; i < pictureFile.length-1; i++) {
+                MultipartFile file = pictureFile[i];
                 User user = (User) request.getSession().getAttribute("user");
                 int albumId = (int) request.getSession().getAttribute("albumId");
-                //获取用户ID,并设置照片所属用户
+                //获取用户ID
                 int userId = user.getId();
-                //image.setUserId(userId);
-                ////设置照片所在相册
-                //image.setAlbumId(albumId);
                 //设置本地保存路径
                 String localPath = "F:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
                 //获取照片大小,以B/KB/MB为单位保存
-                String fileSize = FormatUtil.format(mf.getSize());
+                String fileSize = FormatUtil.format(file.getSize());
                 //获取文件的扩展名
-                String ext = FilenameUtils.getExtension(mf.getOriginalFilename());
+                String ext = FilenameUtils.getExtension(file.getOriginalFilename());
                 //设置图片上传的虚拟路径
                 String url = "/upload/";
-                //String url =request.getSession().getServletContext()
-                //        .getRealPath("/upload");
-                //以绝对路径保存重名命后的图片
-                mf.transferTo(new File(localPath + "/" + name + "." + ext));
-                //保存图片信息到数据库
-                //image.setImageName(name);
-                ////image.setUrl(url + name + "." + ext);
-                //image.setImageSize(fileSize);
-                if (count == 1) {
-                    image.setUserId(userId);
-                    image.setAlbumId(albumId);
-                    image.setImageName(name);
-                    image.setImageSize(fileSize);
-                    image.setUrl(url + name + "." + ext);
-                } else if (count == 2) {
-                    image.setUserId(userId);
-                    image.setAlbumId(albumId);
-                    image.setImageName(name);
-                    image.setImageSize(fileSize);
-                    image.setUrl(url + name + "." + ext);
-                } else if (count == 3) {
-                    image.setUserId(userId);
-                    image.setAlbumId(albumId);
-                    image.setImageName(name);
-                    image.setImageSize(fileSize);
-                    image.setUrl(url + name + "." + ext);
-                }
-            }
-            count++;
+                //保存照片到硬盘
+                file.transferTo(new File(localPath + "/" + name + "." + ext));
+                //保存照片名
+                image.setImageName(name);
+                //保存照片大小
+                image.setImageSize(fileSize);
+                //设置所属用户
+                image.setUserId(userId);
+                //保存到相册
+                image.setAlbumId(albumId);
+                //保存照片url
+                image.setUrl(url + name + "." + ext);
+                imageService.upload(image);
         }
-        imageService.upload(image);
-        //返回到相册，测试图片回显
         return "myAlbum";
     }
 
-
+    /**
+     * 下载照片
+     * @param request
+     * @param filename 文件名
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/download")
-    public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("filename") String filename, Model model)throws Exception {
+    public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("filename") String filename)throws Exception {
         //文件下载路径,图片文件夹真实路径
         String path = request.getServletContext().getRealPath("/upload/");
         File file = new File(path + File.separator + filename);
@@ -177,5 +132,37 @@ public class ImageController {
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
                 headers, HttpStatus.CREATED);
+    }
+
+    /**
+     * 删除照片
+     * @param imageId 照片id
+     * @param request
+     * @return
+     */
+    @RequestMapping("/deleteImage")
+    @ResponseBody
+    public int deleteImage(@Param("imageId") int imageId, HttpServletRequest request ){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+
+        return imageService.deleteImage(imageId);
+    }
+
+    /**
+     * 移动照片
+     * @param imageId 照片id
+     * @param request
+     * @return
+     */
+    @RequestMapping("/moveImage")
+    @ResponseBody
+    public int moveImage(@Param("imageId") int imageId,@Param("albumName") String albumName,HttpServletRequest request ){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        Album album = (Album) albumlist.get(0);
+        int albumId=album.getId();
+        return imageService.updateImage(imageId,albumId);
     }
 }

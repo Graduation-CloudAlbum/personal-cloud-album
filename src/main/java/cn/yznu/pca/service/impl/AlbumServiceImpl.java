@@ -31,6 +31,21 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    public List getAlbumByTime(int userId) {
+        return mapper.selectAlbumByTime(userId);
+    }
+
+    @Override
+    public List getAlbumByName(int userId) {
+        return mapper.selectAlbumByAlbumName(userId);
+    }
+
+    @Override
+    public List getAlbumByTheme(int userId) {
+        return mapper.selectAlbumTheme(userId);
+    }
+
+    @Override
     public int createAlbum(Album album) {
         return mapper.insert(album);
     }
@@ -38,6 +53,11 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public int deleteAlbum(int albumId,String status) {
         return mapper.updateById(status,albumId);
+    }
+
+    @Override
+    public int updateAlbum(int albumId, String albumName,String status, String theme) {
+        return mapper.updateAlbum(albumId,albumName,status,theme);
     }
 
     @Override

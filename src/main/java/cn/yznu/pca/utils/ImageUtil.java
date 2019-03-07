@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
+ * 水印工具类
  * @author yangbaiwan
  * @date 2018-10-22
  */

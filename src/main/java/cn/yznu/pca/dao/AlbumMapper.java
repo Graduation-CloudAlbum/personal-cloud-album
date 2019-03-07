@@ -33,7 +33,15 @@ public interface AlbumMapper {
 
     List selectAlbumInfo(Integer userId);
 
+    List selectAlbumByTime(Integer userId);
+
+    List selectAlbumByAlbumName(Integer userId);
+
+    List selectAlbumTheme(Integer userId);
+
     List selectAlbumByName(@Param("userId")int userId,@Param("albumName")String albumName);
 
     int updateById(@Param("status")String status,@Param("albumId")int albumId);
+
+    int updateAlbum(@Param("albumId")int albumId,@Param("albumName")String albumName,@Param("status")String status,@Param("albumId")String theme);
 }

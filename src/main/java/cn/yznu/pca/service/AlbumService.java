@@ -24,6 +24,27 @@ public interface AlbumService {
     List getAlbum(int userId);
 
     /**
+     * 根据修改时间排序
+     * @param userId 用户id
+     * @return
+     */
+    List getAlbumByTime(int userId);
+
+    /**
+     * 根据相册名排序(首字母A-Z)
+     * @param userId 用户id
+     * @return
+     */
+    List getAlbumByName(int userId);
+
+    /**
+     * 根据主题名排序(首字母A-Z)
+     * @param userId 用户id
+     * @return
+     */
+    List getAlbumByTheme(int userId);
+
+    /**
      * 创建相册
      * @param albumName 相册名
      * @return
@@ -36,6 +57,13 @@ public interface AlbumService {
      * @return
      */
     int deleteAlbum(int albumId,String status);
+
+    /**
+     * 修改相册
+     * @param albumId 相册id
+     * @return
+     */
+    int updateAlbum(int albumId,String albumName,String status,String theme);
 
     /**
      * 通过相册名查找相册

@@ -34,6 +34,21 @@ public interface ImageService {
     int download(Image image);
 
     /**
+     * 删除照片
+     * @param imageId 照片id
+     * @return
+     */
+    int deleteImage(int imageId);
+
+    /**
+     * 移动照片
+     * @param imageId 照片id
+     * @param albumId 目标相册id
+     * @return
+     */
+    int updateImage(int imageId,int albumId);
+
+    /**
      * 用户所有照片数量
      * @param userId 用户id
      * @return 所有照片数量

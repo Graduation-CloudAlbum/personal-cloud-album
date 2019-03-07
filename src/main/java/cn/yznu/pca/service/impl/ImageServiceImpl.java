@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangbaiwan
@@ -33,6 +34,16 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public int download(Image image) {
     return 0;
+    }
+
+    @Override
+    public int deleteImage(int imageId) {
+        return imageMapper.updateImageStatus(imageId);
+    }
+
+    @Override
+    public int updateImage(int imageId, int albumId) {
+        return imageMapper.updateImageToAlbum(imageId,albumId);
     }
 
     @Override

@@ -51,7 +51,7 @@
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
-                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>
+                <%--<li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li class="content-menu-li"><a>批量管理</a></li>
             </ul>
 
@@ -93,7 +93,7 @@
                 <span id="upload-album-choose">上传照片至:</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
             </div>
             <div class="upload-photos-pop-content">
-                <form action="/pca/image/uploadMany"  method='post' enctype='multipart/form-data' >
+                <form action="/pca/image/upload"  method='post' enctype='multipart/form-data' >
                     <ul  id="dd" class="upimgcontent"></ul>
 
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
@@ -102,9 +102,9 @@
                         <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传500张相片</span>
                     </div>
                     <div id="upload-photos-pop-content-footer2" class="upload-photos-pop-content-footer2 fileinput-wrap">
-                        <span>共一张相片（4.31K）</span>
+                        <%--<span>共一张相片（4.31K）</span>--%>
 
-                        <input  class="inputfile" type="file" name="files" id="doc0" imgid="img0" onchange="javascript:setImagePreviews()" />
+                        <input  class="inputfile" type="file" name="files" multiple="multiple" id="doc0" imgid="img0" onchange="javascript:setImagePreviews()" />
                         <label for="doc0" class="btn btn-default footer-button1">继续添加</label>
                         <button class="btn btn-info footer-button2"  type="submit"><p>开始上传</p></button>
                     </div>

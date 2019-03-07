@@ -278,6 +278,18 @@ select *
       album_id = #{albumId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="updateImageStatus" parameterType="cn.yznu.pca.model.Image" >
+    update image
+    set
+      status ='1'
+    where id = #{imageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateImageToAlbum" parameterType="cn.yznu.pca.model.Image" >
+    update image
+    set
+      album_id = #{albumId,jdbcType=INTEGER}
+    where id = #{imageId,jdbcType=INTEGER}
+  </update>
   <select id="getAllImageNum" parameterType="cn.yznu.pca.model.Image" resultType="java.lang.Integer" >
     select count(*) from image where  user_id = #{userId,jdbcType=INTEGER}
   </select>

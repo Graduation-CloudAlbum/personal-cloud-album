@@ -85,14 +85,23 @@ $("#select-button").click(function () {
 
         }
     });
-
-
     $("#icon-chacha1").click(function () {
         $("#upload-album-choose").html("<span>上传照片至：</span>");
     });
 
 });
-
+//在相册中点击“上传照片按钮”
+$("#uploadPhoto3").click(function () {
+    alert("点击的是："+aName);
+    $.ajax({
+        type: "post",
+        url: "/pca/image/goUpload",
+        data: {"albumName": aName},
+        dataType: "json",
+        success: function (data){
+        }
+    });
+});
 
 //关闭上传照片
 iconChacha1.onclick=function(){
@@ -185,8 +194,7 @@ $().ready(function getAlbum() {
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='重命名相册'></a>"
-                    + "<a class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
+                    + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
                     + "<p class='bottun-title-p1'>"+albumName+"</p>"
