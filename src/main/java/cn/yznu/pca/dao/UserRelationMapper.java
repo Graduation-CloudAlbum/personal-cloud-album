@@ -33,4 +33,7 @@ public interface UserRelationMapper {
     List<UserRelation>selectAllMyFriend(int userid);
 
     List<UserRelation>selectMyFriend(@Param("user_id") int user_id,@Param("permission_group_id") int permission_group_id);
+
+    int moveFriendsToDefault(@Param("defaultpermissionGroupId") int defaultpermissionGroupId,@Param("permissionGroupId") int permissionGroupId);
+
 }
