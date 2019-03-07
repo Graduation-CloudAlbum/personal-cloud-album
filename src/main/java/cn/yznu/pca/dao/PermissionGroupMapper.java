@@ -28,4 +28,6 @@ public interface PermissionGroupMapper {
     int updateByPrimaryKeySelective(PermissionGroup record);
 
     int updateByPrimaryKey(PermissionGroup record);
+
+    boolean deleteFriendGroup(@Param("id") int id);
 }
