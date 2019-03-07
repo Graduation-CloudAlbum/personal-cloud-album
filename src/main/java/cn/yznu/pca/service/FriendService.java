@@ -103,6 +103,13 @@ public interface FriendService {
      */
     List<User> searchFriends(String nickName);
 
+    /**
+     *  删除好友分组
+     * @param user,groupname
+     */
+    boolean deleteFriendsGroup(int defaultint,int permissionGroupId);
+
+
     List <FriendVerification> test();
 
 }

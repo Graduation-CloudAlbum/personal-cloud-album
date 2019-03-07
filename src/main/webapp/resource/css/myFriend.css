@@ -312,3 +312,65 @@
 .friendVerification-group{
     top: 136px;
 }
+/***********************************弹窗创建分组***************************************************/
+#Manage-friends-group{
+    position:absolute;
+    left:40%;
+    top:38%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+.select-manage-first{
+    margin-left: 20px;
+    width: 260px;
+    height: 40px;
+    float: left;
+    padding-left: 10px;
+    border-left: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    font-size: 18px;
+    color: #976666;
+    line-height: 40px;
+}.select-manage-right{
+     width: 50px;
+     height: 40px;
+     float: left;
+     padding-left: 16px;
+     line-height: 40px;
+     border-right: 1px solid #DDD;
+     border-top: 1px solid #DDD;
+     border-bottom: 1px solid #DDD;
+     cursor: pointer;
+ }
+.select-manage-right span{
+    color: #E0E0E0;
+}
+.menu-manage-group{
+    width: 310px;
+    position: absolute;
+    top:105px;
+    right: 20px;
+    z-index: 150;
+    display: none;
+}
+.menu-manage-group .menu-group-li{
+    width: 100%;
+    padding-left: 10px;
+    height: 40px;
+    border: 1px #DDD solid;
+    font-size: 18px;
+    color: #787878;
+    line-height: 40px;
+    background: #fff;
+    cursor: pointer;
+}
+.menu-manage-group .menu-group-li:hover{
+    background: #FAFAFA;
+}

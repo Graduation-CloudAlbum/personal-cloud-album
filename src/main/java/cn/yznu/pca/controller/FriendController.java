@@ -155,39 +155,39 @@ public class FriendController {
     /**
      * 添加好友，并添加好友验证
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/addFriend/{username}")
+    @RequestMapping(method = RequestMethod.POST, value = "/addFriend")
     @ResponseBody
-    public ModelAndView addFriend(@Param("note") String note,
-                                  @Param("permisssion_type") String permisssion_type,
-                                  @PathVariable String username,
+    public boolean addFriend(@Param("Validationmessage") String Validationmessage,
+                                  @Param("userName") String userName,
+                                  @Param("groupName") String groupName,
                                   HttpServletRequest request,
                                   HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("myFriend");
-        try {
-            String username2 = new String(username.getBytes("ISO-8859-1"), "UTF-8");
-            System.out.println("用户名为" + username2);
-            System.out.println("好友请求信息为" + note);
-            List<User> list = friendService.selectFriendByUsername(username2);
+            List<User> list = friendService.selectFriendByUsername(userName);
             User user2=new User();
+            int a=0;
             User user = (User) request.getSession().getAttribute("user");
             for (User attribute : list) {
                 if (friendService.selectExistFriend(user.getId(), attribute.getId()).size() > 0) {
-                    System.out.println("你们已经是好友状态！！！！！");
+                    a=friendService.selectExistFriend(user.getId(), attribute.getId()).size();
+
                 } else {
+                    a=0;
                     //添加好友
                     user2.setId(attribute.getId());
                     friendService.addFriend(user, attribute.getId(),
-                            friendService.selectAddFriendGroup(user.getId(), permisssion_type),
-                            friendService.selectAddFriendGroup(attribute.getId(), "5"));
+                            friendService.selectAddFriendGroup(user.getId(), groupName),
+                            friendService.selectAddFriendGroup(attribute.getId(), "陌生人"));
                     //添加好友验证消息
-                    friendService.addFriendVerification(note, user, user2);
+                    friendService.addFriendVerification(Validationmessage, user, user2);
                     System.out.println("请求验证消息已发送！！！！！");
                 }
             }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return mav;
+            if(a==0){
+                return true;
+            }
+            else {
+                return false;
+            }
     }
 
 
@@ -271,4 +271,22 @@ public class FriendController {
         maps.put("users",users);
         return maps;
     }
+
+
+    /**
+     * 删除好友分组
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/deleteFriendsGroup")
+    @ResponseBody
+    public boolean deleteFriendsGroup(@Param("groupName") String groupName,
+                                     HttpServletRequest request,
+                                     HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        int i=friendService.selectAddFriendGroup(user.getId(),groupName);
+        int a=friendService.selectAddFriendGroup(user.getId(),"我的好友");
+        friendService.deleteFriendsGroup(a,i);
+     return true;
+    }
+
+
 }

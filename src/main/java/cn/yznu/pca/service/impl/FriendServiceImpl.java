@@ -197,6 +197,13 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
+    public boolean deleteFriendsGroup(int defaultpermissionGroupId,int permissionGroupId) {
+        userRelationMapper.moveFriendsToDefault(defaultpermissionGroupId,permissionGroupId);
+        permissionGroupMapper.deleteFriendGroup(permissionGroupId);
+        return true;
+    }
+
+    @Override
     public List<FriendVerification> test(  ) {
         List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
         for (FriendVerification s :fvListRefUser){
