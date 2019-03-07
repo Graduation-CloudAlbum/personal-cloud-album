@@ -45,6 +45,7 @@
             <ul class="content-menu">
                 <li id="menu-frends1" class="content-menu-li"><a>创建分组</a></li>
                 <li id="menu-frends2" class="content-menu-li"><a>添加好友</a></li>
+                <li id="menu-frends3" class="content-menu-li"><a>删除分组</a></li>
             </ul>
             <div class="content-wrap">
                 <div class="content-about">
@@ -62,10 +63,7 @@
                         </c:forEach>
                     </ul>
                 </div>
-
             </div>
-
-
         </div>
     </div>
     <!-- ***************************************************弹窗 ***************************************************-->
@@ -102,24 +100,17 @@
                 <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="Create-friends-input">
                 <div id="search-i" class="search-i"><span class="icon iconfont">&#xe60b;</span></div>
                 <ul id="search-content" class="search-content">
-                    <c:forEach items="${data}" var="data">
-                        <li class="search-content-li">
-                            <img src="<%=basePath%>${data.users.userIcon}">
-                            <p class="search-content-name">${data.users.nickName}</p>
-                            <p class="search-content-name2">${data.users.userName}</p>
-                            <div class="Create-friends-button2 create-jia"><p>加好友</p></div>
-                        </li>
-                    </c:forEach>
+
                 </ul>
             </div>
         </div>
     </div>
   <!-- ***************************************************弹窗添加好友 ***************************************************-->
      <div id="friendVerification">
-            <div class="popup-header"><h4>添加好友 —— 江川</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
+            <div class="popup-header"><h4 id="showNickname"></h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
             <div id="Verification-text" class="Verification-text">
                 <p class="Verification-title">请输入验证消息：</p>
-                <textarea id="textarea-txt" class="search-text" rows="3" >我是...</textarea>
+                <textarea id="Validationmessage" class="search-text" rows="3" >我是...</textarea>
                 <div id="Verification-next" class="Create-friends-button2"><p>下一步</p></div>
             </div>
             <div id="Verification-group">
@@ -127,19 +118,33 @@
                 <div id="friendVerification-left" class="select-first"><p>我的分组</p></div>
                 <div id="friendVerification-right" class="select-right"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
                 <ul id="friendVerification-group" class="menu-group friendVerification-group">
-                    <li class="menu-group-li">陌生人</li>
-                    <li class="menu-group-li">家人</li>
-                    <li class="menu-group-li">同事</li>
+                    <c:forEach items="${friendgroup}" var="friendgroup">
+                        <li  class="menu-group-li" >${friendgroup.permissionType}</li>
+                    </c:forEach>
                 </ul>
-                <div class="Create-friends-button1" id="friendVerification-button1"><p>返回</p></div><div id="friendVerification-button2" class="Create-friends-button2"><p>确定</p></div>
+                <div class="Create-friends-button1" id="friendVerification-button1"><p>返回</p></div><div id="friendVerification_button2" class="Create-friends-button2"><p>确定</p></div>
             </div>
         </div>
-
-
-
     <div id="popLayer" class="popLayer"></div>
     <div id="popLayer2" class="popLayer2"></div>
-
+    <!-- ***************************************************弹窗删除分组 ***************************************************-->
+    <div id="Manage-friends-group">
+        <div class="popup-header"><h4>删除分组</h4><i id="iconChacha7" class="iconfont icon-chacha1"></i></div>
+        <div class="qq">
+            <div id="select-manage-first" class="select-manage-first"><p>选择分组</p></div>
+            <div id="select-manage-right" class="select-manage-right">
+                <span>
+                    <i class="iconfont icon-iconfontjiantou jiantou"></i>
+                </span>
+            </div>
+            <ul id="menu-manage-group" class="menu-manage-group">
+                <c:forEach items="${friendgroup}" var="friendgroup">
+                    <li  class="menu-group-li" >${friendgroup.permissionType}</li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div class="Create-friends-button2" id="Manage-group-button1"><p>取消</p></div><div id="Manage-group-button2" class="Create-friends-button2"><p>确定</p></div>
+    </div>
 
 
 
