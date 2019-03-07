@@ -264,4 +264,12 @@
     (c.user_id_two=d.id) where user_id=#{user_id,jdbcType=INTEGER} and permission_group_id=#{permission_group_id,jdbcType=INTEGER}
   </select>
 
+<!--移动好友至默认分组-->
+  <update id="moveFriendsToDefault" parameterType="cn.yznu.pca.model.UserRelation" >
+    update user_relation
+    set permission_group_id = #{defaultpermissionGroupId,jdbcType=INTEGER}
+    where permission_group_id = #{permissionGroupId,jdbcType=INTEGER}
+  </update>
+
+
 </mapper>
