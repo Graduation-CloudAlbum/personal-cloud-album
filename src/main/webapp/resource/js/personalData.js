@@ -45,9 +45,9 @@ ChangetheAvatar.onclick=function(){
     document.getElementById('Change-the-Avatar').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
-$(".Change-the-Avatar-button1").click(function () {
-
-});
+// $(".Change-the-Avatar-button1").click(function () {
+//
+// });
 //关闭更换头像
 var ChangetheAvatarButton2 = document.getElementById('Change-the-Avatar-button2');
 ChangetheAvatarButton2.onclick=function(){

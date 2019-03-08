@@ -93,20 +93,11 @@
         <div class="Modifying-data-button2"><p>确定</p></div>
     </div>
     <div id="Change-the-Avatar" class="Change-the-Avatar">
+
         <h4>更换头像</h4>
         <img src="<%=user.getUserIcon()%>">
         <div id="Change-the-Avatar-button1" class="Change-the-Avatar-button1"><p>选择</p></div>
         <div id="Change-the-Avatar-button2" class="Change-the-Avatar-button2"><p>取消</p></div>
-        <%--<div class="upload-photos-pop-content">--%>
-            <%--<form action="/pca/image/upload"  method='post' enctype='multipart/form-data' >--%>
-                <%--<ul  id="dd" class="upimgcontent"></ul>--%>
-                <%--<div><label id="upload-photos-pop-content-button" class="Change-the-Avatar-button1" for="doc0"><p>选择</p></label></div>--%>
-                <%--<div id="upload-photos-pop-content-footer2" class="upload-photos-pop-content-footer2 fileinput-wrap">--%>
-                    <%--<input  class="inputfile" type="file" name="files" multiple="multiple" id="doc0" imgid="img0" onchange="javascript:setImagePreviews()" />--%>
-                    <%--<button class="btn btn-info footer-button2"  type="submit"><p>开始上传</p></button>--%>
-                <%--</div>--%>
-            <%--</form>--%>
-        <%--</div>--%>
     </div>
     <div id="Change-Password" class="Change-Password">
         <div class="popup-header"><h4>修改密码</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
