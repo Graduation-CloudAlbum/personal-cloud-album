@@ -43,7 +43,7 @@
             <ul class="content-menu">
                     <li id="deleteAll" class="content-menu-li"><a>清空回收站</a></li>
                     <li id="updateAll" class="content-menu-li"><a>还原所有项目</a></li>
-                    <li id="table-header5"><button class="btn btn-info">还原选中</button><button class="btn btn-info">删除选中</button></li>
+                    <li id="table-header5"><button id="button1" class="btn btn-info">还原选中</button><button id="button2" class="btn btn-info">删除选中</button></li>
                 </ul>
                 <div class="content-about">
                     <table id="recycle-table" class="recycle-table">
@@ -94,6 +94,12 @@
             <input id="delete-recycle-input" type="text" placeholder="请输入登录密码继续清空操作"  name="">
             <div class="delete-recycle-button1" id="delete-recycle-button1"><p>取消</p></div><div class="delete-recycle-button2"><p>清空</p></div>
         </div>
+        <!-- ***************************************************删除选中 ***************************************************-->
+        <div id="delete-recycle2">
+            <div class="popup-header"><h4>彻底删除选中相片</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
+            <input id="delete-recycle-input2" type="text" placeholder="请输入登录密码继续删除操作"  name="">
+            <div class="delete-recycle-button1" id="delete-recycle-button3"><p>取消</p></div><div class="delete-recycle-button2"><p>清空</p></div>
+        </div>
         <!-- ***************************************************还原回收站 ***************************************************-->
         <div id="update-recycle">
             <div class="popup-header"><h4>还原所有相片至</h4><i id="iconChacha2" class="iconfont icon-chacha1"></i></div>
@@ -106,6 +112,18 @@
             </ul>
             <div class="update-recycle-button1" id="update-recycle-button1"><p>取消</p></div><div class="update-recycle-button2"><p>还原</p></div>
         </div>
+        <!-- ***************************************************还原选中 ***************************************************-->
+        <div id="update-recycle2">
+                <div class="popup-header"><h4>还原选中相片至</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
+                <div id="update-recycle-left2" class="select-first">陌生人</div>
+                <div id="update-recycle-right2" class="select-right"><span><i id="select-jiantou2" class="iconfont icon-iconfontjiantou jiantou select-jiantou"></i></span></div>
+                <ul id="update-recycle-group2" class="menu-group">
+                    <li class="menu-group-li">陌生人</li>
+                    <li class="menu-group-li">家人</li>
+                    <li class="menu-group-li">同事</li>
+                </ul>
+                <div class="update-recycle-button1" id="update-recycle-button2"><p>取消</p></div><div class="update-recycle-button2"><p>还原</p></div>
+            </div>
         <!-- ***************************************************查看 ***************************************************-->
         <!-- <div id="see-photo">
             <div class="popup-header"><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>

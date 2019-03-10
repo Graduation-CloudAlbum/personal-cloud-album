@@ -43,16 +43,35 @@ for(var i=0;i<recycleTableTr.length;i++){
 
 //     }
 // }
-var iconChacha3 = document.getElementById('iconChacha3');
-iconChacha3.onclick = function(){
-    document.getElementById('see-photo').style.display="none";
-    document.getElementById('popLayer2').style.display="block";
-}
+// var iconChacha3 = document.getElementById('iconChacha3');
+// iconChacha3.onclick = function(){
+//     document.getElementById('see-photo').style.display="none";
+//     document.getElementById('popLayer2').style.display="block";
+// }
 //清空回收站
 var deleteAll = document.getElementById('deleteAll');
 deleteAll.onclick = function(){
     document.getElementById('delete-recycle').style.display="block";
     document.getElementById('popLayer2').style.display="block";
+}
+//删除选中
+var button2 = document.getElementById('button2');
+button2.onclick = function(){
+    document.getElementById('delete-recycle2').style.display="block";
+    document.getElementById('popLayer2').style.display="block";
+}
+//删除选中 -> 取消
+var iconChacha3 = document.getElementById('iconChacha3');
+var deleteRecycleButton3 = document.getElementById('delete-recycle-button3');
+iconChacha3.onclick = function(){
+    document.getElementById('delete-recycle2').style.display="none";
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById("delete-recycle-input2").value="";
+}
+deleteRecycleButton3.onclick = function(){
+    document.getElementById('delete-recycle2').style.display="none";
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById("delete-recycle-input2").value="";
 }
 //清空回收站 -> 取消
 var iconChacha1 = document.getElementById('iconChacha1');
@@ -73,10 +92,9 @@ updateAll.onclick = function(){
     document.getElementById('update-recycle').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
-//还原回收站 ->取消
 var iconChacha2 = document.getElementById('iconChacha2');
 var updateRecycleButton1 = document.getElementById('update-recycle-button1');
-
+//还原回收站 ->取消
 var updateRecycleLeft = document.getElementById('update-recycle-left');
 var updateRecycleRight = document.getElementById('update-recycle-right');
 var updateRecycleGroup = document.getElementById('update-recycle-group');
@@ -106,11 +124,58 @@ for(var i=0; i<updateRecycleGroupLi.length; i++){
     updateRecycleGroupLi[i].index = i;
     updateRecycleGroupLi[i].onclick = function(){
         str = (function(i){
-			aLi=updateRecycleGroupLi[i].innerHTML;
-			updateRecycleLeft.innerHTML=aLi;
-			return updateRecycleLeft.innerHTML;
-		})(this.index);
-		updateRecycleLeft.innerHTML=str
+            aLi=updateRecycleGroupLi[i].innerHTML;
+            updateRecycleLeft.innerHTML=aLi;
+            return updateRecycleLeft.innerHTML;
+        })(this.index);
+        updateRecycleLeft.innerHTML=str
         updateRecycleGroup.style.display="none";
+    }
+}
+//还原选中
+var button1 = document.getElementById('button1');
+button1.onclick = function(){
+    document.getElementById('update-recycle2').style.display="block";
+    document.getElementById('popLayer2').style.display="block";
+}
+//还原选中 -> 取消
+var iconChacha4 = document.getElementById('iconChacha4');
+var updateRecycleButton2 = document.getElementById('update-recycle-button2');
+
+var updateRecycleLeft2 = document.getElementById('update-recycle-left2');
+var updateRecycleRight2= document.getElementById('update-recycle-right2');
+var updateRecycleGroup2 = document.getElementById('update-recycle-group2');
+var updateRecycleGroupLi2 = updateRecycleGroup2.getElementsByTagName('li');
+
+iconChacha4.onclick = function(){
+    document.getElementById('update-recycle2').style.display="none";
+    document.getElementById('popLayer2').style.display="none";
+    updateRecycleGroup2.style.display="none";
+    updateRecycleLeft2.innerHTML="陌生人";
+    document.getElementById('select-jiantou2').style.color="#E0E0E0";
+}
+updateRecycleButton2.onclick = function(){
+    document.getElementById('update-recycle2').style.display="none";
+    document.getElementById('popLayer2').style.display="none";
+    updateRecycleGroup2.style.display="none";
+    updateRecycleLeft2.innerHTML="陌生人";
+    document.getElementById('select-jiantou2').style.color="#E0E0E0";
+}
+//还原回收站 -> 相册
+updateRecycleRight2.onclick = function(){
+    updateRecycleGroup2.style.display="block";
+    document.getElementById('select-jiantou2').style.color="#000";
+}
+var aLi2=""
+for(var i=0; i<updateRecycleGroupLi2.length; i++){
+    updateRecycleGroupLi2[i].index = i;
+    updateRecycleGroupLi2[i].onclick = function(){
+        str = (function(i){
+            aLi2=updateRecycleGroupLi2[i].innerHTML;
+            updateRecycleLeft2.innerHTML=aLi;
+            return updateRecycleLeft2.innerHTML;
+        })(this.index);
+        updateRecycleLeft2.innerHTML=str
+        updateRecycleGroup2.style.display="none";
     }
 }
