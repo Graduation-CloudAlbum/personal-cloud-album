@@ -10,6 +10,8 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User  user= (User) request.getSession().getAttribute("user");
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -32,7 +34,7 @@
             <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user.getNickName()%></p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
-            <a id="navMenu4" class="left-li" href="<%=basePath%>/user/recycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
+            <a id="navMenu4" class="left-li" href="<%=basePath%>/recycleBin/myRecycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
             <div class="nav-button"></div>
         </div>
         <!-- right -->
@@ -56,30 +58,19 @@
                             <th>操作</th>             
                         </tr>
                         <tbody>
+                        <c:forEach items="${recycleBins}" var="recycleBins">
                             <tr>
                                 <td class="th1"><input name="photo" type="checkbox" value="" /></td>
-                                <td><img src="../img/gallery/DSC_0061-69x69.jpg" /></td>
-                                <td>4KB</td>
-                                <td>1019-03-09 15:00</td>
+                                <td><img src="${recycleBins.image.url}" /></td>
+                                <td>${recycleBins.image.imageSize}</td>
+                                <td>
+                                    <fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                        </td>
                                 <td>15天</td>
                                 <td><button class="btn btn-info">查看</button><button class="btn btn-info">还原</button><button class="btn btn-info">删除</button></td>
                             </tr>
-                            <tr>
-                                <td class="th1"><input name="photo" type="checkbox" value="" /></span></td>
-                                <td><img src="../img/gallery/DSC_0061-69x69.jpg" /></td>
-                                <td>4KB</td>
-                                <td>1019-03-09 15:00</td>
-                                <td>15天</td>
-                                <td><button class="btn btn-info">查看</button><button class="btn btn-info">还原</button><button class="btn btn-info">删除</button></td>
-                            </tr>
-                            <tr>
-                                <td class="th1"><input name="photo" type="checkbox" value="" /></td>
-                                <td><img src="../img/gallery/DSC_0061-69x69.jpg" /></td>
-                                <td>4KB</td>
-                                <td>1019-03-09 15:00</td>
-                                <td>15天</td>
-                                <td><button class="btn btn-info">查看</button><button class="btn btn-info">还原</button><button class="btn btn-info">删除</button></td>
-                            </tr>
+                            <li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>
+                        </c:forEach>
 
                         </tbody>
                     </table>
