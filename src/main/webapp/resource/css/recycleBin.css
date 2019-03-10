@@ -1,0 +1,207 @@
+.content-about{
+    padding: 15px;
+}
+.recycle-table{
+    width: 100%;
+}
+.recycle-table .th1{
+    width: 60px;
+    text-align: center;
+}
+.recycle-table .th6{
+    width: 300px;
+}
+.recycle-table th,td{
+    border:1px solid #EBEBEB;
+    padding: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #666;
+    /* height: 40px; */
+    background: #fff;
+    cursor: pointer;
+    line-height: 40px;
+    width: 300px;
+}
+.recycle-table img{
+    width: 50px;
+    height: 50px;
+}
+.recycle-table button{
+    margin-right: 10px;
+}
+/* D84C31 */
+#table-header5{
+    display: none;
+    padding-left: 15px;
+    width: 250px;   
+    float: right;
+    line-height: 36px;
+}
+#table-header5 button{
+    background: #cecbcb;
+    margin-right: 15px;
+}
+/******************清空回收站********************************/
+#delete-recycle{
+	position: absolute;
+    left: 38%;
+    top: 37%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+#delete-recycle-input{
+	margin-left: 20px;
+	height: 40px;
+	width: 310px;
+}
+
+.delete-recycle-button1{
+	width: 80px;
+	background: #fff;
+	border-radius: 0.5%;
+	height: 35px;
+	margin-left: 150px;
+	border: 1px solid #DDD;
+	text-align: center;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.delete-recycle-button1 p{
+	line-height: 35px;
+}
+.delete-recycle-button2{
+	width: 80px;
+	background: #00A8D8;
+	border-radius: 0.5%;
+	height: 35px;
+	position: absolute;
+	right: 20px;
+	bottom: 24px;
+	text-align: center;
+	cursor: pointer;
+}
+.delete-recycle-button2 p{
+	color: #fff;
+	line-height: 35px;
+}
+/******************还原回收站********************************/
+#update-recycle{
+	position: absolute;
+    left: 38%;
+    top: 37%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+ .select-first{
+	margin-left: 20px;
+	width: 260px;
+	height: 40px;
+	float: left;
+	padding-left: 10px;
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	font-size: 18px;
+	color: #976666;
+	line-height: 40px;
+}
+
+ .select-right{
+	width: 50px;
+	height: 40px;
+	float: left;
+	padding-left: 16px;
+	line-height: 40px;
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+ .select-right span{
+	color: #E0E0E0;
+}
+.select-jiantou:hover{
+    color: #000;
+}
+#update-recycle-group{
+	display: none;
+}
+.menu-group{
+	width: 310px;
+	position: absolute;
+	top:105px;
+	right: 20px;
+	z-index: 150;
+	display: none;
+}
+.menu-group .menu-group-li{
+	width: 100%;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px #DDD solid;
+	font-size: 18px;
+	color: #787878;
+	line-height: 40px;
+	background: #fff;
+	cursor: pointer;
+}
+.menu-group .menu-group-li:hover{
+	background: #FAFAFA;
+}
+.update-recycle-button1{
+	width: 80px;
+	background: #fff;
+	border-radius: 0.5%;
+	height: 35px;
+	border: 1px solid #DDD;
+	text-align: center;
+    cursor: pointer;
+    position:absolute;
+    bottom: 24px;
+    right: 115px;
+
+}
+.update-recycle-button1 p{
+	line-height: 35px;
+}
+.update-recycle-button2{
+	width: 80px;
+	background: #00A8D8;
+	border-radius: 0.5%;
+	height: 35px;
+	position: absolute;
+	right: 20px;
+	bottom: 24px;
+	text-align: center;
+	cursor: pointer;
+}
+.update-recycle-button2 p{
+	color: #fff;
+	line-height: 35px;
+}
+/******************还原回收站********************************/
+#see-photo{
+    position: absolute;
+    left: 38%;
+    top: 37%;
+    z-index: 70;
+    width: 350px;
+    height: 180px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
+}
+/******************还原回收站********************************/
+
+/******************还原回收站********************************/

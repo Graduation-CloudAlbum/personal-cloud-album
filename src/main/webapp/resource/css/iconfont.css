@@ -14,6 +14,14 @@
   url('iconfont.ttf?t=1551249765833') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
   url('iconfont.svg?t=1551249765833#iconfont') format('svg'); /* iOS 4.1- */
 }
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1552185276173'); /* IE9 */
+  src: url('iconfont.eot?t=1552185276173#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAP4AAsAAAAACEwAAAOrAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDQAqDOIMRATYCJAMYCw4ABCAFhG0HZRtMBxEVnCnJvkyIevsSBQOyZbejX/NFvaphnGF8YvcX7UdjmQi+9kP33d2HMCpAlYlHVhkfzW1dK0xVpUAjWCg2Ij+vZy/5B2ilNYucoL3tGWl7oCYGAAbsaNcLhGlbc3UIwkaYojyLHv59IUuFdLLZg7rxiv//uZ+va5pAXns2p+yi0XiCA9pO568A+mAljn8ZXutSOOjzBDrNUoDt3Rw8oFWQaYG4tdGh0GZUSkN2aIW6Ym25HFcDoza9xVeBd8Hfx39Yj4WkysjcqyjLCNi6Zr9ORtn/2QI8FLCnM0DeRMYaUIhXlaZ7yFFoDdJpBoodYAVaSZqqUPDa9Tr5H4AgwDuQoJOiu//lkRSVkIkayewGZzhc8YudIyR+CSAUfgmymsWugBD8ShZ7bFk94ZgGL4H3QIhr3iEkSYhxIQ5xHmbm199mAYW+UrnEgRx55cEy2cgk9w6K/dkpXjM73tvbXnS6x9aW586Os2dDWVNOaijwTjNK8re307x2tr2o2/bXcaHnehJb7GU7+p79kmXy7oO9YRR66bbRdo73xE7ZluFWdlKke1SEKxY8dsFot4gAs3tVdQGzo9czd2aWDW2NV3fmo6PfP/4+rxZA/4s9PE6ppsMR6qQSna4DEQQCOUGF+9qM3qhKPD5EcR/waao+4KVkcilehpPIqBSVkUhlsD+ZBEbf8uZGN0H6x39zjUEP1Og3x6eZsn1bqvXdtGMkHs7OPE4l1PstRZpvi6Pl4lFqs7v3tbtPczKw2MPnGmKqo0ONoJJ4DQxucjGNUE8Q6vk4SAee8fDsag9lAzxP53Fkos+uzn85YYT8Fc8PXoIhKF8WnoK5Db5Y2Av4OdBMQXXTsP6RWGf2z4xj3PsHj2dxwVgXVcr/oIFXCNRWJ2F6gk7axU+0DTqeSjLSOZPQGkkgacxA1ppDF/waVLpsQK21CZ1WWW/uMiQWsigdWFGAIPQbhaTXZ8j6raEL/ggqo56g1h+CTtcY/55dFlLYzZmxEKyh/IGtqFdMK5sw+4E6tAWnuQHpH9lbL2Rxmo/esUeeYoF/61xEgWLq4IYuw7YlGJgcVhIbkeGUJKrqk+KKutHGmbEQrKH8ga2oV15v2RR+/4E6tAU3NDXp/5G97R+yOO2Avov6Tk23Mty/dS6ihEmKqYMbGLClIYKhepTDSmIzIDCcEtxJdRXFy0u6F8iU2yAHLBrNVrvTtXgUWNnCU/CBln5+dvSm6LWz7jeEQlSF/dcWGeVoBAA=') format('woff2'),
+  url('iconfont.woff?t=1552185276173') format('woff'),
+  url('iconfont.ttf?t=1552185276173') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1552185276173#iconfont') format('svg'); /* iOS 4.1- */
+}
 .iconfont {
   font-family:"iconfont" !important;
   font-size:16px;
@@ -78,4 +86,7 @@
 
 .icon-xiajiantou-cu:before {
   content: "\e615";
+}
+.icon-gougou:before {
+  content: "\e651";
 }
