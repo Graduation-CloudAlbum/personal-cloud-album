@@ -1,5 +1,7 @@
 package cn.yznu.pca.service;
 
+import cn.yznu.pca.model.RecycleBin;
+
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ public interface RecycleBinService {
      * @param userId 用户id
      * @return
      */
-    List getRecycleBin(int userId);
+    List<RecycleBin> getRecycleBin(int userId);
 
     /**
      * 单个删除回收站里的相册
