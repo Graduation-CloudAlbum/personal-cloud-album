@@ -27,7 +27,17 @@ public class User implements Serializable {
 
     private List<UserRelation> userRelationList;
 
+    private List<RecycleBin> recycleBins;
+
     private static final long serialVersionUID = 1L;
+
+    public List<RecycleBin> getRecycleBins() {
+        return recycleBins;
+    }
+
+    public void setRecycleBins(List<RecycleBin> recycleBins) {
+        this.recycleBins = recycleBins;
+    }
 
     public void setUserRelationList(List<UserRelation> userRelationList) {
         this.userRelationList = userRelationList;
