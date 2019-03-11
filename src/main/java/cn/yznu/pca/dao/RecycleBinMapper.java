@@ -30,4 +30,19 @@ public interface RecycleBinMapper {
     int updateByPrimaryKey(RecycleBin record);
 
     List<RecycleBin>selectMyRecycleBin(@Param("user_id") int user_id);
+
+    boolean updateImageByList(List list);
+
+    boolean deleteRecycleBinByList(List list);
+
+    boolean updateAlbumByList(List list);
+
+    List<RecycleBin>selectAlbumByList(List list);
+
+    boolean deleteImageByList(List list);
+
+    boolean deleteAllRecycleBin(int id);
+
+    boolean recoverAllRecycleBin(List list);
+
 }
