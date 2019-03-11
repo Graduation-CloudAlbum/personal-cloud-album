@@ -35,7 +35,7 @@ public interface ImageMapper {
 
     int getImageNum(@Param("userId")Integer userId,@Param("albumId")Integer albumId);
 
-    int updateImageStatus(@Param("imageId")Integer imageId);
+    int updateImageStatus(@Param("imageId")Integer[] imageId);
 
-    int updateImageToAlbum(@Param("imageId")Integer imageId,@Param("albumId")Integer albumId);
+    int updateImageToAlbum(@Param("imageId")Integer[] imageId,@Param("albumId")Integer albumId);
 }

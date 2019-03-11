@@ -46,10 +46,10 @@ public interface AlbumService {
 
     /**
      * 创建相册
-     * @param albumName 相册名
+     * @param album 相册对象
      * @return
      */
-    int createAlbum(Album albumName);
+    int createAlbum(Album album);
 
     /**
      * 删除相册
