@@ -95,42 +95,16 @@ updateAll.onclick = function(){
 var iconChacha2 = document.getElementById('iconChacha2');
 var updateRecycleButton1 = document.getElementById('update-recycle-button1');
 //还原回收站 ->取消
-var updateRecycleLeft = document.getElementById('update-recycle-left');
-var updateRecycleRight = document.getElementById('update-recycle-right');
-var updateRecycleGroup = document.getElementById('update-recycle-group');
-var updateRecycleGroupLi = updateRecycleGroup.getElementsByTagName('li');
 
 iconChacha2.onclick = function(){
     document.getElementById('update-recycle').style.display="none";
     document.getElementById('popLayer2').style.display="none";
-    updateRecycleGroup.style.display="none";
-    updateRecycleLeft.innerHTML="陌生人";
     document.getElementById('select-jiantou').style.color="#E0E0E0";
 }
 updateRecycleButton1.onclick = function(){
     document.getElementById('update-recycle').style.display="none";
     document.getElementById('popLayer2').style.display="none";
-    updateRecycleGroup.style.display="none";
-    updateRecycleLeft.innerHTML="陌生人";
     document.getElementById('select-jiantou').style.color="#E0E0E0";
-}
-//还原回收站 -> 相册
-updateRecycleRight.onclick = function(){
-    updateRecycleGroup.style.display="block";
-    document.getElementById('select-jiantou').style.color="#000";
-}
-var aLi=""
-for(var i=0; i<updateRecycleGroupLi.length; i++){
-    updateRecycleGroupLi[i].index = i;
-    updateRecycleGroupLi[i].onclick = function(){
-        str = (function(i){
-            aLi=updateRecycleGroupLi[i].innerHTML;
-            updateRecycleLeft.innerHTML=aLi;
-            return updateRecycleLeft.innerHTML;
-        })(this.index);
-        updateRecycleLeft.innerHTML=str
-        updateRecycleGroup.style.display="none";
-    }
 }
 //还原选中
 var button1 = document.getElementById('button1');
@@ -142,40 +116,106 @@ button1.onclick = function(){
 var iconChacha4 = document.getElementById('iconChacha4');
 var updateRecycleButton2 = document.getElementById('update-recycle-button2');
 
-var updateRecycleLeft2 = document.getElementById('update-recycle-left2');
-var updateRecycleRight2= document.getElementById('update-recycle-right2');
-var updateRecycleGroup2 = document.getElementById('update-recycle-group2');
-var updateRecycleGroupLi2 = updateRecycleGroup2.getElementsByTagName('li');
 
 iconChacha4.onclick = function(){
     document.getElementById('update-recycle2').style.display="none";
     document.getElementById('popLayer2').style.display="none";
-    updateRecycleGroup2.style.display="none";
-    updateRecycleLeft2.innerHTML="陌生人";
-    document.getElementById('select-jiantou2').style.color="#E0E0E0";
 }
 updateRecycleButton2.onclick = function(){
     document.getElementById('update-recycle2').style.display="none";
     document.getElementById('popLayer2').style.display="none";
-    updateRecycleGroup2.style.display="none";
-    updateRecycleLeft2.innerHTML="陌生人";
-    document.getElementById('select-jiantou2').style.color="#E0E0E0";
 }
-//还原回收站 -> 相册
-updateRecycleRight2.onclick = function(){
-    updateRecycleGroup2.style.display="block";
-    document.getElementById('select-jiantou2').style.color="#000";
-}
-var aLi2=""
-for(var i=0; i<updateRecycleGroupLi2.length; i++){
-    updateRecycleGroupLi2[i].index = i;
-    updateRecycleGroupLi2[i].onclick = function(){
-        str = (function(i){
-            aLi2=updateRecycleGroupLi2[i].innerHTML;
-            updateRecycleLeft2.innerHTML=aLi;
-            return updateRecycleLeft2.innerHTML;
-        })(this.index);
-        updateRecycleLeft2.innerHTML=str
-        updateRecycleGroup2.style.display="none";
+//恢复选中
+var updateRecycleButton3=document.getElementById("update-recycle-button3");
+updateRecycleButton3.onclick = function(){
+    obj=document.getElementsByName("photo")
+    check_val=[];
+    for (k in obj){
+        if(obj[k].checked){
+            check_val.push(obj[k].value);
+        }
     }
+
+    $.ajax({
+        async :false,
+        type: "post",
+        url: "/pca/recycleBin/someImageRecovery",
+        data:{check_val:check_val},
+        dataType: "json",
+        success: function (data) {
+            alert("还原成功")
+            window.location.href="/pca/recycleBin/myRecycleBin"
+        }
+    });
+}
+//删除选中
+var deleteRecycleInput2 ;
+var updateRecycleButton4=document.getElementById("delete-recycle-button4");
+updateRecycleButton4.onclick = function(){
+    deleteRecycleInput2=$("#delete-recycle-input2").val();
+    obj=document.getElementsByName("photo")
+    check_val=[];
+    for (k in obj){
+        if(obj[k].checked){
+            check_val.push(obj[k].value);
+        }
+    }
+    $.ajax({
+        async :false,
+        type: "post",
+        url: "/pca/recycleBin/deleteSomeRecycleBin/"+deleteRecycleInput2,
+        data:{check_val:check_val},
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("删除成功！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
+            }
+            else{
+                alert("密码错误，请重新输入")
+            }
+        }
+    });
+}
+
+
+var deleteRecycleInput;
+var updateRecycleButton5=document.getElementById("delete-recycle-button5");
+updateRecycleButton5.onclick = function(){
+    deleteRecycleInput=$("#delete-recycle-input").val();
+    $.ajax({
+        async :false,
+        type: "post",
+        url: "/pca/recycleBin/deleteAllRecycleBin/"+deleteRecycleInput,
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("清空回收站成功！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
+            }
+            else{
+                alert("密码错误，请重新输入")
+            }
+        }
+    });
+}
+
+
+var updateRecycleButton6=document.getElementById("recover-recycle-button6");
+updateRecycleButton6.onclick = function(){
+    $.ajax({
+        async :false,
+        type: "post",
+        url: "/pca/recycleBin/recoverAllRecycleBin",
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("还原成功！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
+            }
+            else{
+                alert("还原失败！")
+            }
+        }
+    });
 }
