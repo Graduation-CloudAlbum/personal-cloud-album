@@ -10,11 +10,11 @@ import cn.yznu.pca.service.UserService;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +37,13 @@ public class ImageController {
     UserService userService;
     @Autowired
     AlbumService albumService;
-
+    private static String EXCLUSIVE="我的专属";
+    /**
+     * 查询相册中的照片
+     * @param albumName 相册名
+     * @param request
+     * @return
+     */
     @RequestMapping("/getImage")
     @ResponseBody
     public Map getImage(@Param("albumName") String albumName, HttpServletRequest request ){
@@ -53,6 +59,13 @@ public class ImageController {
         map.put("imageList",list);
         return map;
     }
+
+    /**
+     * 上传准备，通过相册名获取相册id
+     * @param albumName 相册名
+     * @param request
+     * @return
+     */
     @RequestMapping("/goUpload")
     @ResponseBody
     public int goUpload(@Param("albumName") String albumName,HttpServletRequest request ){
@@ -70,13 +83,13 @@ public class ImageController {
     /**
      * 上传照片
      * @param request
-     * @param image
-     * @param pictureFile
+     * @param image iamge对象
+     * @param pictureFile 照片文件
      * @return
      * @throws Exception
      */
     @RequestMapping("/upload")
-    public String uploadMany( HttpServletRequest request ,Image image, @RequestParam(value="files",required=false)MultipartFile[] pictureFile) throws Exception{
+    public String upload( HttpServletRequest request ,Image image, @RequestParam(value="files",required=false)MultipartFile[] pictureFile) throws Exception{
         for (int i = 0; i < pictureFile.length-1; i++) {
                 MultipartFile file = pictureFile[i];
                 User user = (User) request.getSession().getAttribute("user");
@@ -109,6 +122,67 @@ public class ImageController {
         }
         return "myAlbum";
     }
+    /**
+     * 定时上传照片，使用定时上传方式只允许用户上传到专属相册目录
+     * @param request
+     * @param image iamge对象
+     * @param pictureFile 照片文件
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/timingUpload")
+    public String timingUpload( HttpServletRequest request ,Image image, @RequestParam(value="files",required=false)MultipartFile[] pictureFile) throws Exception {
+        /**
+         * 第一次选择定时上传方式时，系统自动创建一个相册
+         * 该相册名字为“我的专属”
+         * 主题为“专属”
+         * 所有使用定时上传的照片都会默认上传到此相册
+         */
+        User user = (User) request.getSession().getAttribute("user");
+        //获取用户ID
+        int userId = user.getId();
+        Album album = (Album) albumService.selectAlbumByName(userId, EXCLUSIVE).get(0);
+        if (album == null) {
+            Album album1 = new Album();
+            album1.setAlbumType("专属");
+            album1.setAlbumName("我的专属");
+            album1.setUserId(userId);
+            album1.setStatus("1");
+            albumService.createAlbum(album1);
+        } else {
+            for (int i = 0; i < pictureFile.length - 1; i++) {
+                MultipartFile file = pictureFile[i];
+                //获取专属相册的id
+                int albumId = album.getId();
+                //设置本地保存路径
+                String localPath = "F:\\demos\\upload\\";
+                //使用UUID给图片重命名，并去掉四个“-”
+                String name = UUID.randomUUID().toString().replaceAll("-", "");
+                //获取照片大小,以B/KB/MB为单位保存
+                String fileSize = FormatUtil.format(file.getSize());
+                //获取文件的扩展名
+                String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+                //设置图片上传的虚拟路径
+                String url = "/upload/";
+                //保存照片到硬盘
+                file.transferTo(new File(localPath + "/" + name + "." + ext));
+                //保存照片名
+                image.setImageName(name);
+                //保存照片大小
+                image.setImageSize(fileSize);
+                //设置所属用户
+                image.setUserId(userId);
+                //保存到专属相册
+                image.setAlbumId(albumId);
+                //保存照片url
+                image.setUrl(url + name + "." + ext);
+                imageService.upload(image);
+            }
+
+        }
+        return "myAlbum";
+
+    }
 
     /**
      * 下载照片
@@ -135,14 +209,14 @@ public class ImageController {
     }
 
     /**
-     * 删除照片
+     * 删除照片（包含单个和批量操作）
      * @param imageId 照片id
      * @param request
      * @return
      */
     @RequestMapping("/deleteImage")
     @ResponseBody
-    public int deleteImage(@Param("imageId") int imageId, HttpServletRequest request ){
+    public int deleteImage(@Param("imageId") Integer[] imageId, HttpServletRequest request ){
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
 
@@ -150,14 +224,14 @@ public class ImageController {
     }
 
     /**
-     * 移动照片
+     * 移动照片（包含单个和批量操作）
      * @param imageId 照片id
      * @param request
      * @return
      */
     @RequestMapping("/moveImage")
     @ResponseBody
-    public int moveImage(@Param("imageId") int imageId,@Param("albumName") String albumName,HttpServletRequest request ){
+    public int moveImage(@Param("imageId") Integer[] imageId,@Param("albumName") String albumName,HttpServletRequest request ){
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         List albumlist=albumService.selectAlbumByName(userId,albumName);

@@ -38,7 +38,7 @@ public interface ImageService {
      * @param imageId 照片id
      * @return
      */
-    int deleteImage(int imageId);
+    int deleteImage(Integer[] imageId);
 
     /**
      * 移动照片
@@ -46,7 +46,7 @@ public interface ImageService {
      * @param albumId 目标相册id
      * @return
      */
-    int updateImage(int imageId,int albumId);
+    int updateImage(Integer[] imageId,int albumId);
 
     /**
      * 用户所有照片数量

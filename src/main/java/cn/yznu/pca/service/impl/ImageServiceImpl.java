@@ -37,12 +37,12 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public int deleteImage(int imageId) {
+    public int deleteImage(Integer[] imageId) {
         return imageMapper.updateImageStatus(imageId);
     }
 
     @Override
-    public int updateImage(int imageId, int albumId) {
+    public int updateImage(Integer[] imageId, int albumId) {
         return imageMapper.updateImageToAlbum(imageId,albumId);
     }
 
