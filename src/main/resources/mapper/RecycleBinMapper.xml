@@ -247,4 +247,60 @@
     recycle_bin c right join image d on
     (c.image_id=d.id) where c.user_id=#{user_id,jdbcType=INTEGER}
   </select>
+
+  <!--恢复选中照片-->
+  <update id="updateImageByList">
+    update image set status=0 where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </update>
+
+
+    <!--删除选中照片-->
+    <delete id="deleteRecycleBinByList">
+        delete from recycle_bin where image_id in
+        <foreach collection="list" open="(" separator="," close=")" item="image_id">
+            #{image_id,jdbcType=INTEGER}
+        </foreach>
+    </delete>
+
+    <!--更新相册状态-->
+    <update id="updateAlbumByList">
+        update album set status=0 where id in
+        <foreach collection="list" open="(" separator="," close=")" item="id">
+            #{id,jdbcType=INTEGER}
+        </foreach>
+    </update>
+
+  <!--根据照片id查找相册-->
+  <select id="selectAlbumByList" resultMap="BaseResultMap">
+    select * from image where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </select>
+
+
+  <!--删除选中照片image-->
+  <delete id="deleteImageByList">
+    delete from image where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+
+
+  <!--删除回收站所有照片-->
+  <delete id="deleteAllRecycleBin">
+    delete from recycle_bin where user_id =#{id,jdbcType=INTEGER}
+  </delete>
+
+  <!--恢复回收站所有照片-->
+  <update id="recoverAllRecycleBin">
+    update image set status=0 where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </update>
 </mapper>
