@@ -8,6 +8,21 @@
     <result column="image_id" property="imageId" jdbcType="INTEGER" />
     <result column="album_id" property="albumId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <association  property="user" javaType="cn.yznu.pca.model.User" >
+      <id column="id" property="id" />
+      <result column="nick_name" property="nickName" />
+      <result column="user_icon" property="userIcon" />
+    </association>
+    <association  property="album" javaType="cn.yznu.pca.model.Album" >
+      <id column="id" property="id" />
+      <result column="album_name" property="albumName" />
+      <result column="album_type" property="albumType" />
+    </association>
+    <association  property="image" javaType="cn.yznu.pca.model.Image" >
+      <id column="id" property="id" />
+      <result column="url" property="url" />
+      <result column="image_size" property="imageSize" />
+    </association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -225,4 +240,11 @@
       user_id = #{userId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查找该用户下所有回收站的相片-->
+  <select id="selectMyRecycleBin" resultMap="BaseResultMap">
+    select * from
+    recycle_bin c right join image d on
+    (c.image_id=d.id) where c.user_id=#{user_id,jdbcType=INTEGER}
+  </select>
 </mapper>

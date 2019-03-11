@@ -28,4 +28,6 @@ public interface RecycleBinMapper {
     int updateByPrimaryKeySelective(RecycleBin record);
 
     int updateByPrimaryKey(RecycleBin record);
+
+    List<RecycleBin>selectMyRecycleBin(@Param("user_id") int user_id);
 }

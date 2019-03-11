@@ -2,6 +2,7 @@ package cn.yznu.pca.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Image implements Serializable {
     private Integer id;
@@ -22,7 +23,17 @@ public class Image implements Serializable {
 
     private Integer albumId;
 
+    private List<RecycleBin> recycleBins;
+
     private static final long serialVersionUID = 1L;
+
+    public void setRecycleBins(List<RecycleBin> recycleBins) {
+        this.recycleBins = recycleBins;
+    }
+
+    public List<RecycleBin> getRecycleBins() {
+        return recycleBins;
+    }
 
     public Integer getId() {
         return id;

@@ -16,6 +16,12 @@ public class RecycleBin implements Serializable {
 
     private Integer userId;
 
+    private User user;
+
+    private Album album;
+
+    private Image image;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -66,4 +72,27 @@ public class RecycleBin implements Serializable {
         this.userId = userId;
     }
 
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Image getImage() {
+        return image;
+    }
 }
