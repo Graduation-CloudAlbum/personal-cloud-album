@@ -256,11 +256,8 @@
 	height: 40px;
 	float: left;
 	padding-left: 10px;
-	border-left: 1px solid #DDD;
-	border-top: 1px solid #DDD;
-	border-bottom: 1px solid #DDD;
 	font-size: 18px;
-	color: #976666;
+	/*color: #976666;*/
 	line-height: 40px;
 }
 
