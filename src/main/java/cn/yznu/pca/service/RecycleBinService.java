@@ -16,35 +16,55 @@ public interface RecycleBinService {
      */
     List<RecycleBin> getRecycleBin(int userId);
 
-    /**
-     * 单个删除回收站里的相册
-     * @param userId 用户id
-     * @param albumId 相册id
-     * @return
-     */
-    int deleteRecycleBin(int userId,int albumId);
 
     /**
-     * 批量删除回收站里的相册
-     * @param userId 用户id
-     * @param albumId 相册id
+     * 批量删除回收站里的相片
+     * @param list 用户id
      * @return
      */
-    int delManyRecycleBin(int userId,int[] albumId);
+    boolean delManyRecycleBin(List list);
 
-    /**
-     * 还原回收站到相册
-     * @param userId 用户id
-     * @param albumId 相册id
-     * @return
-     */
-    int RecoverRecycleBin(int userId,int albumId);
 
     /**
      * 批量还原回收站到相册
-     * @param userId 用户id
-     * @param albumId 相册id
+     * @param list 用户id集合
      * @return
      */
-    int RecoverRecycleBin(int userId,int[] albumId);
+    boolean recoverSomeImage(List list);
+
+    /**
+     * 批量还原相册
+     * @param list 用户id集合
+     * @return
+     */
+    boolean updateAlbumByList(List list);
+
+    /**
+     * 根据id查询
+     * @param list 用户id集合
+     * @return
+     */
+    List<RecycleBin> selectAlbumByList(List list);
+
+    /**
+     * 批量删除相册表里的相片
+     * @param list 用户id
+     * @return
+     */
+    boolean deleteImageByList(List list);
+
+    /**
+     * 批量删除相册表里的相片
+     * @param id 用户id
+     * @return
+     */
+    boolean deleteAllRecycleBin(int id);
+
+    /**
+     * 批量删除相册表里的相片
+     * @param list 用户相片
+     * @return
+     */
+    boolean recoverAllRecycleBin(List list);
+
 }
