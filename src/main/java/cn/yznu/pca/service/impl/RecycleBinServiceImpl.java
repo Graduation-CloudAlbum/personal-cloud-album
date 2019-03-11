@@ -25,23 +25,48 @@ public class RecycleBinServiceImpl implements RecycleBinService {
         return recycleBins;
     }
 
+
     @Override
-    public int deleteRecycleBin(int userId, int albumId) {
-        return 0;
+    public boolean delManyRecycleBin(List list) {
+        boolean recycleBins=recycleBinMapper.deleteRecycleBinByList(list);
+        return recycleBins;
+    }
+
+
+    @Override
+    public boolean recoverSomeImage(List list) {
+        boolean recycleBins=recycleBinMapper.updateImageByList(list);
+        return recycleBins;
     }
 
     @Override
-    public int delManyRecycleBin(int userId, int[] albumId) {
-        return 0;
+    public boolean updateAlbumByList(List list) {
+        boolean recycleBins=recycleBinMapper.updateAlbumByList(list);
+        return recycleBins;
     }
 
     @Override
-    public int RecoverRecycleBin(int userId, int albumId) {
-        return 0;
+    public List<RecycleBin> selectAlbumByList(List list) {
+        return recycleBinMapper.selectAlbumByList(list);
     }
 
     @Override
-    public int RecoverRecycleBin(int userId, int[] albumId) {
-        return 0;
+    public boolean deleteImageByList(List list) {
+        boolean recycleBins=recycleBinMapper.deleteImageByList(list);
+        return recycleBins;
     }
+
+    @Override
+    public boolean deleteAllRecycleBin(int id) {
+        boolean recycleBins=recycleBinMapper.deleteAllRecycleBin(id);
+        return recycleBins;
+    }
+
+    @Override
+    public boolean recoverAllRecycleBin(List list) {
+        boolean recycleBins=recycleBinMapper.recoverAllRecycleBin(list);
+        return recycleBins;
+    }
+
+
 }
