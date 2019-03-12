@@ -52,8 +52,8 @@
                     <table id="recycle-table" class="recycle-table">
                         <tr class="table-tr">
                             <th class="th1"><input id="all" name="photoTop" type="checkbox" value="" onchange="dianjigou()"/></th>
-                            <th>相片</th>
-                            <th>相片大小</th>
+                            <th>照片</th>
+                            <th>照片大小</th>
                             <th>删除时间</th>
                             <th>有效时间</th>
                             <th>操作</th>             
@@ -86,19 +86,19 @@
         </div>
         <!-- ***************************************************删除选中 ***************************************************-->
         <div id="delete-recycle2">
-            <div class="popup-header"><h4>彻底删除选中相片</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
+            <div class="popup-header"><h4>彻底删除选中照片</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
             <input id="delete-recycle-input2" type="text" placeholder="请输入登录密码继续删除操作"  name="">
             <div class="delete-recycle-button1" id="delete-recycle-button3"><p>取消</p></div><div id="delete-recycle-button4" class="delete-recycle-button2"><p>清空</p></div>
         </div>
         <!-- ***************************************************还原回收站 ***************************************************-->
         <div id="update-recycle">
-            <div class="popup-header"><h4>还原所有相片至</h4><i id="iconChacha2" class="iconfont icon-chacha1"></i></div>
+            <div class="popup-header"><h4>还原所有照片</h4><i id="iconChacha2" class="iconfont icon-chacha1"></i></div>
             <div style="margin-left: 20px"><h4>是否确认还原所有照片？</h4></div>
             <div class="update-recycle-button1" id="update-recycle-button1"><p>取消</p></div><div id="recover-recycle-button6" class="update-recycle-button2"><p>还原</p></div>
         </div>
         <!-- ***************************************************还原选中 ***************************************************-->
         <div id="update-recycle2">
-                <div class="popup-header"><h4>还原选中相片</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
+                <div class="popup-header"><h4>还原选中照片</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
                 <div style="margin-left: 20px"><h4>是否确认还原选中照片？</h4></div>
                 <div class="update-recycle-button1" id="update-recycle-button2"><p>取消</p></div><div id="update-recycle-button3" class="update-recycle-button2"><p>还原</p></div>
         </div>
