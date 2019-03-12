@@ -20,20 +20,45 @@ public interface UserService {
 
     /**
      *  用户注册
-     * @param user
+     * @param user 用户
      */
      void register(User user);
 
     /**
      * 验证用户名是否可用
-     * @param username
+     * @param username 用户名
      * @return
      */
 
     int isExistUserName(String username);
 
+    /**
+     * 修改用户基本资料
+     * @param userId 用户id
+     * @param nickName 昵称
+     * @param synopsis 简介
+     * @return
+     */
     boolean modifyingData(int userId,String nickName,String synopsis);
+
+    /**
+     * 更换头像
+     * @param url 图片地址
+     */
     void changeIcon(String url);
+
+    /**
+     * 修改密码
+     * @param id 用户id
+     * @param password 新密码
+     * @return
+     */
     boolean changePassword(int id,String password);
+
+    /**
+     * 查找用户
+     * @param id 用户id
+     * @return
+     */
     User selectUserById(int id);
 }
