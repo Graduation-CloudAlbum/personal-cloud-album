@@ -87,9 +87,6 @@ public class RecycleBinController {
                                         @RequestParam(value="check_val[]") Integer[] check_val) {
         User user = (User) request.getSession().getAttribute("user");
         List list=new ArrayList();
-        System.out.println("第一个："+MD5Util.md5Jdk(deleteRecycleInput2));
-        System.out.println("第二个："+user.getUserPassword());
-
         for (Integer integer : check_val) {
             list.add(integer.intValue());
         }
@@ -137,7 +134,7 @@ public class RecycleBinController {
 
 
     /**
-     * 清空回收站
+     * 恢复回收站所有相片
      */
     @RequestMapping("/recoverAllRecycleBin")
     @ResponseBody
@@ -160,11 +157,9 @@ public class RecycleBinController {
             if(recycleBinsResult2){
                 return true;
             }else{
-                System.out.println("66666");
                 return false;
             }
         }else{
-            System.out.println("111111111");
                 return false;
         }
     }
