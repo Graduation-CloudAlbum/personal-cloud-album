@@ -61,7 +61,7 @@ public interface RecycleBinService {
     boolean deleteAllRecycleBin(int id);
 
     /**
-     * 批量删除相册表里的相片
+     * 批量恢复相册表里的相片
      * @param list 用户相片
      * @return
      */
