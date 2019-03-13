@@ -1,8 +1,11 @@
 package cn.yznu.pca.controller;
 
+import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.FriendService;
+import cn.yznu.pca.service.ImageService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +34,12 @@ import java.util.Map;
 public class FriendController {
     @Autowired
     private FriendService friendService;
+
+    @Autowired
+    private AlbumService albumService;
+
+    @Autowired
+    private ImageService imageService;
 
     /**
      * 进入我的好友页面查询该用户下所有好友方法
@@ -286,6 +296,32 @@ public class FriendController {
         int a=friendService.selectAddFriendGroup(user.getId(),"我的好友");
         friendService.deleteFriendsGroup(a,i);
      return true;
+    }
+
+    /**
+     * 点击好友头像进入好友空间
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/inFriendSpace/{friend_id}")
+    @ResponseBody
+    public Map<String,Object>  inFriendSpace(@PathVariable int friend_id,
+                                      HttpServletRequest request,
+                                      HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
+        System.out.println("66666666"+friend_id);
+        List albumlist =albumService.getAlbum(user.getId());
+        Map<String,Object> map=new HashMap<>();
+        int albumId=0;
+        List list=new ArrayList();
+        for(int i = 0; i < albumlist.size() ; i++) {
+            Album album= (Album) albumlist.get(i);
+            albumId=album.getId();
+            //用户某个相册下照片数量
+            int imageNum=imageService.imageNum(user.getId(),albumId);
+            list.add(imageNum);
+        }
+        map.put("album",albumlist);
+        map.put("imageNum",list);
+        return  map;
     }
 
 
