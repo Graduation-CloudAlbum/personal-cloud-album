@@ -283,7 +283,7 @@
   <select id="searchFriends" resultMap="BaseResultMap">
     select *
     from user
-    where nick_name = #{nickName,jdbcType=VARCHAR}
+    where nick_name = #{nickName,jdbcType=VARCHAR} or user_name=#{nickName,jdbcType=VARCHAR}
   </select>
 
 </mapper>
