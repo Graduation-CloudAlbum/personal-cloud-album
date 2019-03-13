@@ -14,7 +14,8 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myFriend.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/friendAlbum.css"/>
+	<link rel="stylesheet"  href="<%=basePath%>/resource/css/zoom.css" media="all" />
 </head>
 <body>
 	<div class="wrapper">
@@ -41,13 +42,39 @@
 					<li class="content-menu-li"><a>返回</a></li>
 				</ul>
 				<div class="content-wrap">
-					<ul class="content-about">
-						<li class="friends-about-li">
-							<img src="<%=basePath%>/resource/img/1.jpg">
-							<p>小明</p>
+					<ul id="friendAlbum-content" class="content-about">
+						<li class="content-about-li">
+							<img src="../img/Album-cover1.jpg">
+							<div class="content-about-li-top">
+								<div class="bottun-title">
+									<p class="bottun-title-p1">心情</p>
+									<p class="bottun-title-p2">2018-2-1<i class="iconfont icon-vertical_line"></i>23图</p>
+								</div>
+							</div>
 						</li>
+					</ul>	
+					<ul id="friendAlbum-content2" class="content-about2 gallery">
+						<div class="content-about2-li">
+							<a href="../img/gallery/DSC_0008-660x441.jpg"><img src="../img/gallery/DSC_0008-69x69.jpg" /><p class="time">2019-08-22</p></a>
+						</div>
+						<div class="content-about2-li">
+							<a href="../img/gallery/DSC_0014-660x441.jpg"><img src="../img/gallery/DSC_0014-69x69.jpg" /><p class="time">2019-08-22</p></a>
+						</div>
+						<div class="content-about2-li">
+							<a href="../img/gallery/DSC_0019-660x441.jpg"><img src="../img/gallery/DSC_0019-69x69.jpg" /><p class="time">2019-08-22</p></a>
+						</div>
+						<div class="content-about2-li">
+							<a href="../img/gallery/DSC_0061-660x441.jpg"><img src="../img/gallery/DSC_0061-69x69.jpg" /><p class="time">2019-08-22</p></a>
+						</div>
 						
 					</ul>
+					
+					<div class="content-button">
+						<div class="content-button-fenge"></div>
+							<span id="open">(共3个相册)</span><span id="open2">(共7张照片)</span>
+						</div>
+						<div class="content-footer"></div>
+					</div>
 				</div>
 	
 
@@ -77,6 +104,8 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="<%=basePath%>/resource/js/index.js"></script>
+	<script type="text/javascript" src="../js/friendAlbum.js"></script>
+	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
+	<script src="<%=basePath%>/resource/js/zoom.min.js"></script>
 </body>
 </html>
