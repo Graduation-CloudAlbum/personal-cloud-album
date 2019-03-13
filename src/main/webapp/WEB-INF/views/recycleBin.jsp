@@ -62,11 +62,11 @@
                         <c:forEach items="${recycleBins}" var="recycleBins">
                             <tr>
                                 <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
-                                <td><img src="${recycleBins.image.url}" /></td>
+                                <td><img class="pimg" src="${recycleBins.image.url}" /></td>
                                 <td>${recycleBins.image.imageSize}</td>
                                 <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                 <td>15天<input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
-                                <td><button class="btn btn-info">查看</button></td>
+                                <td><button class="btn btn-info pimg2">查看</button></td>
                             </tr>
                             <li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>
                         </c:forEach>
@@ -103,10 +103,11 @@
                 <div class="update-recycle-button1" id="update-recycle-button2"><p>取消</p></div><div id="update-recycle-button3" class="update-recycle-button2"><p>还原</p></div>
         </div>
         <!-- ***************************************************查看 ***************************************************-->
-        <!-- <div id="see-photo">
-            <div class="popup-header"><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
-            <img src="../img/1.jpg">
-        </div> -->
+        <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2;width:100%;height:100%;display:none;">
+            <div id="innerdiv" style="position:absolute;">
+                <img id="bigimg" style="border:5px solid #fff;" src="" />
+            </div>
+        </div> 
         <!-- ***************************************************删除 ***************************************************-->
 
         <!-- ***************************************************还原 ***************************************************-->
@@ -119,5 +120,6 @@
 </div>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/recycleBin.js"></script>
+<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
 </body>
 </html>
