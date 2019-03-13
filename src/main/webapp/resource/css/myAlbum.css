@@ -4,6 +4,28 @@
 #myAlbum-menu2{
 	display: none;
 }
+.album-sort{
+	width: 170px;
+    margin-top: 6px;
+    position: absolute;
+	z-index:100;
+	display: none;
+}
+.album-sort .album-sort-li{
+	border: 1px solid #CCCCCC;
+	height: 40px;
+	padding-left: 10px;
+	line-height: 40px;
+	background: #fff;
+	color: #9999B1;
+	cursor: pointer;
+}
+.uploadPhoto5:hover .album-sort{
+	display: block;
+}
+.album-sort .album-sort-li:hover{
+	color:#000;
+}
 /***************************************************content1、**************************************************************/
 #myAlbum-content{
 	display: block;

@@ -47,7 +47,14 @@
             <ul id="myAlbum-menu1" class="content-menu">
                 <li class="content-menu-li" id="uploadPhoto1"><a>上传照片</a></li>
                 <li class="content-menu-li"  id="uploadPhoto2"><a>创建相册</a></li>
-                <li class="content-menu-li"><a>排序方式</a></li>
+                <li class="content-menu-li uploadPhoto5">
+                    <a>排序方式</a>
+                    <ul id="album-sort" class="album-sort">
+                        <li class="album-sort-li">按照相册名称排序</li>
+                        <li class="album-sort-li">按照相册主题排序</li>
+                        <li class="album-sort-li">按照相册更新时间排序</li>
+                    </ul>
+                </li>
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
@@ -131,6 +138,7 @@
     <div id="Create-Album">
         <div class="popup-header"><h4>创建相册</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
         <input id="Create-Album-input" type="text" placeholder="请输入1-30位字符名称的相册"  name="">
+        <input id="Create-Album-input2" type="text" placeholder="请输入1-30位字符名称的相册主题"  name="">
         <div class="Create-Album-button1" id="Create-Album-button1"><p>取消</p></div><div id="Create-Album-button2" class="Create-Album-button2"><p>确定</p></div>
     </div>
 

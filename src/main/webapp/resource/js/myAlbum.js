@@ -319,4 +319,13 @@ function fmtDate(obj){
 }
 
 
-
+//相册排序
+var albumSort=document.getElementById('album-sort');
+var albumSortLi=albumSort.getElementsByTagName('li');
+var albumSortName=""
+for(var i=0;i<albumSortLi.length;i++){
+    albumSortLi[i].onclick = function(){
+        albumSortName=this.innerHTML;
+        alert(albumSortName)
+    }
+}
