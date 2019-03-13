@@ -306,9 +306,10 @@ public class FriendController {
     public Map<String,Object>  inFriendSpace(@PathVariable int friend_id,
                                       HttpServletRequest request,
                                       HttpServletResponse response) {
-        User user = (User) request.getSession().getAttribute("user");
-        System.out.println("66666666"+friend_id);
-        List albumlist =albumService.getAlbum(user.getId());
+        //User user = (User) request.getSession().getAttribute("user");
+        //System.out.println("66666666"+friend_id);
+        //List albumlist =albumService.getAlbum(user.getId());
+        List albumlist =albumService.getAlbum(friend_id);
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
@@ -316,7 +317,7 @@ public class FriendController {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
             //用户某个相册下照片数量
-            int imageNum=imageService.imageNum(user.getId(),albumId);
+            int imageNum=imageService.imageNum(friend_id,albumId);
             list.add(imageNum);
         }
         map.put("album",albumlist);
