@@ -50,13 +50,10 @@
             <div class="content-wrap">
                 <div class="content-about">
                     <ul class="friends-content">
-                        <a href="../html/friendAlbum.html">点击进入好友空间</a>
                         <c:forEach items="${allfriend}" var="node">
-                            <li class="friends-content-li"><img src="<%=basePath%>${node.friend.userIcon}"><p>${node.friend.nickName}</p></li>
+                            <li onclick="inFriendSpace('${node.friend.id}','<%=path%>',this)" class="friends-content-li"><img src="<%=basePath%>${node.friend.userIcon}" ><p>${node.friend.nickName}</p></li>
                         </c:forEach>
                     </ul>
-
-
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
                         <c:forEach items="${friendgroup}" var="friendgroup">
