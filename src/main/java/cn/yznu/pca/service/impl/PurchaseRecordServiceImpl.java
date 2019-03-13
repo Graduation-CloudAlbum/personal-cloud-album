@@ -23,7 +23,7 @@ public class PurchaseRecordServiceImpl implements PurchaseRecordService {
     }
 
     @Override
-    public void updateOrderStatus(Integer prId, String status, String paidAmount) {
+    public void updateOrderStatus(String prId, String status, String paidAmount) {
         PurchaseRecord pcr=getOrderById(prId);
         if (pcr.getStatus().equals(OrderStatusEnum.WAIT_PAY.key)) {
             pcr = new PurchaseRecord();
@@ -35,7 +35,7 @@ public class PurchaseRecordServiceImpl implements PurchaseRecordService {
     }
 
     @Override
-    public PurchaseRecord getOrderById(Integer prId) {
-        return purchaseRecordMapper.selectByPrimaryKey(prId);
+    public PurchaseRecord getOrderById(String id) {
+        return purchaseRecordMapper.selectByPrimaryKey(id);
     }
 }

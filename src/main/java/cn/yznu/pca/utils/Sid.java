@@ -1,5 +1,6 @@
 package cn.yznu.pca.utils;
 
+import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -19,16 +20,16 @@ public class Sid {
      * @param
      * @return
      */
-    public static int Onumber( ) {
-        //三位随机数
-        //为变量赋随机值100-999;
-        int random=new Random().nextInt(900)+100;
+    public static String Onumber( ) {
 
+
+        String orderNo = (sdf.format(new Date()));
         //生成
-        Integer orderNo =Integer.parseInt(sdf.format(new Date()) + (1 + (int) (Math.random() * 10000)) + random);
+        //Integer orderNo =Integer.parseInt(sdf.format(new Date()));
         return orderNo;
     }
-    //public static void main(String[] args) {
-    //    System.out.println(Onumber());
-    //}
+    public static void main(String[] args) {
+        System.out.println(Onumber());
+
+    }
 }

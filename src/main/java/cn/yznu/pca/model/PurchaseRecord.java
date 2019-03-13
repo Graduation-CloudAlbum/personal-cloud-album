@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class PurchaseRecord implements Serializable {
-    private Integer id;
+    private String id;
 
     private Date createTime;
 
@@ -18,12 +18,12 @@ public class PurchaseRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public Date getCreateTime() {

@@ -20,9 +20,9 @@
 <body>
 <div class="bg1"></div>
 <div class="gyl">
-    个人云相册
+    1024云相册
 
-    <div class="gy2" >分享生活 留住感动 </div>
+    <div class="gy2" >记录生活 留住感动 </div>
 </div>
 <div class="bg">
     <div class="wel">用户注册</div>

@@ -8,7 +8,6 @@ import cn.yznu.pca.utils.OrderStatusEnum;
 import cn.yznu.pca.utils.Sid;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
-import com.alipay.api.domain.Product;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.apache.ibatis.annotations.Param;
@@ -16,11 +15,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.POST;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,56 +45,81 @@ public class AlipayController {
 
     /**
      * 进入确认页面
-     * @param productName
+     * @param meal 选择的套餐服务
      * @return
      * @throws Exception
      */
-    @RequestMapping("/goConfirm")
-    public ModelAndView goConfirm(@Param("productName")String productName, @Param("payment")String payment, HttpServletRequest request) throws Exception {
+    @RequestMapping("/goConfirm/{meal}")
+    public ModelAndView goConfirm(@PathVariable("meal")String meal, HttpServletRequest request) throws Exception {
+        //@Param("productName")String productName, @Param("payment")String payment,
+        System.out.println("选择的套餐是:"+meal);
+        int meal1=10;
+        int meal2=30;
+        String productName="";
+        int payment=0;
         ModelAndView mv = new ModelAndView("goConfirm");
+        if (Integer.parseInt(meal)==meal1){
+             productName="黄金会员(包含10个G的额外使用空间)";
+             payment=10;
+        }else if(Integer.parseInt(meal)==meal2) {
+             productName = "黄金会员(包含50个G的额外使用空间)";
+             payment = 30;
+
+        }else{
+             productName="黄金会员(包含100个G的额外使用空间)";
+             payment=50;
+        }
         request.getSession().setAttribute("productName",productName);
         request.getSession().setAttribute("payment",payment);
         mv.addObject("productName", productName);
         mv.addObject("payment", payment);
+        System.out.println("商品名是："+productName);
+        System.out.println("价格是："+payment);
+        //return "redirect:/goConfirm";
         return mv;
     }
 
     /**
      * 分段提交
-     * 	第一段：保存订单
+     * 	第一段：创建订单，保存订单
      * @param pcr
      * @return
      * @throws Exception
      */
     @RequestMapping("/createOrder")
     @ResponseBody
-    public boolean createOrder(PurchaseRecord pcr,HttpServletRequest request) throws Exception {
+    public String createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord pcr,HttpServletRequest request) throws Exception {
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
-        String payment=(String) request.getSession().getAttribute("payment");
-        int orderId = Sid.Onumber();
+        //String payment=(String) request.getSession().getAttribute("payment");
+        String orderId = Sid.Onumber();
         pcr.setUserId(userId);
         pcr.setId(orderId);
         pcr.setCreateTime(new Date());
+        pcr.setProductName(productName);
         pcr.setPayment(payment);
         pcr.setStatus(OrderStatusEnum.WAIT_PAY.key);
         purchaseRecordService.saveOrder(pcr);
 
-        return true;
+        return orderId;
     }
 
     /**
      * 分段提交
-     * 	第二段,准备付款
+     * 	第二段,创建订单，准备付款
      * @param orderId
      * @return
      * @throws Exception
      */
     @RequestMapping("/goPay")
-    public ModelAndView goPay(Integer orderId) throws Exception {
+    public ModelAndView goPay(String orderId) throws Exception {
 
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
-
+        System.out.println();
+        System.out.println("********开始创建订单*********");
+        System.out.println("订单编号是："+order.getId());
+        System.out.println("商品是："+order.getProductName());
+        System.out.println("金额是："+order.getPayment());
         ModelAndView mv = new ModelAndView("goPay");
         mv.addObject("order", order);
         return mv;
@@ -105,8 +131,8 @@ public class AlipayController {
      */
     @RequestMapping(value = "/goAlipay", produces = "text/html; charset=UTF-8")
     @ResponseBody
-    public String goAlipay(Integer orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
-
+    public String goAlipay(String orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
+        System.out.println("orderId是:"+orderId);
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
 
         //获得初始化的AlipayClient
@@ -142,16 +168,7 @@ public class AlipayController {
     }
 
     /**
-     *
-     * @Title: AlipayController.java
-     * @Package com.sihai.controller
      * @Description: 支付宝同步通知页面
-     * Copyright: Copyright (c) 2017
-     * Company:FURUIBOKE.SCIENCE.AND.TECHNOLOGY
-     *
-     * @author sihai
-     * @date 2017年8月23日 下午8:51:01
-     * @version V1.0
      */
     @RequestMapping(value = "/alipayReturnNotice")
     public ModelAndView alipayReturnNotice(HttpServletRequest request, HttpServletRequest response) throws Exception {
@@ -188,10 +205,10 @@ public class AlipayController {
             String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
 
             // 修改订单状态，改为 支付成功，已付款
-            purchaseRecordService.updateOrderStatus(Integer.parseInt(out_trade_no), trade_no, total_amount);
+            purchaseRecordService.updateOrderStatus(out_trade_no, trade_no, total_amount);
 
 
-            PurchaseRecord order = purchaseRecordService.getOrderById(Integer.parseInt(out_trade_no));
+            PurchaseRecord order = purchaseRecordService.getOrderById(out_trade_no);
 
             log.info("********************** 支付成功(支付宝同步通知) **********************");
             log.info("* 订单号: {}", out_trade_no);
@@ -276,14 +293,14 @@ public class AlipayController {
                 //注意：
                 //付款完成后，支付宝系统发送该交易状态通知
 
-                // 修改叮当状态，改为 支付成功，已付款; 同时新增支付流水
-                purchaseRecordService.updateOrderStatus(Integer.parseInt(out_trade_no), trade_no, total_amount);
+                // 修改订单状态，改为 支付成功，已付款
+                purchaseRecordService.updateOrderStatus(out_trade_no, trade_status, total_amount);
 
-                PurchaseRecord order = purchaseRecordService.getOrderById(Integer.parseInt(out_trade_no));
+                PurchaseRecord order = purchaseRecordService.getOrderById(out_trade_no);
 
                 log.info("********************** 支付成功(支付宝异步通知) **********************");
                 log.info("* 订单号: {}", out_trade_no);
-                log.info("* 支付宝交易号: {}", trade_no);
+                log.info("* 交易状态: {}", trade_status);
                 log.info("* 实付金额: {}", total_amount);
                 log.info("* 购买产品: {}", order.getProductName());
                 log.info("***************************************************************");

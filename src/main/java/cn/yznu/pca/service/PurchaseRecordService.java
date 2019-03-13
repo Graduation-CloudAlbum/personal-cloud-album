@@ -16,12 +16,12 @@ public interface PurchaseRecordService {
     /**
      * @Description: 修改订单状态，改为 支付成功，已付款
      */
-     void updateOrderStatus(Integer prId, String status,String paidAmount);
+     void updateOrderStatus(String prId, String status,String paidAmount);
 
     /**
      * 获取订单
-     * @param prId
+     * @param id
      * @return
      */
-     PurchaseRecord getOrderById(Integer prId);
+     PurchaseRecord getOrderById(String id);
 }

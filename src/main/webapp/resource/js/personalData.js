@@ -30,7 +30,7 @@ $(".Modifying-data-button2").click(function() {
         complete:function(result) {
             if (result.responseText=="success") {
                 alert("修改成功");
-                window.location.href="http://localhost:8080/pca/user/personalData";
+                window.location.href="/pca/user/personalData";
             } else {
                 alert("修改失败 请重试");
                 $("#Modifying-data-input").val("");
@@ -107,13 +107,41 @@ var Expansion = document.getElementById('Expansion');
 Expansion.onclick=function(){
     document.getElementById('Buy-Expansion').style.display="block";
     document.getElementById('popLayer2').style.display="block";
+    $("input[type='radio']").removeAttr('checked');
 }
 
+$("#Buy-Expansion-button2").click(function () {
+    var meal=$("input[type='radio']:checked").val();
+    // if (meal==10){
+    //     var productName="黄金会员(包含10个G的额外使用空间)";
+    //     var payment=10;
+    // }else if (meal==30){
+    //     var productName="铂金会员(包含50个G的额外使用空间)";
+    //     var payment=30;
+    // }else {
+    //     var productName="钻石会员(包含100个G的额外使用空间)";
+    //     var payment=50;
+    // }
+    // alert(productName+"/"+payment)
+    // $.ajax({
+    //     async:false,
+    //     type:"POST",
+    //     url:"/pca/alipay/goConfirm",
+    //     data:{"productName":productName,"payment":payment},
+    //     dataType: "json",
+    //     success:function(data) {
+    //             window.location.href="/pca/alipay-INF/goConfirm";
+    //
+    //     }
+    // });
+    window.location.href="/pca/alipay/goConfirm/"+meal;
+});
 //关闭扩充空间
 var iconChacha6	= document.getElementById('iconChacha6');
 iconChacha6.onclick	=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('Buy-Expansion').style.display="none";
+
 }
 //个人简介 账户安全 空间容量
 var menuLi1 = document.getElementById('menuLi1');

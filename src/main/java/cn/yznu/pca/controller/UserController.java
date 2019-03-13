@@ -58,21 +58,11 @@ public class UserController {
     }
 
     @RequestMapping("/personalData")
-    //@ResponseBody
     public  String personalData(HttpServletRequest request, ModelAndView mav){
-       // User user=new User();
         User user= (User) request.getSession().getAttribute("user");
         int id=user.getId();
-        //System.out.println(user.getSynopsis());
-        //System.out.println(user.getUserName());
-        //User user1=userService.selectUserById(id);
-        //user1.getUserName();
-        //user1.getNickName();
-        //user1.getSynopsis();
-        //user1.getUserIcon();
         int albumNum=albumService.getAlbumNum(id);
         int imageNum=imageService.getAllImageNum(id);
-        //request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
         return "personalData";
@@ -134,15 +124,8 @@ public class UserController {
         }
     }
     @RequestMapping("/changeIcon")
-    public String changeIcon(HttpServletRequest request ,User user, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
-        //String username= (String) request.getSession().getAttribute("username");
-        //String password= (String) request.getSession().getAttribute("password");
-        //String md5pwd=MD5Util.md5Jdk(password);
-        //User user=userService.checkLogin(username,md5pwd);
-        //获取用户ID,并设置照片关联用户
-        //image.setUserId(user.getId());
+    public String changeIcon(HttpServletRequest request ,Image image,User user, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
         //设置本地保存路径
-        System.out.println(user.getId());
         String localPath="F:\\demos\\upload\\";
         //使用UUID给图片重命名，并去掉四个“-”
         String name = UUID.randomUUID().toString().replaceAll("-", "");
@@ -155,11 +138,11 @@ public class UserController {
         //以绝对路径保存重名命后的图片
         pictureFile.transferTo(new File(localPath+"/"+name + "." + ext));
         //保存图片信息到数据库
-        //image.setImageName(name);
-        //image.setUrl(url+name+"." + ext);
-        //image.setImageSize(fileSize);
-        //imageService.upload(image);
-        return "";
+        image.setImageName(name);
+        image.setUrl(url+name+"." + ext);
+        image.setImageSize(fileSize);
+        imageService.upload(image);
+        return "personalData";
     }
     @ResponseBody
     @RequestMapping("/changePassword")
@@ -175,8 +158,6 @@ public class UserController {
         }else {
             return "fail";
         }
-
-
     }
     @ResponseBody
     @RequestMapping("/modifyingData")
