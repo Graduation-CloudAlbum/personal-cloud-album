@@ -103,15 +103,15 @@ searchI.onclick = function(){
         dataType: "json",
         success: function (data) {
             if(data.users.length!=0){
-                 for(var i=0;i<data.users.length;i++){
-                        h+= "<li class='search-content-li'>"
-                            +"<img src='"+data.users[i].userIcon+"'>"
+                for(var i=0;i<data.users.length;i++){
+                    h+= "<li class='search-content-li'>"
+                        +"<img src='"+data.users[i].userIcon+"'>"
                         + "<p class='search-content-name'>"+data.users[i].nickName+"</p>"
                         + "<p class='search-content-name2'>"+data.users[i].userName+"</p>"
                         + "<div class='Create-friends-button2 create-jia' onclick='selectUser(\""+data.users[i].userName+"\",\""+data.users[i].nickName+"\")'><p>加好友</p></div>"
-                     +"</li>"
-                     $("#search-content").html(h);
-                 }
+                        +"</li>"
+                    $("#search-content").html(h);
+                }
                 document.getElementById('search-content').style.display="block";
             }
             else {
@@ -127,7 +127,7 @@ for(var i=0;i<searchContentLi.length;i++){
         document.getElementById('popLayer2').style.display="block";
         document.getElementById('friendVerification').style.display="block";
         document.getElementById('Verification-text').style.display="block";
-        
+
     }
 }
 
@@ -290,7 +290,95 @@ ManageGroupButton2.onclick=function () {
 //首页点击的相册名
 var aName="";
 //动态加载首页相册
-$().ready(function getAlbum(friend_id) {
+// $().ready(function getAlbum(friend_id) {
+//     $.ajax({
+//         async : false,
+//         type: "post",
+//         url: "/pca/friend/inFriendSpace/"+friend_id,
+//         dataType: "json",
+//         success: function (data){
+//             //加载相册 到album页面
+//             var h = "";
+//             var createtime="";
+//             var resource="/pca/resource/img/Album-cover1.jpg";
+//             for (var i = 0; i < data.album.length; i++) {
+//                 var imageNum=data.imageNum[i];
+//                 albumName=data.album[i].albumName;
+//                 createtime=fmtDate(data.album[i].createTime);
+//                 h += "<li class='content-about-li'>"
+//                     + "<img src='"+resource+"'>"
+//                     + "<div class='content-about-li-top'>"
+//                     + "<div class='content-about-li-top-a'>"
+//                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
+//                     + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
+//                     + "</div>"
+//                     + "<div class='bottun-title'>"
+//                     + "<p class='bottun-title-p1'>"+albumName+"</p>"
+//                     + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
+//                     + "</div>"
+//                     + "</div>"
+//                     + "</li>"
+//                 $("#open").html("共"+data.album.length+"个相册");
+//             }
+//             $("#myAlbum-content").html(h);
+//             for(var i=0;i<myAlbumLi.length;i++){
+//                 myAlbumLi[i].index = i;
+//                 myAlbumLi[i].onclick=function(){
+//                     myAlbumMenu1.style.display="none";
+//                     myAlbumContent.style.display="none";
+//                     open.style.display="none";
+//
+//                     myAlbumMenu2.style.display="block";
+//                     myAlbumContent2.style.display="block";
+//                     open2.style.display="block";
+//
+//                     str = (function(i){
+//                         aLi=i;
+//                         return aLi;
+//                     })(this.index);
+//                     aLi=str;
+//
+//                     var aP = this.getElementsByTagName('p');
+//                     aName=aP[0].innerHTML;
+//
+//                 }
+//
+//             }
+//
+//         }
+//     });
+// });
+//点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
+$("#myAlbum-content").click(function () {
+    var albumName=aName;
+    $.ajax({
+        type:"post",
+        url:"/pca/image/getImage",
+        data: {"albumName": albumName},
+        dataType: "json",
+        success: function (data) {
+            var h = "";
+            for (var i = 0; i < data.imageList.length; i++) {
+                var url=data.imageList[i].url;
+                h +="<div class='content-about2-li'>"
+
+                    +"<a href='"+url+"'>"
+                    +"<img src='"+url+"'/></a>"
+                    + "</div>"
+                $("#open2").html("共"+ data.imageList.length+"张照片");
+            }
+            $("#myAlbum-content2").html(h);
+
+
+        }
+    });
+
+});
+
+
+//点击好友头像进入好友空间
+function inFriendSpace(friend_id) {
+    // getAlbum(friend_id);
     $.ajax({
         async : false,
         type: "post",
@@ -347,36 +435,4 @@ $().ready(function getAlbum(friend_id) {
 
         }
     });
-});
-//点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
-$("#myAlbum-content").click(function () {
-    var albumName=aName;
-    $.ajax({
-        type:"post",
-        url:"/pca/image/getImage",
-        data: {"albumName": albumName},
-        dataType: "json",
-        success: function (data) {
-            var h = "";
-            for (var i = 0; i < data.imageList.length; i++) {
-                var url=data.imageList[i].url;
-                h +="<div class='content-about2-li'>"
-
-                    +"<a href='"+url+"'>"
-                    +"<img src='"+url+"'/></a>"
-                    + "</div>"
-                $("#open2").html("共"+ data.imageList.length+"张照片");
-            }
-            $("#myAlbum-content2").html(h);
-
-
-        }
-    });
-
-});
-
-
-//点击好友头像进入好友空间
-function inFriendSpace(friend_id) {
-    getAlbum(friend_id);
 }
