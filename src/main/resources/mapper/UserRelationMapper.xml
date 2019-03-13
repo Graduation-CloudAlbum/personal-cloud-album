@@ -252,7 +252,7 @@
   </update>
 <!--查找我的所有好友-->
   <select id="selectAllMyFriend" resultMap="BaseResultMap">
-    select d.nick_name,d.user_icon from
+    select d.nick_name,d.user_icon,d.id from
     user_relation c right join user d on
     (c.user_id_two=d.id) where user_id=#{id,jdbcType=INTEGER}
   </select>
