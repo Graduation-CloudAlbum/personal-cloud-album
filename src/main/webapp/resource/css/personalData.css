@@ -20,6 +20,25 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.update-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    opacity: 0.4;
+    position: absolute;
+    top: 35px;
+    background: #454545;
+    line-height: 150px;
+    color: #fff;
+    font-weight: normal;
+    font-size: 16px;
+}
+.content-about .content-about-personal .img-lable:hover .update-img{
+    display: block;
+
+}
 .content-about .content-about-personal p{
     color: #666666;
     /* font-size: 24px;  */

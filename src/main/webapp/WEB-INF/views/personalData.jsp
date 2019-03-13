@@ -55,7 +55,10 @@
                 <div class="content-about">
                     <div class="content-about-personal">
                         <input id="img2" class="inputfile" type="file"onchange="selectImage2(this);"/>
-                        <label for="img2"><img  id="image2" src="<%=basePath%>/resource/images/default-c.png"></label>
+                        <label for="img2" class="img-lable">
+                            <img id="image2" src="<%=basePath%>/resource/images/default-c.png">
+                            <div class="update-img">更换头像</div>
+                        </label>
                         <p class="content-about-personal-admin"><%=user.getNickName()%></p>
                         <div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
                         <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
