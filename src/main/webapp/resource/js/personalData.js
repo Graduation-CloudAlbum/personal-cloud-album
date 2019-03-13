@@ -45,9 +45,32 @@ ChangetheAvatar.onclick=function(){
     document.getElementById('Change-the-Avatar').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
-// $(".Change-the-Avatar-button1").click(function () {
-//
-// });
+//点击更换头像
+var image = '';
+function selectImage(file) {
+    if (!file.files || !file.files[0]) {
+        return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+        document.getElementById('image').src = evt.target.result;
+        image = evt.target.result;
+    }
+    reader.readAsDataURL(file.files[0]);
+}
+//点击更换头像
+var image2 = '';
+function selectImage2(file) {
+    if (!file.files || !file.files[0]) {
+        return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (evt) {
+        document.getElementById('image2').src = evt.target.result;
+        image2 = evt.target.result;
+    }
+    reader.readAsDataURL(file.files[0]);
+}
 //关闭更换头像
 var ChangetheAvatarButton2 = document.getElementById('Change-the-Avatar-button2');
 ChangetheAvatarButton2.onclick=function(){

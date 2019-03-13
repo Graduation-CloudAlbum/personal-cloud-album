@@ -54,9 +54,13 @@
             <div class="content-wrap">
                 <div class="content-about">
                     <div class="content-about-personal">
-                        <img src="<%=basePath%>/resource/images/default-c.png"><p class="content-about-personal-admin"><%=user.getNickName()%></p>
-                        <div class="content-about-personal-num"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
-                        <div class="content-about-personal-num"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
+                        <input id="img2" class="inputfile" type="file"onchange="selectImage2(this);"/>
+                        <label for="img2"><img  id="image2" src="<%=basePath%>/resource/images/default-c.png"></label>
+                        <p class="content-about-personal-admin"><%=user.getNickName()%></p>
+                        <div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
+                        <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
+                        <div class="content-about-personal-num3"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">好友数</p></div>
+
                         <%--<div class="content-about-personal-num"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">分享辑</p></div>--%>
                     </div>
                     <div class="content-about-info">
@@ -84,7 +88,7 @@
             </div>
         </div>
     </div>
-    <!-- ***************************************************弹窗 ***************************************************-->
+    <!-- ***************************************************弹窗 修改资料***************************************************-->
     <div id="Modifying-data" class="Modifying-data">
         <div class="popup-header"><h4>修改资料</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
         <input id="Modifying-data-input" type="text" maxlength="30" placeholder="请输入1-30位字符的昵称"  name="" value="<%=user.getNickName()%>">
@@ -92,13 +96,15 @@
         <div id="Modifying-data-button1" class="Modifying-data-button1"><p>取消</p></div>
         <div class="Modifying-data-button2"><p>确定</p></div>
     </div>
+    <!-- ***************************************************弹窗 修改头像***************************************************-->
     <div id="Change-the-Avatar" class="Change-the-Avatar">
-
         <h4>更换头像</h4>
-        <img src="<%=user.getUserIcon()%>">
-        <div id="Change-the-Avatar-button1" class="Change-the-Avatar-button1"><p>选择</p></div>
+        <img id="image" src="<%=user.getUserIcon()%>">
+        <input id="img0" class="inputfile" type="file"onchange="selectImage(this);"/>
+        <label for="img0" id="Change-the-Avatar-button1" class="Change-the-Avatar-button1"><p>选择</p></label>
         <div id="Change-the-Avatar-button2" class="Change-the-Avatar-button2"><p>取消</p></div>
     </div>
+    <!-- ***************************************************弹窗 修改密码***************************************************-->
     <div id="Change-Password" class="Change-Password">
         <div class="popup-header"><h4>修改密码</h4><i id="iconChacha5" class="iconfont icon-chacha1"></i></div>
         <input id="input1" class="Change-Password-input" type="text" maxlength="30" placeholder="请输入原登录密码"  name="">
@@ -106,6 +112,7 @@
         <input id="input3" class="Change-Password-input" type="text" maxlength="30" placeholder="请重复输入新的登录密码"  name="">
         <div id="Change-Password-button1" class="Change-Password-button1"><p>取消</p></div><div class="Change-Password-button2"><p>确定</p></div>
     </div>
+    <!-- ***************************************************弹窗 购买空间***************************************************-->
     <div class="father">
         <div id="Buy-Expansion" class="Buy-Expansion">
             <div class="popup-header"><h4>购买空间</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>

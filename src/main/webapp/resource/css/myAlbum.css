@@ -407,21 +407,27 @@
 
 /***************************************************弹窗3、**************************************************************/
 #Create-Album{
-	position:absolute;
-	left:40%; 
-	top:38%;
-	z-index: 70;
-	width: 350px;
-	height: 180px;
-	bottom: 5%;
-	display: none;
-	background: #fff;
-	border-radius: 0.5%;
+	position: absolute;
+    left: 38%;
+    top: 31%;
+    z-index: 70;
+    width: 350px;
+    height: 250px;
+    bottom: 5%;
+    display: none;
+    background: #fff;
+    border-radius: 0.5%;
 }
 #Create-Album-input{
 	margin-left: 20px;
 	height: 40px;
 	width: 310px;
+}
+#Create-Album-input2{
+	margin-left: 20px;
+	height: 40px;
+	width: 310px;
+	margin-top:15px;
 }
 .Create-Album-button1{
 	width: 80px;
@@ -431,7 +437,9 @@
 	margin-left: 150px;
 	border: 1px solid #DDD;
 	text-align: center;
-	margin-top: 15px;
+	position: absolute;
+	right: 120px;
+	bottom: 24px;
 	cursor: pointer;
 }
 .Create-Album-button1 p{
@@ -452,6 +460,7 @@
 	color: #fff;
 	line-height: 35px;
 }
+
 
 
 

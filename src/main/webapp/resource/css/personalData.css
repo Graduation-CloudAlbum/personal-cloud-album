@@ -5,40 +5,64 @@
     width: 100%;
 }
 .content-about .content-about-personal{
-    border: 1px solid #EEEEEE;
+    border: 1px solid #EEEEEE; 
     width: 266px;
     height: 338px;
-    padding-top: 40px;
+    padding-top: 10px;
     text-align: center;
     background: #fff;
     float: left;
+    position: absolute;
 }
 .content-about .content-about-personal img{
     width:150px;
+    height: 150px;
     border-radius: 50%;
+    cursor: pointer;
 }
 .content-about .content-about-personal p{
     color: #666666;
-    font-size: 24px;
+    /* font-size: 24px;  */
 }
 .content-about .content-about-personal .content-about-personal-admin{
     margin-top: 20px;
+    font-size: 24px;    
 }
-.content-about .content-about-personal .content-about-personal-num{
+.content-about .content-about-personal .content-about-personal-num1{
     width: 88px;
-    height: 65px;
+    height: 65px;   
     background: #FAFAFA;
     border: 1px solid #EEE;
-    float: left;
-    margin-top: 28px;
     overflow: hidden;
+    position: absolute;
+    bottom:0;
 }
-.content-about .content-about-personal .content-about-personal-num .content-about-personal-num-p1{
-    font-size: 26px;
+.content-about .content-about-personal .content-about-personal-num2{
+    width: 88px;
+    height: 65px;   
+    background: #FAFAFA;
+    border: 1px solid #EEE;
+    overflow: hidden;
+    position: absolute;
+    bottom:0;
+    left: 88px;
+}
+.content-about .content-about-personal .content-about-personal-num3{
+    width: 88px;
+    height: 65px;   
+    background: #FAFAFA;
+    border: 1px solid #EEE;
+    overflow: hidden;
+    position: absolute;
+    bottom:0;
+    left: 176px;
+}
+ .content-about-personal-num-p1{
+    font-size: 22px;
     padding-top: 7px;
     color: #999999;
 }
-.content-about .content-about-personal .content-about-personal-num .content-about-personal-num-p2{
+.content-about-personal-num-p2{
     font-size: 12px;
     color: #D9D0CC;
 }
@@ -205,14 +229,19 @@
     background: #00A8D8;
     border-radius: 0.5%;
     height: 35px;
-    margin-left: 45px;
     text-align: center;
-    margin-top: 25px;
     cursor: pointer;
+    position: absolute;
+    right: 145px;
+    bottom: 20px;
 }
-.Change-the-Avatar .Change-the-Avatar-button1 p{
+.inputfile {
+    opacity: 0;
+}
+ .Change-the-Avatar .Change-the-Avatar-button1 p{
     line-height: 35px;
     color: #fff;
+    font-weight: normal;
 }
 .Change-the-Avatar .Change-the-Avatar-button2{
     width: 80px;
