@@ -95,7 +95,7 @@
                 <span>添加好友</span><i id="iconChacha5" class="iconfont icon-chacha1"></i>
             </div>
             <div class="create-friends-pop-content">
-                <input id="Create-friends-input" type="text" placeholder="请输入好友名称"  name="Create-friends-input">
+                <input id="Create-friends-input" type="text" placeholder="请输入用户名或者用户昵称"  name="Create-friends-input">
                 <div id="search-i" class="search-i"><span class="icon iconfont">&#xe60b;</span></div>
                 <ul id="search-content" class="search-content">
 
