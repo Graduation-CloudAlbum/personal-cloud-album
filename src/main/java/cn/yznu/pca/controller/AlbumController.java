@@ -34,9 +34,9 @@ public class AlbumController {
      */
     @RequestMapping("/albumInfo")
     @ResponseBody
-    public  Map<String,Object>   AlbumInfo( HttpServletRequest request){
+    public  Map<String,Object>   AlbumInfo(HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
-        List albumlist =albumService.getAlbum(user.getId());
+        List albumlist=albumService.getAlbum(user.getId());
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
@@ -47,10 +47,10 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+
         map.put("album",albumlist);
         map.put("imageNum",list);
         return  map;
-
     }
 
     /**
@@ -150,6 +150,7 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+        map.put("album",albumlist);
         map.put("imageNum",list);
         return  map;
 
@@ -173,6 +174,7 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+        map.put("album",albumlist);
         map.put("imageNum",list);
         return  map;
 
@@ -196,6 +198,7 @@ public class AlbumController {
             int imageNum=imageService.imageNum(user.getId(),albumId);
             list.add(imageNum);
         }
+        map.put("album",albumlist);
         map.put("imageNum",list);
         return  map;
 

@@ -43,9 +43,10 @@ public interface UserService {
 
     /**
      * 更换头像
-     * @param url 图片地址
+     * @param id
+     * @param url
      */
-    void changeIcon(String url);
+    int changeIcon(int id,String url);
 
     /**
      * 修改密码

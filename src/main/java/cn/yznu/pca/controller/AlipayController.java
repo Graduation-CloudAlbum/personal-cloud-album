@@ -8,6 +8,7 @@ import cn.yznu.pca.utils.OrderStatusEnum;
 import cn.yznu.pca.utils.Sid;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.domain.Product;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import org.apache.ibatis.annotations.Param;
@@ -19,9 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.POST;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -57,53 +56,71 @@ public class AlipayController {
         int meal2=30;
         String productName="";
         int payment=0;
-        ModelAndView mv = new ModelAndView("goConfirm");
+
         if (Integer.parseInt(meal)==meal1){
              productName="黄金会员(包含10个G的额外使用空间)";
              payment=10;
         }else if(Integer.parseInt(meal)==meal2) {
-             productName = "黄金会员(包含50个G的额外使用空间)";
+             productName="铂金会员(包含50个G的额外使用空间)";
              payment = 30;
 
         }else{
-             productName="黄金会员(包含100个G的额外使用空间)";
+             productName="钻石会员(包含100个G的额外使用空间)";
              payment=50;
         }
-        request.getSession().setAttribute("productName",productName);
-        request.getSession().setAttribute("payment",payment);
+        //request.getSession().setAttribute("productName",productName);
+        //request.getSession().setAttribute("payment",payment);
+        ModelAndView mv = new ModelAndView("goConfirm");
         mv.addObject("productName", productName);
         mv.addObject("payment", payment);
         System.out.println("商品名是："+productName);
         System.out.println("价格是："+payment);
-        //return "redirect:/goConfirm";
         return mv;
     }
 
     /**
      * 分段提交
      * 	第一段：创建订单，保存订单
-     * @param pcr
+     * @param order
      * @return
      * @throws Exception
      */
+    //@RequestMapping("/createOrder")
+    //@ResponseBody
+    //public String createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord pcr,HttpServletRequest request) throws Exception {
+    //    User user= (User) request.getSession().getAttribute("user");
+    //    int userId=user.getId();
+    //    //String payment=(String) request.getSession().getAttribute("payment");
+    //    String orderId = Sid.Onumber();
+    //    pcr.setUserId(userId);
+    //    pcr.setId(orderId);
+    //    pcr.setCreateTime(new Date());
+    //    pcr.setProductName(productName);
+    //    pcr.setPayment(payment);
+    //    pcr.setStatus(OrderStatusEnum.WAIT_PAY.key);
+    //    purchaseRecordService.saveOrder(pcr);
+    //
+    //    return orderId;
+    //}
+
     @RequestMapping("/createOrder")
-    @ResponseBody
-    public String createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord pcr,HttpServletRequest request) throws Exception {
+    public ModelAndView createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord order,HttpServletRequest request) throws Exception {
         User user= (User) request.getSession().getAttribute("user");
-        int userId=user.getId();
-        //String payment=(String) request.getSession().getAttribute("payment");
+            int userId=user.getId();
         String orderId = Sid.Onumber();
-        pcr.setUserId(userId);
-        pcr.setId(orderId);
-        pcr.setCreateTime(new Date());
-        pcr.setProductName(productName);
-        pcr.setPayment(payment);
-        pcr.setStatus(OrderStatusEnum.WAIT_PAY.key);
-        purchaseRecordService.saveOrder(pcr);
+        productName=new String(request.getParameter("productName").getBytes("ISO-8859-1"),"utf-8") ;
+        order.setId(orderId);
+        order.setUserId(userId);
+        order.setStatus(OrderStatusEnum.WAIT_PAY.key);
+        order.setProductName(productName);
+        order.setPayment(payment);
+        purchaseRecordService.saveOrder(order);
 
-        return orderId;
+        ModelAndView mv = new ModelAndView("goPay");
+        mv.addObject("order", order);
+
+        return mv;
     }
-
     /**
      * 分段提交
      * 	第二段,创建订单，准备付款
@@ -111,11 +128,11 @@ public class AlipayController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/goPay")
-    public ModelAndView goPay(String orderId) throws Exception {
-
+    @RequestMapping("/goPay/{orderId}")
+    public ModelAndView goPay(@PathVariable("orderId") String orderId) throws Exception {
+        System.out.println("goPay接收到的订单id是："+orderId);
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
-        System.out.println();
+        System.out.println(orderId);
         System.out.println("********开始创建订单*********");
         System.out.println("订单编号是："+order.getId());
         System.out.println("商品是："+order.getProductName());
@@ -131,7 +148,7 @@ public class AlipayController {
      */
     @RequestMapping(value = "/goAlipay", produces = "text/html; charset=UTF-8")
     @ResponseBody
-    public String goAlipay(String orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
+    public String goAlipay(@Param("orderId") String orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
         System.out.println("orderId是:"+orderId);
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
 
@@ -144,7 +161,7 @@ public class AlipayController {
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
         //商户订单号，商户网站订单系统中唯一订单号，必填
-        String out_trade_no =String.valueOf(orderId);
+        String out_trade_no =orderId;
         //付款金额，必填
        // String total_amount = order.getOrderAmount();
         //订单名称，必填

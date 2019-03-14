@@ -18,17 +18,17 @@ public class AlipayConfig {
     /**
      *付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
      */
-    public static String alipay_public_key = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIgHnOn7LLILlKETd6BFRJ0GqgS2Y3mn1wMQmyh9zEyWlz5p1zrahRahbXAfCfSqshSNfqOmAQzSHRVjCqjsAw1jyqrXaPdKBmr90DIpIxmIyKXv4GGAkPyJ/6FTFY99uhpiq0qadD/uSzQsefWo0aTvP/65zi3eof7TcZ32oWpwIDAQAB";
+    public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv7QeeC1OSt6Ha4xzeSnuCJc3t10BuOkTdRqMhWLeU/vXGt7WEaImdhUEiqsAEHXSe/BJoWZWfYzXFpFR0/euFJdiKe3gFSXb1nKOrxudyKYV5URF8ptHQfe34uyzfNU0NWG5XbWNRs91X2RjSYVl1r3BP8sXy6tTKdwlyRv0mSo6prx3/jAKlkhHox1/XacNyFR0Z02/PLC/pw72c4YmNOSkVWvGnH8R3PTsgKlB1p3PS6JUUOFZnGtfX0ifSQFV1NRvnpuHOZB9TqxKVT9FtVXJlX26Cw4V/NBt1xhlly8X7Wbh9EUm5qkXAdMZG9TiKUuEUNrbzKRV9OXBHDx6zwIDAQAB";
 
     /**
      *服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
      */
-    public static String notify_url = "http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/notify_url.jsp";
+    public static String notify_url = "http://localhost:8080/alipay/alipayNotifyNotice";
 
     /**
      * 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
      */
-    public static String return_url = "http://localhost:8080/alipay.trade.page.pay-JAVA-UTF-8/return_url.jsp";
+    public static String return_url = "http://localhost:8080/alipay/alipayReturnNotice";
 
     /**
      * 签名方式

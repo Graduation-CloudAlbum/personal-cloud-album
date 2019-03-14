@@ -85,8 +85,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
+    select *
     from purchase_record
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -101,7 +100,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.yznu.pca.model.PurchaseRecord" >
-    insert into purchase_record (id, create_time, status, 
+    insert into purchase_record (id, create_time, status,
       user_id, product_name, payment
       )
     values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR},
@@ -132,7 +131,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -161,7 +160,7 @@
     update purchase_record
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -186,11 +185,11 @@
   <update id="updateByExample" parameterType="map" >
     update purchase_record
     set id = #{record.id,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      payment = #{record.payment,jdbcType=VARCHAR}
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    status = #{record.status,jdbcType=VARCHAR},
+    user_id = #{record.userId,jdbcType=INTEGER},
+    product_name = #{record.productName,jdbcType=VARCHAR},
+    payment = #{record.payment,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>

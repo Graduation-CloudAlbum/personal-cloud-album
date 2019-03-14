@@ -101,7 +101,8 @@ public class UserController {
         user.setUserName(username);
         //对密码进行MD5加密
         user.setUserPassword(MD5Util.md5Jdk(password));
-        System.out.println(MD5Util.md5Jdk(password));
+        //设置默认头像
+        user.setUserIcon("/upload/default-c.png");
         userService.register(user);
         return "success";
     }
@@ -124,13 +125,15 @@ public class UserController {
         }
     }
     @RequestMapping("/changeIcon")
-    public String changeIcon(HttpServletRequest request ,Image image,User user, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
+    @ResponseBody
+    public String changeIcon(HttpServletRequest request ,Image image, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
+        User user= (User) request.getSession().getAttribute("user");
         //设置本地保存路径
         String localPath="F:\\demos\\upload\\";
-        //使用UUID给图片重命名，并去掉四个“-”
+        //以icon+用户id的方式命名头像照片
         String name = UUID.randomUUID().toString().replaceAll("-", "");
         //获取照片大小,以B/KB/MB为单位保存
-        String fileSize =FormatUtil.format(pictureFile.getSize()) ;
+        //String fileSize =FormatUtil.format(pictureFile.getSize()) ;
         //获取文件的扩展名
         String ext = FilenameUtils.getExtension(pictureFile.getOriginalFilename());
         //设置图片上传的虚拟路径
@@ -138,11 +141,17 @@ public class UserController {
         //以绝对路径保存重名命后的图片
         pictureFile.transferTo(new File(localPath+"/"+name + "." + ext));
         //保存图片信息到数据库
-        image.setImageName(name);
-        image.setUrl(url+name+"." + ext);
-        image.setImageSize(fileSize);
-        imageService.upload(image);
-        return "personalData";
+        //image.setImageName(name);
+        //image.setUserId(user.getId());
+        //image.setUrl(url+name+"." + ext);
+        //image.setImageSize(fileSize);
+        //String icon=url+name+"." + ext;
+        //user.setUserIcon(icon);
+        //user.setUserIcon(url+name+"." + ext);
+        userService.changeIcon(user.getId(),url+name+"." + ext);
+        userService.selectUserById(user.getId());
+        request.getSession().setAttribute("user", userService.selectUserById(user.getId()));
+        return "ok";
     }
     @ResponseBody
     @RequestMapping("/changePassword")

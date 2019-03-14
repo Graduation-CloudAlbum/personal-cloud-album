@@ -105,10 +105,12 @@
   <insert id="insert" parameterType="cn.yznu.pca.model.User" >
     insert into user (id, create_time, satatus, 
       user_name, user_password, nick_name, 
-      user_type)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{satatus,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{userType,jdbcType=VARCHAR})
+      user_icon, synopsis, user_type
+      )
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{satatus,jdbcType=VARCHAR},
+      #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
+      #{userIcon,jdbcType=VARCHAR}, #{synopsis,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.yznu.pca.model.User" >
     insert into user
@@ -130,6 +132,12 @@
       </if>
       <if test="nickName != null" >
         nick_name,
+      </if>
+      <if test="userIcon != null" >
+        user_icon,
+      </if>
+      <if test="synopsis != null" >
+        synopsis,
       </if>
       <if test="userType != null" >
         user_type,
@@ -153,6 +161,12 @@
       </if>
       <if test="nickName != null" >
         #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userIcon != null" >
+        #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        #{synopsis,jdbcType=VARCHAR},
       </if>
       <if test="userType != null" >
         #{userType,jdbcType=VARCHAR},
@@ -186,6 +200,12 @@
       <if test="record.nickName != null" >
         nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
+      <if test="record.userIcon != null" >
+        user_icon = #{record.userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.synopsis != null" >
+        synopsis = #{record.synopsis,jdbcType=VARCHAR},
+      </if>
       <if test="record.userType != null" >
         user_type = #{record.userType,jdbcType=VARCHAR},
       </if>
@@ -197,12 +217,14 @@
   <update id="updateByExample" parameterType="map" >
     update user
     set id = #{record.id,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      satatus = #{record.satatus,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_password = #{record.userPassword,jdbcType=VARCHAR},
-      nick_name = #{record.nickName,jdbcType=VARCHAR},
-      user_type = #{record.userType,jdbcType=VARCHAR}
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    satatus = #{record.satatus,jdbcType=VARCHAR},
+    user_name = #{record.userName,jdbcType=VARCHAR},
+    user_password = #{record.userPassword,jdbcType=VARCHAR},
+    nick_name = #{record.nickName,jdbcType=VARCHAR},
+    user_icon = #{record.userIcon,jdbcType=VARCHAR},
+    synopsis = #{record.synopsis,jdbcType=VARCHAR},
+    user_type = #{record.userType,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,6 +247,12 @@
       <if test="nickName != null" >
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="userIcon != null" >
+        user_icon = #{userIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="synopsis != null" >
+        synopsis = #{synopsis,jdbcType=VARCHAR},
+      </if>
       <if test="userType != null" >
         user_type = #{userType,jdbcType=VARCHAR},
       </if>
@@ -238,10 +266,18 @@
       user_name = #{userName,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
+      user_icon = #{userIcon,jdbcType=VARCHAR},
+      synopsis = #{synopsis,jdbcType=VARCHAR},
       user_type = #{userType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <update id="updateUrl" parameterType="cn.yznu.pca.model.User" >
+    update user
+    set
+      user_icon = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <select id="isExistUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select * from user where user_name = #{userName,jdbcType=VARCHAR}
   </select>

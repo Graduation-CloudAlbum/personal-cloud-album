@@ -26,13 +26,13 @@
 <div class="wrapper">
     <div class="header">
         <img src="<%=basePath%>/resource/img/logo.png">
-        <div class="header-right"><img src="<%=basePath%>/resource/img/default-c.png"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
+        <div class="header-right"><img src="<%=user.getUserIcon()%>"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/img/default-c.png"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user.getUserIcon()%>"><p><%=user.getNickName()%></p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/recycleBin/myRecycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -50,9 +50,9 @@
                 <li class="content-menu-li uploadPhoto5">
                     <a>排序方式</a>
                     <ul id="album-sort" class="album-sort">
-                        <li class="album-sort-li">按照相册名称排序</li>
-                        <li class="album-sort-li">按照相册主题排序</li>
-                        <li class="album-sort-li">按照相册更新时间排序</li>
+                        <li class="album-sort-li">按相册名称排序</li>
+                        <li class="album-sort-li">按相册主题排序</li>
+                        <li class="album-sort-li">按更新时间排序</li>
                     </ul>
                 </li>
             </ul>
@@ -137,11 +137,11 @@
     <!-- ***************************************************弹窗 ***************************************************-->
     <div id="Create-Album">
         <div class="popup-header"><h4>创建相册</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
-        <input id="Create-Album-input" type="text" placeholder="请输入1-30位字符名称的相册"  name="">
-        <input id="Create-Album-input2" type="text" placeholder="请输入1-30位字符名称的相册主题"  name="">
+        <input id="Create-Album-input" type="text" placeholder="请输入相册名称"  name="">
+        <input id="Create-Album-input2" type="text" placeholder="请输入相册主题"  name="">
         <div class="create-radio">
-            <input type="radio" name="identity" value="私有" checked="checked" />私有
-            <input type="radio" name="identity" value="公开" />公开
+            <input type="radio" name="identity" value="公开" checked="checked" />公开
+            <input type="radio" name="identity" value="私有" />私有
         </div>
         <div class="Create-Album-button1" id="Create-Album-button1"><p>取消</p></div><div id="Create-Album-button2" class="Create-Album-button2"><p>确定</p></div>
     </div>

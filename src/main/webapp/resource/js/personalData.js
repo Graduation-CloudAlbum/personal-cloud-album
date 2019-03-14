@@ -45,7 +45,7 @@ ChangetheAvatar.onclick=function(){
     document.getElementById('Change-the-Avatar').style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
-//点击更换头像
+//点击“更换头像”(点击按钮)
 var image = '';
 function selectImage(file) {
     if (!file.files || !file.files[0]) {
@@ -58,7 +58,26 @@ function selectImage(file) {
     }
     reader.readAsDataURL(file.files[0]);
 }
-//点击更换头像
+$("#img0").change(function () {
+    var oFiles = document.getElementById("img0").files;
+    var params = new FormData();
+    params.append('file',oFiles[0]);
+    $.ajax({
+        type:'post',
+        async:false,
+        url:'/pca/user/changeIcon',
+        data:params,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function(data){
+            window.location.href="/pca/user/personalData";
+            window.location.href = window.location.href;
+        }
+    });
+
+});
+//点击更换头像（点击头像）
 var image2 = '';
 function selectImage2(file) {
     if (!file.files || !file.files[0]) {
@@ -71,6 +90,26 @@ function selectImage2(file) {
     }
     reader.readAsDataURL(file.files[0]);
 }
+//在个人信息页面点击“头像”实现更换头像
+$("#img2").change(function () {
+    var oFiles = document.getElementById("img2").files;
+    var params = new FormData();
+    params.append('file',oFiles[0]);
+    $.ajax({
+        type:'post',
+        async:false,
+        url:'/pca/user/changeIcon',
+        data:params,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function(data){
+            window.location.href="/pca/user/personalData";
+            window.location.href = window.location.href;
+        }
+    });
+
+});
 //关闭更换头像
 var ChangetheAvatarButton2 = document.getElementById('Change-the-Avatar-button2');
 ChangetheAvatarButton2.onclick=function(){
@@ -95,7 +134,7 @@ cancel.onclick=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('Change-Password').style.display="none";
 }
-//确定更改
+//确定修改密码
 $(".Change-Password-button2").click(function () {
     var oldPassword=$.trim($("#input1").val());
     var newPassword1=$.trim($("#input2").val());
@@ -132,31 +171,9 @@ Expansion.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     $("input[type='radio']").removeAttr('checked');
 }
-
+//获取用户选择的扩容服务
 $("#Buy-Expansion-button2").click(function () {
     var meal=$("input[type='radio']:checked").val();
-    // if (meal==10){
-    //     var productName="黄金会员(包含10个G的额外使用空间)";
-    //     var payment=10;
-    // }else if (meal==30){
-    //     var productName="铂金会员(包含50个G的额外使用空间)";
-    //     var payment=30;
-    // }else {
-    //     var productName="钻石会员(包含100个G的额外使用空间)";
-    //     var payment=50;
-    // }
-    // alert(productName+"/"+payment)
-    // $.ajax({
-    //     async:false,
-    //     type:"POST",
-    //     url:"/pca/alipay/goConfirm",
-    //     data:{"productName":productName,"payment":payment},
-    //     dataType: "json",
-    //     success:function(data) {
-    //             window.location.href="/pca/alipay-INF/goConfirm";
-    //
-    //     }
-    // });
     window.location.href="/pca/alipay/goConfirm/"+meal;
 });
 //关闭扩充空间

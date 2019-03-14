@@ -33,7 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeIcon(String url) {
+    public int changeIcon(int id,String url) {
+        return mapper.updateUrl(id,url);
 
     }
 

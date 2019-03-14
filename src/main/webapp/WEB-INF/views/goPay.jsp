@@ -2,6 +2,7 @@
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     request.getSession().getAttribute("user");
+    request.setCharacterEncoding("UTF-8");
 %>
 <html>
 <head>
@@ -11,8 +12,8 @@
 </head>
 <body>
 
-<form id="payForm" action="/pca/alipay/goAlipay" method="post">
-    <%--<input type="hidden" name="orderId" value="${order.id }" />--%>
+<form id="payForm" action="/pca/alipay/goAlipay/" method="post">
+    <input type="hidden" id="orderId" name="orderId" value="${order.id }" />
     <table>
         <tr>
             <td>
@@ -30,10 +31,16 @@
         <tr>
         </tr>
         <td>
-            <input type="submit" value="前往支付宝进行支付">
+            <input type="submit" value="前往支付宝付款">
         </td>
         </tr>
     </table>
+    <%--<script>--%>
+        <%--function pay() {--%>
+            <%--var orderId = $('input[name=orderId]').val();--%>
+            <%--window.location.href ="/pca/alipay/goAlipay/"+orderId;--%>
+        <%--}--%>
+    <%--</script>--%>
 </form>
 </body>
 </html>
