@@ -1,4 +1,13 @@
-
+//点击相册
+//myAlbum-menu1
+var myAlbumContent=document.getElementById('myAlbum-content');
+var myAlbumContent2=document.getElementById('myAlbum-content2');
+var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+var myAlbumMenu1=document.getElementById('myAlbum-menu1');
+var myAlbumMenu2=document.getElementById('myAlbum-menu2');
+var open=document.getElementById('open');
+var open2=document.getElementById('open2');
+var aLi="";
 //首页点击的相册名
 var aName="";
 //动态加载首页相册
@@ -34,29 +43,29 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
-            for(var i=0;i<myAlbumLi.length;i++){
-                myAlbumLi[i].index = i;
-                myAlbumLi[i].onclick=function(){
-                    myAlbumMenu1.style.display="none";
-                    myAlbumContent.style.display="none";
-                    open.style.display="none";
-
-                    myAlbumMenu2.style.display="block";
-                    myAlbumContent2.style.display="block";
-                    open2.style.display="block";
-
-                    str = (function(i){
-                        aLi=i;
-                        return aLi;
-                    })(this.index);
-                    aLi=str;
-
-                    var aP = this.getElementsByTagName('p');
-                    aName=aP[0].innerHTML;
-
-                }
-
-            }
+            // for(var i=0;i<myAlbumLi.length;i++){
+            //     myAlbumLi[i].index = i;
+            //     myAlbumLi[i].onclick=function(){
+            //         myAlbumMenu1.style.display="none";
+            //         myAlbumContent.style.display="none";
+            //         open.style.display="none";
+            //
+            //         myAlbumMenu2.style.display="block";
+            //         myAlbumContent2.style.display="block";
+            //         open2.style.display="block";
+            //
+            //         str = (function(i){
+            //             aLi=i;
+            //             return aLi;
+            //         })(this.index);
+            //         aLi=str;
+            //
+            //         var aP = this.getElementsByTagName('p');
+            //         aName=aP[0].innerHTML;
+            //
+            //     }
+            //
+            // }
 
         }
     });
@@ -66,7 +75,7 @@ $("#myAlbum-content").click(function () {
     var albumName=aName;
     $.ajax({
         type:"post",
-        url:"/pca/image/getImage",
+        url:"/pca/friend/checkAlbumPower",
         data: {"albumName": albumName},
         dataType: "json",
         success: function (data) {
@@ -87,4 +96,11 @@ $("#myAlbum-content").click(function () {
     });
 
 });
-
+//时间格式处理，将时间戳转换成yyyy-mm-dd格式
+function fmtDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+}
