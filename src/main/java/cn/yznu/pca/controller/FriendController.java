@@ -328,18 +328,31 @@ public class FriendController {
 
 
     /**
-     * 点击好友头像进入好友空间
+     * 点击好友头像进入好友空间存session
      */
     @RequestMapping(method = RequestMethod.GET, value = "/inFriendSpace2/{friend_id}")
     @ResponseBody
     public ModelAndView  inFriendSpace2(@PathVariable int friend_id,
-                                             HttpServletRequest request,
-                                             HttpServletResponse response) {
+                                        HttpServletRequest request,
+                                        HttpServletResponse response) {
         ModelAndView mav=new  ModelAndView("friendAlbum");
         User user = (User) request.getSession().getAttribute("user");
         request.getSession().setAttribute("friend_id",friend_id);
         System.out.println("sssssssssss"+ request.getSession().getAttribute("friend_id"));
         mav.addObject("friend_id",friend_id);
+        return  mav;
+    }
+
+
+    /**
+     * 判断用户是否有进入好友相册权限
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/checkAlbumPower/{friend_id}")
+    @ResponseBody
+    public ModelAndView  checkAlbumPower(HttpServletRequest request,
+                                        HttpServletResponse response) {
+        ModelAndView mav=new  ModelAndView("friendAlbum");
+
         return  mav;
     }
 
