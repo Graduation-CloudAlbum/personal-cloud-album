@@ -1,5 +1,6 @@
 package cn.yznu.pca.controller;
 import cn.yznu.pca.model.Album;
+import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
@@ -40,16 +41,26 @@ public class AlbumController {
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
+        List coverList=new ArrayList();
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
-             albumId=album.getId();
+            albumId=album.getId();
              //用户某个相册下照片数量
             int imageNum=imageService.imageNum(user.getId(),albumId);
+            //获取每个相册下最近一张照片作为相册封面展示图
+            Image coverImage=imageService.getFirstOne(user.getId(),albumId);
+            //若该相册内没有照片，则使用系统默认相册封面图
+            if (coverImage==null){
+                coverImage=new Image();
+                coverImage.setUrl("/upload/Album-cover3.jpg");
+            }
+            coverList.add(coverImage);
             list.add(imageNum);
         }
 
         map.put("album",albumlist);
         map.put("imageNum",list);
+        map.put("coverList",coverList);
         return  map;
     }
 
@@ -75,18 +86,17 @@ public class AlbumController {
         }else if (jurisdiction.equals(jsd2)){
             sta="1";
         }
-        System.out.println("选择的权限是："+sta);
         Album album=new Album();
         album.setAlbumName(albumName);
         album.setUserId(userId);
         album.setStatus(sta);
         album.setAlbumType(theme);
         List albumlist=albumService.selectAlbumByName(userId,albumName);
-        //大于0表示相册名已存在
+        //大于0表示相册名已存在，不可使用，返回0
         if (albumlist.size()>0){
             return 0;
         }else{
-            //创建相册
+            //否则表示相册名可用，创建相册，返回1
             albumService.createAlbum(album);
             return 1;
         }
@@ -101,15 +111,31 @@ public class AlbumController {
      */
     @RequestMapping("/deleteAlbum")
     @ResponseBody
-    public int deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
+    public String deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
+        String status1="0";
+        String status2="1";
+        String status="";
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         List albumlist =albumService.selectAlbumByName(userId,albumName);
         Album album= (Album) albumlist.get(0);
         int albumId=album.getId();
-        String status="3";
-        int mark=albumService.deleteAlbum(albumId,status);
-        return mark;
+        /**
+         * 删除整个相册时，先获取相册原来status
+         * 若原status为0，则将新status置为3
+         * 若原status为1，则将新status置为4
+         * 其中3,4均代表回收站，方便还原相册时将相册状态重置
+         */
+        String albumStatus=album.getStatus();
+        if (albumStatus==status1){
+           status="3";
+        }else if (albumStatus==status2){
+            status="4";
+        }
+
+        albumService.deleteAlbum(albumId,status);
+        imageService.deleteImageByAlbumId(albumId);
+        return "ok";
     }
 
     /**
@@ -143,14 +169,24 @@ public class AlbumController {
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
+        List coverList=new ArrayList();
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
             //用户某个相册下照片数量
             int imageNum=imageService.imageNum(user.getId(),albumId);
+            //获取每个相册下最近一张照片作为相册封面展示图
+            Image coverImage=imageService.getFirstOne(user.getId(),albumId);
+            //若该相册内没有照片，则使用系统默认相册封面图
+            if (coverImage==null){
+                coverImage=new Image();
+                coverImage.setUrl("/upload/Album-cover3.jpg");
+            }
+            coverList.add(coverImage);
             list.add(imageNum);
         }
         map.put("album",albumlist);
+        map.put("coverList",coverList);
         map.put("imageNum",list);
         return  map;
 
@@ -167,14 +203,24 @@ public class AlbumController {
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
+        List coverList=new ArrayList();
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
             //用户某个相册下照片数量
             int imageNum=imageService.imageNum(user.getId(),albumId);
+            //获取每个相册下最近一张照片作为相册封面展示图
+            Image coverImage=imageService.getFirstOne(user.getId(),albumId);
+            //若该相册内没有照片，则使用系统默认相册封面图
+            if (coverImage==null){
+                coverImage=new Image();
+                coverImage.setUrl("/upload/Album-cover3.jpg");
+            }
+            coverList.add(coverImage);
             list.add(imageNum);
         }
         map.put("album",albumlist);
+        map.put("coverList",coverList);
         map.put("imageNum",list);
         return  map;
 
@@ -191,14 +237,24 @@ public class AlbumController {
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
+        List coverList=new ArrayList();
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
             //用户某个相册下照片数量
             int imageNum=imageService.imageNum(user.getId(),albumId);
+            //获取每个相册下最近一张照片作为相册封面展示图
+            Image coverImage=imageService.getFirstOne(user.getId(),albumId);
+            //若该相册内没有照片，则使用系统默认相册封面图
+            if (coverImage==null){
+                coverImage=new Image();
+                coverImage.setUrl("/upload/Album-cover3.jpg");
+            }
+            coverList.add(coverImage);
             list.add(imageNum);
         }
         map.put("album",albumlist);
+        map.put("coverList",coverList);
         map.put("imageNum",list);
         return  map;
 

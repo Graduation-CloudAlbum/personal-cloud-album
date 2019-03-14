@@ -188,20 +188,19 @@ $().ready(function getAlbum() {
     $.ajax({
         async : false,
         type: "post",
-        // data:{"albumSortWay":albumSortWay},
         url:"/pca/album/albumInfo" ,
         dataType: "json",
         success: function (data){
             //加载相册 到album页面
-            var h = "";
-            var createtime="";
+            var h = "";;
             var resource="/pca/resource/img/Album-cover1.jpg";
             for (var i = 0; i < data.album.length; i++) {
                 var imageNum=data.imageNum[i];
-                 albumName=data.album[i].albumName;
-                createtime=fmtDate(data.album[i].createTime);
+                var cover=data.coverList[i].url;
+                var albumName=data.album[i].albumName;
+                var createtime=fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
-                    + "<img src='"+resource+"'>"
+                    + "<img src='"+cover+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
@@ -354,14 +353,13 @@ for(var i=0;i<albumSortLi.length;i++){
             success: function (data){
             //加载排序后的相册 到album页面
                 var h = "";
-                var createtime="";
-                var resource="/pca/resource/img/Album-cover1.jpg";
                 for (var i = 0; i < data.album.length; i++) {
                     var imageNum=data.imageNum[i];
-                    albumName=data.album[i].albumName;
-                    createtime=fmtDate(data.album[i].createTime);
+                    var cover=data.coverList[i].url;
+                    var albumName=data.album[i].albumName;
+                    var createtime=fmtDate(data.album[i].createTime);
                     h += "<li class='content-about-li'>"
-                        + "<img src='"+resource+"'>"
+                        + "<img src='"+cover+"'>"
                         + "<div class='content-about-li-top'>"
                         + "<div class='content-about-li-top-a'>"
                         + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"

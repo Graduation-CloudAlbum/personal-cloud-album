@@ -140,14 +140,7 @@ public class UserController {
         String url = "/upload/";
         //以绝对路径保存重名命后的图片
         pictureFile.transferTo(new File(localPath+"/"+name + "." + ext));
-        //保存图片信息到数据库
-        //image.setImageName(name);
-        //image.setUserId(user.getId());
-        //image.setUrl(url+name+"." + ext);
-        //image.setImageSize(fileSize);
-        //String icon=url+name+"." + ext;
-        //user.setUserIcon(icon);
-        //user.setUserIcon(url+name+"." + ext);
+        //保存头像路径到数据库
         userService.changeIcon(user.getId(),url+name+"." + ext);
         userService.selectUserById(user.getId());
         request.getSession().setAttribute("user", userService.selectUserById(user.getId()));

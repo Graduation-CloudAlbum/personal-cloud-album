@@ -12,7 +12,7 @@ import java.util.List;
 public interface ImageService {
     /**
      * 用户在某个相册的照片
-     * @param status 照片位置（相册回收站）
+     * @param status 照片位置（非回收站）
      * @param userId 用户id
      * @param albumId 相册id
      * @return list
@@ -34,11 +34,18 @@ public interface ImageService {
     int download(Image image);
 
     /**
-     * 删除照片
+     * 通过照片id删除照片
      * @param imageId 照片id
      * @return
      */
-    int deleteImage(Integer[] imageId);
+    int deleteImageById(Integer[] imageId);
+
+    /**
+     * 通过相册id删除照片
+     * @param albumId 照片id
+     * @return
+     */
+    int deleteImageByAlbumId(Integer albumId);
 
     /**
      * 移动照片
@@ -59,7 +66,15 @@ public interface ImageService {
      * 获取用户在某个相册里的所有照片数量
      * @param userId 用户id
      * @param albumId 相册id
-     * @return 照片树龄
+     * @return 照片数量
      */
     int imageNum(int userId,int albumId);
+
+    /**
+     * 获取相册的最新的一张照片
+     * @param userId 用户id
+     * @param albumId 相册id
+     * @return image
+     */
+    Image getFirstOne(int userId,int albumId);
 }

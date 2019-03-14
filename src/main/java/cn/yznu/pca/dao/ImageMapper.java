@@ -38,4 +38,8 @@ public interface ImageMapper {
     int updateImageStatus(@Param("imageId")Integer[] imageId);
 
     int updateImageToAlbum(@Param("imageId")Integer[] imageId,@Param("albumId")Integer albumId);
+
+    Image selectFirst(@Param("userId")Integer userId,@Param("albumId")Integer albumId);
+
+    int updateImageStatusInAlbum(@Param("albumId")Integer albumId);
 }

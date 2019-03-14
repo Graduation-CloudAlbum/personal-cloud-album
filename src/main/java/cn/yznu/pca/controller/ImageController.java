@@ -50,12 +50,16 @@ public class ImageController {
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         System.out.println("相册名是："+albumName);
+        //通过用户id和相册名获取到唯一相册
         List albumlist=albumService.selectAlbumByName(userId,albumName);
         Album album = (Album) albumlist.get(0);
+        //获取该相册id
         int albumId=album.getId();
         String  satus="0";
         List list=imageService.getImage(satus,userId,albumId);
+        //Image coverIma= (Image) list.get(0);
         Map map=new HashMap();
+        //map.put("coverIma",coverIma);
         map.put("imageList",list);
         return map;
     }
@@ -220,7 +224,7 @@ public class ImageController {
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
 
-        return imageService.deleteImage(imageId);
+        return imageService.deleteImageById(imageId);
     }
 
     /**

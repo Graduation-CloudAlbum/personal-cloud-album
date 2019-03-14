@@ -37,8 +37,13 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public int deleteImage(Integer[] imageId) {
+    public int deleteImageById(Integer[] imageId) {
         return imageMapper.updateImageStatus(imageId);
+    }
+
+    @Override
+    public int deleteImageByAlbumId(Integer albumId) {
+        return 0;
     }
 
     @Override
@@ -55,6 +60,11 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public int imageNum(int userId, int albumId) {
         return imageMapper.getImageNum(userId,albumId);
+    }
+
+    @Override
+    public Image getFirstOne(int userId, int albumId) {
+        return imageMapper.selectFirst(userId,albumId);
     }
 
 

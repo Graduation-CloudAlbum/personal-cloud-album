@@ -163,9 +163,9 @@ public class AlipayController {
         //商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no =orderId;
         //付款金额，必填
-       // String total_amount = order.getOrderAmount();
+        String total_amount = String.valueOf(Float.valueOf(order.getPayment()));
         //订单名称，必填
-        String subject = order.getProductName()+orderId;
+        String subject = order.getProductName();
         //商品描述，可空
         String body = "用户订购商品：" +order.getProductName();
 
@@ -173,6 +173,7 @@ public class AlipayController {
         String timeout_express = "1c";
 
         alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
+                + "\"total_amount\":\""+ total_amount +"\","
                 + "\"subject\":\""+ subject +"\","
                 + "\"body\":\""+ body +"\","
                 + "\"timeout_express\":\""+ timeout_express +"\","
@@ -210,7 +211,7 @@ public class AlipayController {
         //调用SDK验证签名
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type);
 
-        ModelAndView mv = new ModelAndView("alipaySuccess");
+        ModelAndView mv = new ModelAndView("myAlbum");
         if(signVerified) {
             //商户订单号
             String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
@@ -237,6 +238,7 @@ public class AlipayController {
 
             mv.addObject("out_trade_no", out_trade_no);
             mv.addObject("trade_no", trade_no);
+
             mv.addObject("total_amount", total_amount);
             mv.addObject("productName", order.getProductName());
 
