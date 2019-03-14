@@ -10,6 +10,7 @@
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User user= (User) request.getSession().getAttribute("user");
+    //User newUser= (User) request.getSession().getAttribute("newUser");
     //User user1= (User) request.getSession().getAttribute("user1");
     Object albumNum=request.getSession().getAttribute("albumNum");
     Object imageNum=request.getSession().getAttribute("imageNum");
@@ -27,13 +28,13 @@
 <div class="wrapper">
     <div class="header">
         <img src="<%=basePath%>/resource/images/logo.png">
-        <div class="header-right"><img src="<%=basePath%>/resource/images/default-c.png"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
+        <div class="header-right"><img src="<%=user.getUserIcon()%>"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
         <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
     </div>
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=basePath%>/resource/images/default-c.png"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user.getUserIcon()%>"><p><%=user.getNickName()%></p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/recycleBin/myRecycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -56,7 +57,7 @@
                     <div class="content-about-personal">
                         <input id="img2" class="inputfile" type="file"onchange="selectImage2(this);"/>
                         <label for="img2" class="img-lable">
-                            <img id="image2" src="<%=basePath%>/resource/images/default-c.png">
+                            <img id="image2" src="<%=user.getUserIcon()%>">
                             <div class="update-img">更换头像</div>
                         </label>
                         <p class="content-about-personal-admin"><%=user.getNickName()%></p>

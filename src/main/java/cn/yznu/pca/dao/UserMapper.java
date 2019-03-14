@@ -3,6 +3,7 @@ package cn.yznu.pca.dao;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.example.UserExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -51,4 +52,6 @@ public interface UserMapper {
     boolean changePassword(@Param("id") int id,@Param("password") String password);
 
     List<User>searchFriends(@Param("nickName") String nickName);
+
+    int updateUrl(@Param("id") int id,@Param("url") String url);
 }
