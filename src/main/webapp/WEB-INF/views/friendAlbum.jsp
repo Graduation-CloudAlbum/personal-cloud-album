@@ -83,7 +83,7 @@
 
 
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="../js/friendAlbum.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/friendAlbum.js"></script>
 	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
 	<script src="<%=basePath%>/resource/js/zoom.min.js"></script>
 </body>
