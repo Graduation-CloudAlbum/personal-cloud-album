@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/friendAlbum.css"/>
 	<link rel="stylesheet"  href="<%=basePath%>/resource/css/zoom.css" media="all" />
 </head>
