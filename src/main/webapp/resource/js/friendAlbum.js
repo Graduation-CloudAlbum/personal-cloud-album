@@ -1,21 +1,3 @@
-//点击相册
-//myAlbum-menu1
-var friendAlbumContent=document.getElementById('friendAlbum-content');
-var friendAlbumContentLi=friendAlbumContent.getElementsByTagName('li');
-var friendAlbumContent2=document.getElementById('friendAlbum-content2');
-var open=document.getElementById('open');
-var open2=document.getElementById('open2');
-var a="";
-for(var i=0;i<friendAlbumContentLi.length;i++){
-	friendAlbumContentLi[i].onclick=function(){
-		friendAlbumContent.style.display="none";
-		friendAlbumContent2.style.display="block";
-		open.style.display="none";
-		open2.style.display="block";
-
-	}
-}
-
 
 //首页点击的相册名
 var aName="";
@@ -24,7 +6,7 @@ $().ready(function getAlbum() {
     $.ajax({
         async : false,
         type: "post",
-        url: "/pca/album/albumInfo",
+        url: "/pca/friend/inFriendSpace",
         dataType: "json",
         success: function (data){
             //加载相册 到album页面
@@ -105,7 +87,4 @@ $("#myAlbum-content").click(function () {
     });
 
 });
-//在左侧导航栏点击“我的相册”时调用相册获取方法
-$("#navMenu1").click(function () {
-    getAlbum();
-});
+
