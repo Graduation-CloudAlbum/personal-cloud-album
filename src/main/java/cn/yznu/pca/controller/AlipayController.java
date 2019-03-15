@@ -2,10 +2,10 @@ package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.PurchaseRecord;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.service.PurchaseRecordService;
-import cn.yznu.pca.utils.AlipayConfig;
-import cn.yznu.pca.utils.OrderStatusEnum;
-import cn.yznu.pca.utils.Sid;
+import cn.yznu.pca.service.UserSpaceService;
+import cn.yznu.pca.utils.*;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.Product;
@@ -38,6 +38,9 @@ public class AlipayController {
 
     @Autowired
     private PurchaseRecordService purchaseRecordService;
+
+    @Autowired
+    private UserSpaceService userSpaceService;
 
     @Autowired
     private Sid sid;
@@ -225,8 +228,21 @@ public class AlipayController {
             // 修改订单状态，改为 支付成功，已付款
             purchaseRecordService.updateOrderStatus(out_trade_no, trade_no, total_amount);
 
-
             PurchaseRecord order = purchaseRecordService.getOrderById(out_trade_no);
+
+
+            //支付成功后开始扩容空间
+            User user= (User) request.getSession().getAttribute("user");
+            UserSpace userSpace=userSpaceService.getSpace(user.getId());
+            //初始空间
+            String initial=userSpace.getInitialSpace();
+            //总空间
+            String all=userSpace.getAllSpace();
+            //已用空间
+            String used=userSpace.getUsedSpace();
+            //扩容的空间
+            String num= StrUtil.strToNumber(order.getProductName());
+            String expand=FormatUtil.toByte(num);
 
             log.info("********************** 支付成功(支付宝同步通知) **********************");
             log.info("* 订单号: {}", out_trade_no);
@@ -238,7 +254,6 @@ public class AlipayController {
 
             mv.addObject("out_trade_no", out_trade_no);
             mv.addObject("trade_no", trade_no);
-
             mv.addObject("total_amount", total_amount);
             mv.addObject("productName", order.getProductName());
 
