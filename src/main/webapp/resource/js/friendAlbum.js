@@ -28,8 +28,6 @@ $().ready(function getAlbum() {
                     + "<img src='"+resource+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
-                    + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
                     + "<p class='bottun-title-p1'>"+albumName+"</p>"
@@ -42,13 +40,8 @@ $().ready(function getAlbum() {
             $("#myAlbum-content").html(h);
             for(var i=0;i<myAlbumLi.length;i++){
                 myAlbumLi[i].index = i;
+
                 myAlbumLi[i].onclick=function(){
-                    // myAlbumMenu1.style.display="none";
-                    // myAlbumContent.style.display="none";
-                    // open.style.display="none";
-                    // myAlbumMenu2.style.display="block";
-                    myAlbumContent2.style.display="block";
-                    open2.style.display="block";
                     str = (function(i){
                         aLi=i;
                         return aLi;
@@ -56,34 +49,91 @@ $().ready(function getAlbum() {
                     aLi=str;
                     var aP = this.getElementsByTagName('p');
                     aName=aP[0].innerHTML;
+
+
+                    var albumName=aName;
+                    $.ajax({
+                        type:"post",
+                        url:"/pca/friend/checkFriendPower",
+                        data: {"albumName": albumName},
+                        dataType: "json",
+                        success: function (data) {
+                            if(data){
+                                myAlbumContent.style.display="none";
+                                open.style.display="none";
+                                myAlbumContent2.style.display="block";
+                                open2.style.display="block";
+                                $.ajax({
+                                    type:"post",
+                                    url:"/pca/friend/checkAlbumPower",
+                                    data: {"albumName": albumName},
+                                    dataType: "json",
+                                    success: function (data) {
+                                        var h = "";
+                                        for (var i = 0; i < data.imageList.length; i++) {
+                                            var url=data.imageList[i].url;
+                                            h +="<div class='content-about2-li'>"
+
+                                                +"<a href='"+url+"'>"
+                                                +"<img src='"+url+"'/></a>"
+                                                + "</div>"
+                                            $("#open2").html("共"+ data.imageList.length+"张照片");
+                                        }
+                                        $("#myAlbum-content2").html(h);
+                                    }
+                                });
+                            }else{
+                                alert("对不起，您没有权限！");
+                            }
+                        }
+                    });
+
+
+
+
                 }
             }
         }
     });
 });
 //点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
-$("#myAlbum-content").click(function () {
-    var albumName=aName;
-    $.ajax({
-        type:"post",
-        url:"/pca/friend/checkAlbumPower",
-        data: {"albumName": albumName},
-        dataType: "json",
-        success: function (data) {
-            var h = "";
-            for (var i = 0; i < data.imageList.length; i++) {
-                var url=data.imageList[i].url;
-                h +="<div class='content-about2-li'>"
-
-                    +"<a href='"+url+"'>"
-                    +"<img src='"+url+"'/></a>"
-                    + "</div>"
-                $("#open2").html("共"+ data.imageList.length+"张照片");
-            }
-            $("#myAlbum-content2").html(h);
-        }
-    });
-});
+// $("#myAlbum-content").click(function () {
+//     var albumName=aName;
+//     $.ajax({
+//         type:"post",
+//         url:"/pca/friend/checkFriendPower",
+//         data: {"albumName": albumName},
+//         dataType: "json",
+//         success: function (data) {
+//             alert(data);
+//             if(data){
+//                 $.ajax({
+//                     type:"post",
+//                     url:"/pca/friend/checkAlbumPower",
+//                     data: {"albumName": albumName},
+//                     dataType: "json",
+//                     success: function (data) {
+//                         var h = "";
+//                         for (var i = 0; i < data.imageList.length; i++) {
+//                             var url=data.imageList[i].url;
+//                             h +="<div class='content-about2-li'>"
+//
+//                                 +"<a href='"+url+"'>"
+//                                 +"<img src='"+url+"'/></a>"
+//                                 + "</div>"
+//                             $("#open2").html("共"+ data.imageList.length+"张照片");
+//                         }
+//                         $("#myAlbum-content2").html(h);
+//                     }
+//                 });
+//             }else{
+//                     alert("对不起，您没有权限！");
+//             }
+//         }
+//     });
+//
+//
+// });
 //时间格式处理，将时间戳转换成yyyy-mm-dd格式
 function fmtDate(obj){
     var date =  new Date(obj);
