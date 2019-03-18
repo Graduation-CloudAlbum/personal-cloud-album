@@ -110,6 +110,22 @@ public interface FriendService {
     boolean deleteFriendsGroup(int defaultint,int permissionGroupId);
 
 
+    /**
+     *  搜索相册权限
+     * @param albumId
+     */
+    boolean checkAlbumPower(int albumId);
+
+
+    /**
+     *  搜索好友权限
+     * @param albumId,friend_id,user_id
+     */
+    int checkFriendPower(int user_id,int friend_id,int albumId);
+
+
     List <FriendVerification> test();
+
+
 
 }
