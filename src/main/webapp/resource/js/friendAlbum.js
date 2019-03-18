@@ -3,8 +3,6 @@
 var myAlbumContent=document.getElementById('myAlbum-content');
 var myAlbumContent2=document.getElementById('myAlbum-content2');
 var myAlbumLi=myAlbumContent.getElementsByTagName('li');
-var myAlbumMenu1=document.getElementById('myAlbum-menu1');
-var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
 var open2=document.getElementById('open2');
 var aLi="";
@@ -40,33 +38,26 @@ $().ready(function getAlbum() {
                     + "</div>"
                     + "</li>"
                 $("#open").html("共"+data.album.length+"个相册");
-
             }
             $("#myAlbum-content").html(h);
-            // for(var i=0;i<myAlbumLi.length;i++){
-            //     myAlbumLi[i].index = i;
-            //     myAlbumLi[i].onclick=function(){
-            //         myAlbumMenu1.style.display="none";
-            //         myAlbumContent.style.display="none";
-            //         open.style.display="none";
-            //
-            //         myAlbumMenu2.style.display="block";
-            //         myAlbumContent2.style.display="block";
-            //         open2.style.display="block";
-            //
-            //         str = (function(i){
-            //             aLi=i;
-            //             return aLi;
-            //         })(this.index);
-            //         aLi=str;
-            //
-            //         var aP = this.getElementsByTagName('p');
-            //         aName=aP[0].innerHTML;
-            //
-            //     }
-            //
-            // }
-
+            for(var i=0;i<myAlbumLi.length;i++){
+                myAlbumLi[i].index = i;
+                myAlbumLi[i].onclick=function(){
+                    // myAlbumMenu1.style.display="none";
+                    // myAlbumContent.style.display="none";
+                    // open.style.display="none";
+                    // myAlbumMenu2.style.display="block";
+                    myAlbumContent2.style.display="block";
+                    open2.style.display="block";
+                    str = (function(i){
+                        aLi=i;
+                        return aLi;
+                    })(this.index);
+                    aLi=str;
+                    var aP = this.getElementsByTagName('p');
+                    aName=aP[0].innerHTML;
+                }
+            }
         }
     });
 });
@@ -90,11 +81,8 @@ $("#myAlbum-content").click(function () {
                 $("#open2").html("共"+ data.imageList.length+"张照片");
             }
             $("#myAlbum-content2").html(h);
-
-
         }
     });
-
 });
 //时间格式处理，将时间戳转换成yyyy-mm-dd格式
 function fmtDate(obj){
