@@ -25,8 +25,12 @@
 <div class="wrapper">
     <div class="header">
         <img src="<%=basePath%>/resource/images/logo.png">
-        <div class="header-right"><img src="<%=user.getUserIcon()%>"><span id="aa"><%=user.getNickName()%></span><i class="iconfont icon-iconfontjiantou jiantou"></i></div>
-        <div class="header-right2"><i class="iconfont icon-guanbi1 guanbi"></i></div>
+        <div class="header-right">
+            <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息</div>
+            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
+            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
+        </div>
+            <div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
     </div>
 
     <div class="content">
@@ -123,8 +127,7 @@
                 <div class="Create-friends-button1" id="friendVerification-button1"><p>返回</p></div><div id="friendVerification_button2" class="Create-friends-button2"><p>确定</p></div>
             </div>
         </div>
-    <div id="popLayer" class="popLayer"></div>
-    <div id="popLayer2" class="popLayer2"></div>
+
     <!-- ***************************************************弹窗删除分组 ***************************************************-->
     <div id="Manage-friends-group">
         <div class="popup-header"><h4>删除分组</h4><i id="iconChacha7" class="iconfont icon-chacha1"></i></div>
@@ -143,13 +146,97 @@
         </div>
         <div class="Create-friends-button2" id="Manage-group-button1"><p>取消</p></div><div id="Manage-group-button2" class="Create-friends-button2"><p>确定</p></div>
     </div>
+        <!-- ***************************************************弹窗 好友验证***************************************************-->
+
+    <div id="Verification" class="Verification">
+        <div class="Verification-header"><span>我的消息</span><i id="iconChacha10" class="iconfont icon-chacha1"></i></div>
+        <ul id="Verification-menu" class="content-menu">
+            <li id="accept" class="content-menu-li"><a>发出的请求</a></li>
+            <li id="send" class="content-menu-li"><a>收到的验证</a></li>
+        </ul>
+        <div class="Verification-about">
+            <table id="accept-Verification" class="Verification-table row">
+                <tr class="">
+                    <th class="col-md-2">好友名称</th>
+                    <th class="col-md-6">请求内容</th>
+                    <th class="col-md-2">状态</th>
+                    <th class="col-md-2">操作</th>                
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川</td>
+                        <td>等待验证</td>
+                        <td><button class="btn  delete">删除</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td>等待验证</td>
+                        <td><button class="btn delete">删除</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td>等待验证</td>
+                        <td><button class="btn delete">删除</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td>等待验证</td>
+                        <td><button class="btn delete">删除</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td>等待验证</td>
+                        <td><button class="btn delete">删除</button></td>
+                    </tr>
 
 
+                </tbody>
+            </table>
+            <table id="send-Verification" class="Verification-table row">
+                <tr class="">
+                    <th class="col-md-2">好友名称</th>
+                    <th class="col-md-6">验证消息</th>
+                    <th class="col-md-2">操作</th>                
+                </tr>
+                <tbody>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川</td>
+                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
+                    </tr>
+                    <tr>
+                        <td>江川</td>
+                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
+                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
+                    </tr>
+                
+                    
+
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+
+        
+    <div id="popLayer" class="popLayer"></div>
+    <div id="popLayer2" class="popLayer2"></div>
 
 </div>
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/addfriend.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myFriend.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>
 </html>

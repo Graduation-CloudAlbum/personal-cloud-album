@@ -240,4 +240,8 @@
       jurisdiction = #{jurisdiction,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="checkFriendPower" resultMap="BaseResultMap" parameterType="cn.yznu.pca.model.UserPromission" >
+    select * from user_promission where user_id = #{user_id,jdbcType=INTEGER} and friend_id=#{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
+  </select>
 </mapper>

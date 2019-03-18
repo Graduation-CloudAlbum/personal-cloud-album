@@ -29,27 +29,24 @@ html,body{
 }
 .header .header-right{
 	right: 31px;
-	height:38px;
+	height:50px;
 	position: absolute;
-	width: 140px;	
 	border-left: 1px solid #D18B00;
 	text-align: center;
-	padding-top: 12.5px;
 	cursor:pointer
 }
-.header .header-right img{
-	height: 25px;
-	border-radius: 50%;
+
+.header .header-right .header-menu-li{
+	float: right;
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	color: #EBEBEB;
 }
-.header .header-right span{
+.header .header-right .my-xiaoxi{
+	font-size: 24px;
 	color: #fff;
-	margin-left: 8px;
-	font-size: 12px;
-}
-.header .header-right .jiantou{
-	color: #fff;
-	font-size: 8px;
-	margin-left: 10px;
+	margin-right: 5px;
 }
 .header-right2{
 	width: 30px;
@@ -60,8 +57,7 @@ html,body{
 	text-align: center;
 	cursor:pointer
 }
-.header .header-right2 .guanbi{
-	/*font-size: 12px;*/
+.header .header-right2 span{
 	color: #fff;
 }
 .content{
@@ -95,8 +91,6 @@ html,body{
 	font-size: 12px;
 	margin-top: 12px;
 }
-
-
 .content .left .left-li{
 	border-bottom: 1px solid #E9E9E9;
 	padding-top:20px;
@@ -271,7 +265,81 @@ html,body{
     background:#000;
     opacity:0.7;
 }
+/************************************************************friendsVerification********************************************/
+#Verification{
+	display: none;
+}
+.Verification{
+	position: absolute;
+    left: 17%;
+    top: 5%;
+    z-index: 50;
+    width: 64%;
+    height: 92%;
+    bottom: 5%;
+	z-index: 100;
+}
+.Verification-header{
+	height: 60px;
+	width: 100%;
+	background: #fff;
+	border:1px solid #EEE;
+}
+.Verification-header span{
+	font-size: 24px;
+	line-height: 60px;
+	margin-left: 10px;
+}
+.Verification-header i{
+	font-size: 24px;
+	font-weight: normal;
+	position: absolute;
+	right: 15px;
+	line-height: 60px;
+	color: #CCCCCC;
+	cursor: pointer;
+}
+.Verification-about{
+    padding: 30px;
+    height: 85%;
+    width: 100%;
+	background: #fff;
+	border:1px solid #EEE;
+	overflow-y:auto;
+}
+.Verification-table{
+    width: 100%;
+}
+.Verification-table th{
+    border:1px solid #EBEBEB;
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    line-height: 40px;
+/*    width: 300px;*/
+    background: #FFF8DC;
+}
+.Verification-table td{
+	border:1px solid #EBEBEB;
+    padding:5px 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
+    cursor: pointer;
+/*    width: 300px;*/
+    /*height: 40px;*/
+}
+#send-Verification{
+	display: none;
+}
 
+.delete{
+	background: #D84C31;
+	color: #fff
+}
 
 
 

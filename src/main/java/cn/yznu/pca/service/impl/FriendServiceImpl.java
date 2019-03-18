@@ -1,13 +1,7 @@
 package cn.yznu.pca.service.impl;
 
-import cn.yznu.pca.dao.FriendVerificationMapper;
-import cn.yznu.pca.dao.PermissionGroupMapper;
-import cn.yznu.pca.dao.UserMapper;
-import cn.yznu.pca.dao.UserRelationMapper;
-import cn.yznu.pca.model.FriendVerification;
-import cn.yznu.pca.model.PermissionGroup;
-import cn.yznu.pca.model.User;
-import cn.yznu.pca.model.UserRelation;
+import cn.yznu.pca.dao.*;
+import cn.yznu.pca.model.*;
 import cn.yznu.pca.model.example.FriendVerificationExample;
 import cn.yznu.pca.model.example.PermissionGroupExample;
 import cn.yznu.pca.model.example.UserExample;
@@ -28,7 +22,13 @@ public class FriendServiceImpl implements FriendService {
     UserRelationMapper userRelationMapper;
 
     @Autowired
+    UserPromissionMapper userPromissionMapper;
+
+    @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    AlbumMapper albumMapper;
 
     @Autowired
     FriendVerificationMapper friendVerificationMapper;
@@ -204,10 +204,38 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
+    public boolean checkAlbumPower(int albumId) {
+        List<Album> list=albumMapper.checkAlbumPower(albumId);
+        String power="0";
+        for(Album album:list){
+             power=album.getStatus();
+        }
+        if(power.equals("1")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public int checkFriendPower(int user_id, int friend_id, int albumId) {
+        List<UserPromission> list=userPromissionMapper.checkFriendPower(user_id,friend_id,albumId);
+        if(list.size()==0){
+            return 3;
+        }else {
+            int power=0;
+            for(UserPromission userPromission:list){
+                power=userPromission.getJurisdiction();
+            }
+            return power;
+        }
+
+    }
+
+    @Override
     public List<FriendVerification> test(  ) {
         List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
         for (FriendVerification s :fvListRefUser){
-            System.out.println("wwwwwwwwwwwwwww"+s.getFriend().getNickName());
         }
         return  fvListRefUser;
     }
