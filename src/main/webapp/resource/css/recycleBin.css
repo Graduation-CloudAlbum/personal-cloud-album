@@ -11,13 +11,23 @@
 .recycle-table .th6{
     width: 300px;
 }
-.recycle-table th,td{
+.recycle-table th{
     border:1px solid #EBEBEB;
     padding: 10px;
     font-weight: normal;
     font-size: 16px;
     color: #666;
-    /* height: 40px; */
+    background: #FFF8DC;
+    cursor: pointer;
+    line-height: 40px;
+    width: 300px;
+}
+.recycle-table td{
+    border:1px solid #EBEBEB;
+    padding: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #666;
     background: #fff;
     cursor: pointer;
     line-height: 40px;
