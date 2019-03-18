@@ -301,7 +301,7 @@ public class FriendController {
     /**
      * 点击好友头像进入好友空间
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/inFriendSpace")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/inFriendSpace")
     @ResponseBody
     public Map<String,Object>  inFriendSpace(HttpServletRequest request,
                                       HttpServletResponse response) {
@@ -368,6 +368,39 @@ public class FriendController {
         map.put("imageList",list);
         return map;
     }
+
+    /**
+     * 判断用户是否有进入好友相册权限
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/checkFriendPower")
+    @ResponseBody
+    public boolean  checkFriendPower(@Param("albumName") String albumName,HttpServletRequest request,
+                                HttpServletResponse response) {
+        int friend_id= (int) request.getSession().getAttribute("friend_id");
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        //通过用户id和相册名获取到唯一相册
+        List albumlist=albumService.selectAlbumByName(friend_id,albumName);
+        Album album = (Album) albumlist.get(0);
+        //获取该相册id
+        int albumId=album.getId();
+        //相册权限
+        boolean power=friendService.checkAlbumPower(albumId);
+        //私人权限
+        int power_two=friendService.checkFriendPower(userId,friend_id,albumId);
+        if(power==true&&power_two==3){
+            return true;
+        }else if(power==true&&power_two==0){
+            return true;
+        }
+        else if(power!=true&&power_two==0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
 
 
 }
