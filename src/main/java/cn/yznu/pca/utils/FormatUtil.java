@@ -23,5 +23,38 @@ public class FormatUtil {
         }
         return fileSizeString;
     }
+    //GB转换成B
+    public static String toByte(String size){
+        String fileSizeString;
 
+        fileSizeString=String.valueOf(Integer.parseInt(size)*1024*1024*1024);
+
+        return fileSizeString;
+    }
+    //求和计算
+    public static String add(String size1,String size2){
+        String sum;
+        Long num1= Long.valueOf(Integer.parseInt(size1));
+        Long num2= Long.valueOf(Integer.parseInt(size2));
+        sum=Long.toString(num1+num2);
+
+        return sum;
+    }
+    //求差计算
+    public static String minus(String size1,String size2){
+        String dValue;
+        Long num1= Long.valueOf(Integer.parseInt(size1));
+        Long num2= Long.valueOf(Integer.parseInt(size2));
+
+        if (num1>num2) {
+            dValue = Long.toString(num1 - num2);
+        }else{
+            dValue = Long.toString(num2 - num1);
+        }
+        return dValue;
+    }
+
+    //public static void main(String[] args) {
+    //    System.out.println(format(2138220));
+    //}
 }

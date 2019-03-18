@@ -19,7 +19,7 @@ public interface UserSpaceMapper {
 
     List<UserSpace> selectByExample(UserSpaceExample example);
 
-    UserSpace selectByPrimaryKey(Integer id);
+    UserSpace selectByUserId(Integer id);
 
     int updateByExampleSelective(@Param("record") UserSpace record, @Param("example") UserSpaceExample example);
 
@@ -27,5 +27,5 @@ public interface UserSpaceMapper {
 
     int updateByPrimaryKeySelective(UserSpace record);
 
-    int updateByPrimaryKey(UserSpace record);
+    UserSpace updateByUserId(@Param("userId")int userId,@Param("intial")String intial,@Param("all")String all,@Param("used")String used,@Param("available")String available);
 }

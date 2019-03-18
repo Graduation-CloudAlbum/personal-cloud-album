@@ -86,11 +86,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user_space
-    where id = #{id,jdbcType=INTEGER}
+    where  user_id= #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user_space
@@ -244,15 +244,13 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.yznu.pca.model.UserSpace" >
+  <update id="updateByUserId" parameterType="cn.yznu.pca.model.UserSpace" >
     update user_space
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=VARCHAR},
-      initial_space = #{initialSpace,jdbcType=VARCHAR},
-      all_space = #{allSpace,jdbcType=VARCHAR},
-      used_space = #{usedSpace,jdbcType=VARCHAR},
-      available_space = #{availableSpace,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set
+      initial_space = #{initial,jdbcType=VARCHAR},
+      all_space = #{all,jdbcType=VARCHAR},
+      used_space = #{used,jdbcType=VARCHAR},
+      available_space = #{available,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>
