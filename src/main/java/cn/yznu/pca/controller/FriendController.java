@@ -347,13 +347,26 @@ public class FriendController {
     /**
      * 判断用户是否有进入好友相册权限
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/checkAlbumPower/{friend_id}")
+    @RequestMapping(method = RequestMethod.POST, value = "/checkAlbumPower")
     @ResponseBody
-    public ModelAndView  checkAlbumPower(HttpServletRequest request,
+    public Map  checkAlbumPower(@Param("albumName") String albumName,HttpServletRequest request,
                                         HttpServletResponse response) {
-        ModelAndView mav=new  ModelAndView("friendAlbum");
-
-        return  mav;
+        int friend_id= (int) request.getSession().getAttribute("friend_id");
+//        User user= (User) request.getSession().getAttribute("friend_id");
+//        int userId=user.getId();
+        System.out.println("相册名是："+albumName);
+        //通过用户id和相册名获取到唯一相册
+        List albumlist=albumService.selectAlbumByName(friend_id,albumName);
+        Album album = (Album) albumlist.get(0);
+        //获取该相册id
+        int albumId=album.getId();
+        String  satus="0";
+        List list=imageService.getImage(satus,friend_id,albumId);
+        //Image coverIma= (Image) list.get(0);
+        Map map=new HashMap();
+        //map.put("coverIma",coverIma);
+        map.put("imageList",list);
+        return map;
     }
 
 
