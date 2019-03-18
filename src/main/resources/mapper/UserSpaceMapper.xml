@@ -87,8 +87,11 @@
     </if>
   </select>
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
+   select
+    id,create_time,status,initial_space,all_space,available_space,
+
+	(select sum(image_size) from image where user_id= #{id,jdbcType=INTEGER} and status='0') as used_space
+
     from user_space
     where  user_id= #{id,jdbcType=INTEGER}
   </select>
@@ -246,11 +249,29 @@
   </update>
   <update id="updateByUserId" parameterType="cn.yznu.pca.model.UserSpace" >
     update user_space
-    set
-      initial_space = #{initial,jdbcType=VARCHAR},
-      all_space = #{all,jdbcType=VARCHAR},
-      used_space = #{used,jdbcType=VARCHAR},
-      available_space = #{available,jdbcType=VARCHAR}
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="initialSpace != null" >
+        initial_space = #{initialSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="allSpace != null" >
+        all_space = #{all,jdbcType=VARCHAR},
+      </if>
+      <if test="usedSpace != null" >
+        used_space = #{used,jdbcType=VARCHAR},
+      </if>
+      <if test="availableSpace != null" >
+        available_space = #{available,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

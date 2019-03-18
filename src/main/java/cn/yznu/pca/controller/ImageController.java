@@ -4,9 +4,11 @@ package cn.yznu.pca.controller;
 import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.UserService;
+import cn.yznu.pca.service.UserSpaceService;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -32,11 +34,17 @@ import java.util.*;
 @RequestMapping("/image")
 public class ImageController {
     @Autowired
-    ImageService imageService;
+    private ImageService imageService;
+
     @Autowired
-    UserService userService;
+    private UserService userService;
+
     @Autowired
-    AlbumService albumService;
+    private AlbumService albumService;
+
+    @Autowired
+    private UserSpaceService userSpaceService;
+
     private static String EXCLUSIVE="我的专属";
     /**
      * 查询相册中的照片
@@ -105,7 +113,9 @@ public class ImageController {
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
                 //获取照片大小,以B/KB/MB为单位保存
-                String fileSize = FormatUtil.format(file.getSize());
+                //String fileSize = FormatUtil.format(file.getSize());
+                //获取照片大小,以B(字节)为单位保存
+                String fileSize = String.valueOf(file.getSize());
                 //获取文件的扩展名
                 String ext = FilenameUtils.getExtension(file.getOriginalFilename());
                 //设置图片上传的虚拟路径
@@ -122,7 +132,18 @@ public class ImageController {
                 image.setAlbumId(albumId);
                 //保存照片url
                 image.setUrl(url + name + "." + ext);
+                //上传照片
                 imageService.upload(image);
+                //计算所有照片占用的空间
+                UserSpace userSpace=userSpaceService.getSpace(userId);
+                //总空间
+                String all=userSpace.getAllSpace();
+                //获取所有照片占用的空间
+                String used=userSpace.getUsedSpace();
+                //计算剩余可用空间
+                String available=FormatUtil.minus(all,used);
+                //更新用户的空间信息
+                userSpaceService.updateSpace(userId,all,used,available);
         }
         return "myAlbum";
     }
@@ -163,7 +184,9 @@ public class ImageController {
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
                 //获取照片大小,以B/KB/MB为单位保存
-                String fileSize = FormatUtil.format(file.getSize());
+                //String fileSize = FormatUtil.format(file.getSize());
+                //获取照片大小,以B(字节)为单位保存
+                String fileSize = String.valueOf(file.getSize());
                 //获取文件的扩展名
                 String ext = FilenameUtils.getExtension(file.getOriginalFilename());
                 //设置图片上传的虚拟路径
@@ -180,7 +203,18 @@ public class ImageController {
                 image.setAlbumId(albumId);
                 //保存照片url
                 image.setUrl(url + name + "." + ext);
+                //上传照片
                 imageService.upload(image);
+                //计算所有照片占用的空间
+                UserSpace userSpace=userSpaceService.getSpace(userId);
+                //总空间
+                String all=userSpace.getAllSpace();
+                //获取所有照片占用的空间
+                String used=userSpace.getUsedSpace();
+                //计算剩余可用空间
+                String available=FormatUtil.minus(all,used);
+                //更新用户的空间信息
+                userSpaceService.updateSpace(userId,all,used,available);
             }
 
         }

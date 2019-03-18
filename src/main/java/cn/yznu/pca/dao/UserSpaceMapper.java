@@ -27,5 +27,5 @@ public interface UserSpaceMapper {
 
     int updateByPrimaryKeySelective(UserSpace record);
 
-    UserSpace updateByUserId(@Param("userId")int userId,@Param("intial")String intial,@Param("all")String all,@Param("used")String used,@Param("available")String available);
+    UserSpace updateByUserId(@Param("userId")int userId,@Param("all")String all,@Param("used")String used,@Param("available")String available);
 }

@@ -233,9 +233,8 @@ public class AlipayController {
 
             //支付成功后开始扩容空间
             User user= (User) request.getSession().getAttribute("user");
+            //获取扩容前的空间使用情况
             UserSpace userSpace=userSpaceService.getSpace(user.getId());
-            //初始空间
-            String initial=userSpace.getInitialSpace();
             //总空间
             String all=userSpace.getAllSpace();
             //已用空间
@@ -243,6 +242,19 @@ public class AlipayController {
             //扩容的空间
             String num= StrUtil.strToNumber(order.getProductName());
             String expand=FormatUtil.toByte(num);
+            System.out.println("-------expand大小是："+expand);
+            /**
+             * 新总空间=旧的总空间+扩容空间
+             * 新的可用空间=新的总空间-已使用空间
+             */
+            //计算新的总空间
+            String allNew=FormatUtil.add(expand,all);
+            System.out.println("-------新的总空间是："+allNew);
+            //计算新的可用空间
+            String availableNew=FormatUtil.minus(allNew,used);
+            //更新用户空间信息
+           userSpaceService.updateSpace(user.getId(),allNew,used,availableNew);
+
 
             log.info("********************** 支付成功(支付宝同步通知) **********************");
             log.info("* 订单号: {}", out_trade_no);

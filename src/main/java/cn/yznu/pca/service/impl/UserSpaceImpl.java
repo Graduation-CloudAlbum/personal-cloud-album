@@ -27,8 +27,9 @@ public class UserSpaceImpl implements UserSpaceService {
 
 
     @Override
-    public UserSpace updateSpace(int userId, String intial, String all, String used, String available) {
-        return userSpaceMapper.updateByUserId(userId,intial,all,used,available);
+    public int updateSpace(int userId, String all, String used, String available) {
+        userSpaceMapper.updateByUserId(userId,all,used,available);
+        return 0;
     }
 
 

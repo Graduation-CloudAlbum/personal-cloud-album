@@ -23,28 +23,45 @@ public class FormatUtil {
         }
         return fileSizeString;
     }
-    //GB转换成B
+
+    /**
+     * 千兆字节GB转换成B(字节)
+     * @param size 要转换的数量
+     * @return
+     */
     public static String toByte(String size){
         String fileSizeString;
-
-        fileSizeString=String.valueOf(Integer.parseInt(size)*1024*1024*1024);
+         Long val= Long.valueOf(size)*1024*1024*1024;
+        fileSizeString=String.valueOf(val);
 
         return fileSizeString;
     }
-    //求和计算
+
+    /**
+     * 求和计算
+     * @param size1 参数1
+     * @param size2 参数2
+     * @return
+     */
     public static String add(String size1,String size2){
         String sum;
-        Long num1= Long.valueOf(Integer.parseInt(size1));
-        Long num2= Long.valueOf(Integer.parseInt(size2));
+        Long num1=  Long.valueOf(size1);
+        Long num2=  Long.valueOf(size2);
         sum=Long.toString(num1+num2);
 
         return sum;
     }
-    //求差计算
+
+    /**
+     * 求差计算
+     * @param size1 参数1
+     * @param size2 参数2
+     * @return
+     */
     public static String minus(String size1,String size2){
         String dValue;
-        Long num1= Long.valueOf(Integer.parseInt(size1));
-        Long num2= Long.valueOf(Integer.parseInt(size2));
+        Long num1= Long.valueOf(size1);
+        Long num2= Long.valueOf(size2);
 
         if (num1>num2) {
             dValue = Long.toString(num1 - num2);
@@ -55,6 +72,6 @@ public class FormatUtil {
     }
 
     //public static void main(String[] args) {
-    //    System.out.println(format(2138220));
+    //    System.out.println(FormatUtil.toByte("10"));
     //}
 }

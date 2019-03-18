@@ -2,11 +2,14 @@ package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.UserService;
+import cn.yznu.pca.service.UserSpaceService;
 import cn.yznu.pca.utils.FormatUtil;
 import cn.yznu.pca.utils.MD5Util;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +37,14 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-
     private AlbumService albumService;
 
     @Autowired
-
     private ImageService imageService;
+
+    @Autowired
+    private UserSpaceService userSpaceService;
+
 
     //@RequestMapping("/index")
     //public  String index(){
@@ -103,7 +108,16 @@ public class UserController {
         user.setUserPassword(MD5Util.md5Jdk(password));
         //设置默认头像
         user.setUserIcon("/upload/default-c.png");
+        //注册用户
         userService.register(user);
+        //初始化空间
+        UserSpace userSpace= new UserSpace();
+        //设置初始化大小，1GB
+        userSpace.setInitialSpace("1073741824");
+        userSpace.setAllSpace("1073741824");
+        userSpace.setUsedSpace("0");
+        userSpace.setAvailableSpace("1073741824");
+        userSpaceService.initSpace(userSpace);
         return "success";
     }
     @ResponseBody
