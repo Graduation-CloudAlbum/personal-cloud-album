@@ -52,8 +52,6 @@
 						<span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
 					</div>
 					<div class="content-footer"></div>
-
-
 				</div>
 				</div>
 	
