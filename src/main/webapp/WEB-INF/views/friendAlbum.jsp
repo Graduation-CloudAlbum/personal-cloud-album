@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/friendAlbum.css"/>
 	<link rel="stylesheet"  href="<%=basePath%>/resource/css/zoom.css" media="all" />
@@ -23,7 +24,7 @@
 		<div class="header">
 			<img src="<%=basePath%>/resource/img/logo.png">
 			<div class="header-right">
-				<div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息</div>
+				<div id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息</div>
 				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
 				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
@@ -39,16 +40,30 @@
 				<div class="nav-button"></div>
 			</div>
 			<!-- right -->
-			<div class="main-container">		
-				<div class="content-header">
-					<i class="iconfont icon-weibiaoti--"></i> <span>江川</span><span>的相册空间</span>
+			<div class="main-container">
+				<div class="content-header" style="height: 60px">
+					<label class="img-lable">
+						<img id="image2" style="float: left;width: 35px;height: 35px;margin-left: 5px" src="<%=basePath%>\resource\images\default-c.png"><span style="margin-top: 10px">江川</span><span>的空间</span>
+					</label>
 				</div>
-				<ul class="content-menu">
-					<li class="content-menu-li"><a>返回</a></li>
+				<ul class="content-menu" >
+
+					<%--<div class="content-about-personal" style="width: 100%;height: 100px" >--%>
+
+
+						<%--&lt;%&ndash;<div class="content-about-personal-num1"><p style="text-align: center" class="content-about-personal-num-p1">个人签名</p></div>&ndash;%&gt;--%>
+						<%--&lt;%&ndash;<div class="content-about-personal-num2"><p style="text-align: center" class="content-about-personal-num-p1">撒旦发射点</p></div>&ndash;%&gt;--%>
+					<%--</div>--%>
+						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
+						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>移动好友</a></li>
+						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>返回</a></li>
 				</ul>
+
 				<div class="content-wrap">
-					<ul id="myAlbum-content" class="content-about">
-					</ul>
+					<div>
+						<ul id="myAlbum-content" class="content-about" >
+						</ul>
+					</div>
 					<ul id="myAlbum-content2" class="content-about2 gallery">
 					</ul>
 					<div class="content-button">
@@ -72,73 +87,23 @@
 				<li id="send" class="content-menu-li"><a>收到的验证</a></li>
 			</ul>
 			<div class="Verification-about">
-				<table id="accept-Verification" class="Verification-table row">
+				<table id="accept-Verification" class="Verification-table">
 					<tr class="">
 						<th class="col-md-2">好友名称</th>
 						<th class="col-md-6">请求内容</th>
 						<th class="col-md-2">状态</th>
 						<th class="col-md-2">操作</th>				
 					</tr>
-					<tbody>
-						<tr>
-							<td>江川</td>
-							<td>我是江川</td>
-							<td>等待验证</td>
-							<td><button class="btn  delete">删除</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td>等待验证</td>
-							<td><button class="btn delete">删除</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td>等待验证</td>
-							<td><button class="btn delete">删除</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td>等待验证</td>
-							<td><button class="btn delete">删除</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td>等待验证</td>
-							<td><button class="btn delete">删除</button></td>
-						</tr>
-
-
+					<tbody id="sandFriendVerifications">
 					</tbody>
 				</table>
-				<table id="send-Verification" class="Verification-table row">
+				<table id="send-Verification" class="Verification-table">
 					<tr class="">
 						<th class="col-md-2">好友名称</th>
 						<th class="col-md-6">验证消息</th>
 						<th class="col-md-2">操作</th>				
 					</tr>
-					<tbody>
-						<tr>
-							<td>江川</td>
-							<td>我是江川</td>
-							<td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-						</tr>
-						<tr>
-							<td>江川</td>
-							<td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-							<td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-						</tr>
-					
-						
-
+					<tbody id="receiveFriendVerifications">
 					</tbody>
 				</table>
 				
