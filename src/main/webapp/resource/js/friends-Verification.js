@@ -1,6 +1,36 @@
 var friendsVerification=document.getElementById('friends-Verification');
 //点击消息
 friendsVerification.onclick = function(){
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/friend/selectAllFriendVerification",
+        dataType: "json",
+        success: function (data) {
+            //加载相册 到album页面
+            //收到的验证消息
+            var h = "";
+            for (var i = 0; i < data.friendVerifications.length; i++) {
+                h += "<tr>"
+                    +" <td>"+data.friendVerifications[i].friend.nickName+"</td>"
+                    + "<td>"+data.friendVerifications[i].note+"</td>"
+                    + "<td><button class='btn delete'>接受</button>   <button class='btn delete'>拒绝</button></td>"
+                    +"</tr>"
+            }
+            $("#receiveFriendVerifications").html(h);
+            //发送的验证消息
+            var f = "";
+            for (var i = 0; i < data.friendVerificationsTwo.length; i++) {
+                f += "<tr>"
+                    +" <td>"+data.friendVerificationsTwo[i].friend.nickName+"</td>"
+                    + "<td>"+data.friendVerificationsTwo[i].note+"</td>"
+                    +"<td>"+data.friendVerificationsTwo[i].state+"</td>"
+                    + "<td><button class='btn  delete'>删除</button></td>"
+                    +"</tr>"
+            }
+            $("#sandFriendVerifications").html(f);
+        }
+    });
 	document.getElementById('Verification').style.display="block";
 	document.getElementById('popLayer2').style.display="block";
 
