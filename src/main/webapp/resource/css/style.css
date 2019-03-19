@@ -320,6 +320,8 @@ html,body{
     line-height: 40px;
 /*    width: 300px;*/
     background: #FFF8DC;
+	min-width: 160px;
+
 }
 .Verification-table td{
 	border:1px solid #EBEBEB;
