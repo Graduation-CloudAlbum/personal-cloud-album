@@ -3,10 +3,7 @@ package cn.yznu.pca.controller;
 import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserSpace;
-import cn.yznu.pca.service.AlbumService;
-import cn.yznu.pca.service.ImageService;
-import cn.yznu.pca.service.UserService;
-import cn.yznu.pca.service.UserSpaceService;
+import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
 import cn.yznu.pca.utils.MD5Util;
 import com.sun.org.apache.bcel.internal.generic.NEW;
@@ -22,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -41,6 +39,9 @@ public class UserController {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private FriendService friendService;
 
     @Autowired
     private UserSpaceService userSpaceService;
@@ -68,8 +69,11 @@ public class UserController {
         int id=user.getId();
         int albumNum=albumService.getAlbumNum(id);
         int imageNum=imageService.getAllImageNum(id);
+        List list = friendService.selectAllMyFriend(user);
+        int friendNum=list.size();
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
+        request.getSession().setAttribute("friendNum",friendNum);
         return "personalData";
     }
     @RequestMapping("/myAlbum")

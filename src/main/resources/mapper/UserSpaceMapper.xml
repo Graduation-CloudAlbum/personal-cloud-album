@@ -249,29 +249,10 @@
   </update>
   <update id="updateByUserId" parameterType="cn.yznu.pca.model.UserSpace" >
     update user_space
-    <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="initialSpace != null" >
-        initial_space = #{initialSpace,jdbcType=VARCHAR},
-      </if>
-      <if test="allSpace != null" >
+    set
         all_space = #{all,jdbcType=VARCHAR},
-      </if>
-      <if test="usedSpace != null" >
         used_space = #{used,jdbcType=VARCHAR},
-      </if>
-      <if test="availableSpace != null" >
-        available_space = #{available,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-    </set>
+        available_space = #{available,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

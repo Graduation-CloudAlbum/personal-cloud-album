@@ -222,4 +222,27 @@ menuLi3.onclick=function() {
     contentAboutInfoNo1.style.display="none";
     contentAboutInfoNo2.style.display="none";
     contentAboutInfoNo3.style.display="block";
+    $.ajax({
+        async:false,
+        type:"POST",
+        url:"/pca/sapce/getSpace",
+        dataType: "json",
+        success:function(data) {
+            var h = "";
+                h += "<p><span>全部空间："+data.allSpace+"</span><span>(含扩充空间)</span></p>"
+                        +"<p><span>已用空间："+data.usedSpace+"</span></p>"
+                        +"<p><span>剩余空间："+data.availableSpace+"</span></p>"
+                         +"<p><span>已用占比："+data.percent+"%</span></p>"
+
+            $("#content-about-info-no3").html(h);
+        }
+
+    });
+}//时间格式处理，将时间戳转换成yyyy-mm-dd格式
+function fmtDate(obj){
+    var date =  new Date(obj);
+    var y = 1900+date.getYear();
+    var m = "0"+(date.getMonth()+1);
+    var d = "0"+date.getDate();
+    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
 }
