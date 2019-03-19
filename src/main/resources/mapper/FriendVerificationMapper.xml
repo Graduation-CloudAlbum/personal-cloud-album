@@ -113,9 +113,16 @@
 
 
   <select id="selectAllFriendVerification" resultMap="BaseResultMap">
-    select d.nick_name,c.note,d.id from
-     friend_verification c right join user d on
+    select * from
+     user d INNER  join friend_verification c  on
      (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectAllSandFriendVerification" resultMap="BaseResultMap">
+    select * from
+    friend_verification c INNER  join user d on
+    (c.friend_id=d.id) where user_id=#{id,jdbcType=INTEGER}
   </select>
 
 
