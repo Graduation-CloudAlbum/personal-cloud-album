@@ -130,34 +130,25 @@ var uploadPhoto2 = document.getElementById('uploadPhoto2');//Create-Album
 uploadPhoto2.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     document.getElementById('Create-Album').style.display="block";
-    $("input[type='radio']").removeAttr('checked');
-    $("#Create-Album-button2").click(function () {
-        //取消单选框的默认选中
-        var albumName=$.trim($("#Create-Album-input").val());
-        var theme=$.trim($("#Create-Album-input2").val());
-        var jurisdiction=$("input[type='radio']:checked").val();
-        $.ajax({
-            type:"post",
-            url:"/pca/album/createAlbum",
-            data: {"albumName": albumName,"theme":theme,"jurisdiction":jurisdiction},
-            dataType: "json",
-            success: function (data) {
-                if (data==1){
-                    alert("新建成功");
-                    window.location.href="/pca/user/myAlbum";
-                }else{
-                    alert("该相册已存在，换个名称试试");
-                    //置空输入框的值
-                    $("#Create-Album-input").val("");
-                    $("#Create-Album-input2").val("");
-                    //取消单选框的默认选中
-                    $("input[type='radio']").removeAttr('checked');
-                }
-            }
-        });
-    });
 }
-
+$("#Create-Album-button2").click(function () {
+    var albumName=$.trim($("#Create-Album-input").val());
+    $.ajax({
+        type:"post",
+        url:"/pca/album/createAlbum",
+        data: {"albumName": albumName},
+        dataType: "json",
+        success: function (data) {
+            if (data==1){
+                alert("新建成功");
+                window.location.href="/pca/user/myAlbum";
+            }else{
+                alert("该相册已存在，换个名称试试");
+                $("#Create-Album-input").val("");
+               }
+            }
+    });
+});
 //关闭创建相册
 var iconChacha3 = document.getElementById('iconChacha3');
 iconChacha3.onclick=function(){
@@ -184,23 +175,22 @@ var aLi="";
 var aName="";
 //动态加载首页相册
 $().ready(function getAlbum() {
-
     $.ajax({
         async : false,
         type: "post",
-        url:"/pca/album/albumInfo" ,
+        url: "/pca/album/albumInfo",
         dataType: "json",
         success: function (data){
             //加载相册 到album页面
-            var h = "";;
+            var h = "";
+            var createtime="";
             var resource="/pca/resource/img/Album-cover1.jpg";
             for (var i = 0; i < data.album.length; i++) {
                 var imageNum=data.imageNum[i];
-                var cover=data.coverList[i].url;
-                var albumName=data.album[i].albumName;
-                var createtime=fmtDate(data.album[i].createTime);
+                 albumName=data.album[i].albumName;
+                createtime=fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
-                    + "<img src='"+cover+"'>"
+                    + "<img src='"+resource+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
@@ -332,78 +322,10 @@ function fmtDate(obj){
 //相册排序
 var albumSort=document.getElementById('album-sort');
 var albumSortLi=albumSort.getElementsByTagName('li');
-var albumSortWay="";
+var albumSortName=""
 for(var i=0;i<albumSortLi.length;i++){
     albumSortLi[i].onclick = function(){
-        albumSortWay=this.innerHTML;
-         var url="";
-         if (albumSortWay=="按相册名称排序") {
-             url="/pca/album/sortByName";
-         }else if (albumSortWay=="按相册主题排序"){
-             url="/pca/album/sortByTheme";
-         }else if (albumSortWay=="按更新时间排序") {
-             url="/pca/album/sortByTime";
-         }else {
-             url="/pca/album/albumInfo";
-         }
-        $.ajax({
-            type: "post",
-            url:url,
-            dataType: "json",
-            success: function (data){
-            //加载排序后的相册 到album页面
-                var h = "";
-                for (var i = 0; i < data.album.length; i++) {
-                    var imageNum=data.imageNum[i];
-                    var cover=data.coverList[i].url;
-                    var albumName=data.album[i].albumName;
-                    var createtime=fmtDate(data.album[i].createTime);
-                    h += "<li class='content-about-li'>"
-                        + "<img src='"+cover+"'>"
-                        + "<div class='content-about-li-top'>"
-                        + "<div class='content-about-li-top-a'>"
-                        + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                        + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
-                        + "</div>"
-                        + "<div class='bottun-title'>"
-                        + "<p class='bottun-title-p1'>"+albumName+"</p>"
-                        + " <p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
-                        + "</div>"
-                        + "</div>"
-                        + "</li>"
-                    $("#open").html("共"+data.album.length+"个相册");
-
-                }
-                $("#myAlbum-content").html(h);
-                for(var i=0;i<myAlbumLi.length;i++) {
-                    myAlbumLi[i].index = i;
-                    myAlbumLi[i].onclick = function () {
-                        myAlbumMenu1.style.display = "none";
-                        myAlbumContent.style.display = "none";
-                        open.style.display = "none";
-
-                        myAlbumMenu2.style.display = "block";
-                        myAlbumContent2.style.display = "block";
-                        open2.style.display = "block";
-
-                        str = (function (i) {
-                            aLi = i;
-                            return aLi;
-                        })(this.index);
-                        aLi = str;
-
-                        var aP = this.getElementsByTagName('p');
-                        aName = aP[0].innerHTML;
-
-                    }
-
-                }
-            }
-        });
+        albumSortName=this.innerHTML;
+        alert(albumSortName)
     }
 }
-// $("ul#album-sort").on("click","li",function(){      //只需要找到你点击的是哪个ul里面的就行
-//     // alert(albumSortName);
-//     //
-//     getAlbum();
-// });
