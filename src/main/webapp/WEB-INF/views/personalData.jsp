@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ybw
@@ -6,14 +7,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page import="cn.yznu.pca.model.User" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     User user= (User) request.getSession().getAttribute("user");
-    //User newUser= (User) request.getSession().getAttribute("newUser");
-    //User user1= (User) request.getSession().getAttribute("user1");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    String formattedDate = formatter.format(user.getCreateTime());
     Object albumNum=request.getSession().getAttribute("albumNum");
     Object imageNum=request.getSession().getAttribute("imageNum");
+    Object friendNum=request.getSession().getAttribute("friendNum");
+
 %>
 <html lang="en">
 <head>
@@ -67,7 +72,7 @@
                         <p class="content-about-personal-admin"><%=user.getNickName()%></p>
                         <div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
                         <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
-                        <div class="content-about-personal-num3"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">好友数</p></div>
+                        <div class="content-about-personal-num3"><p class="content-about-personal-num-p1"><%=friendNum%></p><p class="content-about-personal-num-p2">好友数</p></div>
 
                         <%--<div class="content-about-personal-num"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">分享辑</p></div>--%>
                     </div>
@@ -77,14 +82,15 @@
                         </div>
                         <div id="content-about-info-no2" class="content-about-info-no2">
                             <p><span>登陆账号：<span><%=user.getUserName()%></span></span></p>
-                            <p><span>注册日期：<span><%=user.getCreateTime()%></span></span></p>
-                            <p><span>上册登陆：新加坡 XX XX (查看详细)</span></p>
+                            <p><span>注册时间：<span><%=formattedDate%></span></span></p>
+
+                            <p><span>上次登陆：<%=request.getRemoteAddr()%></span></p>
                         </div>
                         <div id="content-about-info-no3" class="content-about-info-no3">
-                            <p><span>全部空间：1Tb</span><span>(扩充空间)</span></p>
-                            <p><span>已用空间：1</span><span>Kb  468kb</span></p>
-                            <p><span>剩余空间：1023GB1023MB1022KB556B</span></p>
-                            <p><span>已用占比：0%</span></p>
+                            <%--<p><span>全部空间：1Tb</span><span>(含扩充空间)</span></p>--%>
+                            <%--<p><span>已用空间：1</span><span>Kb  468kb</span></p>--%>
+                            <%--<p><span>剩余空间：1023GB1023MB1022KB556B</span></p>--%>
+                            <%--<p><span>已用占比：0%</span></p>--%>
                         </div>
                         <ul id="content-about-info-menu" class="content-about-info-menu">
                             <li id="menuLi1"  class="menuLi menuLis">个人简介</li>

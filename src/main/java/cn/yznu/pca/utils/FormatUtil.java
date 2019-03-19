@@ -1,24 +1,42 @@
 package cn.yznu.pca.utils;
 
 /**
- * 图片大小转换工具类
+ * 内存大小转换工具类
  * @author yangbaiwan
  * @date 2018-11-07
  */
 public class FormatUtil {
-    public static String format(long size){
-        float fsize = size;
+
+    /**
+     * 字节转换KB/MB/GB
+     * @param size
+     * @return
+     */
+    public static String toRise(String size){
+        Long fsize = Long.valueOf(size);
+        //KB
+        String size1="1024";
+        //MB
+        String size2="1048576";
+        //GB
+        String size3="1073741824";
+        //TB
+        String size4="1099511627776";
+        Long KB= Long.valueOf(size1);
+        Long MB= Long.valueOf(size2);
+        Long GB= Long.valueOf(size3);
+        Long TB= Long.valueOf(size4);
         String fileSizeString;
-        if (fsize < 1024) {
+         if (fsize>0&&fsize < KB) {
             //2f表示保留两位小数
-            fileSizeString = String.format("%.2f", fsize) + "B";
-        } else if (fsize < 1048576) {
-            fileSizeString = String.format("%.2f", fsize/1024) + "KB";
-        } else if (fsize < 1073741824) {
-            fileSizeString = String.format("%.2f", fsize/1024/1024) + "MB";
-        } else if (fsize < 1024 * 1024 * 1024) {
-            fileSizeString = String.format("%.2f", fsize/1024/1024/1024) + "GB";
-        } else {
+            fileSizeString = String.format("%.4f", fsize.doubleValue()) + "B";
+        } else if (fsize>=KB&&fsize < MB) {
+            fileSizeString = String.format("%.4f", fsize.doubleValue()/1024 )+ "KB";
+        } else if (fsize>=MB&&fsize < GB) {
+            fileSizeString = String.format("%.4f", fsize.doubleValue()/1024/1024) + "MB";
+        } else if (fsize>=GB&&fsize < TB){
+            fileSizeString = String.format("%.4f", fsize.doubleValue()/1024/1024/1024) + "GB";
+        }else {
             fileSizeString = "0B";
         }
         return fileSizeString;
@@ -71,7 +89,28 @@ public class FormatUtil {
         return dValue;
     }
 
-    //public static void main(String[] args) {
-    //    System.out.println(FormatUtil.toByte("10"));
-    //}
+    /**
+     * 转换百分比，保留四位小数，四舍五入
+     * @param size1
+     * @param size2
+     * @return
+     */
+    public static String toPercent(String size1,String size2){
+        Double percent;
+        Double num1= Double.valueOf(size1);
+        Double num2= Double.valueOf(size2);
+        if (num1>num2) {
+            percent =(num2/num1);
+        }else{
+            percent =num1/num2 ;
+        }
+        return String.format("%.4f", percent);
+    }
+
+    public static void main(String[] args) {
+        //System.out.println(FormatUtil.toPercent("1073741824","5055672"));
+        //System.out.println(FormatUtil.toRise("1073741824"));
+        //String size4="1099511627776";
+        //System.out.println(Long.valueOf(size4)/1024/1024/1024);
+    }
 }
