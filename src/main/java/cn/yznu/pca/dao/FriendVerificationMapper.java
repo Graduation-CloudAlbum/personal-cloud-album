@@ -33,4 +33,7 @@ public interface FriendVerificationMapper {
     List<FriendVerification>getFvListRefUser();
 
     List<FriendVerification>selectAllFriendVerification(int userid);
+
+    List<FriendVerification>selectAllSandFriendVerification(int userid);
+
 }
