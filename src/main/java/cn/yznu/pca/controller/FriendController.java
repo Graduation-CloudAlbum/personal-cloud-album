@@ -189,7 +189,6 @@ public class FriendController {
                             friendService.selectAddFriendGroup(attribute.getId(), "陌生人"));
                     //添加好友验证消息
                     friendService.addFriendVerification(Validationmessage, user, user2);
-                    System.out.println("请求验证消息已发送！！！！！");
                 }
             }
             if(a==0){
@@ -220,29 +219,19 @@ public class FriendController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/selectAllFriendVerification")
     @ResponseBody
-    public ModelAndView  passFriendVerification(HttpServletRequest request,
+    public Map<String,Object>  passFriendVerification(HttpServletRequest request,
                                                HttpServletResponse response) {
-        ModelAndView mav=new  ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
         List<FriendVerification> friendVerifications=friendService.selectAllFriendVerification(user);
+        Map<String,Object> map=new HashMap<>();
         for (FriendVerification s:friendVerifications){
             System.out.println(s.getFriend().getId()+"查询到的该用户下所有验证消息为"+s.getUser().getNickName()
             +"请求加你为好友"+"验证消息为"+s.getNote());
         }
-        JSONObject jo = new JSONObject();
-        String jsonArray = JSON.toJSONString(friendVerifications);
-        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-
-
-        JSONArray jsonArray2 = JSONArray.parseArray(JSON.toJSONString(friendVerifications));
-        String str =jsonArray2.toJSONString();
-        System.out.println("str的数据格式为"+str);
-        System.out.println("jsonArray2的数据格式为"+jsonArray2);
-        System.out.println("friendgroup的数据格式为"+friendgroup);
-        System.out.println("jsonArray的数据格式为"+jsonArray);
-        mav.addObject("friendgroup",friendgroup);
-        mav.addObject("str",str);
-        return mav;
+        List<FriendVerification> friendVerificationsTwo=friendService.selectAllSandFriendVerification(user);
+        map.put("friendVerifications",friendVerifications);
+        map.put("friendVerificationsTwo",friendVerificationsTwo);
+        return map;
     }
 
 
@@ -400,7 +389,5 @@ public class FriendController {
             return false;
         }
     }
-
-
 
 }
