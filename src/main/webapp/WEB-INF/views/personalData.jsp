@@ -145,76 +145,26 @@
             <li id="send" class="content-menu-li"><a>收到的验证</a></li>
         </ul>
         <div class="Verification-about">
-            <table id="accept-Verification" class="Verification-table row">
+            <table id="accept-Verification" class="Verification-table">
                 <tr class="">
                     <th class="col-md-2">好友名称</th>
                     <th class="col-md-6">请求内容</th>
                     <th class="col-md-2">状态</th>
-                    <th class="col-md-2">操作</th>                
+                    <th class="col-md-2">操作</th>
                 </tr>
-                <tbody>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川</td>
-                        <td>等待验证</td>
-                        <td><button class="btn  delete">删除</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td>等待验证</td>
-                        <td><button class="btn delete">删除</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td>等待验证</td>
-                        <td><button class="btn delete">删除</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td>等待验证</td>
-                        <td><button class="btn delete">删除</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td>等待验证</td>
-                        <td><button class="btn delete">删除</button></td>
-                    </tr>
-
-
+                <tbody id="sandFriendVerifications">
                 </tbody>
             </table>
-            <table id="send-Verification" class="Verification-table row">
+            <table id="send-Verification" class="Verification-table">
                 <tr class="">
                     <th class="col-md-2">好友名称</th>
                     <th class="col-md-6">验证消息</th>
-                    <th class="col-md-2">操作</th>                
+                    <th class="col-md-2">操作</th>
                 </tr>
-                <tbody>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川</td>
-                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-                    </tr>
-                    <tr>
-                        <td>江川</td>
-                        <td>我是江川,你最近好嘛，的手机号电磁阀时间不长是打发时间阿KSDFSJH SDFS jd SDJjsd 受到</td>
-                        <td><button class="btn delete">接受</button>   <button class="btn delete">拒绝</button></td>
-                    </tr>
-                
-                    
-
+                <tbody id="receiveFriendVerifications">
                 </tbody>
             </table>
-            
+
         </div>
     </div>
     <div id="popLayer" class="popLayer"></div>
