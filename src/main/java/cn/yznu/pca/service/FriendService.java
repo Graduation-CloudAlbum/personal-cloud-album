@@ -72,11 +72,17 @@ public interface FriendService {
 
 
     /**
-     *  查寻该用户下所有验证消息
+     *  查寻该用户下所有收到的验证消息
      * @param user
      */
     List <FriendVerification> selectAllFriendVerification(User user);
 
+
+    /**
+     *  查寻该用户下所有发送的验证消息
+     * @param user
+     */
+    List <FriendVerification> selectAllSandFriendVerification(User user);
 
     /**
      *  通过permissiontype和userid确定好友分组唯一id
