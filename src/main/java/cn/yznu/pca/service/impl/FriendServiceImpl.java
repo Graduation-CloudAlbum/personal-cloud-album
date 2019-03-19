@@ -62,12 +62,12 @@ public class FriendServiceImpl implements FriendService {
         UserRelation userRelation2=new UserRelation();
         userRelation.setUserId(user.getId());
         userRelation.setUserIdTwo(user_two);
-        userRelation.setStatus("0");
+        userRelation.setStatus("1");
         userRelation.setPermissionGroupId(permisssionGroupId);
         userRelation.setPermissionGroupIdTwo(1);
         userRelation2.setUserId(user_two);
         userRelation2.setUserIdTwo(user.getId());
-        userRelation2.setStatus("0");
+        userRelation2.setStatus("1");
         userRelation2.setPermissionGroupId(permisssionGroupIdTwo);
         userRelation2.setPermissionGroupIdTwo(1);
         userRelationMapper.insert(userRelation);
@@ -134,10 +134,12 @@ public class FriendServiceImpl implements FriendService {
     @Override
     public List<FriendVerification> selectAllFriendVerification(User user) {
         List <FriendVerification> list=friendVerificationMapper.selectAllFriendVerification(user.getId());
-        for (FriendVerification s:list){
-            System.out.println(s.getFriend().getId()+"Serviceimpl查询到的该用户下所有验证消息为"+s.getUser().getNickName()
-                    +"请求加你为好友"+"验证消息为"+s.getNote());
-        }
+        return list;
+    }
+
+    @Override
+    public List<FriendVerification> selectAllSandFriendVerification(User user) {
+        List <FriendVerification> list=friendVerificationMapper.selectAllSandFriendVerification(user.getId());
         return list;
     }
 
@@ -181,13 +183,6 @@ public class FriendServiceImpl implements FriendService {
 
     @Override
     public List<User> searchFriends(String nickName) {
-//        UserExample userExample=new UserExample();
-//        UserExample.Criteria criteria = userExample.createCriteria();
-//        criteria.andNickNameEqualTo(friendName);
-//        List <User> users=userMapper.selectByExample(userExample);
-//        for(User s:users){
-//            System.out.println("service输出的值"+s.getUserIcon());
-//        }
         List <User> users=userMapper.searchFriends(nickName);
         for(User s:users){
             System.out.println("搜索条件是"+nickName);
