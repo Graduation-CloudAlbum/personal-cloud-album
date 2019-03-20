@@ -81,10 +81,10 @@
                             <i class="iconfont icon-baojiaquotation2"></i><span><%=user.getSynopsis()%></span><i class="iconfont icon-baojiaquotation"></i>
                         </div>
                         <div id="content-about-info-no2" class="content-about-info-no2">
-                            <p><span>登陆账号：<span><%=user.getUserName()%></span></span></p>
+                            <p><span>登录账号：<span><%=user.getUserName()%></span></span></p>
                             <p><span>注册时间：<span><%=formattedDate%></span></span></p>
 
-                            <p><span>上次登陆：<%=request.getRemoteAddr()%></span></p>
+                            <p><span>登录IP地址：<%=request.getRemoteAddr()%></span></p>
                         </div>
                         <div id="content-about-info-no3" class="content-about-info-no3">
                             <%--<p><span>全部空间：1Tb</span><span>(含扩充空间)</span></p>--%>
@@ -94,7 +94,7 @@
                         </div>
                         <ul id="content-about-info-menu" class="content-about-info-menu">
                             <li id="menuLi1"  class="menuLi menuLis">个人简介</li>
-                            <li id="menuLi2"  class="menuLi">账户安全</li>
+                            <li id="menuLi2"  class="menuLi">账户信息</li>
                             <li id="menuLi3"  class="menuLi">空间容量</li>
                         </ul>
                     </div>
