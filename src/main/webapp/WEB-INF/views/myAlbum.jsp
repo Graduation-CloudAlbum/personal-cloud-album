@@ -124,7 +124,7 @@
                         <div id="send-style" class="send-style">
                             <lable class="btn btn-info footer-button2">选择上传方式</lable>
                             <li id="send-style-li1" class="btn btn-default send-style-li1">定时上传</li>
-                            <li id="send-style-li2" class="btn btn-default send-style-li2">现在上传</li>
+                            <li id="send-style-li2" class="btn btn-default send-style-li2">实时上传</li>
                         </div>
 
 

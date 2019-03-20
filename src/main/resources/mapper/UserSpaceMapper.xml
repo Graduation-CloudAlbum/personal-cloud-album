@@ -106,10 +106,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.yznu.pca.model.UserSpace" >
-    insert into user_space (id, create_time, status, 
+    insert into user_space (
       initial_space, all_space, used_space, 
       available_space, user_id)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+    values (
       #{initialSpace,jdbcType=VARCHAR}, #{allSpace,jdbcType=VARCHAR}, #{usedSpace,jdbcType=VARCHAR}, 
       #{availableSpace,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>

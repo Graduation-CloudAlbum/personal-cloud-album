@@ -1,6 +1,7 @@
 package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.Image;
+import cn.yznu.pca.model.PermissionGroup;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.service.*;
@@ -45,6 +46,9 @@ public class UserController {
 
     @Autowired
     private UserSpaceService userSpaceService;
+
+    @Autowired
+    private PermissionGroupService permissionGroupService;
 
 
     //@RequestMapping("/index")
@@ -97,7 +101,7 @@ public class UserController {
         int flag = userService.isExistUserName(username);
         //用户名未被使用
         if(flag==0) {
-            return "success";
+            return "ok";
         }else{
             //用户名已被使用
             return "error";
@@ -114,6 +118,7 @@ public class UserController {
         user.setUserIcon("/upload/default-c.png");
         //注册用户
         userService.register(user);
+        User user1=userService.selectUserByUserName(username);
         //初始化空间
         UserSpace userSpace= new UserSpace();
         //设置初始化大小，1GB
@@ -121,7 +126,17 @@ public class UserController {
         userSpace.setAllSpace("1073741824");
         userSpace.setUsedSpace("0");
         userSpace.setAvailableSpace("1073741824");
+        userSpace.setUserId(user1.getId());
         userSpaceService.initSpace(userSpace);
+        //创建默认（陌生人、我的好友）分组
+        PermissionGroup permissionGroup=new PermissionGroup();
+        permissionGroup.setPermissionType("我的好友");
+        permissionGroup.setUserId(user1.getId());
+        PermissionGroup permissionGroup1=new PermissionGroup();
+        permissionGroup1.setPermissionType("陌生人");
+        permissionGroup1.setUserId(user1.getId());
+        permissionGroupService.insert(permissionGroup);
+        permissionGroupService.insert(permissionGroup1);
         return "success";
     }
     @ResponseBody

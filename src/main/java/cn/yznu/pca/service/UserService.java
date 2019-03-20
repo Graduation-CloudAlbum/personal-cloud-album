@@ -57,9 +57,16 @@ public interface UserService {
     boolean changePassword(int id,String password);
 
     /**
-     * 查找用户
+     * 通过id查找用户
      * @param id 用户id
      * @return
      */
     User selectUserById(int id);
+
+    /**
+     * 通过用户名查找用户
+     * @param username 用户名
+     * @return
+     */
+    User selectUserByUserName(String username);
 }

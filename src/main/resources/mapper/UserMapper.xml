@@ -92,6 +92,11 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectUserByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from user
+    where user_name = #{username,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}
@@ -286,7 +291,7 @@
       user_password as userPassword,nick_name as nickName,user_type as userType,
       user_icon as userIcon,synopsis
        from user
-      where user_name = #{username,jdbcType=VARCHAR}
+      where user_name = #{userName,jdbcType=VARCHAR}
       and user_password = #{password,jdbcType=VARCHAR}
     </select>
 
