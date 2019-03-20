@@ -228,6 +228,24 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
+    public boolean refusedfriendVerifications(int user_id, int friend_id, int friendVerifications_id) {
+        friendVerificationMapper.refusedfriendVerifications(friendVerifications_id);
+        userRelationMapper.deleteUserRelation(user_id,friend_id);
+        userRelationMapper.deleteUserRelation(friend_id,user_id);
+        return true;
+    }
+
+    @Override
+    public boolean deleteFriendVerifications(int friendVerifications_id) {
+        boolean a=friendVerificationMapper.deleteFriendVerifications(friendVerifications_id);
+        if(a){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
     public List<FriendVerification> test(  ) {
         List<FriendVerification> fvListRefUser=friendVerificationMapper.getFvListRefUser();
         for (FriendVerification s :fvListRefUser){

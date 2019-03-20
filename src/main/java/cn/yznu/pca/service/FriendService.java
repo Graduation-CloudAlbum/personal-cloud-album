@@ -130,6 +130,20 @@ public interface FriendService {
     int checkFriendPower(int user_id,int friend_id,int albumId);
 
 
+    /**
+     *  拒绝好友请求
+     * @param friendVerifications_id,friend_id,user_id
+     */
+    boolean refusedfriendVerifications(int user_id,int friend_id,int friendVerifications_id);
+
+
+    /**
+     *  拒绝好友请求
+     * @param friendVerifications_id
+     */
+    boolean deleteFriendVerifications(int friendVerifications_id);
+
+
     List <FriendVerification> test();
 
 

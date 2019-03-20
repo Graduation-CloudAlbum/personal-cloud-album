@@ -110,20 +110,29 @@
 
 
 
-
-
+  <!--查找该用户下所有收到的验证消息-->
   <select id="selectAllFriendVerification" resultMap="BaseResultMap">
-    select * from
+    select c.id, d.nick_name ,c.note,c.user_id,c.friend_id from
      user d INNER  join friend_verification c  on
-     (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER}
+     (c.user_id=d.id) where friend_id=#{id,jdbcType=INTEGER} AND  state=0
   </select>
 
-
+  <!--查找该用户下所有发送的验证消息-->
   <select id="selectAllSandFriendVerification" resultMap="BaseResultMap">
-    select * from
+    select  c.id, d.nick_name ,c.note,c.user_id,c.friend_id,c.state from
     friend_verification c INNER  join user d on
     (c.friend_id=d.id) where user_id=#{id,jdbcType=INTEGER}
   </select>
+
+  <!--拒绝好友请求-->
+  <update id="refusedfriendVerifications">
+    update friend_verification SET state=2 where id=#{id,jdbcType=INTEGER}
+  </update>
+
+  <!--删除已发送的好友请求-->
+  <delete id="deleteFriendVerifications">
+    DELETE  from  friend_verification where id=#{id,jdbcType=INTEGER}
+  </delete>
 
 
 

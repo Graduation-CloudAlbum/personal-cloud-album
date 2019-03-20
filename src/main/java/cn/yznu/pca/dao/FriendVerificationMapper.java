@@ -36,4 +36,10 @@ public interface FriendVerificationMapper {
 
     List<FriendVerification>selectAllSandFriendVerification(int userid);
 
+    boolean refusedfriendVerifications(int id);
+
+    boolean deleteFriendVerifications(int id);
+
+
+
 }

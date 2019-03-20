@@ -36,4 +36,5 @@ public interface UserRelationMapper {
 
     int moveFriendsToDefault(@Param("defaultpermissionGroupId") int defaultpermissionGroupId,@Param("permissionGroupId") int permissionGroupId);
 
+    boolean deleteUserRelation(@Param("user_id") int user_id,@Param("user_id_two") int user_id_two);
 }
