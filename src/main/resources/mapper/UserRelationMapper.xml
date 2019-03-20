@@ -271,5 +271,15 @@
     where permission_group_id = #{permissionGroupId,jdbcType=INTEGER}
   </update>
 
+  <!--删除好友表中预备数据-->
+  <delete id="deleteUserRelation">
+    DELETE from user_relation where user_id=#{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
+  </delete>
+
+  <!--删除好友表中预备数据2-->
+  <delete id="deleteUserRelationTwo">
+    DELETE from user_relation where user_id=#{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
+  </delete>
+
 
 </mapper>
