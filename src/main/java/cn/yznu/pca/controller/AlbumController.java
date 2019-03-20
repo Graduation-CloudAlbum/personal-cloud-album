@@ -122,15 +122,15 @@ public class AlbumController {
         int albumId=album.getId();
         /**
          * 删除整个相册时，先获取相册原来status
-         * 若原status为0，则将新status置为3
-         * 若原status为1，则将新status置为4
-         * 其中3,4均代表回收站，方便还原相册时将相册状态重置
+         * 若原status为0，则将新status置为20
+         * 若原status为1，则将新status置为21
+         * 其中20,21均代表回收站，方便还原相册时将相册状态重置
          */
         String albumStatus=album.getStatus();
         if (albumStatus==status1){
-           status="3";
+           status="20";
         }else if (albumStatus==status2){
-            status="4";
+            status="21";
         }
 
         albumService.deleteAlbum(albumId,status);
@@ -153,7 +153,7 @@ public class AlbumController {
         List albumlist =albumService.selectAlbumByName(userId,albumName);
         Album album= (Album) albumlist.get(0);
         int albumId=album.getId();
-        int mark=albumService.updateAlbum(userId,albumName,jurisdiction,theme);
+        int mark=albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
         return mark;
     }
 
