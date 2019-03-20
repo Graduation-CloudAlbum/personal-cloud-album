@@ -1,4 +1,39 @@
 var friendsVerification=document.getElementById('friends-Verification');
+
+//拒绝好友请求
+function refusedfriendVerifications(userId,friendVerifications_id,friendId) {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/friend/refusedfriendVerifications",
+        data:{"userId":userId,"friendVerifications_id":friendVerifications_id,"friendId":friendId},
+        dataType: "json",
+        dataType: "json",
+        success: function (data) {
+            alert("拒绝成功！")
+            document.getElementById('Verification').style.display="none";
+            document.getElementById('popLayer2').style.display="none";
+        }
+    });
+}
+
+//删除已发送的验证消息
+function deleteFriendVerifications(friendVerifications_id) {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/friend/deleteFriendVerifications",
+        data:{"friendVerifications_id":friendVerifications_id},
+        dataType: "json",
+        dataType: "json",
+        success: function (data) {
+            alert("删除成功！")
+            document.getElementById('Verification').style.display="none";
+            document.getElementById('popLayer2').style.display="none";
+        }
+    });
+}
+
 //点击消息
 friendsVerification.onclick = function(){
     $.ajax({
@@ -7,6 +42,7 @@ friendsVerification.onclick = function(){
         url: "/pca/friend/selectAllFriendVerification",
         dataType: "json",
         success: function (data) {
+            console.log(data)
             //加载相册 到album页面
             //收到的验证消息
             var h = "";
@@ -14,7 +50,7 @@ friendsVerification.onclick = function(){
                 h += "<tr>"
                     +" <td>"+data.friendVerifications[i].friend.nickName+"</td>"
                     + "<td>"+data.friendVerifications[i].note+"</td>"
-                    + "<td><button class='btn delete'>接受</button>   <button class='btn delete'>拒绝</button></td>"
+                    + "<td><button class='btn delete'>接受</button>   <button class='btn delete' onclick='refusedfriendVerifications(\""+data.friendVerifications[i].userId+"\",\""+data.friendVerifications[i].id+"\",\""+data.friendVerifications[i].friendId+"\")'>拒绝</button></td>"
                     +"</tr>"
             }
             $("#receiveFriendVerifications").html(h);
@@ -25,7 +61,7 @@ friendsVerification.onclick = function(){
                     +" <td>"+data.friendVerificationsTwo[i].friend.nickName+"</td>"
                     + "<td>"+data.friendVerificationsTwo[i].note+"</td>"
                     +"<td>"+data.friendVerificationsTwo[i].state+"</td>"
-                    + "<td><button class='btn  delete'>删除</button></td>"
+                    + "<td><button class='btn  delete' onclick='deleteFriendVerifications(\""+data.friendVerificationsTwo[i].id+"\")'>删除</button></td>"
                     +"</tr>"
             }
             $("#sandFriendVerifications").html(f);
