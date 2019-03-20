@@ -488,3 +488,44 @@ for(var i=0;i<albumSortLi.length;i++){
         alert(albumSortName)
     }
 }
+
+
+//时间控件
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() ,H = myDate.getHours(), S = myDate.getMinutes();
+var M2 = M + 1;
+//处理月是一位的情况
+if((M + '').length == 1){
+    M = '0' + (M + '');
+}
+if((M2 + '').length == 1){
+    M2 = '0' + (M2 + '');
+}
+//处理日是一位的情况
+if((D + '').length == 1){
+    D = '0' + (D + '')
+}
+var curDay = Y + '-' + M + '-' + D;
+var curDay2 = Y + '-' + M2 + '-' + D;
+var hou = H + ':' + S;
+$('#logOutTime').val(curDay + 'T' + hou)
+$("#logOutTime").attr("min",curDay + 'T' + hou)
+$("#logOutTime").attr("max",curDay2 + 'T' + hou)
+
+
+//选择上传
+var sendStyleLi1=document.getElementById('send-style-li1');
+var sendStyleLi2=document.getElementById('send-style-li2');
+var logOutTime=document.getElementById('logOutTime');
+var nowTime=document.getElementById('nowTime');
+var nextTime=document.getElementById('nextTime');
+//定时上传
+sendStyleLi1.onclick = function(){
+    nextTime.style.display="none";
+    nowTime.style.display="block";
+    logOutTime.style.display="block";
+}
+sendStyleLi2.onclick = function(){
+    nextTime.style.display="block";
+    nowTime.style.display="none";
+    logOutTime.style.display="none";
+}
