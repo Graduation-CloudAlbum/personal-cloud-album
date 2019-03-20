@@ -73,6 +73,7 @@
 
                 </ul>
                 <ul id="myAlbum-content2" class="content-about2 gallery">
+
                     <%--<div class="content-about2-li">--%>
                         <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>--%>
                     <%--</div>--%>
@@ -197,10 +198,10 @@
 
 
 </div>
-<script src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myAlbum.js"></script>
-<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
-<script src="<%=basePath%>/resource/js/zoom.min.js"></script>
+<%--<script type="text/javascript" src="<%=basePath%>/resource/js/zoom.js"></script>--%>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>
 </html>

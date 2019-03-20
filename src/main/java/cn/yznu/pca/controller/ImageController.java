@@ -183,8 +183,6 @@ public class ImageController {
                 String localPath = "F:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
-                //获取照片大小,以B/KB/MB为单位保存
-                //String fileSize = FormatUtil.format(file.getSize());
                 //获取照片大小,以B(字节)为单位保存
                 String fileSize = String.valueOf(file.getSize());
                 //获取文件的扩展名
