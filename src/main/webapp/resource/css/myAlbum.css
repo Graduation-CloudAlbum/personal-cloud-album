@@ -169,8 +169,8 @@
 	text-align: center;
 	font-size: 12px;
 	color: #99B3D4;
-}	
-*/
+}
+
 /***************************************************弹窗1、**************************************************************/
 #upload-photos{
 	display: none;
@@ -313,15 +313,52 @@
 	font-size: 16px;
 	margin-left: 20px;
 }
-.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2 .footer-button2{
+.footer-button1{
+	position: absolute;
+	right: 247px;
+	bottom: 10px;
+}
+.footer-button2{
+	position: absolute;
+	right: 120px;
+	bottom: 10px;
+}
+.send-style-li1{
+    position: absolute;
+    right: 120px;
+    top: -52px;
+    width: 110px;
+    display: none;
+    z-index: 100;
+}
+.send-style-li2{
+    position: absolute;
+    right: 120px;
+    top: -19px;
+     width: 110px;
+     display: none;
+     z-index: 100;
+}
+#logOutTime{
+    position: absolute;
+    right: 20px;
+    top: -26px;
+    display: none;
+    z-index: 50;
+}
+#nowTime{
+	display: none;
+}
+ .footer-button3{
 	position: absolute;
 	right: 20px;
 	bottom: 10px;
 }
-.upload-photos .upload-photos-pop .upload-photos-pop-content .upload-photos-pop-content-footer2 .footer-button1{
-	position: absolute;
-	right: 120px;
-	bottom: 10px;
+.send-style:hover .send-style-li1{
+	display: block;
+}
+.send-style:hover .send-style-li2{
+	display: block;
 }
 
 /***************************************************弹窗2、**************************************************************/

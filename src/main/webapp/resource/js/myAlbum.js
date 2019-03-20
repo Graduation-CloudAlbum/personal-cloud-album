@@ -237,6 +237,7 @@ $().ready(function getAlbum() {
 $("#myAlbum-content").click(function () {
     var albumName=aName;
     $.ajax({
+        async: false,
         type:"post",
         url:"/pca/image/getImage",
         data: {"albumName": albumName},
@@ -244,15 +245,173 @@ $("#myAlbum-content").click(function () {
         success: function (data) {
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
-                var url=data.imageList[i].url;
-                h +="<div class='content-about2-li'>"
+                var imgUrl=data.imageList[i].url;
+                h +=
+                    "<div class='content-about2-li'>"
 
-                    +"<a href='"+url+"'>"
-                    +"<img src='"+url+"'/></a>"
+                    + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
+
                     + "</div>"
-                $("#open2").html("共"+ data.imageList.length+"张照片");
+
             }
+            $("#open2").html("共"+ data.imageList.length+"张照片");
             $("#myAlbum-content2").html(h);
+
+            (function($) {
+                $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
+
+                var zoom = $('#zoom').hide(),
+                    zoomContent = $('#zoom .content'),
+                    overlay = '<div class="overlay"></div>',
+                    zoomedIn = false,
+                    openedImage = null,
+                    windowWidth = $(window).width(),
+                    windowHeight = $(window).height();
+
+                function open(event) {
+                    if (event) {
+                        event.preventDefault();
+                    }
+                    var link = $(this),
+                        src = link.attr('href');
+                    if (!src) {
+                        return;
+                    }
+                    var image = $(new Image()).hide();
+                    $('#zoom .previous, #zoom .next').show();
+                    if (link.hasClass('zoom')) {
+                        $('#zoom .previous, #zoom .next').hide();
+                    }
+                    if (!zoomedIn) {
+                        zoomedIn = true;
+                        zoom.show();
+                        $('body').addClass('zoomed');
+                    }
+                    zoomContent.html(image).delay(100).addClass('loading');
+                    zoomContent.prepend(overlay);
+                    image.load(render).attr('src', src);
+                    openedImage = link;
+
+                    function render() {
+                        var image = $(this),
+                            borderWidth = parseInt(zoomContent.css('borderLeftWidth')),
+                            maxImageWidth = windowWidth - (borderWidth * 2),
+                            maxImageHeight = windowHeight - (borderWidth * 2),
+                            imageWidth = image.width(),
+                            imageHeight = image.height();
+                        if (imageWidth == zoomContent.width() && imageWidth <= maxImageWidth && imageHeight == zoomContent.height() && imageHeight <= maxImageHeight) {
+                            show(image);
+                            return;
+                        }
+                        if (imageWidth > maxImageWidth || imageHeight > maxImageHeight) {
+                            var desiredHeight = maxImageHeight < imageHeight ? maxImageHeight : imageHeight,
+                                desiredWidth  = maxImageWidth  < imageWidth  ? maxImageWidth  : imageWidth;
+                            if ( desiredHeight / imageHeight <= desiredWidth / imageWidth ) {
+                                image.width(Math.round(imageWidth * desiredHeight / imageHeight));
+                                image.height(desiredHeight);
+                            } else {
+                                image.width(desiredWidth);
+                                image.height(Math.round(imageHeight * desiredWidth / imageWidth));
+                            }
+                        }
+                        zoomContent.animate({
+                            width: image.width(),
+                            height: image.height(),
+                            marginTop: -(image.height() / 2) - borderWidth,
+                            marginLeft: -(image.width() / 2) - borderWidth
+                        }, 200, function() {
+                            show(image);
+                        });
+
+                        function show(image) {
+                            image.show();
+                            zoomContent.removeClass('loading');
+                        }
+                    }
+                }
+
+                function openPrevious() {
+                    var prev = openedImage.parent('div').prev();
+                    if (prev.length == 0) {
+                        prev = $('.gallery div:last-child');
+                    }
+                    prev.find('a').trigger('click');
+                }
+
+                function openNext() {
+                    var next = openedImage.parent('div').next();
+                    if (next.length == 0) {
+                        next = $('.gallery div:first-child');
+                    }
+                    next.children('a').trigger('click');
+                }
+
+                function close(event) {
+                    if (event) {
+                        event.preventDefault();
+                    }
+                    zoomedIn = false;
+                    openedImage = null;
+                    zoom.hide();
+                    $('body').removeClass('zoomed');
+                    zoomContent.empty();
+                }
+
+                function changeImageDimensions() {
+                    windowWidth = $(window).width();
+                    windowHeight = $(window).height();
+                }
+
+                (function bindNavigation() {
+                    zoom.on('click', function(event) {
+                        event.preventDefault();
+                        if ($(event.target).attr('id') == 'zoom') {
+                            close();
+                        }
+                    });
+
+                    $('#zoom .close').on('click', close);
+                    $('#zoom .previous').on('click', openPrevious);
+                    $('#zoom .next').on('click', openNext);
+                    $(document).keydown(function(event) {
+                        if (!openedImage) {
+                            return;
+                        }
+                        if (event.which == 38 || event.which == 40) {
+                            event.preventDefault();
+                        }
+                        if (event.which == 27) {
+                            close();
+                        }
+                        if (event.which == 37 && !openedImage.hasClass('zoom')) {
+                            openPrevious();
+                        }
+                        if (event.which == 39 && !openedImage.hasClass('zoom')) {
+                            openNext();
+                        }
+                    });
+
+                    if ($('.gallery a').length == 1) {
+                        $('.gallery a')[0].addClass('zoom');
+                    }
+                    $('.zoom, .gallery a').on('click', open);
+                })();
+
+                (function bindChangeImageDimensions() {
+                    $(window).on('resize', changeImageDimensions);
+                })();
+
+                (function bindScrollControl() {
+                    $(window).on('mousewheel DOMMouseScroll', function(event) {
+                        if (!openedImage) {
+                            return;
+                        }
+                        event.stopPropagation();
+                        event.preventDefault();
+                        event.cancelBubble = false;
+                    });
+                })();
+            })(jQuery);
 
 
         }
@@ -328,4 +487,45 @@ for(var i=0;i<albumSortLi.length;i++){
         albumSortName=this.innerHTML;
         alert(albumSortName)
     }
+}
+
+
+//时间控件
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() ,H = myDate.getHours(), S = myDate.getMinutes();
+var M2 = M + 1;
+//处理月是一位的情况
+if((M + '').length == 1){
+    M = '0' + (M + '');
+}
+if((M2 + '').length == 1){
+    M2 = '0' + (M2 + '');
+}
+//处理日是一位的情况
+if((D + '').length == 1){
+    D = '0' + (D + '')
+}
+var curDay = Y + '-' + M + '-' + D;
+var curDay2 = Y + '-' + M2 + '-' + D;
+var hou = H + ':' + S;
+$('#logOutTime').val(curDay + 'T' + hou)
+$("#logOutTime").attr("min",curDay + 'T' + hou)
+$("#logOutTime").attr("max",curDay2 + 'T' + hou)
+
+
+//选择上传
+var sendStyleLi1=document.getElementById('send-style-li1');
+var sendStyleLi2=document.getElementById('send-style-li2');
+var logOutTime=document.getElementById('logOutTime');
+var nowTime=document.getElementById('nowTime');
+var nextTime=document.getElementById('nextTime');
+//定时上传
+sendStyleLi1.onclick = function(){
+    nextTime.style.display="none";
+    nowTime.style.display="block";
+    logOutTime.style.display="block";
+}
+sendStyleLi2.onclick = function(){
+    nextTime.style.display="block";
+    nowTime.style.display="none";
+    logOutTime.style.display="none";
 }
