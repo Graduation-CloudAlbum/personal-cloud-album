@@ -118,8 +118,22 @@
 
                         <input  class="inputfile" type="file" name="files" multiple="multiple" id="doc0" imgid="img0" onchange="javascript:setImagePreviews()" />
                         <label for="doc0" class="btn btn-default footer-button1">继续添加</label>
-                        <button class="btn btn-info footer-button2"  type="submit"><p>开始上传</p></button>
-                    </div>
+
+
+                        
+                        <div id="send-style" class="send-style">
+                            <lable class="btn btn-info footer-button2">选择上传方式</lable>
+                            <li id="send-style-li1" class="btn btn-default send-style-li1">定时上传</li>
+                            <li id="send-style-li2" class="btn btn-default send-style-li2">现在上传</li>
+                        </div>
+
+
+                        <input type="datetime-local" id="logOutTime" name="logOutTime" />
+                        <label id="nowTime" class="btn btn-info footer-button3" type="submit"><p>定时上传</p></label>
+
+                        <button id="nextTime" class="btn btn-info footer-button3"  type="submit"><p>开始上传</p></button>
+                    </div>                
+                           
                 </form>
 
 
