@@ -108,6 +108,9 @@ iconChacha1.onclick=function(){
     document.getElementById('upload-photos').style.display="none";
     document.getElementById('popLayer').style.display="none";
     uploadPhotosLeft.innerHTML="我的相册";
+    nextTime.style.display="block";
+    nowTime.style.display="none";
+    logOutTime.style.display="none";
 
 }
 //关闭选择相册弹出框
