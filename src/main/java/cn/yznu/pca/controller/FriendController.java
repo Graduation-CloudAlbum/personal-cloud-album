@@ -224,10 +224,6 @@ public class FriendController {
         User user = (User) request.getSession().getAttribute("user");
         List<FriendVerification> friendVerifications=friendService.selectAllFriendVerification(user);
         Map<String,Object> map=new HashMap<>();
-        for (FriendVerification s:friendVerifications){
-            System.out.println(s.getFriend().getId()+"查询到的该用户下所有验证消息为"+s.getUser().getNickName()
-            +"请求加你为好友"+"验证消息为"+s.getNote());
-        }
         List<FriendVerification> friendVerificationsTwo=friendService.selectAllSandFriendVerification(user);
         map.put("friendVerifications",friendVerifications);
         map.put("friendVerificationsTwo",friendVerificationsTwo);
@@ -388,6 +384,48 @@ public class FriendController {
         else {
             return false;
         }
+    }
+
+
+    /**
+     * 用户拒绝好友验证请求
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/refusedfriendVerifications")
+    @ResponseBody
+    public boolean  refusedfriendVerifications(@Param("userId") String userId,
+                                               @Param("friendVerifications_id") String friendVerifications_id,
+                                               @Param("friendId") String friendId,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) {
+        System.out.println("数据yonghuid"+userId+"ssss"+friendVerifications_id+"ddd"+friendId);
+        int user_id=Integer.parseInt(userId);
+        int friend_id=Integer.parseInt(friendId);
+        int friendVerificationsId=Integer.parseInt(friendVerifications_id);
+        boolean a=friendService.refusedfriendVerifications(user_id,friend_id,friendVerificationsId);
+        if(a){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    /**
+     * 用户拒绝好友验证请求
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/deleteFriendVerifications")
+    @ResponseBody
+    public boolean  deleteFriendVerifications(@Param("friendVerifications_id") String friendVerifications_id,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) {
+        int friendVerificationsId=Integer.parseInt(friendVerifications_id);
+        boolean a=friendService.deleteFriendVerifications(friendVerificationsId);
+        if(a){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 }
