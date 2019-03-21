@@ -1,7 +1,9 @@
 package cn.yznu.pca.service.impl;
 
+import cn.yznu.pca.dao.AlbumMapper;
 import cn.yznu.pca.dao.RecycleBinMapper;
 import cn.yznu.pca.dao.UserRelationMapper;
+import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.RecycleBin;
 import cn.yznu.pca.model.example.PermissionGroupExample;
 import cn.yznu.pca.model.example.RecycleBinExample;
@@ -19,6 +21,9 @@ import java.util.List;
 public class RecycleBinServiceImpl implements RecycleBinService {
     @Autowired
     RecycleBinMapper recycleBinMapper;
+
+    @Autowired
+    AlbumMapper albumMapper;
     @Override
     public List<RecycleBin> getRecycleBin(int userId) {
         List <RecycleBin> recycleBins=recycleBinMapper.selectMyRecycleBin(userId);
@@ -41,8 +46,21 @@ public class RecycleBinServiceImpl implements RecycleBinService {
 
     @Override
     public boolean updateAlbumByList(List list) {
-        boolean recycleBins=recycleBinMapper.updateAlbumByList(list);
-        return recycleBins;
+//        boolean recycleBins=recycleBinMapper.updateAlbumByList(list);
+        List<Album> albums=albumMapper.selectAlbumStatusByList(list);
+        for(Album album:albums){
+            System.out.println("输出测试"+album.getStatus());
+            if(album.getStatus().equals("0")){
+                albumMapper.updateAlbumByZero(album.getId());
+            }else if(album.getStatus().equals("1")){
+                albumMapper.updateAlbumByOne(album.getId());
+            }else if(album.getStatus().equals("20")){
+                albumMapper.updateAlbumByZero(album.getId());
+            }else{
+                albumMapper.updateAlbumByOne(album.getId());
+            }
+        }
+        return true;
     }
 
     @Override
