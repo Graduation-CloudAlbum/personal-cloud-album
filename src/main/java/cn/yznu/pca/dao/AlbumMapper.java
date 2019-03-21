@@ -46,4 +46,11 @@ public interface AlbumMapper {
     int updateAlbum(@Param("albumId")int albumId,@Param("albumName")String albumName,@Param("status")String status,@Param("albumId")String theme);
 
     List checkAlbumPower(Integer album_id);
+
+    List selectAlbumStatusByList(List list);
+
+    boolean updateAlbumByZero(int id);
+
+    boolean updateAlbumByOne(int id);
+
 }
