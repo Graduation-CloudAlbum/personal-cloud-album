@@ -153,6 +153,7 @@ public class RecycleBinController {
         }
         boolean recycleBinsResult =recycleBinService.recoverAllRecycleBin(list);
         if(recycleBinsResult){
+            recycleBinService.updateAlbumByList(list2);
             boolean recycleBinsResult2=recycleBinService.deleteAllRecycleBin(user.getId());
             if(recycleBinsResult2){
                 return true;
