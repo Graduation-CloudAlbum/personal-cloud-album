@@ -69,4 +69,11 @@ public interface UserService {
      * @return
      */
     User selectUserByUserName(String username);
+
+    /**
+     * 通过id查找用户
+     * @param id 用户id
+     * @return
+     */
+    int updateUser(int id);
 }

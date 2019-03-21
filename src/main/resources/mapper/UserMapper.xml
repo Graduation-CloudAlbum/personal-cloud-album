@@ -284,15 +284,15 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="isExistUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select * from user where user_name = #{userName,jdbcType=VARCHAR}
+    select * from user where user_name = #{username,jdbcType=VARCHAR}
   </select>
     <select id="selectByUserNameAndPwd" resultType="cn.yznu.pca.model.User">
       select id,create_time as createTime,satatus,user_name as userName,
       user_password as userPassword,nick_name as nickName,user_type as userType,
       user_icon as userIcon,synopsis
        from user
-      where user_name = #{userName,jdbcType=VARCHAR}
-      and user_password = #{password,jdbcType=VARCHAR}
+      where user_name = #{username,jdbcType=VARCHAR}
+      and user_password = #{password,jdbcType=VARCHAR} and  user_type!='0'
     </select>
 
     <update id="modifyingData" parameterType="cn.yznu.pca.model.User" >
@@ -311,14 +311,14 @@
     update user
     set
       user_password = #{password,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and user_type!='0'
   </update>
 
   <select id="selectUserById" resultType="cn.yznu.pca.model.User">
       select *
        from user
       where id = #{userId,jdbcType=INTEGER}
-      and user_password = #{password,jdbcType=VARCHAR}
+      and user_password = #{password,jdbcType=VARCHAR} and user_type!='0'
     </select>
 
   <select id="searchFriends" resultMap="BaseResultMap">

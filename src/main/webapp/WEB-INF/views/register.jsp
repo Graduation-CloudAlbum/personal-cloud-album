@@ -13,44 +13,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>用户注册</title>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/register.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>注册 - 1024Album </title>
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/index.css">
 </head>
+
 <body>
-<div class="bg1"></div>
-<div class="gyl">
-    1024云相册
-
-    <div class="gy2" >记录生活 留住感动 </div>
+<div class="wrapper-bg"><img class="wrapper-bg-img" src="">
+    <div class="wrapper-bg-drop"></div>
 </div>
-<div class="bg">
-    <div class="wel">用户注册</div>
-    <div class="user">
-        <div  style="">用&nbsp;&nbsp;户&nbsp;&nbsp;名</div>
-        <input  id="username" type="text" name="用户"  placeholder="4-8为小写字母+数字组合" />
-        <span id="user_hint"></span>
-    </div>
-    <div class="password" >
-        <div  >密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</div>
-        <input id="password" class="" type="password" name="密码" placeholder="6-16位小写字母+数字组合" />
-        <span id="password_hint"></span>
-    </div>
-     <div class="password_2" >
-         <div  >确认密码</div>
-         <input id="password_2" class="" type="password" name="确认密码" placeholder="确认密码" />
-         <span id="confirm_hint"></span>
-</div>
-    <div class="fg" >
-        <div style="font-size: 11px;margin-top: 11px;">
-            <a style="font-size: 11px;" href="<%=basePath%>/user/login">已有账号？登录</a>
+<div class="wrapper wrapper0">
+    <div class="box box-register">
+        <h1 class="logo logo-s"><a href="/pca/user/index"  class="ico-logo icoIndex">注册1024Album</a></h1>
+        <div class="form center">
+            <div class="input-div">
+                <input id="i-input-email" class="i-txt i-input" placeholder="请输入邮箱，用于登录和找回密码" name="email" data-vaild="email" value="" type="text">
+            </div>
+                <div class="input-div">
+                    <input id="i-input-password" class="i-txt i-input" placeholder="请输入密码,6-12位字母加数字组合" name="password" data-vaild="spwd" value="" type="password">
+            </div>
         </div>
+        <div class="fns center">
+            <a class="link-btn btn-sure" onclick="register();">立即注册</a>
+            <%--<input type="button" value="验证" onclick="YanZhen()" />--%>
+        </div>
+        <div class="tip center">
+            <div class="txt txt-left invitation-tips"></div>
+            <div class="txt txt-right">已有账号，
+                <a href="/pca/user/login">立即登录</a>
+            </div>
+        </div>
+        <div class="result"></div>
     </div>
-    <div class="alert alert-danger hide" id="alertMessage">
-        <strong style="font-size: 15px">注册失败 请重试</strong>
+</div>
+<div class="wrapper-bar">
+    <div class="inner-bg inner-gap"></div>
+    <div class="inner-bg inner-drop"></div>
+    <div class="inner-right">
+        <a href="/pca/user/index"  class="link"><span class="link-drop"></span> <span class="link-txt">首页</span></a>
+        <a href="/pca/user/login"  class="link"><span class="link-drop"></span> <span class="link-txt">登录</span></a>
+        <a href="/pca/user/getpass" class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>
     </div>
-
-    <input id="reg" class="btn" type="button" name="注册" value="注册"/>
+</div>
 </div>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/register.js" ></script>

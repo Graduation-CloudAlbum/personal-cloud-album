@@ -51,10 +51,14 @@ public class UserController {
     private PermissionGroupService permissionGroupService;
 
 
-    //@RequestMapping("/index")
-    //public  String index(){
-    //    return "index";
-    //}
+    @RequestMapping("/index")
+    public  String index(){
+        return "index";
+    }
+    @RequestMapping("/getpass")
+    public  String getpass(){
+        return "getpass";
+    }
 
     @RequestMapping("/register")
     public  String register(){
@@ -109,32 +113,62 @@ public class UserController {
     }
     @ResponseBody
     @RequestMapping("/doRegister")
-    public  String register(@Param("username") String username, @Param("password") String password){
+    public  String register(@Param("username") String username, @Param("password") String password,HttpServletRequest request){
         User user=new User();
         user.setUserName(username);
         //对密码进行MD5加密
         user.setUserPassword(MD5Util.md5Jdk(password));
         //设置默认头像
         user.setUserIcon("/upload/default-c.png");
+        //设置用户状态为未激活状态
+        user.setSatatus("0");
         //注册用户
         userService.register(user);
-        User user1=userService.selectUserByUserName(username);
-        //初始化空间
+        request.getSession().setAttribute("user",user);
+        //User user1=userService.selectUserByUserName(username);
+        ////初始化空间
+        //UserSpace userSpace= new UserSpace();
+        ////设置初始化大小，1GB
+        //userSpace.setInitialSpace("1073741824");
+        //userSpace.setAllSpace("1073741824");
+        //userSpace.setUsedSpace("0");
+        //userSpace.setAvailableSpace("1073741824");
+        //userSpace.setUserId(user1.getId());
+        //userSpaceService.initSpace(userSpace);
+        ////创建默认（陌生人、我的好友）分组
+        //PermissionGroup permissionGroup=new PermissionGroup();
+        //permissionGroup.setPermissionType("我的好友");
+        //permissionGroup.setUserId(user1.getId());
+        //PermissionGroup permissionGroup1=new PermissionGroup();
+        //permissionGroup1.setPermissionType("陌生人");
+        //permissionGroup1.setUserId(user1.getId());
+        //permissionGroupService.insert(permissionGroup);
+        //permissionGroupService.insert(permissionGroup1);
+        return "success";
+    }
+    @ResponseBody
+    @RequestMapping("/activate")
+    public  String activate(@Param("username") String code,HttpServletRequest request){
+       User user= (User) request.getSession().getAttribute("user");
+       user.setSatatus(code);
+        //userService.
+
+       //初始化空间
         UserSpace userSpace= new UserSpace();
         //设置初始化大小，1GB
         userSpace.setInitialSpace("1073741824");
         userSpace.setAllSpace("1073741824");
         userSpace.setUsedSpace("0");
         userSpace.setAvailableSpace("1073741824");
-        userSpace.setUserId(user1.getId());
+        userSpace.setUserId(user.getId());
         userSpaceService.initSpace(userSpace);
         //创建默认（陌生人、我的好友）分组
         PermissionGroup permissionGroup=new PermissionGroup();
         permissionGroup.setPermissionType("我的好友");
-        permissionGroup.setUserId(user1.getId());
+        permissionGroup.setUserId(user.getId());
         PermissionGroup permissionGroup1=new PermissionGroup();
         permissionGroup1.setPermissionType("陌生人");
-        permissionGroup1.setUserId(user1.getId());
+        permissionGroup1.setUserId(user.getId());
         permissionGroupService.insert(permissionGroup);
         permissionGroupService.insert(permissionGroup1);
         return "success";

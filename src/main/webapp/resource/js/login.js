@@ -1,6 +1,6 @@
-$("#login_btn").click(function(){
-        var username = $.trim($("#username").val());
-        var password = $.trim($("#password").val());
+function login(){
+        var username = $.trim($("#i-input-email").val());
+        var password = $.trim($("#i-input-password").val());
 
     $.ajax({
             async : false,
@@ -18,4 +18,4 @@ $("#login_btn").click(function(){
                 }
             }
         });
-});
+}

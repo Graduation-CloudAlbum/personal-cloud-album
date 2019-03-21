@@ -54,6 +54,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateUser(int id) {
+        return 0;
+    }
+
+    @Override
     public User checkLogin(String username, String password) {
 
         return mapper.selectByUserNameAndPwd(username, password);

@@ -1,0 +1,551 @@
+a,
+input,
+textarea {
+	outline: 0
+}
+
+.wrapper-bg,
+body {
+	min-width: 1000px;
+	min-height: 400px
+}
+
+body,
+dd,
+dl,
+dt,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+li,
+ol,
+p,
+td,
+textarea,
+th,
+ul {
+	margin: 0;
+	padding: 0
+}
+
+body,
+input,
+textarea {
+	font-family: "Microsoft Yahei", Tahoma, Arial, STHeiti, sans-serif;
+	font-size: 14px;
+	color: #333;
+	-webkit-font-smoothing: antialiased
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400
+}
+
+ol,
+ul {
+	list-style-type: none
+}
+
+a {
+	color: #006eb4;
+	text-decoration: none
+}
+
+.box-callus li p a:hover,
+.wrapper .box .status .link:hover,
+.wrapper .box .tip .txt a:hover,
+.wrapper-bar .inner-left a:hover {
+	text-decoration: underline
+}
+
+img {
+	border: 0
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+.icoIndex {
+	display: block;
+	overflow: hidden;
+	background-image: url('../images/index.png') ;
+	background-size: 100% auto;
+	text-indent: -999px
+}
+
+.logo-s .ico-logo {
+	width: 450px;
+	height: 110px;
+	margin: 0 auto;
+	background-position: -5px -125px;
+}
+
+.input-div .i-label,
+.input-div .i-txt {
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px
+}
+
+.input-div {
+	position: relative;
+	margin-bottom: 25px;
+	border: 1px solid #FFF;
+	border-radius: 3px
+}
+
+.input-div .i-label {
+	position: absolute;
+	left: 12px;
+	top: 0;
+	color: #CCC;
+	cursor: text
+}
+
+.input-div .i-txt {
+	width: 398px;
+	border: 0;
+	background: 0 0;
+	color: #FFF
+}
+
+.input-div .i-input {
+	text-indent: 12px
+}
+
+.input-div .i-area {
+	width: 374px;
+	height: 200px;
+	padding: 8px 12px;
+	line-height: 26px;
+	font-size: 14px;
+	overflow: auto;
+	resize: none
+}
+
+.input-div .i-emu {
+	height: 48px;
+	background: #FFF;
+	opacity: .2
+}
+
+.input-div .i-emu-txt {
+	position: absolute;
+	top: 0;
+	left: 12px;
+	width: 374px;
+	height: 48px;
+	line-height: 48px;
+	overflow: hidden;
+	font-size: 18px
+}
+
+.input-div .i-warn {
+	position: absolute;
+	right: 12px
+}
+
+.input-div .i-warn-txt {
+	display: none;
+	height: 24px;
+	line-height: 24px;
+	color: #FFF;
+	bottom: -25px;
+	font-size: 12px
+}
+
+.input-div .i-warn-ico {
+	display: none;
+	top: 12px;
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+	background-image: url("../images/index-input-false.png")/*tpa=http://www.clantu.com/static/images/layer/index-input-false.png*/
+}
+
+.wrapper,
+.wrapper-bg,
+body,
+html {
+	height: 100%
+}
+
+.input-error .i-warn-ico {
+	display: block
+}
+
+html {
+	overflow: hidden;
+	background: #111
+}
+
+.wrapper-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%
+}
+
+.wrapper {
+	position: relative;
+	overflow: hidden;
+	color: #FFF
+}
+
+.wrapper a.link-btn {
+	display: block;
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFF;
+	border: 1px solid #FFF;
+	border-radius: 3px
+}
+
+.wrapper a.link-btn.btnDisabled {
+	cursor: default
+}
+
+.wrapper a.link-btn:hover {
+	background: #FFF
+}
+
+.wrapper a.link-btn.btnDisabled:hover {
+	background: 0 0;
+	color: #FFF
+}
+
+.wrapper0 a.link-btn:hover {
+	color: #373341
+}
+
+.wrapper0.screen-wrap a.link-btn:hover {
+	color: #746b86
+}
+
+.wrapper .top-logo {
+	position: absolute;
+	top: 24px;
+	left: 24px
+}
+
+.wrapper .top-logo a {
+	display: block;
+	width: 131px;
+	height: 32px;
+	overflow: hidden;
+	background-image: url("../images/logo-c.png")/*tpa=http://www.clantu.com/static/images/logo-c.png*/
+	;
+	text-indent: -999px
+}
+
+.wrapper .box {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%
+}
+
+.box-login {
+	height: 30px;
+	margin-top: -175px
+}
+
+
+.box-getpassvalid,
+.box-register {
+	height: 300px;
+	margin-top: -150px
+}
+
+.box-getpass {
+	height: 250px;
+	margin-top: -125px
+}
+
+.wrapper .box .center {
+	width: 400px;
+	margin: 0 auto
+}
+
+.wrapper .box .form {
+	margin-top: 50px
+}
+
+.wrapper .box .fns a {
+	width: 398px
+}
+
+.wrapper .box .tip {
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden
+}
+
+.wrapper .box .tip .txt-left {
+	float: left
+}
+
+.wrapper .box .tip .txt-right {
+	float: right
+}
+
+.wrapper .box .tip .txt span {
+	padding: 0 5px
+}
+
+.wrapper .box .tip .invitation-tips span {
+	display: none;
+	font-size: 12px
+}
+
+.wrapper .box .tip .invitation-tips:hover span {
+	display: inline
+}
+
+.wrapper .box .tip .txt a {
+	color: #FFF
+}
+
+.wrapper .box .result {
+	font-size: 16px;
+	text-align: center;
+	padding-top: 25px
+}
+
+.wrapper .box .result span {
+	position: relative;
+	padding-left: 48px
+}
+
+.wrapper .box .result span img {
+	position: absolute;
+	top: -5px;
+	left: 0
+}
+
+.wrapper .box .status {
+	text-align: center;
+	margin-top: 50px
+}
+
+.wrapper .box .status .message {
+	font-size: 22px;
+	height: 22px;
+	line-height: 22px;
+	margin-bottom: 38px
+}
+
+.wrapper .box .status .txt {
+	margin-top: 25px;
+	line-height: 32px;
+	font-size: 16px
+}
+
+.wrapper .box .status .link {
+	font-size: 14px;
+	text-align: center;
+	color: #FFF
+}
+
+.screen-index {
+	display: none;
+	position: absolute;
+	top: 50%;
+	right: 28px;
+	margin-top: -68px
+}
+
+.screen-index li {
+	width: 12px;
+	height: 12px;
+	overflow: hidden;
+	margin-top: 15px
+}
+
+.screen-index a {
+	width: 12px;
+	height: 12px;
+	background-position: -205px -215px
+}
+
+.screen-index li.on a {
+	background-position: -245px -215px
+}
+
+.screen-index a:hover {
+	background-position: -225px -215px
+}
+
+.screen-index li.on a:hover {
+	background-position: -245px -215px
+}
+
+.screen-wrap .screen-page {
+	position: relative;
+	height: 100%;
+	overflow: hidden
+}
+
+.screen-page-h .box {
+	height: 250px;
+	margin-top: -125px;
+	text-align: center
+}
+
+.screen-page-h .box .logo .ico-logo {
+	width: 450px;
+	height: 125px;
+	margin: 0 auto;
+	background-position: -5px -5px
+}
+
+/*.screen-page-h .box .intro {
+	width: 360px;
+	height: 23px;
+	background-position: -3px -185px;
+	margin: 40px auto 47px
+}*/
+
+.screen-page-h .box .fns {
+	width: 400px;
+	margin: 0 auto
+}
+
+.screen-page-h .box .fns a.link-btn {
+	float: left;
+	width: 158px;
+	margin: 0 20px;
+	font-size: 24px
+}
+
+.wrapper-bar,
+.wrapper-bar .inner-bg {
+	left: 0;
+	width: 100%;
+	position: absolute
+}
+
+.screen-page-h .box .fns a:hover {
+	background: #FFF
+}
+
+.screen-page-s .box {
+	height: 200px;
+	margin-top: -100px;
+	text-align: center
+}
+
+.wrapper-bar {
+	bottom: 0;
+	height: 33px;
+	font-size: 12px;
+	line-height: 32px
+}
+
+.wrapper-bar .inner-bg {
+	top: 0;
+	z-index: 100;
+	height: 100%;
+	overflow: hidden;
+	background: #000;
+	-webkit-opacity: .2;
+	-moz-opacity: .2;
+	-khtml-opacity: .2;
+	opacity: .2;
+	filter: alpha(opacity=20)
+}
+
+.wrapper-bar .inner-gap {
+	background: #333;
+	height: 1px
+}
+
+.wrapper-bar .inner-drop {
+	height: 100%
+}
+
+.wrapper-bar .inner-left {
+	position: absolute;
+	top: 1px;
+	left: 20px;
+	z-index: 200;
+	color: #999
+}
+
+.wrapper-bar .inner-left a {
+	color: #999
+}
+
+.wrapper-bar .inner-right {
+	position: absolute;
+	right: 0;
+	top: 1px;
+	z-index: 200
+}
+
+.wrapper-bar .inner-right .link {
+	position: relative;
+	float: left;
+	padding: 0 16px;
+	margin-left: 5px;
+	overflow: hidden;
+	text-align: center;
+	color: #CCC
+}
+
+.wrapper-bar .inner-right .link-drop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: none;
+	width: 78px;
+	height: 100%;
+	-webkit-opacity: .2;
+	-moz-opacity: .2;
+	-khtml-opacity: .2;
+	opacity: .2;
+	filter: alpha(opacity=20);
+	background: #111;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000
+}
+
+.wrapper-bar .inner-right .link-txt {
+	position: relative;
+	z-index: 200
+}
+
+.wrapper-bar .inner-right .link:hover .link-drop {
+	display: block
+}
+
+.wrapper-bar .inner-right .link.on .link-drop {
+	display: block
+}
+
+.box-login .fns a,
+.box-register .fns a {
+	display: block;
+	width: 398px;
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	text-align: center
+}
