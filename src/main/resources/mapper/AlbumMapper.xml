@@ -280,10 +280,29 @@
     where user_id = #{userId,jdbcType=INTEGER} and album_name = #{albumName,jdbcType=VARCHAR} and status!='20' and status!='21'
   </select>
 
-
+<!--搜索相册权限-->
   <select id="checkAlbumPower" resultMap="BaseResultMap" parameterType="cn.yznu.pca.model.Album" >
     select * from album where id = #{album_id,jdbcType=INTEGER}
   </select>
+
+  <!--根据照片id查找相册status-->
+  <select id="selectAlbumStatusByList" resultMap="BaseResultMap">
+    select * from album where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </select>
+
+
+  <!--更新相册状态为0的相册-->
+  <update id="updateAlbumByZero">
+    update album set status=0 where id=#{id,jdbcType=INTEGER}
+  </update>
+
+  <!--更新相册状态为1的相册-->
+  <update id="updateAlbumByOne">
+    update album set status=1 where id=#{id,jdbcType=INTEGER}
+  </update>
 
 
 </mapper>
