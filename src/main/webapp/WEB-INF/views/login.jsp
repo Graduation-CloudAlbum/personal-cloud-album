@@ -35,7 +35,7 @@
         </div>
         <div class="fns center">
             <%--<a class="link-btn btn-sure" onclick="login();">登录</a>--%>
-                <a class="link-btn btn-sure" id="loginButton">登录</a>
+            <a class="link-btn btn-sure" id="loginButton">登录</a>
 
         </div>
         <div class="tip center">

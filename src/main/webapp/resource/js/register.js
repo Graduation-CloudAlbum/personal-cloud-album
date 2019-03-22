@@ -1,89 +1,83 @@
-$("#i-input-email").focusout (function(){
-    // $("#i-input-email").css("background-color","#FFFFCC");
-
-    var username = $.trim($("#i-input-email").val());
-    var password = $.trim($("#i-input-password").val());
-    var reg1 = /^([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\-|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/gi;
-    var reg2=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
-    //非空验证
-    if (username== ""||username==null) {
-        $("#i-input-email").html("请输入电子邮箱").css("background-color","#FF0000");
-        return false;
-    }
-    //邮箱格式验证
-     else if (!reg1.test(username)) {
-        // alert("邮件格式不正确，请重新输入!");
-        $("#i-input-email").val("邮件格式不正确，请重新输入").css("background-color","#FF0000");
-        return false;
-    }
-
-   // else if(!reg2.test(password)||password.length<6||password.length>12) {
-   //      // alert("密码必须为6-12位的数字和字母的组合");
-   //      $("#i-input-password").val("密码必须为6-12位的数字和字母的组合").css("background-color","#FF0000");
-   //      return false;
-   //  }
-   // else{
-   //
-   //  }
-
-});
-$("#i-input-password").focusout(function(){
-    var password = $.trim($("#i-input-password").val());
-    var reg2=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
-    if(!reg2.test(password)||password.length<6||password.length>12) {
-        // alert("密码必须为6-12位的数字和字母的组合");
-        $("#i-input-password").val("密码必须为6-12位的数字和字母的组合").css("background-color","#FF0000");
-        return false;
+$("#register").click( function (){
+    if ($("#i-input-email").val()==""||$("#i-input-password").val()=="") {
+        alert("你输入的信息有误");
+    }else {
+            var username = $.trim($("#i-input-email").val());
+            var password = $.trim($("#i-input-password").val());
+        $.ajax({
+            type:"post",
+            url:"/pca/user/doRegister",
+            data:{"username":username,"password":password},
+            dataType: "json",
+            complete:function (result) {
+                if (result.responseText=="success") {
+                    alert("注册成功，请进入邮箱激活账号");
+                    window.location.href="/pca/user/login";
+                } else {
+                    alert("注册失败,该邮箱已被注册");
+                    $("#i-input-password").val("");
+                    $("#i-input-email").val("");
+                }
+            }
+        });
     }
 });
-    function register(){
-        var username = $.trim($("#i-input-email").val());
-        var password = $.trim($("#i-input-password").val());
-           $.ajax({
-               type:"post",
-               sync:false,
-               url:"/pca/user/doRegister",
-               data:{"username":username,"password":password},
-               dataType: "json",
-               success:function(data) {
-                   if (data=="success") {
-                       alert("注册成功,请到邮箱内激活账号");
-                        window.location.href="/pca/user/login";
-                   } else {
-                       alert("注册失败,该邮箱已被注册");
-                       $("#i-input-password").val("");
-                       $("#i-input-email").val("");
-                   }
-               }
-           });
+
+$(function() {
+    jQuery.fn.extend({
+
+        cbEmail: function() {
+            var str = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            var msg = "请输入正确的邮箱";
+            blurTest(str, this, msg);
+            nullTest(this, msg);
+            return this;
+        },
+        cbPassword: function() {
+            var str =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
+            var msg = "请输入正确的密码,6-12位的数字加字母的组合";
+            passwordTest(str, this, msg);
+            return this;
+        }
+    });
+
+    function blurTest(str, baseThis, msg) {
+        baseThis.each(function() {
+            $(this).blur(function() {
+                var _thisValue = $(this).val();
+                    if(str.test(_thisValue) == false||_thisValue == "" ) {
+                        $(this).val("");
+                        $(this).attr("placeholder", msg);
+                    }
+
+            });
+        });
+
     }
 
-// click
-// $("#reg").click(function(){
-//     if(user_Boolean && password_Boolean && varconfirm_Boolean == true){
-//         var username = $.trim($("#username").val());
-//         var password = $.trim($("#password").val());
-//             $.ajax({
-//                 type:"POST",
-//                 url:"/pca/user/doRegister",
-//                 data:{"username":username,"password":password},
-//                 dataType: "json",
-//                 success:function(data) {
-//                     alert(data);
-//                     if (data=="success") {
-//                        alert("注册成功");
-//                         window.location.href="/pca/user/login";
-//                     } else {
-//                       alert("注册失败,该用户名已存在");
-//                       //$("#alertMessage").show();
-//                         $("#username").html("");
-//                         $("#password").html("");
-//                         $("#password_2").html("");
-//                     }
-//                 }
-//             });
-//     }
-//     // else {
-//     //     alert("请完善信息");
-//     // }
-// });
+    function nullTest(baseThis, msg) {
+        baseThis.each(function() {
+            $(this).blur(function() {
+                var _thisValue = $(this).val();
+                if(_thisValue == "") {
+                        $(this).attr("placeholder", msg);
+                }
+            });
+        });
+
+    }
+
+    function passwordTest(str, baseThis, msg) {
+        baseThis.each(function() {
+            $(this).blur(function() {
+                var _thisValue = $(this).val();
+                    if(_thisValue == ""||str.test(_thisValue) == false||_thisValue.length<6||_thisValue.length>12) {
+                        $(this).val("");
+                        $(this).attr("placeholder", msg);
+                    }
+            });
+        });
+
+    }
+
+    })

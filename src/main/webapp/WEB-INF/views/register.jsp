@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="fns center">
-            <a class="link-btn btn-sure" onclick="register();">立即注册</a>
+            <a class="link-btn btn-sure" id="register">立即注册</a>
             <%--<input type="button" value="验证" onclick="YanZhen()" />--%>
         </div>
         <div class="tip center">
@@ -56,8 +56,16 @@
     </div>
 </div>
 </div>
+
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/register.js" ></script>
+<script>
+    $(function(){
+
+        $('#i-input-email').cbEmail();
+        $('#i-input-password').cbPassword();
+    })
+</script>
 </body>
 
 </html>

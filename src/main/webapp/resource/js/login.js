@@ -1,6 +1,6 @@
 $("#loginButton").click(function () {
     var username = $.trim($("#i-input-email").val());
-        var password = $.trim($("#i-input-password").val());
+    var password = $.trim($("#i-input-password").val());
 
     $.ajax({
         async: false,
@@ -13,9 +13,9 @@ $("#loginButton").click(function () {
                 window.location.href = "/pca/user/myAlbum";
             } else {
                 alert("用户名或密码错误 请重试");
-                $("#username").val("");
-                $("#password").val("");
+                $("#i-input-email").val("");
+                $("#i-input-password").val("");
             }
         }
-    });  
+    });
 });
