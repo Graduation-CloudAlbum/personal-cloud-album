@@ -55,7 +55,7 @@
                 <div class="content-about">
                     <ul class="friends-content">
                         <c:forEach items="${allfriend}" var="node">
-                            <li onclick="inFriendSpace('${node.friend.id}','<%=path%>',this)" class="friends-content-li"><img src="<%=basePath%>${node.friend.userIcon}" ><p>${node.friend.nickName}</p></li>
+                            <li onclick="inFriendSpace('${node.friend.id}','<%=path%>',this)" class="friends-content-li"><img src="${node.friend.userIcon}" ><p>${node.friend.nickName}</p></li>
                         </c:forEach>
                     </ul>
                     <div class="friends-header">我的好友列表</div>
