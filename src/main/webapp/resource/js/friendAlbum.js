@@ -23,9 +23,10 @@ $().ready(function getAlbum() {
             for (var i = 0; i < data.album.length; i++) {
                 var imageNum=data.imageNum[i];
                 albumName=data.album[i].albumName;
+                var coverImg=data.coverList[i].url;
                 createtime=fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
-                    + "<img src='"+resource+"'>"
+                    + "<img src='"+coverImg+"'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "</div>"
