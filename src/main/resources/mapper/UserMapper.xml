@@ -283,6 +283,14 @@
       user_icon = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateUser" parameterType="cn.yznu.pca.model.User" >
+    update user
+    set
+      user_type = #{userType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
   <select id="isExistUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select * from user where user_name = #{username,jdbcType=VARCHAR}
   </select>

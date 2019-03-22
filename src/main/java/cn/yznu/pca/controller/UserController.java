@@ -7,17 +7,17 @@ import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
 import cn.yznu.pca.utils.MD5Util;
+import cn.yznu.pca.utils.MailUtil;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
@@ -99,60 +99,54 @@ public class UserController {
         return "recycleBin";
     }
 
+    //@ResponseBody
+    //@RequestMapping("/isExist")
+    //public String  isExist(String username) {
+    //    int flag = userService.isExistUserName(username);
+    //    //用户名未被使用
+    //    if(flag==0) {
+    //        return "ok";
+    //    }else{
+    //        //用户名已被使用
+    //        return "error";
+    //    }
+    //}
     @ResponseBody
-    @RequestMapping("/isExist")
-    public String  isExist(String username) {
+    @RequestMapping("/doRegister")
+    public  String register(@Param("username") String username, @Param("password") String password,HttpServletRequest request) throws MessagingException {
         int flag = userService.isExistUserName(username);
         //用户名未被使用
         if(flag==0) {
-            return "ok";
+            User user=new User();
+            String email=username;
+            user.setUserName(username);
+            //对密码进行MD5加密
+            user.setUserPassword(MD5Util.md5Jdk(password));
+            //设置默认头像
+            user.setUserIcon("/upload/default-c.png");
+            //设置用户状态为未激活状态
+            user.setUserType("0");
+            //设置默认简介
+            user.setSynopsis("还没有简介哦");
+            //设置默认昵称
+            user.setNickName(username);
+            //注册用户
+            userService.register(user);
+            //发送激活邮件
+            MailUtil.sendMail(email,username);
+            return "success";
         }else{
             //用户名已被使用
             return "error";
         }
-    }
-    @ResponseBody
-    @RequestMapping("/doRegister")
-    public  String register(@Param("username") String username, @Param("password") String password,HttpServletRequest request){
-        User user=new User();
-        user.setUserName(username);
-        //对密码进行MD5加密
-        user.setUserPassword(MD5Util.md5Jdk(password));
-        //设置默认头像
-        user.setUserIcon("/upload/default-c.png");
-        //设置用户状态为未激活状态
-        user.setSatatus("0");
-        //注册用户
-        userService.register(user);
-        request.getSession().setAttribute("user",user);
-        //User user1=userService.selectUserByUserName(username);
-        ////初始化空间
-        //UserSpace userSpace= new UserSpace();
-        ////设置初始化大小，1GB
-        //userSpace.setInitialSpace("1073741824");
-        //userSpace.setAllSpace("1073741824");
-        //userSpace.setUsedSpace("0");
-        //userSpace.setAvailableSpace("1073741824");
-        //userSpace.setUserId(user1.getId());
-        //userSpaceService.initSpace(userSpace);
-        ////创建默认（陌生人、我的好友）分组
-        //PermissionGroup permissionGroup=new PermissionGroup();
-        //permissionGroup.setPermissionType("我的好友");
-        //permissionGroup.setUserId(user1.getId());
-        //PermissionGroup permissionGroup1=new PermissionGroup();
-        //permissionGroup1.setPermissionType("陌生人");
-        //permissionGroup1.setUserId(user1.getId());
-        //permissionGroupService.insert(permissionGroup);
-        //permissionGroupService.insert(permissionGroup1);
-        return "success";
-    }
-    @ResponseBody
-    @RequestMapping("/activate")
-    public  String activate(@Param("username") String code,HttpServletRequest request){
-       User user= (User) request.getSession().getAttribute("user");
-       user.setSatatus(code);
-        //userService.
 
+    }
+    @RequestMapping("/activate")
+    public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
+        User user= userService.selectUserByUserName(username);
+        //激活账户
+        user.setUserType(code);
+        userService.updateUser(user);
        //初始化空间
         UserSpace userSpace= new UserSpace();
         //设置初始化大小，1GB
@@ -171,7 +165,7 @@ public class UserController {
         permissionGroup1.setUserId(user.getId());
         permissionGroupService.insert(permissionGroup);
         permissionGroupService.insert(permissionGroup1);
-        return "success";
+        return "login";
     }
     @ResponseBody
     @RequestMapping("/checkLogin")

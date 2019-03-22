@@ -28,6 +28,16 @@ public class Sid {
         //Integer orderNo =Integer.parseInt(sdf.format(new Date()));
         return orderNo;
     }
+
+
+    public static String randomNum( ) {
+
+
+        String randnum = String.valueOf((int)(Math.random()*(9999-1000+1))+1000);
+
+
+        return randnum;
+    }
     public static void main(String[] args) {
         System.out.println(Onumber());
 

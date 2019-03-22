@@ -72,8 +72,8 @@ public interface UserService {
 
     /**
      * 通过id查找用户
-     * @param id 用户id
+     * @param user 用户
      * @return
      */
-    int updateUser(int id);
+    int updateUser(User user);
 }

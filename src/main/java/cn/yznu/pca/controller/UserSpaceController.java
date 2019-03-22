@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -32,6 +31,7 @@ public class UserSpaceController {
         User user= (User) request.getSession().getAttribute("user");
         int id=user.getId();
         UserSpace userSpace=userSpaceService.getSpace(id);
+        //转换为B/KB/MB/GB
         String allSpace= FormatUtil.toRise(userSpace.getAllSpace());
         String usedSpace=FormatUtil.toRise(userSpace.getUsedSpace());
         String availableSpace=FormatUtil.toRise(userSpace.getAvailableSpace());
