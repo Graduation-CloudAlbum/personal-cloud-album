@@ -2,6 +2,7 @@ package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.FriendVerification;
+import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.FriendService;
@@ -297,15 +298,26 @@ public class FriendController {
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
         List list=new ArrayList();
+        List coverList=new ArrayList();
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
             //用户某个相册下照片数量
             int imageNum=imageService.imageNum(friend_id2,albumId);
+            //获取每个相册下最近一张照片作为相册封面展示图
+            Image coverImage=imageService.getFirstOne(friend_id2,albumId);
+            //若该相册内没有照片，则使用系统默认相册封面图
+            if (coverImage==null){
+                coverImage=new Image();
+                coverImage.setUrl("/upload/Album-cover3.jpg");
+            }
+            coverList.add(coverImage);
             list.add(imageNum);
         }
+
         map.put("album",albumlist);
         map.put("imageNum",list);
+        map.put("coverList",coverList);
         return  map;
     }
 
