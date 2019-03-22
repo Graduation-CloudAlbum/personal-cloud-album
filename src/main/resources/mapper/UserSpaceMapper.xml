@@ -88,9 +88,9 @@
   </select>
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
    select
-    id,create_time,status,initial_space,all_space,available_space,
+    id,create_time,status,initial_space,all_space,available_space,IFNULL(
 
-	(select sum(image_size) from image where user_id= #{id,jdbcType=INTEGER} and status='0') as used_space
+	(select sum(image_size) from image where user_id= #{id,jdbcType=INTEGER} and status='0'),'0') as used_space
 
     from user_space
     where  user_id= #{id,jdbcType=INTEGER}

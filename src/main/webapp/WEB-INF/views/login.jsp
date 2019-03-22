@@ -34,7 +34,7 @@
             <div class="input-div"><input id="i-input-password" class="i-txt i-input" placeholder="请输入密码" name="password" data-vaild="spwd" value="" type="password"> <span class="i-warn i-warn-txt"></span> <span class="i-warn i-warn-ico"></span></div>
         </div>
         <div class="fns center">
-            <a class="link-btn btn-sure" onclick="login();">登录</a>
+            <a class="link-btn btn-sure" onclick="login()">登录</a>
         </div>
         <div class="tip center">
             <div class="txt txt-right">

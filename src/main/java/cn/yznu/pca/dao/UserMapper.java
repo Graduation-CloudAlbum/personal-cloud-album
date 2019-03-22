@@ -56,4 +56,6 @@ public interface UserMapper {
     List<User>searchFriends(@Param("nickName") String nickName);
 
     int updateUrl(@Param("id") int id,@Param("url") String url);
+
+    int updateUser(User user);
 }

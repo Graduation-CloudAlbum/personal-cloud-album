@@ -13,7 +13,13 @@ public class FormatUtil {
      * @return
      */
     public static String toRise(String size){
-        Long fsize = Long.valueOf(size);
+        String usize;
+        if (size==null||size==""){
+            usize="0";
+        }else{
+            usize=size;
+        }
+        Long fsize = Long.valueOf(usize);
         //KB
         String size1="1024";
         //MB
