@@ -141,6 +141,39 @@ public class UserController {
         }
 
     }
+    @ResponseBody
+    @RequestMapping("/toGetPass")
+    public  String toGetPass(@Param("toMail") String toMail) throws MessagingException {
+        int flag = userService.isExistUserName(toMail);
+        //该邮箱存在
+        if(flag!=0) {
+            //发送激活邮件
+            MailUtil.sendMail2(toMail);
+            return "success";
+        }else{
+            //该邮箱不存在
+            return "error";
+        }
+
+    }
+
+    @RequestMapping("/getPass")
+    public String getPass(@Param("email")String email,@Param("password")String password,HttpServletRequest request){
+        User user= userService.selectUserByUserName(email);
+        user.setUserPassword(password);
+        userService.updateUser(user);
+        //userService.changePassword(user.getId(),password);
+        //String password=user.getUserPassword();
+        ////将用户输入的密码进行MD5转码后比较
+        //String oldp=MD5Util.md5Jdk(password);
+        //if (password.equals(oldp)){
+        //    userService.changePassword(user.getId(),MD5Util.md5Jdk(password));
+        //    return "success";
+        //}else {
+        //    return "fail";
+        //}
+        return "login";
+    }
     @RequestMapping("/activate")
     public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
         User user= userService.selectUserByUserName(username);
@@ -227,7 +260,7 @@ public class UserController {
     public String ModifyingData(@Param("nickName") String nickName, @Param("synopsis") String synopsis,HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
         boolean f=userService.modifyingData(user.getId(),nickName,synopsis);
-        if (true){
+        if (f){
             return "success";
         }else {
             return "fail";

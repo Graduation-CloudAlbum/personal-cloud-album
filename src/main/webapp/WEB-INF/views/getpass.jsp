@@ -27,7 +27,7 @@
             <div class="input-div"><input id="i-input-email" class="i-txt i-input" placeholder="请输入邮箱" name="email" data-vaild="email" value="" type="text"> <span class="i-warn i-warn-txt"></span> <span class="i-warn i-warn-ico"></span></div>
         </div>
         <div class="fns center">
-            <a class="link-btn btn-sure" href="javascript:;">找回密码</a>
+            <a class="link-btn btn-sure" id="getPass">找回密码</a>
         </div>
         <div class="result"></div>
     </div>
