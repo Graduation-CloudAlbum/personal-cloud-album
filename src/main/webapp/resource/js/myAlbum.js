@@ -490,3 +490,140 @@ for(var i=0;i<albumSortLi.length;i++){
         alert(albumSortName)
     }
 }
+
+
+// //时间控件
+// function nextTimes(){
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() ,H = myDate.getHours(), S = myDate.getMinutes();
+var M2 = M + 1;
+//处理月是一位的情况
+if((M + '').length == 1){
+    M = '0' + (M + '');
+}
+if((M2 + '').length == 1){
+    M2 = '0' + (M2 + '');
+}
+//处理日是一位的情况
+if((D + '').length == 1){
+    D = '0' + (D + '')
+}
+var curDay = Y + '-' + M + '-' + D;
+var curDay2 = Y + '-' + M2 + '-' + D;
+var hou = H + ':' + S;
+console.log(curDay2)
+$('#logOutTime').val(curDay + 'T' + hou)
+$("#logOutTime").attr("min",curDay + 'T' + hou)
+$("#logOutTime").attr("max",curDay2 + 'T' + hou)
+
+
+
+
+//选择上传
+var sendStyleLi1=document.getElementById('send-style-li1');
+var sendStyleLi2=document.getElementById('send-style-li2');
+var logOutTime=document.getElementById('logOutTime');
+var nowTime=document.getElementById('nowTime');
+var nextTime=document.getElementById('nextTime');
+//定时上传
+sendStyleLi1.onclick = function(){
+    nextTime.style.display="none";
+    nowTime.style.display="block";
+    logOutTime.style.display="block";
+}
+sendStyleLi2.onclick = function(){
+    nextTime.style.display="block";
+    nowTime.style.display="none";
+    logOutTime.style.display="none";
+}
+
+
+//批量管理
+var uploadPhoto6=document.getElementById('uploadPhoto6');
+var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
+var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
+uploadPhoto6.onclick = function(){
+
+    if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
+        uploadPhoto6.style.color= "#000";
+        uploadPhoto6.style.borderBottom="2px solid #D84C31";
+        document.getElementById('admin-button').style.display="block";
+        for(var i=0; i<myAlbumContent2Span.length; i++){
+            myAlbumContent2Span[i].style.display="block";
+            
+        }
+        for(var j=0;j<myAlbumContent2Li.length; j++){
+             myAlbumContent2Li[j].style.background="#000";
+            myAlbumContent2Li[j].style.opacity="0.9";
+            console.log("sa")
+
+        }
+    }
+    else{
+        uploadPhoto6.style.color= "#9999A6";
+        uploadPhoto6.style.borderBottom= "";
+        document.getElementById('admin-button').style.display="none";
+        for(var i=0; i<myAlbumContent2Span.length; i++){
+            myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
+            myAlbumContent2Span[i].style.color="#8b8be8";
+            myAlbumContent2Span[i].style.display="none";
+        }
+        for(var j=0;j<myAlbumContent2Li.length; j++){
+             myAlbumContent2Li[j].style.background="";
+            myAlbumContent2Li[j].style.opacity="";
+
+        }
+
+    }
+    
+}
+//选中
+for(var i=0; i<myAlbumContent2Span.length; i++){
+    myAlbumContent2Span[i].onclick = function(){
+        if(this.style.background == "rgb(216, 76, 49)"){
+            this.style.background="rgb(255, 255, 255)";
+            this.style.color="#8b8be8";
+        }
+        else{
+            this.style.background="#D84C31";
+            this.style.color="rgb(255, 255, 255)";
+        }
+    }
+}
+//点击移动我的分组
+var adminButtonMenu=document.getElementById('admin-button-menu');
+var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
+var chooseGroup = document.getElementById('choose-group');
+for(var i=0; i<adminButtonMenuLi.length; i++){
+    adminButtonMenuLi[i].onclick = function(){
+        // alert(this.innerHTML)
+        document.getElementById('popLayer2').style.display="block";
+        document.getElementById('choose-group').style.display="block";
+        document.getElementById('choose-group-span').innerHTML=this.innerHTML;
+    }
+}
+var iconChacha9=document.getElementById('iconChacha9');
+iconChacha9.onclick = function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('choose-group').style.display="none";
+}
+var chooseGroupButton1=document.getElementById('choose-group-button1');
+chooseGroupButton1.onclick = function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('choose-group').style.display="none";
+}
+//点击删除选中
+var button2=document.getElementById('button2');
+var iconChacha11=document.getElementById('iconChacha11');
+var deleteGroupButton1=document.getElementById('delete-group-button1');
+button2.onclick = function(){
+    document.getElementById('popLayer2').style.display="block";
+    document.getElementById('delete-group').style.display="block";
+}
+iconChacha11.onclick = function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('delete-group').style.display="none";
+}
+deleteGroupButton1.onclick = function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('delete-group').style.display="none";
+}

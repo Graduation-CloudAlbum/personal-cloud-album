@@ -506,6 +506,48 @@
 
 
 
+/***************************************************弹窗移动分组、**************************************************************/
+#choose-group{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;
+}
+
+.choose-group-ok{
+    margin-left: 10px;
+    width: 260px;
+    height: 40px;
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+    /*color: #976666;*/
+    line-height: 40px;
+    color: #000;
+}
+
+.choose-group-ok span{
+	font-size: 18px;
+}
+/***************************************************弹窗删除分组、**************************************************************/
+#delete-group{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;	
+}
 
 
 

@@ -64,6 +64,17 @@
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
                 <%--<li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li class="content-menu-li"><a>批量管理</a></li>
+                <div id="admin-button" class="admin-button">
+                    <div id="button1" class="btn admin-button-li uploadPhoto7">移动分组
+                        <ul id="admin-button-menu" class="album-sort2">
+                            <li class="album-sort-li">我的家人</li>
+                            <li class="album-sort-li">我的朋友</li>
+                            <li class="album-sort-li">我的同学</li>
+                        </ul>
+                    </div>
+
+                    <button id="button2" class="btn admin-button-li">删除选中</button>
+                </div>
             </ul>
 
 
@@ -75,15 +86,19 @@
                 <ul id="myAlbum-content2" class="content-about2 gallery">
 
                     <%--<div class="content-about2-li">--%>
+                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
                         <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>--%>
                     <%--</div>--%>
                     <%--<div class="content-about2-li">--%>
+                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
                         <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>--%>
                     <%--</div>--%>
                     <%--<div class="content-about2-li">--%>
+                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
                         <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>--%>
                     <%--</div>--%>
                     <%--<div class="content-about2-li">--%>
+                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
                         <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>--%>
                     <%--</div>--%>
 
@@ -196,6 +211,18 @@
     </div>
 </div>
 
+<!-- ***************************************************确认移动分组***************************************************-->
+        <div id="choose-group" >
+            <div class="popup-header"><h4>移动分组</h4><i id="iconChacha9" class="iconfont icon-chacha1"></i></div>
+            <div class="choose-group-ok">将移动照片至相册<span id="choose-group-span">我的朋友</span></div>
+            <div class="Create-Album-button1" id="choose-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p>确定</p></div>
+        </div>
+        <!-- ***************************************************删除选中***************************************************-->
+        <div id="delete-group" >
+            <div class="popup-header"><h4>删除照片</h4><i id="iconChacha11" class="iconfont icon-chacha1"></i></div>
+            <div class="choose-group-ok">将照片移至回收站</span></div>
+            <div class="Create-Album-button1" id="delete-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p>确定</p></div>
+        </div>
 
 
 
