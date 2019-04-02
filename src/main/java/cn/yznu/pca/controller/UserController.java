@@ -147,7 +147,7 @@ public class UserController {
         int flag = userService.isExistUserName(toMail);
         //该邮箱存在
         if(flag!=0) {
-            //发送激活邮件
+            //发送改密邮件
             MailUtil.sendMail2(toMail);
             return "success";
         }else{

@@ -1,7 +1,5 @@
 $("#getPass").click(function () {
     var email = $.trim($("#i-input-email").val());
-    // var password = $.trim($("#i-input-password").val());
-
     $.ajax({
         async: false,
         type: "post",
@@ -13,6 +11,7 @@ $("#getPass").click(function () {
                 // window.location.href = "/pca/user/myAlbum";
                 alert("重置邮件已发送到该邮箱，请注意查看");
                 $("#i-input-email").val("");
+                window.location.href = "login";
             } else {
                 alert("该邮箱不存在，请重试");
                 $("#i-input-email").val("");

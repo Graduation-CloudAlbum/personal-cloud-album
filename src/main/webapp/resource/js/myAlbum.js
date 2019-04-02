@@ -1,7 +1,28 @@
+var myAlbumContent=document.getElementById('myAlbum-content');
+var myAlbumContent2=document.getElementById('myAlbum-content2');
+var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+var myAlbumMenu1=document.getElementById('myAlbum-menu1');
+var myAlbumMenu2=document.getElementById('myAlbum-menu2');
+var open=document.getElementById('open');
+var open2=document.getElementById('open2');
+
 var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
 var iconChacha1 = document.getElementById('icon-chacha1');
 var popLayer = document.getElementById('popLayer');//upload-photos-choose
+
+var uploadPhoto6=document.getElementById('uploadPhoto6');
+var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
+var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
+var adminButtonMenu=document.getElementById('admin-button-menu');
+var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
+var chooseGroup = document.getElementById('choose-group');
+var button2=document.getElementById('button2');
+var iconChacha11=document.getElementById('iconChacha11');
+var deleteGroupButton1=document.getElementById('delete-group-button1');
+
+
+
 //在首页点击上传照片
 uploadPhoto1.onclick=function(){
     document.getElementById('upload-photos').style.display="block";
@@ -166,13 +187,13 @@ CreateAlbumButton1.onclick=function(){
 
 //点击相册
 //myAlbum-menu1
-var myAlbumContent=document.getElementById('myAlbum-content');
-var myAlbumContent2=document.getElementById('myAlbum-content2');
-var myAlbumLi=myAlbumContent.getElementsByTagName('li');
-var myAlbumMenu1=document.getElementById('myAlbum-menu1');
-var myAlbumMenu2=document.getElementById('myAlbum-menu2');
-var open=document.getElementById('open');
-var open2=document.getElementById('open2');
+// var myAlbumContent=document.getElementById('myAlbum-content');
+// var myAlbumContent2=document.getElementById('myAlbum-content2');
+// var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+// var myAlbumMenu1=document.getElementById('myAlbum-menu1');
+// var myAlbumMenu2=document.getElementById('myAlbum-menu2');
+// var open=document.getElementById('open');
+// var open2=document.getElementById('open2');
 var aLi="";
 //首页点击的相册名
 var aName="";
@@ -250,7 +271,7 @@ $("#myAlbum-content").click(function () {
                 var imgUrl=data.imageList[i].url;
                 h +=
                     "<div class='content-about2-li'>"
-
+                    +"<span class='icon iconfont photo-admin'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
 
                     + "</div>"
@@ -258,6 +279,11 @@ $("#myAlbum-content").click(function () {
             }
             $("#open2").html("共"+ data.imageList.length+"张照片");
             $("#myAlbum-content2").html(h);
+
+
+
+
+
 
             (function($) {
                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
@@ -415,7 +441,87 @@ $("#myAlbum-content").click(function () {
                 })();
             })(jQuery);
 
+            uploadPhoto6.onclick = function(){
 
+                if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
+                    uploadPhoto6.style.color= "#000";
+                    uploadPhoto6.style.borderBottom="2px solid #D84C31";
+                    document.getElementById('admin-button').style.display="block";
+                    for(var i=0; i<myAlbumContent2Span.length; i++){
+                        myAlbumContent2Span[i].style.display="block";
+
+                    }
+                    for(var j=0;j<myAlbumContent2Li.length; j++){
+                        myAlbumContent2Li[j].style.background="#000";
+                        myAlbumContent2Li[j].style.opacity="0.9";
+
+                    }
+                }
+                else{
+                    uploadPhoto6.style.color= "#9999A6";
+                    uploadPhoto6.style.borderBottom= "";
+                    document.getElementById('admin-button').style.display="none";
+                    for(var i=0; i<myAlbumContent2Span.length; i++){
+                        myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
+                        myAlbumContent2Span[i].style.color="#8b8be8";
+                        myAlbumContent2Span[i].style.display="none";
+                    }
+                    for(var j=0;j<myAlbumContent2Li.length; j++){
+                        myAlbumContent2Li[j].style.background="";
+                        myAlbumContent2Li[j].style.opacity="";
+
+                    }
+
+                }
+
+            }
+            //选中
+            for(var i=0; i<myAlbumContent2Span.length; i++){
+                myAlbumContent2Span[i].onclick = function(){
+                    // alert(myAlbumContent2Span.length)
+                    if(this.style.background == "rgb(216, 76, 49)"){
+                        this.style.background="rgb(255, 255, 255)";
+                        this.style.color="#8b8be8";
+                    }
+                    else{
+                        this.style.background="#D84C31";
+                        this.style.color="rgb(255, 255, 255)";
+                    }
+                }
+            }
+
+            for(var i=0; i<adminButtonMenuLi.length; i++){
+                adminButtonMenuLi[i].onclick = function(){
+                    // alert(this.innerHTML)
+                    document.getElementById('popLayer2').style.display="block";
+                    document.getElementById('choose-group').style.display="block";
+                    document.getElementById('choose-group-span').innerHTML=this.innerHTML;
+                }
+            }
+            var iconChacha9=document.getElementById('iconChacha9');
+            iconChacha9.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('choose-group').style.display="none";
+            }
+            var chooseGroupButton1=document.getElementById('choose-group-button1');
+            chooseGroupButton1.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('choose-group').style.display="none";
+            }
+            //点击删除选中
+
+            button2.onclick = function(){
+                document.getElementById('popLayer2').style.display="block";
+                document.getElementById('delete-group').style.display="block";
+            }
+            iconChacha11.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('delete-group').style.display="none";
+            }
+            deleteGroupButton1.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('delete-group').style.display="none";
+            }
         }
     });
 
@@ -537,93 +643,93 @@ sendStyleLi2.onclick = function(){
 }
 
 
-//批量管理
-var uploadPhoto6=document.getElementById('uploadPhoto6');
-var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
-var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
-uploadPhoto6.onclick = function(){
-
-    if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
-        uploadPhoto6.style.color= "#000";
-        uploadPhoto6.style.borderBottom="2px solid #D84C31";
-        document.getElementById('admin-button').style.display="block";
-        for(var i=0; i<myAlbumContent2Span.length; i++){
-            myAlbumContent2Span[i].style.display="block";
-            
-        }
-        for(var j=0;j<myAlbumContent2Li.length; j++){
-             myAlbumContent2Li[j].style.background="#000";
-            myAlbumContent2Li[j].style.opacity="0.9";
-            console.log("sa")
-
-        }
-    }
-    else{
-        uploadPhoto6.style.color= "#9999A6";
-        uploadPhoto6.style.borderBottom= "";
-        document.getElementById('admin-button').style.display="none";
-        for(var i=0; i<myAlbumContent2Span.length; i++){
-            myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
-            myAlbumContent2Span[i].style.color="#8b8be8";
-            myAlbumContent2Span[i].style.display="none";
-        }
-        for(var j=0;j<myAlbumContent2Li.length; j++){
-             myAlbumContent2Li[j].style.background="";
-            myAlbumContent2Li[j].style.opacity="";
-
-        }
-
-    }
-    
-}
-//选中
-for(var i=0; i<myAlbumContent2Span.length; i++){
-    myAlbumContent2Span[i].onclick = function(){
-        if(this.style.background == "rgb(216, 76, 49)"){
-            this.style.background="rgb(255, 255, 255)";
-            this.style.color="#8b8be8";
-        }
-        else{
-            this.style.background="#D84C31";
-            this.style.color="rgb(255, 255, 255)";
-        }
-    }
-}
-//点击移动我的分组
-var adminButtonMenu=document.getElementById('admin-button-menu');
-var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
-var chooseGroup = document.getElementById('choose-group');
-for(var i=0; i<adminButtonMenuLi.length; i++){
-    adminButtonMenuLi[i].onclick = function(){
-        // alert(this.innerHTML)
-        document.getElementById('popLayer2').style.display="block";
-        document.getElementById('choose-group').style.display="block";
-        document.getElementById('choose-group-span').innerHTML=this.innerHTML;
-    }
-}
-var iconChacha9=document.getElementById('iconChacha9');
-iconChacha9.onclick = function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('choose-group').style.display="none";
-}
-var chooseGroupButton1=document.getElementById('choose-group-button1');
-chooseGroupButton1.onclick = function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('choose-group').style.display="none";
-}
-//点击删除选中
-var button2=document.getElementById('button2');
-var iconChacha11=document.getElementById('iconChacha11');
-var deleteGroupButton1=document.getElementById('delete-group-button1');
-button2.onclick = function(){
-    document.getElementById('popLayer2').style.display="block";
-    document.getElementById('delete-group').style.display="block";
-}
-iconChacha11.onclick = function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('delete-group').style.display="none";
-}
-deleteGroupButton1.onclick = function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('delete-group').style.display="none";
-}
+// //批量管理
+// var uploadPhoto6=document.getElementById('uploadPhoto6');
+// var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
+// var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
+// uploadPhoto6.onclick = function(){
+//
+//     if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
+//         uploadPhoto6.style.color= "#000";
+//         uploadPhoto6.style.borderBottom="2px solid #D84C31";
+//         document.getElementById('admin-button').style.display="block";
+//         for(var i=0; i<myAlbumContent2Span.length; i++){
+//             myAlbumContent2Span[i].style.display="block";
+//
+//         }
+//         for(var j=0;j<myAlbumContent2Li.length; j++){
+//              myAlbumContent2Li[j].style.background="#000";
+//             myAlbumContent2Li[j].style.opacity="0.9";
+//
+//         }
+//     }
+//     else{
+//         uploadPhoto6.style.color= "#9999A6";
+//         uploadPhoto6.style.borderBottom= "";
+//         document.getElementById('admin-button').style.display="none";
+//         for(var i=0; i<myAlbumContent2Span.length; i++){
+//             myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
+//             myAlbumContent2Span[i].style.color="#8b8be8";
+//             myAlbumContent2Span[i].style.display="none";
+//         }
+//         for(var j=0;j<myAlbumContent2Li.length; j++){
+//              myAlbumContent2Li[j].style.background="";
+//             myAlbumContent2Li[j].style.opacity="";
+//
+//         }
+//
+//     }
+//
+// }
+// //选中
+// for(var i=0; i<myAlbumContent2Span.length; i++){
+//     myAlbumContent2Span[i].onclick = function(){
+//         alert(myAlbumContent2Span.length)
+//         if(this.style.background == "rgb(216, 76, 49)"){
+//             this.style.background="rgb(255, 255, 255)";
+//             this.style.color="#8b8be8";
+//         }
+//         else{
+//             this.style.background="#D84C31";
+//             this.style.color="rgb(255, 255, 255)";
+//         }
+//     }
+// }
+// //点击移动我的分组
+// var adminButtonMenu=document.getElementById('admin-button-menu');
+// var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
+// var chooseGroup = document.getElementById('choose-group');
+// for(var i=0; i<adminButtonMenuLi.length; i++){
+//     adminButtonMenuLi[i].onclick = function(){
+//         // alert(this.innerHTML)
+//         document.getElementById('popLayer2').style.display="block";
+//         document.getElementById('choose-group').style.display="block";
+//         document.getElementById('choose-group-span').innerHTML=this.innerHTML;
+//     }
+// }
+// var iconChacha9=document.getElementById('iconChacha9');
+// iconChacha9.onclick = function(){
+//     document.getElementById('popLayer2').style.display="none";
+//     document.getElementById('choose-group').style.display="none";
+// }
+// var chooseGroupButton1=document.getElementById('choose-group-button1');
+// chooseGroupButton1.onclick = function(){
+//     document.getElementById('popLayer2').style.display="none";
+//     document.getElementById('choose-group').style.display="none";
+// }
+// //点击删除选中
+// var button2=document.getElementById('button2');
+// var iconChacha11=document.getElementById('iconChacha11');
+// var deleteGroupButton1=document.getElementById('delete-group-button1');
+// button2.onclick = function(){
+//     document.getElementById('popLayer2').style.display="block";
+//     document.getElementById('delete-group').style.display="block";
+// }
+// iconChacha11.onclick = function(){
+//     document.getElementById('popLayer2').style.display="none";
+//     document.getElementById('delete-group').style.display="none";
+// }
+// deleteGroupButton1.onclick = function(){
+//     document.getElementById('popLayer2').style.display="none";
+//     document.getElementById('delete-group').style.display="none";
+// }

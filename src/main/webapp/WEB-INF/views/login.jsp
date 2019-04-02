@@ -50,7 +50,11 @@
 <div class="wrapper-bar">
     <div class="inner-bg inner-gap"></div>
     <div class="inner-bg inner-drop"></div>
+    <div class="wrapper-bar inner-left">©2019 1024album <a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备19003347号</a>
+        <span style="padding-left:10px"></span>
+    </div>
     <div class="inner-right">
+
         <a href="/pca/user/index"  class="link"><span class="link-drop"></span> <span class="link-txt">首页</span></a>
         <a href="/pca/user/register" class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>
         <a href="/pca/user/getpass"  class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>

@@ -436,7 +436,8 @@ html {
 
 .wrapper-bar,
 .wrapper-bar .inner-bg {
-	left: 0;
+	margin:0 auto;
+	text-align: center;
 	width: 100%;
 	position: absolute
 }
@@ -454,7 +455,7 @@ html {
 .wrapper-bar {
 	bottom: 0;
 	height: 33px;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 32px
 }
 
@@ -464,9 +465,9 @@ html {
 	height: 100%;
 	overflow: hidden;
 	background: #000;
-	-webkit-opacity: .2;
+	/*-webkit-opacity: .2;*/
 	-moz-opacity: .2;
-	-khtml-opacity: .2;
+	/*-khtml-opacity: .2;*/
 	opacity: .2;
 	filter: alpha(opacity=20)
 }
@@ -481,11 +482,14 @@ html {
 }
 
 .wrapper-bar .inner-left {
+	margin:0 auto;
+	text-align: center;
 	position: absolute;
 	top: 1px;
 	left: 20px;
 	z-index: 200;
 	color: #999
+
 }
 
 .wrapper-bar .inner-left a {

@@ -16,7 +16,7 @@ public class MailUtil {
      *@return void
      */
     public static void sendMail(String toMail,String username) throws MessagingException {
-        //4位随机激活码
+        //4位随机验证码
         String code=Sid.randomNum();
         //设置邮件服务器
         Properties properties = new Properties();
@@ -75,7 +75,7 @@ public class MailUtil {
         //抄送
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
         //设置邮件的主体
-        message.setSubject("1024Album账户激活邮件");
+        message.setSubject("1024Album密码找回");
 
         //设置内容
         String msg = "<h1>点击<a href='http://localhost:8080/pca/user/getPass?email="+toMail+"'>此处</a>重置密码<h1>";
