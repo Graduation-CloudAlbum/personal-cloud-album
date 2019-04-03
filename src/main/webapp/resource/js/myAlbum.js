@@ -269,20 +269,17 @@ $("#myAlbum-content").click(function () {
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
                 var imgUrl=data.imageList[i].url;
+                var imgId=data.imageList[i].id;
                 h +=
                     "<div class='content-about2-li'>"
                     +"<span class='icon iconfont photo-admin'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
-
+                    +"<input id='image-hidden' type='hidden' value='"+imgId+"'/>"
                     + "</div>"
 
             }
             $("#open2").html("共"+ data.imageList.length+"张照片");
             $("#myAlbum-content2").html(h);
-
-
-
-
 
 
             (function($) {
@@ -477,22 +474,36 @@ $("#myAlbum-content").click(function () {
             }
             //选中
             for(var i=0; i<myAlbumContent2Span.length; i++){
-                myAlbumContent2Span[i].onclick = function(){
+                myAlbumContent2Span[i].onclick = function() {
                     // alert(myAlbumContent2Span.length)
-                    if(this.style.background == "rgb(216, 76, 49)"){
-                        this.style.background="rgb(255, 255, 255)";
-                        this.style.color="#8b8be8";
+                    if (this.style.background == "rgb(216, 76, 49)") {
+                        this.style.background = "rgb(255, 255, 255)";
+                        this.style.color = "#8b8be8";
+
+                    } else {
+                        this.style.background = "#D84C31";
+                        this.style.color = "rgb(255, 255, 255)";
+
+                        // var Uarry=$("#myAlbum-content2 div input");
+                        // var count=$(this).index();
+                        // var val=Uarry.eq(count).attr("value");
+                        // alert(val);
+                        // alert($(".content-about2-li").children("#image-hidden").attr("value"))
+                        // $(".content-about2-li >input").each(function(){
+                        //     // alert($(this).index());
+                        //     alert($(this).attr("value"));
+                        //
+                        // })
+                        //alert($(".content-about2-li").children("#image-hidden").attr("value"))
                     }
-                    else{
-                        this.style.background="#D84C31";
-                        this.style.color="rgb(255, 255, 255)";
+
                     }
                 }
             }
 
             for(var i=0; i<adminButtonMenuLi.length; i++){
                 adminButtonMenuLi[i].onclick = function(){
-                    // alert(this.innerHTML)
+                    //alert(this.innerHTML)
                     document.getElementById('popLayer2').style.display="block";
                     document.getElementById('choose-group').style.display="block";
                     document.getElementById('choose-group-span').innerHTML=this.innerHTML;
@@ -616,7 +627,7 @@ if((D + '').length == 1){
 var curDay = Y + '-' + M + '-' + D;
 var curDay2 = Y + '-' + M2 + '-' + D;
 var hou = H + ':' + S;
-console.log(curDay2)
+// console.log(curDay2)
 $('#logOutTime').val(curDay + 'T' + hou)
 $("#logOutTime").attr("min",curDay + 'T' + hou)
 $("#logOutTime").attr("max",curDay2 + 'T' + hou)
@@ -636,100 +647,78 @@ sendStyleLi1.onclick = function(){
     nowTime.style.display="block";
     logOutTime.style.display="block";
 }
+$("#nowTime").click(function () {
+    // var time=$("#logOutTime").val();
+    // alert(time);
+    $("#upload-form").submit();
+});
+//实时上传
 sendStyleLi2.onclick = function(){
     nextTime.style.display="block";
     nowTime.style.display="none";
     logOutTime.style.display="none";
 }
 
+$("#button1").hover(function () {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/album/albumInfo",
+        dataType: "json",
+        success: function (data){
+            uploadPhotosGroup.style.display="block"
+            var h = "";
+            for (var i = 0; i < data.album.length; i++) {
+                var albumName=data.album[i].albumName;
+                h += "<li id='batch-button' class='album-sort-li'>"+albumName+"</li>"
+            }
+            $("#admin-button-menu").html(h);
 
-// //批量管理
-// var uploadPhoto6=document.getElementById('uploadPhoto6');
-// var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
-// var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
-// uploadPhoto6.onclick = function(){
-//
-//     if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
-//         uploadPhoto6.style.color= "#000";
-//         uploadPhoto6.style.borderBottom="2px solid #D84C31";
-//         document.getElementById('admin-button').style.display="block";
-//         for(var i=0; i<myAlbumContent2Span.length; i++){
-//             myAlbumContent2Span[i].style.display="block";
-//
-//         }
-//         for(var j=0;j<myAlbumContent2Li.length; j++){
-//              myAlbumContent2Li[j].style.background="#000";
-//             myAlbumContent2Li[j].style.opacity="0.9";
-//
-//         }
-//     }
-//     else{
-//         uploadPhoto6.style.color= "#9999A6";
-//         uploadPhoto6.style.borderBottom= "";
-//         document.getElementById('admin-button').style.display="none";
-//         for(var i=0; i<myAlbumContent2Span.length; i++){
-//             myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
-//             myAlbumContent2Span[i].style.color="#8b8be8";
-//             myAlbumContent2Span[i].style.display="none";
-//         }
-//         for(var j=0;j<myAlbumContent2Li.length; j++){
-//              myAlbumContent2Li[j].style.background="";
-//             myAlbumContent2Li[j].style.opacity="";
-//
-//         }
-//
-//     }
-//
-// }
-// //选中
-// for(var i=0; i<myAlbumContent2Span.length; i++){
-//     myAlbumContent2Span[i].onclick = function(){
-//         alert(myAlbumContent2Span.length)
-//         if(this.style.background == "rgb(216, 76, 49)"){
-//             this.style.background="rgb(255, 255, 255)";
-//             this.style.color="#8b8be8";
-//         }
-//         else{
-//             this.style.background="#D84C31";
-//             this.style.color="rgb(255, 255, 255)";
-//         }
-//     }
-// }
-// //点击移动我的分组
-// var adminButtonMenu=document.getElementById('admin-button-menu');
-// var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
-// var chooseGroup = document.getElementById('choose-group');
-// for(var i=0; i<adminButtonMenuLi.length; i++){
-//     adminButtonMenuLi[i].onclick = function(){
-//         // alert(this.innerHTML)
-//         document.getElementById('popLayer2').style.display="block";
-//         document.getElementById('choose-group').style.display="block";
-//         document.getElementById('choose-group-span').innerHTML=this.innerHTML;
-//     }
-// }
-// var iconChacha9=document.getElementById('iconChacha9');
-// iconChacha9.onclick = function(){
-//     document.getElementById('popLayer2').style.display="none";
-//     document.getElementById('choose-group').style.display="none";
-// }
-// var chooseGroupButton1=document.getElementById('choose-group-button1');
-// chooseGroupButton1.onclick = function(){
-//     document.getElementById('popLayer2').style.display="none";
-//     document.getElementById('choose-group').style.display="none";
-// }
-// //点击删除选中
-// var button2=document.getElementById('button2');
-// var iconChacha11=document.getElementById('iconChacha11');
-// var deleteGroupButton1=document.getElementById('delete-group-button1');
-// button2.onclick = function(){
-//     document.getElementById('popLayer2').style.display="block";
-//     document.getElementById('delete-group').style.display="block";
-// }
-// iconChacha11.onclick = function(){
-//     document.getElementById('popLayer2').style.display="none";
-//     document.getElementById('delete-group').style.display="none";
-// }
-// deleteGroupButton1.onclick = function(){
-//     document.getElementById('popLayer2').style.display="none";
-//     document.getElementById('delete-group').style.display="none";
-// }
+
+            //
+            // for(var i=0;i<uploadPhotosGroupLi.length;i++){
+            //     uploadPhotosGroupLi[i].index = i;
+            //     uploadPhotosGroupLi[i].onclick = function(){
+            //         str= (function(i){
+            //             bLi=uploadPhotosGroupLi[i].innerHTML;
+            //             uploadPhotosLeft.innerHTML=bLi;
+            //             return uploadPhotosLeft.innerHTML;
+            //         })(this.index);
+            //         uploadPhotosGroup.style.display="none"
+            //         uploadPhotosLeft.innerHTML=str;
+            //         chooseName=str;
+            //         return chooseName;
+            //     }
+            //
+            // }
+        }
+    });
+},function () {
+    //$("#button1").hide();
+});
+
+
+$("#admin-button-menu").on('mouseenter', function () {
+
+    if(adminButtonMenuLi.length==0){
+        alert("您还未选择照片");
+    }else {
+        $(".album-sort-li").click(function() {
+
+            // if(myAlbumContent2Span.length==0){
+            //     alert("您还未选择照片");
+            // }
+
+            var Uarry=$("#admin-button-menu li");
+            var count=$(this).index();
+            var val=Uarry.eq(count).text();
+            alert(val);
+            // var Harry=$("#myAlbum-content2 .content-about2-li input");
+            // var num=$("#image-hidden").index();
+            // var val1=Harry.eq(num).val();
+            // alert(val1);
+            // alert($("#image-hidden").val());
+        })
+    }
+
+});

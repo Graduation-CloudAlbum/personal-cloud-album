@@ -65,15 +65,16 @@
                 <%--<li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
                 <div id="admin-button" class="admin-button">
-                    <div id="button1" class="btn admin-button-li uploadPhoto7">移动分组
+                    <button id="button3" class="btn admin-button-li">下载</button>
+                    <div id="button1" class="btn admin-button-li uploadPhoto7">移动
                         <ul id="admin-button-menu" class="album-sort2">
-                            <li class="album-sort-li">我的家人</li>
-                            <li class="album-sort-li">我的朋友</li>
-                            <li class="album-sort-li">我的同学</li>
+                            <%--<li class="album-sort-li">我的家人</li>--%>
+                            <%--<li class="album-sort-li">我的朋友</li>--%>
+                            <%--<li class="album-sort-li">我的同学</li>--%>
                         </ul>
                     </div>
 
-                    <button id="button2" class="btn admin-button-li">删除选中</button>
+                    <button id="button2" class="btn admin-button-li">删除</button>
                 </div>
             </ul>
 
@@ -120,7 +121,7 @@
                 <span id="upload-album-choose">上传照片至:</span><i id="icon-chacha1" class="iconfont icon-chacha1"></i>
             </div>
             <div class="upload-photos-pop-content">
-                <form action="/pca/image/upload"  method='post' enctype='multipart/form-data' >
+                <form action="/pca/image/upload"  method='post' enctype='multipart/form-data' id="upload-form">
                     <ul  id="dd" class="upimgcontent"></ul>
 
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
@@ -220,7 +221,7 @@
         <!-- ***************************************************删除选中***************************************************-->
         <div id="delete-group" >
             <div class="popup-header"><h4>删除照片</h4><i id="iconChacha11" class="iconfont icon-chacha1"></i></div>
-            <div class="choose-group-ok">将照片移至回收站</span></div>
+            <div class="choose-group-ok"><span>将照片移至回收站</span></div>
             <div class="Create-Album-button1" id="delete-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p>确定</p></div>
         </div>
 
