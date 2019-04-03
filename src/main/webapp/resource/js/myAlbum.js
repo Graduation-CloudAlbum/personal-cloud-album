@@ -495,7 +495,7 @@ $("#myAlbum-content").click(function () {
                         //
                         // })
                         //alert($(".content-about2-li").children("#image-hidden").attr("value"))
-                    }
+
 
                     }
                 }
