@@ -109,8 +109,6 @@
                     <span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
                 </div>
                 <div class="content-footer"></div>
-
-
             </div>
         </div>
     </div>
@@ -222,7 +220,7 @@
         <div id="delete-group" >
             <div class="popup-header"><h4>删除照片</h4><i id="iconChacha11" class="iconfont icon-chacha1"></i></div>
             <div class="choose-group-ok"><span>将照片移至回收站</span></div>
-            <div class="Create-Album-button1" id="delete-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p>确定</p></div>
+            <div class="Create-Album-button1" id="delete-group-button1"><p>取消</p></div><div class="Create-Album-button2" onclick="deleteImg()"><p>确定</p></div>
         </div>
 
 

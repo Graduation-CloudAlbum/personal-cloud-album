@@ -20,7 +20,7 @@ var chooseGroup = document.getElementById('choose-group');
 var button2=document.getElementById('button2');
 var iconChacha11=document.getElementById('iconChacha11');
 var deleteGroupButton1=document.getElementById('delete-group-button1');
-
+var idArray=new Array();
 
 
 //在首页点击上传照片
@@ -86,12 +86,12 @@ $("#upload-photos-right").click(function () {
                     })(this.index);
                     uploadPhotosGroup.style.display="none"
                     uploadPhotosLeft.innerHTML=str;
-                     chooseName=str;
+                    chooseName=str;
                     return chooseName;
                 }
 
             }
-         }
+        }
     });
 
 });
@@ -169,8 +169,8 @@ $("#Create-Album-button2").click(function () {
             }else{
                 alert("该相册已存在，换个名称试试");
                 $("#Create-Album-input").val("");
-               }
             }
+        }
     });
 });
 //关闭创建相册
@@ -271,10 +271,9 @@ $("#myAlbum-content").click(function () {
                 var imgUrl=data.imageList[i].url;
                 var imgId=data.imageList[i].id;
                 h +=
-                    "<div class='content-about2-li'>"
-                    +"<span class='icon iconfont photo-admin'>&#xe627;</span>"
+                    "<div class='content-about2-li' id='"+imgId+"'>"
+                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
-                    +"<input id='image-hidden' type='hidden' value='"+imgId+"'/>"
                     + "</div>"
 
             }
@@ -473,28 +472,26 @@ $("#myAlbum-content").click(function () {
 
             }
             //选中
+
             for(var i=0; i<myAlbumContent2Span.length; i++){
                 myAlbumContent2Span[i].onclick = function() {
-                    // alert(myAlbumContent2Span.length)
+                    //alert(myAlbumContent2Span.length)
+                    var id=$(this).attr("id");
                     if (this.style.background == "rgb(216, 76, 49)") {
                         this.style.background = "rgb(255, 255, 255)";
                         this.style.color = "#8b8be8";
-
+                        //通过当前下标移除照片id
+                        idArray.splice(i, 1);
+                        //idArray.pop(id);
+                        alert("idArray:"+idArray);
                     } else {
                         this.style.background = "#D84C31";
                         this.style.color = "rgb(255, 255, 255)";
 
-                        // var Uarry=$("#myAlbum-content2 div input");
-                        // var count=$(this).index();
-                        // var val=Uarry.eq(count).attr("value");
-                        // alert(val);
-                        // alert($(".content-about2-li").children("#image-hidden").attr("value"))
-                        // $(".content-about2-li >input").each(function(){
-                        //     // alert($(this).index());
-                        //     alert($(this).attr("value"));
-                        //
-                        // })
-                        //alert($(".content-about2-li").children("#image-hidden").attr("value"))
+                        //idArray.push(id);
+                        // idArray.unshift(id);
+                        idArray.push(id);
+                        // alert("idArray:"+idArray);
 
 
                     }
@@ -509,6 +506,7 @@ $("#myAlbum-content").click(function () {
                     document.getElementById('choose-group-span').innerHTML=this.innerHTML;
                 }
             }
+            //移动照片
             var iconChacha9=document.getElementById('iconChacha9');
             iconChacha9.onclick = function(){
                 document.getElementById('popLayer2').style.display="none";
@@ -604,7 +602,6 @@ var albumSortName=""
 for(var i=0;i<albumSortLi.length;i++){
     albumSortLi[i].onclick = function(){
         albumSortName=this.innerHTML;
-        alert(albumSortName)
     }
 }
 
@@ -648,8 +645,6 @@ sendStyleLi1.onclick = function(){
     logOutTime.style.display="block";
 }
 $("#nowTime").click(function () {
-    // var time=$("#logOutTime").val();
-    // alert(time);
     $("#upload-form").submit();
 });
 //实时上传
@@ -659,7 +654,7 @@ sendStyleLi2.onclick = function(){
     logOutTime.style.display="none";
 }
 
-$("#button1").hover(function () {
+$("#button1").click(function () {
     $.ajax({
         async : false,
         type: "post",
@@ -673,52 +668,42 @@ $("#button1").hover(function () {
                 h += "<li id='batch-button' class='album-sort-li'>"+albumName+"</li>"
             }
             $("#admin-button-menu").html(h);
-
-
-            //
-            // for(var i=0;i<uploadPhotosGroupLi.length;i++){
-            //     uploadPhotosGroupLi[i].index = i;
-            //     uploadPhotosGroupLi[i].onclick = function(){
-            //         str= (function(i){
-            //             bLi=uploadPhotosGroupLi[i].innerHTML;
-            //             uploadPhotosLeft.innerHTML=bLi;
-            //             return uploadPhotosLeft.innerHTML;
-            //         })(this.index);
-            //         uploadPhotosGroup.style.display="none"
-            //         uploadPhotosLeft.innerHTML=str;
-            //         chooseName=str;
-            //         return chooseName;
-            //     }
-            //
-            // }
         }
+
     });
-},function () {
-    //$("#button1").hide();
 });
 
 
 $("#admin-button-menu").on('mouseenter', function () {
-
-    if(adminButtonMenuLi.length==0){
-        alert("您还未选择照片");
-    }else {
-        $(".album-sort-li").click(function() {
-
-            // if(myAlbumContent2Span.length==0){
-            //     alert("您还未选择照片");
-            // }
+    $(".album-sort-li").click(function() {
+        if(idArray.length==0){
+            alert("您还未选择照片");
+        }else {
 
             var Uarry=$("#admin-button-menu li");
             var count=$(this).index();
             var val=Uarry.eq(count).text();
-            alert(val);
-            // var Harry=$("#myAlbum-content2 .content-about2-li input");
-            // var num=$("#image-hidden").index();
-            // var val1=Harry.eq(num).val();
-            // alert(val1);
-            // alert($("#image-hidden").val());
-        })
-    }
+           // alert(idArray+val);
+            // $("#choose-group").show();
+
+
+        }
+    })
 
 });
+
+function deleteImg() {
+    alert(idArray);
+    $.ajax({
+        async: false,
+        type:"post",
+        url:"/pca/image/deleteImage",
+        data: {imageId: idArray},
+        traditional: true,
+        dataType: "json",
+        success: function (data) {
+
+        }
+    });
+    // window.location.href="myAlbum";
+}

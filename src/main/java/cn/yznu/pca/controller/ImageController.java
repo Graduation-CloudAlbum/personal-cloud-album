@@ -250,10 +250,17 @@ public class ImageController {
         @RequestMapping("/deleteImage")
         @ResponseBody
         public int deleteImage (@Param("imageId") Integer[]imageId, HttpServletRequest request ){
-            User user = (User) request.getSession().getAttribute("user");
-            int userId = user.getId();
+            //User user = (User) request.getSession().getAttribute("user");
+            //int userId = user.getId();
+            //
+            //return imageService.deleteImageById(imageId);
+            //String items = request.getParameter("imageId");
+            //List<Integer>   list= Arrays.asList(imageId);
+            //System.out.println(list);
+            //System.out.println(imageId);
 
             return imageService.deleteImageById(imageId);
+            //return 0;
         }
 
         /**
