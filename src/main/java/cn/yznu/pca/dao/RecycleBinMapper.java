@@ -5,6 +5,7 @@ import cn.yznu.pca.model.example.RecycleBinExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RecycleBinMapper {
     int countByExample(RecycleBinExample example);
@@ -44,5 +45,8 @@ public interface RecycleBinMapper {
     boolean deleteAllRecycleBin(int id);
 
     boolean recoverAllRecycleBin(List list);
+
+    int insertRecycle(List list);
+
 
 }

@@ -65,7 +65,7 @@
                 <%--<li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
                 <div id="admin-button" class="admin-button">
-                    <button id="button3" class="btn admin-button-li">下载</button>
+                    <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
                     <div id="button1" class="btn admin-button-li uploadPhoto7">移动
                         <ul id="admin-button-menu" class="album-sort2">
                             <%--<li class="album-sort-li">我的家人</li>--%>

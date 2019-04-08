@@ -1,14 +1,8 @@
 package cn.yznu.pca.controller;
 
 
-import cn.yznu.pca.model.Album;
-import cn.yznu.pca.model.Image;
-import cn.yznu.pca.model.User;
-import cn.yznu.pca.model.UserSpace;
-import cn.yznu.pca.service.AlbumService;
-import cn.yznu.pca.service.ImageService;
-import cn.yznu.pca.service.UserService;
-import cn.yznu.pca.service.UserSpaceService;
+import cn.yznu.pca.model.*;
+import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -45,6 +39,9 @@ public class ImageController {
     @Autowired
     private UserSpaceService userSpaceService;
 
+    @Autowired
+    private RecycleBinService recycleBinService;
+
     private static String EXCLUSIVE = "我的专属";
 
     /**
@@ -59,13 +56,13 @@ public class ImageController {
     public Map getImage(@Param("albumName") String albumName, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         int userId = user.getId();
-        System.out.println("相册名是：" + albumName);
         //通过用户id和相册名获取到唯一相册
         List albumlist = albumService.selectAlbumByName(userId, albumName);
         Album album = (Album) albumlist.get(0);
         //获取该相册id
         int albumId = album.getId();
         String satus = "0";
+        //获取照片
         List list = imageService.getImage(satus, userId, albumId);
         //Image coverIma= (Image) list.get(0);
         Map map = new HashMap();
@@ -224,21 +221,30 @@ public class ImageController {
          * @throws Exception
          */
         @RequestMapping("/download")
-        public ResponseEntity<byte[]> download (HttpServletRequest request, @RequestParam("filename") String filename)throws
+        public ResponseEntity<byte[]> download (HttpServletRequest request, @RequestParam("filename") String[] filename)throws
         Exception {
+            ResponseEntity<byte[]> responseEntity ;
+            for (int i=0;i<filename.length;i++){
+
+
             //文件下载路径,图片文件夹真实路径
             String path = request.getServletContext().getRealPath("/upload/");
-            File file = new File(path + File.separator + filename);
+            File file = new File(path + File.separator + filename[i]);
             HttpHeaders headers = new HttpHeaders();
             //下载显示的文件名，解决中文名称乱码问题
-            String downloadFielName = new String(filename.getBytes("UTF-8"), "iso-8859-1");
+            String downloadFielName = new String(filename[i].getBytes("UTF-8"), "iso-8859-1");
             System.out.println("下载文件名是：" + downloadFielName);
             //通知浏览器以attachment（下载方式）打开图片
             headers.setContentDispositionFormData("attachment", downloadFielName);
             //application/octet-stream ： 设置以二进制流数据的形式下载（最常见的文件下载）
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
-                    headers, HttpStatus.CREATED);
+             responseEntity=new ResponseEntity(FileUtils.readFileToByteArray(file),
+                        headers, HttpStatus.CREATED);
+            //return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
+            //        headers, HttpStatus.CREATED);
+            }
+            
+            return null;
         }
 
         /**
@@ -249,7 +255,7 @@ public class ImageController {
          */
         @RequestMapping("/deleteImage")
         @ResponseBody
-        public int deleteImage (@Param("imageId") Integer[]imageId, HttpServletRequest request ){
+        public int deleteImage (@Param("imageId") Integer[]imageId, @Param("aName") String aName,HttpServletRequest request ){
             //User user = (User) request.getSession().getAttribute("user");
             //int userId = user.getId();
             //
@@ -259,6 +265,29 @@ public class ImageController {
             //System.out.println(list);
             //System.out.println(imageId);
 
+            User user = (User) request.getSession().getAttribute("user");
+            int userId = user.getId();
+            //通过用户id和相册名获取到唯一相册
+            List albumlist = albumService.selectAlbumByName(userId, aName);
+            Album album = (Album) albumlist.get(0);
+            //获取该相册id
+            int albumId = album.getId();
+            List<RecycleBin> recycleBinList=new ArrayList<>();
+            //for (int i=0;i<imageId.length;i++){
+            //    Map map=new HashMap();
+            //    map.put("imageId",imageId[i]);
+            //    map.put("albumId",albumId);
+            //    map.put("userId",userId);
+            //    recycleBinService.insertRecycleBin(map);
+            //}
+            for (int i=0;i<imageId.length;i++){
+                RecycleBin recycleBin=new RecycleBin();
+                recycleBin.setAlbumId(albumId);
+                recycleBin.setImageId(imageId[i]);
+                recycleBin.setUserId(userId);
+                recycleBinList.add(recycleBin);
+            }
+            recycleBinService.insertRecycleBin(recycleBinList);
             return imageService.deleteImageById(imageId);
             //return 0;
         }

@@ -21,7 +21,7 @@ var button2=document.getElementById('button2');
 var iconChacha11=document.getElementById('iconChacha11');
 var deleteGroupButton1=document.getElementById('delete-group-button1');
 var idArray=new Array();
-
+var ImaNameArray=new Array();
 
 //在首页点击上传照片
 uploadPhoto1.onclick=function(){
@@ -113,7 +113,7 @@ $("#select-button").click(function () {
 });
 //在相册中点击“上传照片按钮”
 $("#uploadPhoto3").click(function () {
-    alert("点击的是："+aName);
+    // alert("点击的是："+aName);
     $.ajax({
         type: "post",
         url: "/pca/image/goUpload",
@@ -270,9 +270,10 @@ $("#myAlbum-content").click(function () {
             for (var i = 0; i < data.imageList.length; i++) {
                 var imgUrl=data.imageList[i].url;
                 var imgId=data.imageList[i].id;
+                var imageName=data.imageList[i].imageName;
                 h +=
                     "<div class='content-about2-li' id='"+imgId+"'>"
-                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'>&#xe627;</span>"
+                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imageName+"'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
                     + "</div>"
 
@@ -475,24 +476,22 @@ $("#myAlbum-content").click(function () {
 
             for(var i=0; i<myAlbumContent2Span.length; i++){
                 myAlbumContent2Span[i].onclick = function() {
-                    //alert(myAlbumContent2Span.length)
                     var id=$(this).attr("id");
+                    var imageName=$(this).attr("name");
                     if (this.style.background == "rgb(216, 76, 49)") {
                         this.style.background = "rgb(255, 255, 255)";
                         this.style.color = "#8b8be8";
                         //通过当前下标移除照片id
                         idArray.splice(i, 1);
-                        //idArray.pop(id);
-                        alert("idArray:"+idArray);
+                        ImaNameArray.splice(i,1)
+
                     } else {
                         this.style.background = "#D84C31";
                         this.style.color = "rgb(255, 255, 255)";
-
-                        //idArray.push(id);
-                        // idArray.unshift(id);
                         idArray.push(id);
+                        ImaNameArray.push(imageName);
                         // alert("idArray:"+idArray);
-
+                        // alert("ImaNameArray:"+ImaNameArray);
 
                     }
                 }
@@ -683,9 +682,6 @@ $("#admin-button-menu").on('mouseenter', function () {
             var Uarry=$("#admin-button-menu li");
             var count=$(this).index();
             var val=Uarry.eq(count).text();
-           // alert(idArray+val);
-            // $("#choose-group").show();
-
 
         }
     })
@@ -693,17 +689,37 @@ $("#admin-button-menu").on('mouseenter', function () {
 });
 
 function deleteImg() {
-    alert(idArray);
     $.ajax({
         async: false,
         type:"post",
         url:"/pca/image/deleteImage",
-        data: {imageId: idArray},
+        data: {imageId: idArray,aName:aName},
         traditional: true,
         dataType: "json",
         success: function (data) {
+            if (data){
+                alert("删除成功")
+                window.location.href="myAlbum";
+                }
 
         }
     });
-    // window.location.href="myAlbum";
+}
+
+function downLoadImg() {
+    $.ajax({
+        async: false,
+        type:"post",
+        url:"/pca/image/download",
+        data: {ImaNameArray: ImaNameArray},
+        traditional: true,
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("下载成功")
+                //window.location.href="myAlbum";
+            }
+
+        }
+    });
 }
