@@ -221,30 +221,32 @@ public class ImageController {
          * @throws Exception
          */
         @RequestMapping("/download")
-        public ResponseEntity<byte[]> download (HttpServletRequest request, @RequestParam("filename") String[] filename)throws
+        public ResponseEntity<byte[]> download (HttpServletRequest request, @RequestParam("filename") String filename)throws
         Exception {
-            ResponseEntity<byte[]> responseEntity ;
-            for (int i=0;i<filename.length;i++){
-
-
             //文件下载路径,图片文件夹真实路径
+
+            //ResponseEntity<byte[]> responseEntity ;
+
+            //for (int i=0;i<filename.length;i++){
+            //}
+
             String path = request.getServletContext().getRealPath("/upload/");
-            File file = new File(path + File.separator + filename[i]);
-            HttpHeaders headers = new HttpHeaders();
+            File file = new File(path + File.separator + filename);
+
             //下载显示的文件名，解决中文名称乱码问题
-            String downloadFielName = new String(filename[i].getBytes("UTF-8"), "iso-8859-1");
+            String downloadFielName = new String(filename.getBytes("UTF-8"), "iso-8859-1");
+
             System.out.println("下载文件名是：" + downloadFielName);
+            HttpHeaders headers = new HttpHeaders();
             //通知浏览器以attachment（下载方式）打开图片
             headers.setContentDispositionFormData("attachment", downloadFielName);
             //application/octet-stream ： 设置以二进制流数据的形式下载（最常见的文件下载）
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-             responseEntity=new ResponseEntity(FileUtils.readFileToByteArray(file),
-                        headers, HttpStatus.CREATED);
-            //return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
-            //        headers, HttpStatus.CREATED);
-            }
+            return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
+                    headers, HttpStatus.CREATED);
+
             
-            return null;
+
         }
 
         /**

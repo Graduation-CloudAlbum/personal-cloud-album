@@ -157,10 +157,12 @@ uploadPhoto2.onclick=function(){
 }
 $("#Create-Album-button2").click(function () {
     var albumName=$.trim($("#Create-Album-input").val());
+    var theme=$.trim($("#Create-Album-input2").val());
+    var jurisdiction =$.trim($("input").attr('checked'));
     $.ajax({
         type:"post",
         url:"/pca/album/createAlbum",
-        data: {"albumName": albumName},
+        data: {"albumName": albumName,"theme": theme,"jurisdiction": jurisdiction},
         dataType: "json",
         success: function (data) {
             if (data==1){
@@ -699,7 +701,8 @@ function deleteImg() {
         success: function (data) {
             if (data){
                 alert("删除成功")
-                window.location.href="myAlbum";
+                // window.location.href="myAlbum";
+                window.location.href = window.location.href;
                 }
 
         }
