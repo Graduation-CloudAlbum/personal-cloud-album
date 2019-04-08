@@ -24,13 +24,14 @@ $(".Modifying-data-button2").click(function() {
     var synopsis=$.trim($("#Modifying-data-textarea").val());
     $.ajax({
         type:"POST",
-        url:"http://localhost:8080/pca/user/modifyingData",
+        url:"/pca/user/modifyingData",
         data:{"nickName":nick_name,"synopsis":synopsis},
         dataType: "json",
         complete:function(result) {
             if (result.responseText=="success") {
                 alert("修改成功");
                 window.location.href="/pca/user/personalData";
+                // window.location.href = window.location.href;
             } else {
                 alert("修改失败 请重试");
                 $("#Modifying-data-input").val("");

@@ -3,6 +3,7 @@ package cn.yznu.pca.service;
 import cn.yznu.pca.model.RecycleBin;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangbaiwan
@@ -67,4 +68,10 @@ public interface RecycleBinService {
      */
     boolean recoverAllRecycleBin(List list);
 
+    /**
+     * 插入数据
+     * @param list 参数
+     * @return
+     */
+    int insertRecycleBin(List list);
 }

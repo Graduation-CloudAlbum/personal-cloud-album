@@ -75,10 +75,12 @@ public class UserController {
     public  String personalData(HttpServletRequest request, ModelAndView mav){
         User user= (User) request.getSession().getAttribute("user");
         int id=user.getId();
+        User user1=userService.selectUserById(id);
         int albumNum=albumService.getAlbumNum(id);
         int imageNum=imageService.getAllImageNum(id);
         List list = friendService.selectAllMyFriend(user);
         int friendNum=list.size();
+        request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
         request.getSession().setAttribute("friendNum",friendNum);
