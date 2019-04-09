@@ -213,8 +213,8 @@
 <!-- ***************************************************确认移动分组***************************************************-->
         <div id="choose-group" >
             <div class="popup-header"><h4>移动分组</h4><i id="iconChacha9" class="iconfont icon-chacha1"></i></div>
-            <div class="choose-group-ok">将移动照片至相册<span id="choose-group-span">我的朋友</span></div>
-            <div class="Create-Album-button1" id="choose-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p>确定</p></div>
+            <div class="choose-group-ok">将照片移动至相册<span id="choose-group-span">我的朋友</span></div>
+            <div class="Create-Album-button1" id="choose-group-button1"><p>取消</p></div><div class="Create-Album-button2"><p id="move">确定</p></div>
         </div>
         <!-- ***************************************************删除选中***************************************************-->
         <div id="delete-group" >
