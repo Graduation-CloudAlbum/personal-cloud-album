@@ -7,6 +7,7 @@ import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.FriendService;
 import cn.yznu.pca.service.ImageService;
+import cn.yznu.pca.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -33,6 +34,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/friend")
 public class FriendController {
+
+    @Autowired
+    private UserService userService;
+
     @Autowired
     private FriendService friendService;
 
@@ -291,7 +296,6 @@ public class FriendController {
     @ResponseBody
     public Map<String,Object>  inFriendSpace(HttpServletRequest request,
                                       HttpServletResponse response) {
-        User user = (User) request.getSession().getAttribute("user");
         int friend_id2= (int) request.getSession().getAttribute("friend_id");
         System.out.println("66666666"+friend_id2);
         List albumlist =albumService.getAlbum(friend_id2);
@@ -333,6 +337,20 @@ public class FriendController {
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         ModelAndView mav=new  ModelAndView("friendAlbum");
+        User user1 = userService.getFriendInformation(friend_id);
+        System.out.println("sdasdasdasd"+user1.getSynopsis());
+        request.getSession().setAttribute("user1",user1);
+//        User user1=userService.selectUserById(friend_id2);
+        int friend_albumNum=albumService.getAlbumNum(friend_id);
+        int friend_imageNum2=imageService.getAllImageNum(friend_id);
+        List list2 = friendService.selectAllMyFriend(user1);
+        int friend_friendNum=list2.size();
+        request.getSession().setAttribute("user1",user1);
+        request.getSession().setAttribute("friend_albumNum",friend_albumNum);
+        request.getSession().setAttribute("friend_imageNum2",friend_imageNum2);
+        request.getSession().setAttribute("friend_friendNum",friend_friendNum);
+
+
         User user = (User) request.getSession().getAttribute("user");
         request.getSession().setAttribute("friend_id",friend_id);
         System.out.println("sssssssssss"+ request.getSession().getAttribute("friend_id"));

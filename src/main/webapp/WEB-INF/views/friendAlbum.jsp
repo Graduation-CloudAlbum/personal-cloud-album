@@ -5,6 +5,10 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	User user= (User) request.getSession().getAttribute("user");
+	User user1= (User) request.getSession().getAttribute("user1");
+	Object friend_albumNum=request.getSession().getAttribute("friend_albumNum");
+	Object friend_imageNum2=request.getSession().getAttribute("friend_imageNum2");
+	Object friend_friendNum=request.getSession().getAttribute("friend_friendNum");
 %>
 
 <!DOCTYPE html>
@@ -34,7 +38,7 @@
 
 		<div class="content">
 			<div class="left">	
-				<a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user.getUserIcon()%>"><p>1732859702</p></a>
+				<a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user.getUserIcon()%>"><p><%=user.getNickName()%></p></a>
 				<a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
 				<a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
 				<a id="navMenu4" class="left-li" href="<%=basePath%>/recycleBin/myRecycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -63,15 +67,15 @@
 					<div class="content-about">
 						<div class="content-about-personal">
 							
-							<label for="img2" class="img-lable">
+							<label  class="img-lable">
 								<img id="image2" src="<%=basePath%>/img/default-c.png">
 								
 							</label>
-							<p class="content-about-personal-admin">1732859703</p>
-							<p class="content-about-personal-desc">“床前明月光，疑是地上霜，举头望明月，低头思故乡。”</p>
-							<div class="content-about-personal-num1"><p class="content-about-personal-num-p1">4</p><p class="content-about-personal-num-p2">相册数</p></div>
-							<div class="content-about-personal-num2"><p class="content-about-personal-num-p1">26</p><p class="content-about-personal-num-p2">相片数</p></div>
-							<div class="content-about-personal-num3"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">相同好友数</p></div>	
+							<p class="content-about-personal-admin"><%=user1.getNickName()%></p>
+							<p class="content-about-personal-desc"><%=user1.getSynopsis()%></p>
+							<div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=friend_albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
+							<div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=friend_imageNum2%></p><p class="content-about-personal-num-p2">相片数</p></div>
+							<div class="content-about-personal-num3"><p class="content-about-personal-num-p1"><%=friend_friendNum%></p><p class="content-about-personal-num-p2">好友数</p></div>
 						</div>
 						
 					</div>
@@ -148,7 +152,7 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friendAlbum.js"></script>
 	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
-	<script src="<%=basePath%>/resource/js/zoom.min.js"></script>
+	<%--<script src="<%=basePath%>/resource/js/zoom.min.js"></script>--%>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>
 </html>
