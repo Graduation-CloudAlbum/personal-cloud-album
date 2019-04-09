@@ -76,4 +76,11 @@ public interface UserService {
      * @return
      */
     int updateUser(User user);
+
+    /**
+     * 获取好友实体类型
+     * @param id
+     * @return user
+     */
+    User getFriendInformation(int id);
 }
