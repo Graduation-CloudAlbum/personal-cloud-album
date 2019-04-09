@@ -335,4 +335,12 @@
     where nick_name = #{nickName,jdbcType=VARCHAR} or user_name=#{nickName,jdbcType=VARCHAR}
   </select>
 
+  <select id="getFriendInformation" resultType="cn.yznu.pca.model.User">
+    select id,create_time as createTime,satatus,user_name as userName,
+    user_password as userPassword,nick_name as nickName,user_type as userType,
+    user_icon as userIcon,synopsis
+    from user
+    where id = #{id,jdbcType=INTEGER}
+    and  user_type!='0'
+  </select>
 </mapper>
