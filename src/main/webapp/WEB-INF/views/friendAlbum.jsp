@@ -60,8 +60,23 @@
 				</ul>
 
 				<div class="content-wrap">
+					<div class="content-about">
+						<div class="content-about-personal">
+							
+							<label for="img2" class="img-lable">
+								<img id="image2" src="<%=basePath%>/img/default-c.png">
+								
+							</label>
+							<p class="content-about-personal-admin">1732859703</p>
+							<p class="content-about-personal-desc">“床前明月光，疑是地上霜，举头望明月，低头思故乡。”</p>
+							<div class="content-about-personal-num1"><p class="content-about-personal-num-p1">4</p><p class="content-about-personal-num-p2">相册数</p></div>
+							<div class="content-about-personal-num2"><p class="content-about-personal-num-p1">26</p><p class="content-about-personal-num-p2">相片数</p></div>
+							<div class="content-about-personal-num3"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">相同好友数</p></div>	
+						</div>
+						
+					</div>
 					<div>
-						<ul id="myAlbum-content" class="content-about" >
+						<ul id="myAlbum-content" class="content-about-friendAlbum" >
 						</ul>
 					</div>
 					<ul id="myAlbum-content2" class="content-about2 gallery">

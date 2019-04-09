@@ -1,3 +1,125 @@
+.content-wrap{
+	overflow-y: auto;
+}
+.content-about{
+	margin-left: 30px;
+	width: 20%;
+}
+.content-about .content-about-personal{
+	border: 1px solid #EEEEEE; 
+	width: 266px;
+/*	height: 338px;*/
+	padding-top: 10px;
+	text-align: center;
+	background: #fff;
+	float: left;
+	position: absolute;
+}
+.content-about .content-about-personal img{
+	width:150px;
+	height: 150px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.update-img{
+	width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    opacity: 0.4;
+    position: absolute;
+	top: 35px;
+	background: #454545;
+	line-height: 150px;
+	color: #fff;
+	font-weight: normal;
+	font-size: 16px;
+}
+.content-about .content-about-personal .img-lable:hover .update-img{
+	display: block;
+
+}
+.content-about .content-about-personal p{
+	color: #666666;
+	/* font-size: 24px;	 */
+}
+.content-about .content-about-personal .content-about-personal-admin{
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 24px;	
+}
+.content-about-personal-desc{
+	margin:10px 5px;
+	font-size: 12px;
+}
+.content-about .content-about-personal .content-about-personal-num1{
+	width: 88px;
+	height: 65px;	
+	background: #FAFAFA;
+	border: 1px solid #EEE;
+	overflow: hidden;
+	position: absolute;
+	/*bottom:0;*/
+}
+.content-about .content-about-personal .content-about-personal-num2{
+	width: 88px;
+	height: 65px;	
+	background: #FAFAFA;
+	border: 1px solid #EEE;
+	overflow: hidden;
+	position: absolute;
+	/*bottom:0;*/
+	left: 88px;
+}
+.content-about .content-about-personal .content-about-personal-num3{
+	width: 88px;
+	height: 65px;	
+	background: #FAFAFA;
+	border: 1px solid #EEE;
+	overflow: hidden;
+	position: absolute;
+	/*bottom:0;*/
+	left: 176px;
+}
+ .content-about-personal-num-p1{
+	font-size: 22px;
+	padding-top: 7px;
+	color: #999999;
+}
+.content-about-personal-num-p2{
+	font-size: 12px;
+	color: #D9D0CC;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .friend-group{
 	width: 170px;
     margin-top: 6px;
@@ -34,30 +156,30 @@
 #friendAlbum-content{
 	display: block;
 }
-.content-about{
-	margin-left: 25px;
-	width: 100%;
+.content-about-friendAlbum{
+	margin-left: 32%;
+	width: 70%;
 	background: #FAFAFA;
 }
-.content-about .content-about-li{
+.content-about-friendAlbum .content-about-li{
 	float: left;
 	margin-right: 25px;
 	margin-bottom: 25px;
     position: relative;
     cursor: pointer;
 }
-.content-about .content-about-li img{
+.content-about-friendAlbum .content-about-li img{
 	width: 230px;
 	height: 330px;
 	background: #fff;
 }
-.content-about .content-about-li-top{
+.content-about-friendAlbum .content-about-li-top{
 	top:0;
     height: 330px;
     position: absolute;
     width: 230px;
 }
-.content-about .content-about-li-top .bottun-title{
+.content-about-friendAlbum .content-about-li-top .bottun-title{
     width: 100%;
     padding-left: 15px;
     height: 60px;
@@ -65,18 +187,18 @@
     position: absolute;
     bottom: 0px;
 }
-.content-about .content-about-li-top .bottun-title .bottun-title-p1{
+.content-about-friendAlbum .content-about-li-top .bottun-title .bottun-title-p1{
 	font-size: 20px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	cursor: pointer;
 }
-.content-about .content-about-li-top .bottun-title .bottun-title-p2{
+.content-about-friendAlbum .content-about-li-top .bottun-title .bottun-title-p2{
 	font-size: 12px;
 
 }
-.content-about .content-about-li-top .bottun-title .bottun-title-p1:hover{
+.content-about-friendAlbum .content-about-li-top .bottun-title .bottun-title-p1:hover{
 	text-decoration: underline;
 }
 /********************************photo*****************************/
@@ -84,8 +206,8 @@
 	display: none;
 }
 .content-about2{
-	margin-left: 25px;
-	width: 100%;
+	margin-left: 32%;
+	width: 70%;
 	background: #FAFAFA;
 }
 .content-about2-li{
@@ -113,3 +235,14 @@
 #open2{
 	display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
