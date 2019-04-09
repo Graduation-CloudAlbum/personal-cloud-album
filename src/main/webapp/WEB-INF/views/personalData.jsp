@@ -15,6 +15,7 @@
     User user= (User) request.getSession().getAttribute("user");
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     String formattedDate = formatter.format(user.getCreateTime());
+    User user1= (User) request.getSession().getAttribute("user1");
     Object albumNum=request.getSession().getAttribute("albumNum");
     Object imageNum=request.getSession().getAttribute("imageNum");
     Object friendNum=request.getSession().getAttribute("friendNum");
@@ -43,7 +44,7 @@
 
     <div class="content">
         <div class="left">
-            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user.getUserIcon()%>"><p><%=user.getNickName()%></p></a>
+            <a id="navMenu2" class="left-admin" href="<%=basePath%>/user/personalData"><img src="<%=user1.getUserIcon()%>"><p><%=user1.getNickName()%></p></a>
             <a id="navMenu1" class="left-li" href="<%=basePath%>/user/myAlbum"><i class="iconfont icon-xiangce"></i><span>我的相册</span></a>
             <a id="navMenu3" class="left-li" href="<%=basePath%>/friend/myFriend"><i class="iconfont icon-weibiaoti--"></i><span>我的好友</span></a>
             <a id="navMenu4" class="left-li" href="<%=basePath%>/recycleBin/myRecycleBin"><i class="iconfont icon-huishouzhan1"></i><span>回收站</span></a>
@@ -66,10 +67,10 @@
                     <div class="content-about-personal">
                         <input id="img2" class="inputfile" type="file"onchange="selectImage2(this);"/>
                         <label for="img2" class="img-lable">
-                            <img id="image2" src="<%=user.getUserIcon()%>">
+                            <img id="image2" src="<%=user1.getUserIcon()%>">
                             <div class="update-img">更换头像</div>
                         </label>
-                        <p class="content-about-personal-admin"><%=user.getNickName()%></p>
+                        <p class="content-about-personal-admin"><%=user1.getNickName()%></p>
                         <div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
                         <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
                         <div class="content-about-personal-num3"><p class="content-about-personal-num-p1"><%=friendNum%></p><p class="content-about-personal-num-p2">好友数</p></div>
@@ -78,10 +79,10 @@
                     </div>
                     <div class="content-about-info">
                         <div id="content-about-info-no1" class="content-about-info-no1">
-                            <i class="iconfont icon-baojiaquotation2"></i><span><%=user.getSynopsis()%></span><i class="iconfont icon-baojiaquotation"></i>
+                            <i class="iconfont icon-baojiaquotation2"></i><span><%=user1.getSynopsis()%></span><i class="iconfont icon-baojiaquotation"></i>
                         </div>
                         <div id="content-about-info-no2" class="content-about-info-no2">
-                            <p><span>登录账号：<span><%=user.getUserName()%></span></span></p>
+                            <p><span>登录账号：<span><%=user1.getUserName()%></span></span></p>
                             <p><span>注册时间：<span><%=formattedDate%></span></span></p>
 
                             <p><span>登录IP地址：<%=request.getRemoteAddr()%></span></p>
@@ -105,15 +106,15 @@
     <!-- ***************************************************弹窗 修改资料***************************************************-->
     <div id="Modifying-data" class="Modifying-data">
         <div class="popup-header"><h4>修改资料</h4><i id="iconChacha4" class="iconfont icon-chacha1"></i></div>
-        <input id="Modifying-data-input" type="text" maxlength="30" placeholder="请输入1-30位字符的昵称"  name="" value="<%=user.getNickName()%>">
-        <textarea id="Modifying-data-textarea" rows="4" cols="18" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name=""><%=user.getSynopsis()%></textarea>
+        <input id="Modifying-data-input" type="text" maxlength="30" placeholder="请输入1-30位字符的昵称"  name="" value="<%=user1.getNickName()%>">
+        <textarea id="Modifying-data-textarea" rows="4" cols="18" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name=""><%=user1.getSynopsis()%></textarea>
         <div id="Modifying-data-button1" class="Modifying-data-button1"><p>取消</p></div>
         <div class="Modifying-data-button2"><p>确定</p></div>
     </div>
     <!-- ***************************************************弹窗 修改头像***************************************************-->
     <div id="Change-the-Avatar" class="Change-the-Avatar">
         <h4>更换头像</h4>
-        <img id="image" src="<%=user.getUserIcon()%>">
+        <img id="image" src="<%=user1.getUserIcon()%>">
         <input id="img0" class="inputfile" type="file"onchange="selectImage(this);"/>
         <label for="img0" id="Change-the-Avatar-button1" class="Change-the-Avatar-button1"><p>选择</p></label>
         <div id="Change-the-Avatar-button2" class="Change-the-Avatar-button2"><p>取消</p></div>

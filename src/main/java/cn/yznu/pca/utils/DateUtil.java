@@ -54,7 +54,7 @@ public class DateUtil {
      */
     public static String dateFormat(Date date, String pattern) throws ParseException{
         if(StringUtils.isBlank(pattern)){
-            pattern = DateUtil.DATE_PATTERN;
+            pattern = DateUtil.DATE_TIME_PATTERN;
         }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return sdf.format(date);

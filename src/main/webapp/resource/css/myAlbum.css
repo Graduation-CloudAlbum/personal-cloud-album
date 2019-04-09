@@ -145,6 +145,25 @@
 	height: 100%;
 	background: #fff;
 }
+.content-about2-li span{
+	font-size: 24px;
+	color: #8b8be8;
+	background: rgb(255, 255, 255);
+	border-radius: 50%;
+}
+.photo-admin{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	z-index: 60;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	display: none;
+}
+
 /*****************************************************button*************************************************/
 #open2{
 	display: none;
@@ -506,6 +525,48 @@
 
 
 
+/***************************************************弹窗移动分组、**************************************************************/
+#choose-group{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;
+}
+
+.choose-group-ok{
+    margin-left: 10px;
+    width: 260px;
+    height: 40px;
+    float: left;
+    padding-left: 10px;
+    font-size: 18px;
+    /*color: #976666;*/
+    line-height: 40px;
+    color: #000;
+}
+
+.choose-group-ok span{
+	font-size: 18px;
+}
+/***************************************************弹窗删除分组、**************************************************************/
+#delete-group{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;	
+}
 
 
 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangbaiwan
@@ -84,6 +85,11 @@ public class RecycleBinServiceImpl implements RecycleBinService {
     public boolean recoverAllRecycleBin(List list) {
         boolean recycleBins=recycleBinMapper.recoverAllRecycleBin(list);
         return recycleBins;
+    }
+
+    @Override
+    public int insertRecycleBin(List list) {
+        return recycleBinMapper.insertRecycle(list);
     }
 
 

@@ -283,7 +283,7 @@ select *
     set
       status ='1'
     where id in
-    <foreach collection="array" item="imageId" open="(" separator="," close=")">
+    <foreach collection="imageId" item="imageId" index="index" open="(" separator="," close=")">
       #{imageId}
     </foreach>
   </update>
@@ -292,7 +292,7 @@ select *
     set
       album_id = #{albumId,jdbcType=INTEGER}
     where id in
-    <foreach collection="array" item="imageId" open="(" separator="," close=")">
+    <foreach collection="imageId" item="imageId" open="(" separator="," close=")">
       #{imageId}
     </foreach>
   </update>
@@ -309,6 +309,6 @@ select *
     select count(*) from image where  user_id = #{userId,jdbcType=INTEGER} and album_id= #{albumId,jdbcType=INTEGER} and status='0'
   </select>
   <select id="selectFirst" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select * from image where  user_id = #{userId,jdbcType=INTEGER} and album_id= #{albumId,jdbcType=INTEGER} and status='0' order by create_time desc limit 1
+    select * from image where  user_id = #{userId,jdbcType=INTEGER} and album_id= #{albumId,jdbcType=INTEGER} and status='0' order by id asc limit 1
   </select>
 </mapper>

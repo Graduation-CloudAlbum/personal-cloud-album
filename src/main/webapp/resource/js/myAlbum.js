@@ -1,7 +1,28 @@
+var myAlbumContent=document.getElementById('myAlbum-content');
+var myAlbumContent2=document.getElementById('myAlbum-content2');
+var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+var myAlbumMenu1=document.getElementById('myAlbum-menu1');
+var myAlbumMenu2=document.getElementById('myAlbum-menu2');
+var open=document.getElementById('open');
+var open2=document.getElementById('open2');
+
 var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
 var iconChacha1 = document.getElementById('icon-chacha1');
 var popLayer = document.getElementById('popLayer');//upload-photos-choose
+
+var uploadPhoto6=document.getElementById('uploadPhoto6');
+var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
+var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
+var adminButtonMenu=document.getElementById('admin-button-menu');
+var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
+var chooseGroup = document.getElementById('choose-group');
+var button2=document.getElementById('button2');
+var iconChacha11=document.getElementById('iconChacha11');
+var deleteGroupButton1=document.getElementById('delete-group-button1');
+var idArray=new Array();
+var ImaNameArray=new Array();
+
 //在首页点击上传照片
 uploadPhoto1.onclick=function(){
     document.getElementById('upload-photos').style.display="block";
@@ -65,12 +86,12 @@ $("#upload-photos-right").click(function () {
                     })(this.index);
                     uploadPhotosGroup.style.display="none"
                     uploadPhotosLeft.innerHTML=str;
-                     chooseName=str;
+                    chooseName=str;
                     return chooseName;
                 }
 
             }
-         }
+        }
     });
 
 });
@@ -92,7 +113,7 @@ $("#select-button").click(function () {
 });
 //在相册中点击“上传照片按钮”
 $("#uploadPhoto3").click(function () {
-    alert("点击的是："+aName);
+    // alert("点击的是："+aName);
     $.ajax({
         type: "post",
         url: "/pca/image/goUpload",
@@ -136,10 +157,12 @@ uploadPhoto2.onclick=function(){
 }
 $("#Create-Album-button2").click(function () {
     var albumName=$.trim($("#Create-Album-input").val());
+    var theme=$.trim($("#Create-Album-input2").val());
+    var jurisdiction =$.trim($("input").attr('checked'));
     $.ajax({
         type:"post",
         url:"/pca/album/createAlbum",
-        data: {"albumName": albumName},
+        data: {"albumName": albumName,"theme": theme,"jurisdiction": jurisdiction},
         dataType: "json",
         success: function (data) {
             if (data==1){
@@ -148,8 +171,8 @@ $("#Create-Album-button2").click(function () {
             }else{
                 alert("该相册已存在，换个名称试试");
                 $("#Create-Album-input").val("");
-               }
             }
+        }
     });
 });
 //关闭创建相册
@@ -166,13 +189,13 @@ CreateAlbumButton1.onclick=function(){
 
 //点击相册
 //myAlbum-menu1
-var myAlbumContent=document.getElementById('myAlbum-content');
-var myAlbumContent2=document.getElementById('myAlbum-content2');
-var myAlbumLi=myAlbumContent.getElementsByTagName('li');
-var myAlbumMenu1=document.getElementById('myAlbum-menu1');
-var myAlbumMenu2=document.getElementById('myAlbum-menu2');
-var open=document.getElementById('open');
-var open2=document.getElementById('open2');
+// var myAlbumContent=document.getElementById('myAlbum-content');
+// var myAlbumContent2=document.getElementById('myAlbum-content2');
+// var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+// var myAlbumMenu1=document.getElementById('myAlbum-menu1');
+// var myAlbumMenu2=document.getElementById('myAlbum-menu2');
+// var open=document.getElementById('open');
+// var open2=document.getElementById('open2');
 var aLi="";
 //首页点击的相册名
 var aName="";
@@ -248,16 +271,18 @@ $("#myAlbum-content").click(function () {
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
                 var imgUrl=data.imageList[i].url;
+                var imgId=data.imageList[i].id;
+                var imageName=data.imageList[i].imageName;
                 h +=
-                    "<div class='content-about2-li'>"
-
+                    "<div class='content-about2-li' id='"+imgId+"'>"
+                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imageName+"'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
-
                     + "</div>"
 
             }
             $("#open2").html("共"+ data.imageList.length+"张照片");
             $("#myAlbum-content2").html(h);
+
 
             (function($) {
                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
@@ -415,7 +440,98 @@ $("#myAlbum-content").click(function () {
                 })();
             })(jQuery);
 
+            uploadPhoto6.onclick = function(){
 
+                if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
+                    uploadPhoto6.style.color= "#000";
+                    uploadPhoto6.style.borderBottom="2px solid #D84C31";
+                    document.getElementById('admin-button').style.display="block";
+                    for(var i=0; i<myAlbumContent2Span.length; i++){
+                        myAlbumContent2Span[i].style.display="block";
+
+                    }
+                    for(var j=0;j<myAlbumContent2Li.length; j++){
+                        myAlbumContent2Li[j].style.background="#000";
+                        myAlbumContent2Li[j].style.opacity="0.9";
+
+                    }
+                }
+                else{
+                    uploadPhoto6.style.color= "#9999A6";
+                    uploadPhoto6.style.borderBottom= "";
+                    document.getElementById('admin-button').style.display="none";
+                    for(var i=0; i<myAlbumContent2Span.length; i++){
+                        myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
+                        myAlbumContent2Span[i].style.color="#8b8be8";
+                        myAlbumContent2Span[i].style.display="none";
+                    }
+                    for(var j=0;j<myAlbumContent2Li.length; j++){
+                        myAlbumContent2Li[j].style.background="";
+                        myAlbumContent2Li[j].style.opacity="";
+
+                    }
+
+                }
+
+            }
+            //选中
+
+            for(var i=0; i<myAlbumContent2Span.length; i++){
+                myAlbumContent2Span[i].onclick = function() {
+                    var id=$(this).attr("id");
+                    var imageName=$(this).attr("name");
+                    if (this.style.background == "rgb(216, 76, 49)") {
+                        this.style.background = "rgb(255, 255, 255)";
+                        this.style.color = "#8b8be8";
+                        //通过当前下标移除照片id
+                        idArray.splice(i, 1);
+                        ImaNameArray.splice(i,1)
+
+                    } else {
+                        this.style.background = "#D84C31";
+                        this.style.color = "rgb(255, 255, 255)";
+                        idArray.push(id);
+                        ImaNameArray.push(imageName);
+                        // alert("idArray:"+idArray);
+                        // alert("ImaNameArray:"+ImaNameArray);
+
+                    }
+                }
+            }
+
+            for(var i=0; i<adminButtonMenuLi.length; i++){
+                adminButtonMenuLi[i].onclick = function(){
+                    //alert(this.innerHTML)
+                    document.getElementById('popLayer2').style.display="block";
+                    document.getElementById('choose-group').style.display="block";
+                    document.getElementById('choose-group-span').innerHTML=this.innerHTML;
+                }
+            }
+            //移动照片
+            var iconChacha9=document.getElementById('iconChacha9');
+            iconChacha9.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('choose-group').style.display="none";
+            }
+            var chooseGroupButton1=document.getElementById('choose-group-button1');
+            chooseGroupButton1.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('choose-group').style.display="none";
+            }
+            //点击删除选中
+
+            button2.onclick = function(){
+                document.getElementById('popLayer2').style.display="block";
+                document.getElementById('delete-group').style.display="block";
+            }
+            iconChacha11.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('delete-group').style.display="none";
+            }
+            deleteGroupButton1.onclick = function(){
+                document.getElementById('popLayer2').style.display="none";
+                document.getElementById('delete-group').style.display="none";
+            }
         }
     });
 
@@ -487,6 +603,126 @@ var albumSortName=""
 for(var i=0;i<albumSortLi.length;i++){
     albumSortLi[i].onclick = function(){
         albumSortName=this.innerHTML;
-        alert(albumSortName)
     }
+}
+
+
+// //时间控件
+// function nextTimes(){
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() ,H = myDate.getHours(), S = myDate.getMinutes();
+var M2 = M + 1;
+//处理月是一位的情况
+if((M + '').length == 1){
+    M = '0' + (M + '');
+}
+if((M2 + '').length == 1){
+    M2 = '0' + (M2 + '');
+}
+//处理日是一位的情况
+if((D + '').length == 1){
+    D = '0' + (D + '')
+}
+var curDay = Y + '-' + M + '-' + D;
+var curDay2 = Y + '-' + M2 + '-' + D;
+var hou = H + ':' + S;
+// console.log(curDay2)
+$('#logOutTime').val(curDay + 'T' + hou)
+$("#logOutTime").attr("min",curDay + 'T' + hou)
+$("#logOutTime").attr("max",curDay2 + 'T' + hou)
+
+
+
+
+//选择上传
+var sendStyleLi1=document.getElementById('send-style-li1');
+var sendStyleLi2=document.getElementById('send-style-li2');
+var logOutTime=document.getElementById('logOutTime');
+var nowTime=document.getElementById('nowTime');
+var nextTime=document.getElementById('nextTime');
+//定时上传
+sendStyleLi1.onclick = function(){
+    nextTime.style.display="none";
+    nowTime.style.display="block";
+    logOutTime.style.display="block";
+}
+$("#nowTime").click(function () {
+    $("#upload-form").submit();
+});
+//实时上传
+sendStyleLi2.onclick = function(){
+    nextTime.style.display="block";
+    nowTime.style.display="none";
+    logOutTime.style.display="none";
+}
+
+$("#button1").click(function () {
+    $.ajax({
+        async : false,
+        type: "post",
+        url: "/pca/album/albumInfo",
+        dataType: "json",
+        success: function (data){
+            uploadPhotosGroup.style.display="block"
+            var h = "";
+            for (var i = 0; i < data.album.length; i++) {
+                var albumName=data.album[i].albumName;
+                h += "<li id='batch-button' class='album-sort-li'>"+albumName+"</li>"
+            }
+            $("#admin-button-menu").html(h);
+        }
+
+    });
+});
+
+
+$("#admin-button-menu").on('mouseenter', function () {
+    $(".album-sort-li").click(function() {
+        if(idArray.length==0){
+            alert("您还未选择照片");
+        }else {
+
+            var Uarry=$("#admin-button-menu li");
+            var count=$(this).index();
+            var val=Uarry.eq(count).text();
+
+        }
+    })
+
+});
+
+function deleteImg() {
+    $.ajax({
+        async: false,
+        type:"post",
+        url:"/pca/image/deleteImage",
+        data: {imageId: idArray,aName:aName},
+        traditional: true,
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("删除成功")
+                // window.location.href="myAlbum";
+                window.location.href = window.location.href;
+                }
+
+        }
+    });
+}
+
+function downLoadImg() {
+    $.ajax({
+        async: false,
+        type:"post",
+        url:"/pca/image/download",
+        data: {ImaNameArray: ImaNameArray},
+        traditional: true,
+        dataType: "json",
+        success: function (data) {
+            if (data){
+                alert("下载成功")
+                //window.location.href="myAlbum";
+            }
+
+        }
+    });
 }

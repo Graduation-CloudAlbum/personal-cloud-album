@@ -75,10 +75,12 @@ public class UserController {
     public  String personalData(HttpServletRequest request, ModelAndView mav){
         User user= (User) request.getSession().getAttribute("user");
         int id=user.getId();
+        User user1=userService.selectUserById(id);
         int albumNum=albumService.getAlbumNum(id);
         int imageNum=imageService.getAllImageNum(id);
         List list = friendService.selectAllMyFriend(user);
         int friendNum=list.size();
+        request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
         request.getSession().setAttribute("friendNum",friendNum);
@@ -140,6 +142,39 @@ public class UserController {
             return "error";
         }
 
+    }
+    @ResponseBody
+    @RequestMapping("/toGetPass")
+    public  String toGetPass(@Param("toMail") String toMail) throws MessagingException {
+        int flag = userService.isExistUserName(toMail);
+        //该邮箱存在
+        if(flag!=0) {
+            //发送改密邮件
+            MailUtil.sendMail2(toMail);
+            return "success";
+        }else{
+            //该邮箱不存在
+            return "error";
+        }
+
+    }
+
+    @RequestMapping("/getPass")
+    public String getPass(@Param("email")String email,@Param("password")String password,HttpServletRequest request){
+        User user= userService.selectUserByUserName(email);
+        user.setUserPassword(password);
+        userService.updateUser(user);
+        //userService.changePassword(user.getId(),password);
+        //String password=user.getUserPassword();
+        ////将用户输入的密码进行MD5转码后比较
+        //String oldp=MD5Util.md5Jdk(password);
+        //if (password.equals(oldp)){
+        //    userService.changePassword(user.getId(),MD5Util.md5Jdk(password));
+        //    return "success";
+        //}else {
+        //    return "fail";
+        //}
+        return "login";
     }
     @RequestMapping("/activate")
     public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
@@ -227,7 +262,7 @@ public class UserController {
     public String ModifyingData(@Param("nickName") String nickName, @Param("synopsis") String synopsis,HttpServletRequest request){
         User user= (User) request.getSession().getAttribute("user");
         boolean f=userService.modifyingData(user.getId(),nickName,synopsis);
-        if (true){
+        if (f){
             return "success";
         }else {
             return "fail";

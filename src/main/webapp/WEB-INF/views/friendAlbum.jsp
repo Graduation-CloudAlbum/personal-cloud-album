@@ -42,10 +42,9 @@
 			</div>
 			<!-- right -->
 			<div class="main-container">
-				<div class="content-header" style="height: 60px">
-					<label class="img-lable">
-						<img id="image2" style="float: left;width: 35px;height: 35px;margin-left: 5px" src="<%=basePath%>\resource\images\default-c.png"><span style="margin-top: 10px">江川</span><span>的空间</span>
-					</label>
+				
+				<div class="content-header">
+					<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span >江川的相册空间</span></a>
 				</div>
 				<ul class="content-menu" >
 

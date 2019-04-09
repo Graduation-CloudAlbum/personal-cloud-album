@@ -303,4 +303,17 @@
       #{id,jdbcType=INTEGER}
     </foreach>
   </update>
+
+  <insert id="insertRecycle"  parameterType="java.util.List" >
+    insert into recycle_bin (
+      image_id, album_id, user_id
+      )
+    values
+    <foreach collection="list"  index="index" item="item">
+      (
+      #{item.imageId,jdbcType=INTEGER}, #{item.albumId,jdbcType=INTEGER}, #{item.userId,jdbcType=INTEGER}
+      )
+    </foreach>
+  </insert>
+
 </mapper>
