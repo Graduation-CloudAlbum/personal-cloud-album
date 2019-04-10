@@ -12,7 +12,7 @@ function refusedfriendVerifications(userId,friendVerifications_id,friendId) {
         success: function (data) {
             alert("拒绝成功！")
             document.getElementById('Verification').style.display="none";
-            document.getElementById('popLayer2').style.display="none";
+            document.getElementById('popLayer').style.display="none";
         }
     });
 }
@@ -29,7 +29,7 @@ function deleteFriendVerifications(friendVerifications_id) {
         success: function (data) {
             alert("删除成功！")
             document.getElementById('Verification').style.display="none";
-            document.getElementById('popLayer2').style.display="none";
+            document.getElementById('popLayer').style.display="none";
         }
     });
 }
@@ -50,7 +50,7 @@ friendsVerification.onclick = function(){
                 h += "<tr>"
                     +" <td>"+data.friendVerifications[i].friend.nickName+"</td>"
                     + "<td>"+data.friendVerifications[i].note+"</td>"
-                    + "<td><button class='btn delete'>接受</button>   <button class='btn delete' onclick='refusedfriendVerifications(\""+data.friendVerifications[i].userId+"\",\""+data.friendVerifications[i].id+"\",\""+data.friendVerifications[i].friendId+"\")'>拒绝</button></td>"
+                    + "<td><button class='btn delete acceptF' onclick='acceptfriendsbutton()'>接受</button>   <button class='btn delete' onclick='refusedfriendVerifications(\""+data.friendVerifications[i].userId+"\",\""+data.friendVerifications[i].id+"\",\""+data.friendVerifications[i].friendId+"\")'>拒绝</button></td>"
                     +"</tr>"
             }
             $("#receiveFriendVerifications").html(h);
@@ -68,7 +68,7 @@ friendsVerification.onclick = function(){
         }
     });
 	document.getElementById('Verification').style.display="block";
-	document.getElementById('popLayer2').style.display="block";
+	document.getElementById('popLayer').style.display="block";
 
 }
 
@@ -78,7 +78,7 @@ friendsVerification.onclick = function(){
 var iconChacha10=document.getElementById('iconChacha10');
 iconChacha10.onclick = function(){
 	document.getElementById('Verification').style.display="none";
-	document.getElementById('popLayer2').style.display="none";
+	document.getElementById('popLayer').style.display="none";
 
 }
 
@@ -116,3 +116,42 @@ send.onclick = function(){
 // 		//aL[0].style.borderBottom="2px solid #D84C31";
 // 	}
 // }	color: #9999A6;
+//点击接受
+var acceptFriends = document.getElementById('accept-friends');
+var acceptFriendsButton1 = document.getElementById('accept-friends-button1');
+var iconChacha30 = document.getElementById('iconChacha30');
+
+var acceptFriendsGroup = document.getElementById('accept-friends-group');
+var acceptFriendsGroupLi = acceptFriendsGroup.getElementsByTagName('li');
+var acceptFriendsLeft = document.getElementById('accept-friends-left');
+var acceptFriendsRight = document.getElementById('accept-friends-right');
+
+function acceptfriendsbutton(){
+	acceptFriends.style.display="block";
+	document.getElementById('popLayer2').style.display="block";
+}
+acceptFriendsButton1.onclick = function(){
+	acceptFriends.style.display="none";
+	document.getElementById('popLayer2').style.display="none";
+}
+iconChacha30.onclick = function(){
+	acceptFriends.style.display="none";
+	document.getElementById('popLayer2').style.display="none";
+}
+
+var acceptLi="";
+acceptFriendsRight.onclick = function(){
+	acceptFriendsGroup.style.display="block"
+}
+for(var i=0;i<acceptFriendsGroupLi.length;i++){
+	acceptFriendsGroupLi[i].index = i;
+	acceptFriendsGroupLi[i].onclick = function(){
+		str = (function(i){
+			acceptLi=acceptFriendsGroupLi[i].innerHTML;
+			acceptFriendsLeft.innerHTML=acceptLi;
+			return acceptFriendsLeft.innerHTML;
+		})(this.index);
+		acceptFriendsGroup.style.display="none"
+		acceptFriendsLeft.innerHTML=str
+	}
+}
