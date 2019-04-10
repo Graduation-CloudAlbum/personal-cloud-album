@@ -59,6 +59,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getFriendInformation(int id) {
+        return mapper.getFriendInformation(id);
+    }
+
+    @Override
     public User checkLogin(String username, String password) {
 
         return mapper.selectByUserNameAndPwd(username, password);

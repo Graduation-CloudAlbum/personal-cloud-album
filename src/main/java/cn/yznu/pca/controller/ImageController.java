@@ -4,6 +4,9 @@ package cn.yznu.pca.controller;
 import cn.yznu.pca.model.*;
 import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
+import com.mysql.fabric.Response;
+import com.sun.deploy.net.HttpResponse;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
@@ -14,8 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import sun.org.mozilla.javascript.internal.regexp.SubString;
+
+import javax.imageio.stream.FileImageInputStream;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -103,6 +113,15 @@ public class ImageController {
      */
     @RequestMapping("/upload")
     public String upload(HttpServletRequest request, final Image image, String logOutTime, @RequestParam(value = "files", required = false) MultipartFile[] pictureFile) throws Exception {
+        ////1，获取原始文件名
+        //String originalFilename = multipartFile.getOriginalFilename();
+        ////2,截取源文件的文件名前缀,不带后缀
+        //String fileNamePrefix = originalFilename.substring(0,originalFilename.lastIndexOf("."));
+        ////3,加工处理文件名，原文件加上时间戳
+        //String newFileNamePrefix  = fileNamePrefix + System.currentTimeMillis();
+        ////4,得到新文件名
+        //String newFileName = newFileNamePrefix + originalFilename.substring(originalFilename.lastIndexOf("."));
+
         User user = (User) request.getSession().getAttribute("user");
         int albumId = (int) request.getSession().getAttribute("albumId");
         //获取用户ID
@@ -216,36 +235,44 @@ public class ImageController {
         /**
          * 下载照片
          * @param request
-         * @param filename 文件名
+         * @param
          * @return
          * @throws Exception
          */
         @RequestMapping("/download")
-        public ResponseEntity<byte[]> download (HttpServletRequest request, @RequestParam("filename") String filename)throws
+        public void download (HttpServletResponse response, HttpServletRequest request)throws
         Exception {
+
             //文件下载路径,图片文件夹真实路径
-
-            //ResponseEntity<byte[]> responseEntity ;
-
-            //for (int i=0;i<filename.length;i++){
+            //String path = request.getServletContext().getRealPath("/upload/");
+            String iname=request.getParameter("image");
+            System.out.println("iname is :"+iname);
+            //String path = "F:/demos"+iname;
+            //String newname= iname.substring(iname.lastIndexOf("/")+1,iname.indexOf("."));
+            //File file = new File(path);
+            //String fname=iname.substring(iname.lastIndexOf("/")+1);
+            ////FileInputStream fs = new FileInputStream(file);
+            ////将文件读取到输入流
+            //InputStream bis = new BufferedInputStream(new FileInputStream(new File(path)));
+            //
+            ////设置文件转码
+            //fname = URLEncoder.encode(fname,"UTF-8");
+            //
+            ////解决中文显示乱码
+            //response.addHeader("Content-Disposition", "attachment;filename=" + fname);
+            //
+            ////设置响应的类型
+            ////response.setContentType("multipart/form-data");
+            //response.setContentType("application/x-download");
+            //
+            ////将对应文件读取出来
+            //BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
+            //int len = 0;
+            //while((len = bis.read()) != -1){
+            //    out.write(len);
+            //    out.flush();
             //}
-
-            String path = request.getServletContext().getRealPath("/upload/");
-            File file = new File(path + File.separator + filename);
-
-            //下载显示的文件名，解决中文名称乱码问题
-            String downloadFielName = new String(filename.getBytes("UTF-8"), "iso-8859-1");
-
-            System.out.println("下载文件名是：" + downloadFielName);
-            HttpHeaders headers = new HttpHeaders();
-            //通知浏览器以attachment（下载方式）打开图片
-            headers.setContentDispositionFormData("attachment", downloadFielName);
-            //application/octet-stream ： 设置以二进制流数据的形式下载（最常见的文件下载）
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
-                    headers, HttpStatus.CREATED);
-
-            
+            //out.close();
 
         }
 
@@ -258,15 +285,6 @@ public class ImageController {
         @RequestMapping("/deleteImage")
         @ResponseBody
         public int deleteImage (@Param("imageId") Integer[]imageId, @Param("aName") String aName,HttpServletRequest request ){
-            //User user = (User) request.getSession().getAttribute("user");
-            //int userId = user.getId();
-            //
-            //return imageService.deleteImageById(imageId);
-            //String items = request.getParameter("imageId");
-            //List<Integer>   list= Arrays.asList(imageId);
-            //System.out.println(list);
-            //System.out.println(imageId);
-
             User user = (User) request.getSession().getAttribute("user");
             int userId = user.getId();
             //通过用户id和相册名获取到唯一相册
@@ -275,13 +293,6 @@ public class ImageController {
             //获取该相册id
             int albumId = album.getId();
             List<RecycleBin> recycleBinList=new ArrayList<>();
-            //for (int i=0;i<imageId.length;i++){
-            //    Map map=new HashMap();
-            //    map.put("imageId",imageId[i]);
-            //    map.put("albumId",albumId);
-            //    map.put("userId",userId);
-            //    recycleBinService.insertRecycleBin(map);
-            //}
             for (int i=0;i<imageId.length;i++){
                 RecycleBin recycleBin=new RecycleBin();
                 recycleBin.setAlbumId(albumId);
@@ -291,7 +302,6 @@ public class ImageController {
             }
             recycleBinService.insertRecycleBin(recycleBinList);
             return imageService.deleteImageById(imageId);
-            //return 0;
         }
 
         /**

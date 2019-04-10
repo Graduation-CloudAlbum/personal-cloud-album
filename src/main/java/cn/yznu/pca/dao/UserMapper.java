@@ -58,4 +58,6 @@ public interface UserMapper {
     int updateUrl(@Param("id") int id,@Param("url") String url);
 
     int updateUser(User user);
+
+    User getFriendInformation(@Param("id")int id);
 }

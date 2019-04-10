@@ -275,8 +275,11 @@ $("#myAlbum-content").click(function () {
                 var imageName=data.imageList[i].imageName;
                 h +=
                     "<div class='content-about2-li' id='"+imgId+"'>"
-                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imageName+"'>&#xe627;</span>"
+                    +"<form id='image-download-form' action='/pca/image/download'>"
+                    +"<input type='hidden' name='image' value='"+ImaNameArray+"'>"
+                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imgUrl+"'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
+                    + "</form>"
                     + "</div>"
 
             }
@@ -683,8 +686,32 @@ $("#admin-button-menu").on('mouseenter', function () {
 
             var Uarry=$("#admin-button-menu li");
             var count=$(this).index();
-            var val=Uarry.eq(count).text();
+            var album=Uarry.eq(count).text();
+            $("#choose-group-span").html(album);
+            document.getElementById('choose-group').style.display="block";
+            $(".Create-Album-button2").click(function () {
+                $.ajax({
+                    async : false,
+                    type: "post",
+                    url: "/pca/image/moveImage",
+                    //true传递数组
+                    traditional: true,
+                    data:{imageId:idArray,albumName:album},
+                    dataType: "json",
+                    success: function (data){
+                    if (data){
+                        alert("移动成功")
+                        document.getElementById('choose-group').style.display="none";
+                        window.location.href=window.location.href;
+                    } else{
+                        alert("移动失败")
+                        document.getElementById('choose-group').style.display="none";
+                        window.location.href=window.location.href;
+                    }
+                    }
 
+                });
+            });
         }
     })
 
@@ -710,19 +737,8 @@ function deleteImg() {
 }
 
 function downLoadImg() {
-    $.ajax({
-        async: false,
-        type:"post",
-        url:"/pca/image/download",
-        data: {ImaNameArray: ImaNameArray},
-        traditional: true,
-        dataType: "json",
-        success: function (data) {
-            if (data){
-                alert("下载成功")
-                //window.location.href="myAlbum";
-            }
+    alert(ImaNameArray);
 
-        }
-    });
+    $("#image-download-form").submit();
+
 }
