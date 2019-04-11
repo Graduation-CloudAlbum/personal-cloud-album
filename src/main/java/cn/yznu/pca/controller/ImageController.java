@@ -4,23 +4,15 @@ package cn.yznu.pca.controller;
 import cn.yznu.pca.model.*;
 import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
-import com.mysql.fabric.Response;
-import com.sun.deploy.net.HttpResponse;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import sun.org.mozilla.javascript.internal.regexp.SubString;
 
-import javax.imageio.stream.FileImageInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +20,8 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * @author yangbaiwan
@@ -240,40 +234,67 @@ public class ImageController {
          * @throws Exception
          */
         @RequestMapping("/download")
-        public void download (HttpServletResponse response, HttpServletRequest request)throws
+        @ResponseBody
+        public void download (final HttpServletResponse response, HttpServletRequest request)throws
         Exception {
+            String imagePath = request.getParameter("image");
+            String[] path = imagePath.split(",");
+             if (path.length==1){
+                 File file = new File(path[0]);
+                 System.out.println(file.getName());
+                 String fname=path[0].substring(path[0].lastIndexOf("/")+1);
 
-            //文件下载路径,图片文件夹真实路径
-            //String path = request.getServletContext().getRealPath("/upload/");
-            String iname=request.getParameter("image");
-            System.out.println("iname is :"+iname);
-            //String path = "F:/demos"+iname;
-            //String newname= iname.substring(iname.lastIndexOf("/")+1,iname.indexOf("."));
-            //File file = new File(path);
-            //String fname=iname.substring(iname.lastIndexOf("/")+1);
-            ////FileInputStream fs = new FileInputStream(file);
-            ////将文件读取到输入流
-            //InputStream bis = new BufferedInputStream(new FileInputStream(new File(path)));
-            //
-            ////设置文件转码
-            //fname = URLEncoder.encode(fname,"UTF-8");
-            //
-            ////解决中文显示乱码
-            //response.addHeader("Content-Disposition", "attachment;filename=" + fname);
-            //
-            ////设置响应的类型
-            ////response.setContentType("multipart/form-data");
-            //response.setContentType("application/x-download");
-            //
-            ////将对应文件读取出来
-            //BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
-            //int len = 0;
-            //while((len = bis.read()) != -1){
-            //    out.write(len);
-            //    out.flush();
-            //}
-            //out.close();
+                 //将文件读取到输入流
+                 InputStream bis = new BufferedInputStream(new FileInputStream(file));
 
+                 //设置文件转码
+                 fname = URLEncoder.encode(fname,"UTF-8");
+
+
+                 //解决中文显示乱码
+                 response.addHeader("Content-Disposition", "attachment;filename=" + fname);
+
+                 //设置响应的类型
+                 //response.setContentType("multipart/form-data");
+                 response.setContentType("application/x-download");
+
+                 //将对应文件读取出来
+                 BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
+
+                 int len=0 ;
+                 //byte[] b = new byte[1024];
+                 while((len = bis.read()) != -1){
+                     out.write(len);
+                     out.flush();
+
+                 }
+                 out.close();
+            }else if (path.length>1){
+                 ServletOutputStream out;
+                 FileInputStream instream = null;
+                 try {
+                     ZipOutputStream zipstream = new ZipOutputStream(response.getOutputStream());
+                     for (int i = 0; i < path.length; ++i) {
+                         File file = new File(path[i]);
+                         instream = new FileInputStream(file);
+                         ZipEntry entry = new ZipEntry(file.getName());
+                         zipstream.putNextEntry(entry);
+                         byte[] buffer = new byte[1024];
+                         int len = 0;
+                         while (len != -1) {
+                             len = instream.read(buffer);
+                             zipstream.write(buffer, 0, buffer.length);
+                         }
+                         instream.close();
+                         zipstream.closeEntry();
+                         zipstream.flush();
+                     }
+                     zipstream.finish();
+                     zipstream.close();
+                 } catch (IOException e) {
+                     new RuntimeException(e.getMessage());
+                 }
+             }
         }
 
         /**

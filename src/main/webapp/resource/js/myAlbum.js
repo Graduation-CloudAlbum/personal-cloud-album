@@ -276,7 +276,7 @@ $("#myAlbum-content").click(function () {
                 h +=
                     "<div class='content-about2-li' id='"+imgId+"'>"
                     +"<form id='image-download-form' action='/pca/image/download'>"
-                    +"<input type='hidden' name='image' value='"+ImaNameArray+"'>"
+                    +"<input id='hidden-input' type='hidden' name='image' value='' >"
                     +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imgUrl+"'>&#xe627;</span>"
                     + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
                     + "</form>"
@@ -481,7 +481,9 @@ $("#myAlbum-content").click(function () {
 
             for(var i=0; i<myAlbumContent2Span.length; i++){
                 myAlbumContent2Span[i].onclick = function() {
+                    //选中照片的id
                     var id=$(this).attr("id");
+                    //移动的目标相册名
                     var imageName=$(this).attr("name");
                     if (this.style.background == "rgb(216, 76, 49)") {
                         this.style.background = "rgb(255, 255, 255)";
@@ -495,8 +497,6 @@ $("#myAlbum-content").click(function () {
                         this.style.color = "rgb(255, 255, 255)";
                         idArray.push(id);
                         ImaNameArray.push(imageName);
-                        // alert("idArray:"+idArray);
-                        // alert("ImaNameArray:"+ImaNameArray);
 
                     }
                 }
@@ -737,8 +737,13 @@ function deleteImg() {
 }
 
 function downLoadImg() {
-    alert(ImaNameArray);
-
+    var arr=new Array();
+    $.each(ImaNameArray,function(index,value){
+        //拼接照片的完整路径
+       var imagePath="F:/demos"+value;
+        arr.push(imagePath);
+    });
+    $("#hidden-input").val(arr);
     $("#image-download-form").submit();
-
+    $("#uploadPhoto6").click();
 }
