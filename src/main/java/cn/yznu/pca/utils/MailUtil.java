@@ -48,13 +48,13 @@ public class MailUtil {
     }
 
     /**
-     * 发送修改密码邮件
+     * 发送重置密码邮件
      * @param toMail
      * @throws MessagingException
      */
-    public static void sendMail2(String toMail) throws MessagingException {
-        //4位随机激活码
-        //String code=Sid.randomNum();
+    public static void sendMail2(String toMail,String pass) throws MessagingException {
+        //8位随机密码
+       // String pass=Sid.resetPass();
         //设置邮件服务器
         Properties properties = new Properties();
         //可以设置邮件服务器
@@ -75,10 +75,12 @@ public class MailUtil {
         //抄送
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
         //设置邮件的主体
-        message.setSubject("1024Album密码找回");
+        message.setSubject("1024Album密码重置");
 
         //设置内容
-        String msg = "<h1>点击<a href='http://localhost:8080/pca/user/getPass?email="+toMail+"'>此处</a>重置密码<h1>";
+        //String msg = "<h1>点击<a href='http://localhost:8080/pca/user/getPass?email="+toMail+"'>此处</a>重置密码<h1>";
+        String msg = "您1024Album账户密码已重置，新密码为："+pass+",请妥善保管您的密码";
+
         message.setContent(msg, "text/html;charset=utf-8");
         //发送邮件
         Transport.send(message);

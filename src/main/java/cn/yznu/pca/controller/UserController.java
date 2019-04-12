@@ -8,6 +8,7 @@ import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
 import cn.yznu.pca.utils.MD5Util;
 import cn.yznu.pca.utils.MailUtil;
+import cn.yznu.pca.utils.Sid;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
@@ -144,13 +145,19 @@ public class UserController {
 
     }
     @ResponseBody
-    @RequestMapping("/toGetPass")
-    public  String toGetPass(@Param("toMail") String toMail) throws MessagingException {
-        int flag = userService.isExistUserName(toMail);
+    @RequestMapping("/resetPass")
+    public  String toGetPass(@Param("email")String email) throws MessagingException {
+        int flag = userService.isExistUserName(email);
         //该邮箱存在
         if(flag!=0) {
-            //发送改密邮件
-            MailUtil.sendMail2(toMail);
+            User user= userService.selectUserByUserName(email);
+            //生成随机密码
+            String randPass= Sid.resetPass();
+            //对随机密码加密，将密文写入数据库
+            String pass=MD5Util.md5Jdk(randPass);
+            userService.changePassword(user.getId(),pass);
+            //发送明文密码邮件
+            MailUtil.sendMail2(email,randPass);
             return "success";
         }else{
             //该邮箱不存在
@@ -159,23 +166,23 @@ public class UserController {
 
     }
 
-    @RequestMapping("/getPass")
-    public String getPass(@Param("email")String email,@Param("password")String password,HttpServletRequest request){
-        User user= userService.selectUserByUserName(email);
-        user.setUserPassword(password);
-        userService.updateUser(user);
-        //userService.changePassword(user.getId(),password);
-        //String password=user.getUserPassword();
-        ////将用户输入的密码进行MD5转码后比较
-        //String oldp=MD5Util.md5Jdk(password);
-        //if (password.equals(oldp)){
-        //    userService.changePassword(user.getId(),MD5Util.md5Jdk(password));
-        //    return "success";
-        //}else {
-        //    return "fail";
-        //}
-        return "login";
-    }
+    //@RequestMapping("/getPass")
+    //public String getPass(@Param("email")String email,@Param("password")String password,HttpServletRequest request){
+    //    User user= userService.selectUserByUserName(email);
+    //    user.setUserPassword(password);
+    //    userService.updateUser(user);
+    //    //userService.changePassword(user.getId(),password);
+    //    //String password=user.getUserPassword();
+    //    ////将用户输入的密码进行MD5转码后比较
+    //    //String oldp=MD5Util.md5Jdk(password);
+    //    //if (password.equals(oldp)){
+    //    //    userService.changePassword(user.getId(),MD5Util.md5Jdk(password));
+    //    //    return "success";
+    //    //}else {
+    //    //    return "fail";
+    //    //}
+    //    return "login";
+    //}
     @RequestMapping("/activate")
     public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
         User user= userService.selectUserByUserName(username);
@@ -269,5 +276,21 @@ public class UserController {
         }
 
     }
+
+    //@ResponseBody
+    //@RequestMapping("/resetPassword")
+    //public String resetPassword(@Param("oldPassword")String oldPassword,
+    //                             @Param("newPasssword1")String newPassword1,HttpServletRequest request){
+    //    User user= (User) request.getSession().getAttribute("user");
+    //    String password=user.getUserPassword();
+    //    //将用户输入的密码进行MD5转码后比较
+    //    String oldp=MD5Util.md5Jdk(oldPassword);
+    //    if (password.equals(oldp)){
+    //        userService.changePassword(user.getId(),MD5Util.md5Jdk(newPassword1));
+    //        return "success";
+    //    }else {
+    //        return "fail";
+    //    }
+    //}
 
 }
