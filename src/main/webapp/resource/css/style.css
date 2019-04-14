@@ -18,12 +18,13 @@ html,body{
 }
 .header{
 	height: 50px;
-	background: #D18B00;
+	/*background: #D18B00;*/
+	background:#181818;
 	position: relative;
 }
 .header img{
 	height: 50px;
-	background: #D18B00;
+	background: #181818;
 	margin-left: 1%;
 	float: left;
 }
@@ -31,7 +32,7 @@ html,body{
 	right: 31px;
 	height:50px;
 	position: absolute;
-	border-left: 1px solid #D18B00;
+	border-left: 1px solid #181818;
 	text-align: center;
 	cursor:pointer
 }
@@ -41,11 +42,12 @@ html,body{
 	width: 100px;
 	height: 50px;
 	line-height: 50px;
-	color: #EBEBEB;
+	/*color: #EBEBEB;*/
+	color: #CCCCCC;
 }
 .header .header-right .my-xiaoxi{
 	font-size: 24px;
-	color: #fff;
+	color: #CCCCCC;
 	margin-right: 5px;
 }
 .header-right2{
@@ -53,12 +55,12 @@ html,body{
 	right: 0;
 	line-height: 50px;
 	position: absolute;
-	border-left: 1px solid #D18B00;
+	border-left: 1px solid #181818;
 	text-align: center;
 	cursor:pointer
 }
 .header .header-right2 span{
-	color: #fff;
+	color: #CCCCCC;
 }
 .content{
 	width: 100%;
@@ -66,16 +68,17 @@ html,body{
 }
 /***************************left********************************/
 .content .left{
-	border-top: 1px solid #E9E9E9;
+	border-top: 1px solid #181818;
 	width: 225px;
 	height: 100%;
 	float: left;
-	background:#EFF4F8;
+	background:#181818;
 	position: relative;
 	border-right: 1px solid #E9E9E9;
 }
 .content .left .left-admin{
-	border-bottom: 1px solid #E9E9E9;
+	/*border-bottom: 1px solid #E9E9E9;*/
+	border-bottom: 1px solid #1C1C1C;
 	padding-bottom: 15px;
 	cursor:pointer;
 	display: block;
@@ -87,12 +90,12 @@ html,body{
 	margin-top: 50px;	
 }
 .content .left .left-admin p{
-	color: #454545;
+	color: #CCCCCC;
 	font-size: 12px;
 	margin-top: 12px;
 }
 .content .left .left-li{
-	border-bottom: 1px solid #E9E9E9;
+	border-bottom: 1px solid #1C1C1C;
 	padding-top:20px;
 	padding-bottom: 20px;
 	padding-left: 60px;
@@ -100,10 +103,11 @@ html,body{
 	display: block;
 }
 .content .left .left-li i{
-	color: #454545;
+	color: #CCCCCC;
 }
 .content .left .left-li span{
-	color: #454545;
+	/*color: #454545;*/
+	color:#CCCCCC;
 	margin-left: 15px;
 	text-align: center;
 	font-size: 16px;
@@ -478,7 +482,118 @@ html,body{
 .default-button2 p{
 	color: #fff;
 	line-height: 35px;
+}
 
+/****************************************************接受好友**********************************************************/
+
+#accept-friends{
+	display: none;
+}
+.accept-friends{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	background: #fff;
+	border-radius: 0.5%;
+	z-index: 150;
+}
+.select-first1{
+	margin-left: 20px;
+	width: 260px;
+	height: 40px;
+	float: left;
+	padding-left: 10px;
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	font-size: 18px;
+	color: #976666;
+	line-height: 40px;
+}
+.select-first1-ok{
+	margin-left: 20px;
+	width: 260px;
+	height: 40px;
+	float: left;
+	padding-left: 10px;
+	font-size: 18px;
+	color: #976666;
+	line-height: 40px;
+}
+.select-first1-ok span{
+	font-size: 18px;
+}
+ .select-right1{
+	width: 50px;
+	height: 40px;
+	float: left;
+	padding-left: 16px;
+	line-height: 40px;
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+}
+.select-right1 span{
+	color: #E0E0E0;
+}
+
+.menu-group1{
+	width: 310px;
+	position: absolute;
+	top:105px;
+	right: 20px;
+	z-index: 150;
+	display: none;
+}
+.menu-group1 .menu-group-li1{
+	width: 100%;
+	padding-left: 10px;
+	height: 40px;
+	border: 1px #DDD solid;
+	font-size: 18px;
+	color: #787878;
+	line-height: 40px;
+	background: #fff;
+	cursor: pointer;
+}
+.menu-group1 .menu-group-li1:hover{
+	background: #FAFAFA;
+}
+.default-button1{
+	width: 80px;
+	background: #fff;
+	border-radius: 0.5%;
+	height: 35px;
+	margin-left: 150px;
+	border: 1px solid #DDD;
+	text-align: center;
+	position: absolute;
+	right: 120px;
+	bottom: 24px;
+	cursor: pointer;
+}
+.default-button1 p{
+	line-height: 35px;
+}
+.default-button2{
+	width: 80px;
+	background: #00A8D8;
+	border-radius: 0.5%;
+	height: 35px;
+	position: absolute;
+	right: 20px;
+	bottom: 24px;
+	text-align: center;
+	cursor: pointer;
+}
+.default-button2 p{
+	color: #fff;
+	line-height: 35px;
+}
 
 
 
