@@ -58,8 +58,15 @@
 						<%--&lt;%&ndash;<div class="content-about-personal-num1"><p style="text-align: center" class="content-about-personal-num-p1">个人签名</p></div>&ndash;%&gt;--%>
 						<%--&lt;%&ndash;<div class="content-about-personal-num2"><p style="text-align: center" class="content-about-personal-num-p1">撒旦发射点</p></div>&ndash;%&gt;--%>
 					<%--</div>--%>
-						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
-						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>移动好友</a></li>
+						<li class="content-menu-li group-menu" href="<%=basePath%>/friend/myFriend">
+							<a>移动好友</a>
+							<ul id="friend-group" class="friend-group">
+								<li class="friend-group-li">同事</li>
+								<li class="friend-group-li">家人</li>
+								<li class="friend-group-li">陌生人</li>
+							</ul>
+						</li>
+						<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
 						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>返回</a></li>
 				</ul>
 
@@ -130,7 +137,30 @@
 			</div>
 		</div>	
 
-
+<!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
+		<div id="accept-friends" class="accept-friends">
+			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha8" class="iconfont icon-chacha1"></i></div>
+			<div id="accept-friends-left" class="select-first1">我的好友分组</div>
+			<div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+			<ul id="accept-friends-group" class="menu-group1">
+				<li class="menu-group-li1">陌生人</li>
+				<li class="menu-group-li1">家人</li> 
+				<li class="menu-group-li1">同事</li>
+			</ul>
+			<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
+		</div>
+<!--/******************************************************************************移动好友**********************************************/-->
+		<div id="move-friends" class="accept-friends">
+			<div class="popup-header"><h4>移动好友</h4><i id="iconChacha11" class="iconfont icon-chacha1"></i></div>
+			<div id="move-friends-content" class="select-first1-ok">确认移动好友至<span id="moveFriends-group">陌生人</span>?</div>		
+			<div id="move-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
+		</div>
+<!--/******************************************************************************删除好友**********************************************/-->
+		<div id="delete-friends-pop" class="accept-friends">
+			<div class="popup-header"><h4>删除好友</h4><i id="iconChacha12" class="iconfont icon-chacha1"></i></div>
+			<div id="delete-friends-content" class="select-first1-ok">确认删除好友?</div>		
+			<div id="delete-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
+		</div>
 
 
 
