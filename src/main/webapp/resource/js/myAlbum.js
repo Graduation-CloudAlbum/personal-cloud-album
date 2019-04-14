@@ -1,6 +1,7 @@
 var myAlbumContent=document.getElementById('myAlbum-content');
 var myAlbumContent2=document.getElementById('myAlbum-content2');
-var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+//var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+var myAlbumLi=myAlbumContent.getElementsByTagName('span');
 var myAlbumMenu1=document.getElementById('myAlbum-menu1');
 var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 var open=document.getElementById('open');
@@ -226,11 +227,12 @@ $().ready(function getAlbum() {
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
+                    + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                    + "<a id='mod-album2' class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<p class='bottun-title-p1'>"+albumName+"</p>"
-                    + "<p>"+theme+"</p>"
+                    + "<span class='bottun-title-p1'>"+albumName+"</span>"
+//                    + "<p>"+theme+"</p>"
                     + "<p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
                     + "</div>"
                     + "</div>"
@@ -239,6 +241,11 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
+            var modAlbum2 = document.getElementById('mod-album2');
+            modAlbum2.onclick = function(){
+            	modAlbum.style.display="block";
+            	popLayer2.style.display="block";
+            }
             for(var i=0;i<myAlbumLi.length;i++){
                 myAlbumLi[i].index = i;
                 myAlbumLi[i].onclick=function(){
@@ -642,11 +649,12 @@ for(var i=0;i<albumSortLi.length;i++) {
                         + "<div class='content-about-li-top'>"
                         + "<div class='content-about-li-top-a'>"
                         + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
-                        + "<a class='iconfont icon-fenxiang1 icon2' title='编辑相册'></a>"
+                        + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                        + "<a id='mod-album2' class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                         + "</div>"
                         + "<div class='bottun-title'>"
                         + "<p class='bottun-title-p1'>"+albumName+"</p>"
-                        + "<p>"+theme+"</p>"
+//                        + "<p>"+theme+"</p>"
                         + "<p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
                         + "</div>"
                         + "</div>"
@@ -655,6 +663,11 @@ for(var i=0;i<albumSortLi.length;i++) {
 
                 }
                 $("#myAlbum-content").html(h);
+                var modAlbum2 = document.getElementById('mod-album2');
+                modAlbum2.onclick = function(){
+                	modAlbum.style.display="block";
+                	popLayer2.style.display="block";
+                }
                 for (var i = 0; i < myAlbumLi.length; i++) {
                     myAlbumLi[i].index = i;
                     myAlbumLi[i].onclick = function () {
@@ -820,4 +833,20 @@ function downLoadImg() {
     $("#hidden-input").val(arr);
     $("#image-download-form").submit();
     $("#uploadPhoto6").click();
+}
+
+
+//编辑相册
+var modAlbum = document.getElementById('mod-album');
+var uploadPhoto4 = document.getElementById('uploadPhoto4');
+var closeMod = document.getElementById('close-mod');
+
+uploadPhoto4.onclick = function(){
+	modAlbum.style.display="block";
+	popLayer2.style.display="block";
+}
+
+closeMod.onclick = function(){
+	modAlbum.style.display="none";
+	popLayer2.style.display="none";
 }

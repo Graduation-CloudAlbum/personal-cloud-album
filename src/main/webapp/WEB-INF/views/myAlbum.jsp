@@ -62,7 +62,7 @@
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
-                <%--<li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
+                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
                 <div id="admin-button" class="admin-button">
                     <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
@@ -235,7 +235,29 @@
 			<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
 		</div>
 
-
+		<!-- ***************************************************相册信息***************************************************-->
+		<div id="mod-album" class="mod-album bdR3" style="margin-top: -150px; opacity: 1;">
+			<div class="cover">
+				<a class="cover-link mod-click">
+					<img class="pic" src="../img/Album-cover1.jpg">
+					<span class="num-bg op30 bdRc"></span>
+					<span class="num-bg-txt f16">0</span>
+					<span class="cover-bg op60"></span>
+					<span class="cover-bg-txt f16">更换封面</span>
+				</a>
+			</div>
+			<div class="info">
+				<div class="text">
+					<p class="title">gjhj</p>
+					<p class="intro clrB6 lh24">暂无相册简介</p>
+					<p class="time">2019-03-08 12:00:00</p>
+				</div>
+				<div class="fns clearFix">				 
+					<a id="close-mod" class="btn-cancel icoMod fR" title="关闭" ><i class="icon iconfont icon-chacha"></i></a>
+					<a class="btn-sure icoMod fR mod-click"  title="修改相册信息"><i class="icon iconfont icon-bianji"></i></a>
+				</div>
+			</div>
+		</div>
 
 
 

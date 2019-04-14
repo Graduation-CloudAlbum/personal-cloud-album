@@ -98,6 +98,7 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	cursor: pointer;
+	color: #787878;
 }
 .content-about .content-about-li-top .bottun-title .bottun-title-p2{
 	font-size: 12px;
@@ -115,6 +116,9 @@
 	color: #454545;
 }
 .content-about .content-about-li-top:hover .bottun-title{
+	color: #fff;
+}
+.content-about .content-about-li-top:hover .bottun-title-p1{
 	color: #fff;
 }
 .content-about .content-about-li-top .bottun-title .bottun-title-p1:hover{
@@ -569,8 +573,187 @@
 }
 
 
+/***************************************************弹窗删除分组、**************************************************************/
+#delete-group{
+	position:absolute;
+	left:40%; 
+	top:38%;
+	z-index: 70;
+	width: 350px;
+	height: 180px;
+	bottom: 5%;
+	display: none;
+	background: #fff;
+	border-radius: 0.5%;	
+}
+
+/***************************************************相册信息**************************************************************/
+#mod-album{
+	display: none;
+}
+.mod-album {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    margin-left: -250px;
+    background: red;
+    z-index:150;
+}
+.mod-album .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 225px;
+    height: 300px;
+    overflow: hidden;
+    /*background: url(/static/images/bg/lazyload.png) center center no-repeat #F7F7F7;*/
+}
+.mod-album .cover-link .pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 188px;
+    height: 300px;
+}
+
+.mod-album .cover-link .num-bg {
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background: #000;
+}
+.mod-album .cover-link .num-bg-txt {
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFF;
+}
+.op30 {
+    opacity: 0.3;
+}
+.op60 {
+    opacity: 0.6;
+}
+.bdRc {
+
+    border-radius: 50%;
+}
+.f16 {
+    font-size: 16px;
+}
+.mod-album .cover-link .cover-bg {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 188px;
+    height: 300px;
+    background: #000;
+    cursor: pointer;
+}
+.mod-album .cover-link .cover-bg-txt {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 150px;
+    height: 100px;
+    font-size: 16px;
+    line-height: 100px;
+    text-align: center;
+    color: #FFF;
+    cursor: pointer;
+}
+.mod-album .cover-link:hover .cover-bg, .mod-album .cover-link:hover .cover-bg-txt {
+    display: block;
+}
+.mod-album .cover-link:hover .num-bg-txt, .mod-album .cover-link:hover .num-bg{
+    display: none;
+}
 
 
+
+.mod-album .info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+    background: #FFF;
+}
+.mod-album .info .text {
+    height: 244px;
+    padding: 0 20px;
+    overflow: hidden;
+}
+.mod-album .info .title {
+    height: 60px;
+    padding-top: 5px;
+    font-size: 26px;
+    line-height: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mod-album .info .intro {
+    height: 144px;
+    overflow: hidden;
+    text-indent: 14px;
+}
+
+.clrB6 {
+    color: #666;
+}
+.lh24 {
+    line-height: 24px;
+}
+.mod-album .info .time {
+    padding-top: 5px;
+    line-height: 30px;
+    text-align: right;
+    color: #999;
+}
+
+
+.mod-album .info .fns {
+    padding: 10px 20px 0;
+}
+.mod-album .info .fns .btn-cancel {
+    background-position: -5px -765px;
+}
+.mod-album .info .fns .icoMod {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    color: #CCCCCC;
+    line-height: 24px;
+}
+.mod-album .info .fns i{
+	font-size: 28px;
+}
+.mod-album .info .fns .btn-sure {
+    background-position: -5px -805px;
+}
+.fR {
+    float: right;
+}
+
+.icoMod{
+	cursor: pointer;
+}
 
 
 
