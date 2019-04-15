@@ -139,6 +139,7 @@
                 <div class="Buy-type">钻石会员<a style="font-size: 15px;">(内包含100个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 54px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios3" value="50" checked><a style="margin-left: 74px;font-size: 15px;">我要这个（50元）</a> </label></div>
 
             </div>
+            <div class="buy-con">自定义购买</div>
             <div id="Buy-Expansion-button2" class="Buy-Expansion-button2"><p>购买</p></div>
         </div>
     </div>
