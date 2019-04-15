@@ -212,4 +212,9 @@
   <delete id="deleteFriendGroup" parameterType="cn.yznu.pca.model.PermissionGroup" >
     delete from permission_group where id=#{id,jdbcType=INTEGER}
   </delete>
+
+  <select id="searchFriendsGroup" resultMap="BaseResultMap" >
+    select * from permission_group where user_id=#{user_id,jdbcType=INTEGER} and permission_type=#{permission_type,jdbcType=VARCHAR}
+  </select>
+
 </mapper>
