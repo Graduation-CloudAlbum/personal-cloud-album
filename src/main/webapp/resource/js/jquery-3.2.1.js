@@ -1168,7 +1168,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// ID filter and find
 	if ( support.getById ) {
-		Expr.filter["ID"] = function( id ) {
+		cn.yznu.pca.filter["ID"] = function(id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				return elem.getAttribute("id") === attrId;
@@ -1181,7 +1181,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 		};
 	} else {
-		Expr.filter["ID"] =  function( id ) {
+		cn.yznu.pca.filter["ID"] =  function(id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				var node = typeof elem.getAttributeNode !== "undefined" &&
@@ -2473,7 +2473,7 @@ function matcherFromTokens( tokens ) {
 		if ( (matcher = Expr.relative[ tokens[i].type ]) ) {
 			matchers = [ addCombinator(elementMatcher( matchers ), matcher) ];
 		} else {
-			matcher = Expr.filter[ tokens[i].type ].apply( null, tokens[i].matches );
+			matcher = cn.yznu.pca.filter[ tokens[i].type ].apply( null, tokens[i].matches );
 
 			// Return special upon seeing a positional matcher
 			if ( matcher[ expando ] ) {
@@ -3149,7 +3149,7 @@ jQuery.fn.extend( {
 
 	addBack: function( selector ) {
 		return this.add( selector == null ?
-			this.prevObject : this.prevObject.filter( selector )
+			this.prevObject : cn.yznu.pca.filter( selector )
 		);
 	}
 } );
@@ -8460,13 +8460,7 @@ jQuery.fn.extend( {
 		return jQuery.param( this.serializeArray() );
 	},
 	serializeArray: function() {
-		return this.map( function() {
-
-			// Can add propHook for "elements" to filter or add form elements
-			var elements = jQuery.prop( this, "elements" );
-			return elements ? jQuery.makeArray( elements ) : this;
-		} )
-		.filter( function() {
+		return cn.yznu.pca.filter( function() {
 			var type = this.type;
 
 			// Use .is( ":disabled" ) so that fieldset[disabled] works

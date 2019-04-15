@@ -26,9 +26,9 @@
         <div class="wrapper-bar inner-left">©2019 1024album <a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备19003347号</a>
             <span style="padding-left:10px"></span>
         </div>
-
     </div>
 </div>
-<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+
 </body>
 </html>

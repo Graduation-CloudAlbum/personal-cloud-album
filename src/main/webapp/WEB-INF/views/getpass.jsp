@@ -44,7 +44,7 @@
         <a href="/pca/user/register"  class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>
     </div>
 </div>
-<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/getPass.js" ></script>
 </body>
 
