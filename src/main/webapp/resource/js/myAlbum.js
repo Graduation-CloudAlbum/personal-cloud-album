@@ -1,40 +1,40 @@
-var myAlbumContent=document.getElementById('myAlbum-content');
-var myAlbumContent2=document.getElementById('myAlbum-content2');
+var myAlbumContent = document.getElementById('myAlbum-content');
+var myAlbumContent2 = document.getElementById('myAlbum-content2');
 //var myAlbumLi=myAlbumContent.getElementsByTagName('li');
-var myAlbumLi=myAlbumContent.getElementsByTagName('span');
-var myAlbumMenu1=document.getElementById('myAlbum-menu1');
-var myAlbumMenu2=document.getElementById('myAlbum-menu2');
-var open=document.getElementById('open');
-var open2=document.getElementById('open2');
+var myAlbumLi = myAlbumContent.getElementsByTagName('span');
+var myAlbumMenu1 = document.getElementById('myAlbum-menu1');
+var myAlbumMenu2 = document.getElementById('myAlbum-menu2');
+var open = document.getElementById('open');
+var open2 = document.getElementById('open2');
 
 var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
 var iconChacha1 = document.getElementById('icon-chacha1');
 var popLayer = document.getElementById('popLayer');//upload-photos-choose
 
-var uploadPhoto6=document.getElementById('uploadPhoto6');
-var myAlbumContent2Span=myAlbumContent2.getElementsByTagName('span');
+var uploadPhoto6 = document.getElementById('uploadPhoto6');
+var myAlbumContent2Span = myAlbumContent2.getElementsByTagName('span');
 var myAlbumContent2Li = myAlbumContent2.getElementsByTagName('div');
-var adminButtonMenu=document.getElementById('admin-button-menu');
+var adminButtonMenu = document.getElementById('admin-button-menu');
 var adminButtonMenuLi = adminButtonMenu.getElementsByTagName('li');
 var chooseGroup = document.getElementById('choose-group');
-var button2=document.getElementById('button2');
-var iconChacha11=document.getElementById('iconChacha11');
-var deleteGroupButton1=document.getElementById('delete-group-button1');
-var idArray=new Array();
-var ImaNameArray=new Array();
+var button2 = document.getElementById('button2');
+var iconChacha11 = document.getElementById('iconChacha11');
+var deleteGroupButton1 = document.getElementById('delete-group-button1');
+var idArray = new Array();
+var ImaNameArray = new Array();
 
 //在首页点击上传照片
-uploadPhoto1.onclick=function(){
-    document.getElementById('upload-photos').style.display="block";
-    document.getElementById('popLayer').style.display="block";
-    document.getElementById('popLayer2').style.display="block";
-    document.getElementById('upload-photos-choose').style.display="block";
+uploadPhoto1.onclick = function () {
+    document.getElementById('upload-photos').style.display = "block";
+    document.getElementById('popLayer').style.display = "block";
+    document.getElementById('popLayer2').style.display = "block";
+    document.getElementById('upload-photos-choose').style.display = "block";
 }
 //在相册中点击上传照片
-uploadPhoto3.onclick=function(){
-    document.getElementById('upload-photos').style.display="block";
-    document.getElementById('popLayer').style.display="block";
+uploadPhoto3.onclick = function () {
+    document.getElementById('upload-photos').style.display = "block";
+    document.getElementById('popLayer').style.display = "block";
     // document.getElementById('popLayer2').style.display="block";
     // document.getElementById('upload-photos-choose').style.display="block";
 }
@@ -44,8 +44,8 @@ var uploadPhotosRight = document.getElementById('upload-photos-right');
 var uploadPhotosGroup = document.getElementById('upload-menu-group');
 var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
 
-var bLi="";
-var chooseName="";
+var bLi = "";
+var chooseName = "";
 // uploadPhotosRight.onclick = function(){
 //     uploadPhotosGroup.style.display="block"
 // }
@@ -65,29 +65,29 @@ var chooseName="";
 //在主页点击“上传照片”按钮，动态加载可选择的相册
 $("#upload-photos-right").click(function () {
     $.ajax({
-        async : false,
+        async: false,
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
-        success: function (data){
-            uploadPhotosGroup.style.display="block"
+        success: function (data) {
+            uploadPhotosGroup.style.display = "block"
             var h = "";
             for (var i = 0; i < data.album.length; i++) {
-                var albumName=data.album[i].albumName;
-                h += "<li class='upload-menu-group-li'>"+albumName+"</li>"
+                var albumName = data.album[i].albumName;
+                h += "<li class='upload-menu-group-li'>" + albumName + "</li>"
             }
             $("#upload-menu-group").html(h);
-            for(var i=0;i<uploadPhotosGroupLi.length;i++){
+            for (var i = 0; i < uploadPhotosGroupLi.length; i++) {
                 uploadPhotosGroupLi[i].index = i;
-                uploadPhotosGroupLi[i].onclick = function(){
-                    str= (function(i){
-                        bLi=uploadPhotosGroupLi[i].innerHTML;
-                        uploadPhotosLeft.innerHTML=bLi;
+                uploadPhotosGroupLi[i].onclick = function () {
+                    str = (function (i) {
+                        bLi = uploadPhotosGroupLi[i].innerHTML;
+                        uploadPhotosLeft.innerHTML = bLi;
                         return uploadPhotosLeft.innerHTML;
                     })(this.index);
-                    uploadPhotosGroup.style.display="none"
-                    uploadPhotosLeft.innerHTML=str;
-                    chooseName=str;
+                    uploadPhotosGroup.style.display = "none"
+                    uploadPhotosLeft.innerHTML = str;
+                    chooseName = str;
                     return chooseName;
                 }
 
@@ -97,13 +97,13 @@ $("#upload-photos-right").click(function () {
 
 });
 $("#select-button").click(function () {
-    $("#upload-album-choose").html("<span>上传照片至："+chooseName+"</span>");
+    $("#upload-album-choose").html("<span>上传照片至：" + chooseName + "</span>");
     $.ajax({
         type: "post",
         url: "/pca/image/goUpload",
         data: {"albumName": chooseName},
         dataType: "json",
-        success: function (data){
+        success: function (data) {
 
         }
     });
@@ -120,58 +120,58 @@ $("#uploadPhoto3").click(function () {
         url: "/pca/image/goUpload",
         data: {"albumName": aName},
         dataType: "json",
-        success: function (data){
+        success: function (data) {
         }
     });
 });
 
 //关闭上传照片
-iconChacha1.onclick=function(){
-    document.getElementById('upload-photos').style.display="none";
-    document.getElementById('popLayer').style.display="none";
-    uploadPhotosLeft.innerHTML="我的相册";
-    nextTime.style.display="block";
-    nowTime.style.display="none";
-    logOutTime.style.display="none";
+iconChacha1.onclick = function () {
+    document.getElementById('upload-photos').style.display = "none";
+    document.getElementById('popLayer').style.display = "none";
+    uploadPhotosLeft.innerHTML = "我的相册";
+    nextTime.style.display = "block";
+    nowTime.style.display = "none";
+    logOutTime.style.display = "none";
 
 }
 //关闭选择相册弹出框
 var iconChacha2 = document.getElementById('iconChacha2');
-iconChacha2.onclick=function(){
-    document.getElementById('upload-photos-choose').style.display="none";
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('upload-photos').style.display="none";
-    document.getElementById('popLayer').style.display="none";
-    uploadPhotosLeft.innerHTML="我的相册";
+iconChacha2.onclick = function () {
+    document.getElementById('upload-photos-choose').style.display = "none";
+    document.getElementById('popLayer2').style.display = "none";
+    document.getElementById('upload-photos').style.display = "none";
+    document.getElementById('popLayer').style.display = "none";
+    uploadPhotosLeft.innerHTML = "我的相册";
 }
 //上传照片下一步
 var selectButton = document.getElementById('select-button');
-selectButton.onclick=function(){
-    document.getElementById('upload-photos-choose').style.display="none";
-    document.getElementById('popLayer2').style.display="none";
+selectButton.onclick = function () {
+    document.getElementById('upload-photos-choose').style.display = "none";
+    document.getElementById('popLayer2').style.display = "none";
 }
 //创建相册
 var uploadPhoto2 = document.getElementById('uploadPhoto2');//Create-Album
-uploadPhoto2.onclick=function(){
-    document.getElementById('popLayer2').style.display="block";
-    document.getElementById('Create-Album').style.display="block";
+uploadPhoto2.onclick = function () {
+    document.getElementById('popLayer2').style.display = "block";
+    document.getElementById('Create-Album').style.display = "block";
 }
 $("input[type='radio']").removeAttr('checked');
 $("#Create-Album-button2").click(function () {
     //取消单选框的默认选中
-    var albumName=$.trim($("#Create-Album-input").val());
-    var theme=$.trim($("#Create-Album-input2").val());
-    var jurisdiction=$("input[type='radio']:checked").val();
+    var albumName = $.trim($("#Create-Album-input").val());
+    var theme = $.trim($("#Create-Album-input2").val());
+    var jurisdiction = $("input[type='radio']:checked").val();
     $.ajax({
-        type:"post",
-        url:"/pca/album/createAlbum",
-        data: {"albumName": albumName,"theme":theme,"jurisdiction":jurisdiction},
+        type: "post",
+        url: "/pca/album/createAlbum",
+        data: {"albumName": albumName, "theme": theme, "jurisdiction": jurisdiction},
         dataType: "json",
         success: function (data) {
-            if (data==1){
+            if (data == 1) {
                 alert("新建成功");
-                window.location.href="/pca/user/myAlbum";
-            }else{
+                window.location.href = "/pca/user/myAlbum";
+            } else {
                 alert("该相册已存在，换个名称试试");
                 //置空输入框的值
                 $("#Create-Album-input").val("");
@@ -184,14 +184,14 @@ $("#Create-Album-button2").click(function () {
 });
 //关闭创建相册
 var iconChacha3 = document.getElementById('iconChacha3');
-iconChacha3.onclick=function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('Create-Album').style.display="none";
+iconChacha3.onclick = function () {
+    document.getElementById('popLayer2').style.display = "none";
+    document.getElementById('Create-Album').style.display = "none";
 }
 var CreateAlbumButton1 = document.getElementById('Create-Album-button1');
-CreateAlbumButton1.onclick=function(){
-    document.getElementById('popLayer2').style.display="none";
-    document.getElementById('Create-Album').style.display="none";
+CreateAlbumButton1.onclick = function () {
+    document.getElementById('popLayer2').style.display = "none";
+    document.getElementById('Create-Album').style.display = "none";
 }
 
 //点击相册
@@ -203,27 +203,27 @@ CreateAlbumButton1.onclick=function(){
 // var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 // var open=document.getElementById('open');
 // var open2=document.getElementById('open2');
-var aLi="";
+var aLi = "";
 //首页点击的相册名
-var aName="";
+var aName = "";
 //动态加载首页相册
 $().ready(function getAlbum() {
     $.ajax({
-        async : false,
+        async: false,
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
-        success: function (data){
+        success: function (data) {
             //加载相册 到album页面
             var h = "";
             for (var i = 0; i < data.album.length; i++) {
-                var imageNum=data.imageNum[i];
-                var albumName=data.album[i].albumName;
-                var theme=data.album[i].albumType;
-                var coverImg=data.coverList[i].url;
-                var createtime=fmtDate(data.album[i].createTime);
+                var imageNum = data.imageNum[i];
+                var albumName = data.album[i].albumName;
+                var theme = data.album[i].albumType;
+                var coverImg = data.coverList[i].url;
+                var createtime = fmtDate(data.album[i].createTime);
                 h += "<li class='content-about-li'>"
-                    + "<img src='"+coverImg+"'>"
+                    + "<img src='" + coverImg + "'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
@@ -231,40 +231,40 @@ $().ready(function getAlbum() {
                     + "<a id='mod-album2' class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<span class='bottun-title-p1'>"+albumName+"</span>"
-//                    + "<p>"+theme+"</p>"
-                    + "<p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
+                    + "<span class='bottun-title-p1'>" + albumName + "</span>"
+                    //                    + "<p>"+theme+"</p>"
+                    + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
                     + "</div>"
                     + "</div>"
                     + "</li>"
-                $("#open").html("共"+data.album.length+"个相册");
+                $("#open").html("共" + data.album.length + "个相册");
 
             }
             $("#myAlbum-content").html(h);
             var modAlbum2 = document.getElementById('mod-album2');
-            modAlbum2.onclick = function(){
-            	modAlbum.style.display="block";
-            	popLayer2.style.display="block";
+            modAlbum2.onclick = function () {
+                modAlbum.style.display = "block";
+                popLayer2.style.display = "block";
             }
-            for(var i=0;i<myAlbumLi.length;i++){
+            for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;
-                myAlbumLi[i].onclick=function(){
-                    myAlbumMenu1.style.display="none";
-                    myAlbumContent.style.display="none";
-                    open.style.display="none";
+                myAlbumLi[i].onclick = function () {
+                    myAlbumMenu1.style.display = "none";
+                    myAlbumContent.style.display = "none";
+                    open.style.display = "none";
 
-                    myAlbumMenu2.style.display="block";
-                    myAlbumContent2.style.display="block";
-                    open2.style.display="block";
+                    myAlbumMenu2.style.display = "block";
+                    myAlbumContent2.style.display = "block";
+                    open2.style.display = "block";
 
-                    str = (function(i){
-                        aLi=i;
+                    str = (function (i) {
+                        aLi = i;
                         return aLi;
                     })(this.index);
-                    aLi=str;
+                    aLi = str;
 
                     var aP = this.getElementsByTagName('p');
-                    aName=aP[0].innerHTML;
+                    aName = aP[0].innerHTML;
 
                 }
 
@@ -275,34 +275,34 @@ $().ready(function getAlbum() {
 });
 //点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
 $("#myAlbum-content").click(function () {
-    var albumName=aName;
+    var albumName = aName;
     $.ajax({
         async: false,
-        type:"post",
-        url:"/pca/image/getImage",
+        type: "post",
+        url: "/pca/image/getImage",
         data: {"albumName": albumName},
         dataType: "json",
         success: function (data) {
             var h = "";
             for (var i = 0; i < data.imageList.length; i++) {
-                var imgUrl=data.imageList[i].url;
-                var imgId=data.imageList[i].id;
-                var imageName=data.imageList[i].imageName;
+                var imgUrl = data.imageList[i].url;
+                var imgId = data.imageList[i].id;
+                var imageName = data.imageList[i].imageName;
                 h +=
-                    "<div class='content-about2-li' id='"+imgId+"'>"
-                    +"<form id='image-download-form' action='/pca/image/download'>"
-                    +"<input id='hidden-input' type='hidden' name='image' value='' >"
-                    +"<span id='"+imgId+"' class='icon iconfont photo-admin'name='"+imgUrl+"'>&#xe627;</span>"
-                    + "<a href='"+imgUrl+"' ><img src='"+imgUrl+"'/></a>"
+                    "<div class='content-about2-li' id='" + imgId + "'>"
+                    + "<form id='image-download-form' action='/pca/image/download'>"
+                    + "<input id='hidden-input' type='hidden' name='image' value='' >"
+                    + "<span id='" + imgId + "' class='icon iconfont photo-admin'name='" + imgUrl + "'>&#xe627;</span>"
+                    + "<a href='" + imgUrl + "' ><img src='" + imgUrl + "'/></a>"
                     + "</form>"
                     + "</div>"
 
             }
-            $("#open2").html("共"+ data.imageList.length+"张照片");
+            $("#open2").html("共" + data.imageList.length + "张照片");
             $("#myAlbum-content2").html(h);
 
 
-            (function($) {
+            (function ($) {
                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
                 var zoom = $('#zoom').hide(),
@@ -350,8 +350,8 @@ $("#myAlbum-content").click(function () {
                         }
                         if (imageWidth > maxImageWidth || imageHeight > maxImageHeight) {
                             var desiredHeight = maxImageHeight < imageHeight ? maxImageHeight : imageHeight,
-                                desiredWidth  = maxImageWidth  < imageWidth  ? maxImageWidth  : imageWidth;
-                            if ( desiredHeight / imageHeight <= desiredWidth / imageWidth ) {
+                                desiredWidth = maxImageWidth < imageWidth ? maxImageWidth : imageWidth;
+                            if (desiredHeight / imageHeight <= desiredWidth / imageWidth) {
                                 image.width(Math.round(imageWidth * desiredHeight / imageHeight));
                                 image.height(desiredHeight);
                             } else {
@@ -364,7 +364,7 @@ $("#myAlbum-content").click(function () {
                             height: image.height(),
                             marginTop: -(image.height() / 2) - borderWidth,
                             marginLeft: -(image.width() / 2) - borderWidth
-                        }, 200, function() {
+                        }, 200, function () {
                             show(image);
                         });
 
@@ -408,7 +408,7 @@ $("#myAlbum-content").click(function () {
                 }
 
                 (function bindNavigation() {
-                    zoom.on('click', function(event) {
+                    zoom.on('click', function (event) {
                         event.preventDefault();
                         if ($(event.target).attr('id') == 'zoom') {
                             close();
@@ -418,7 +418,7 @@ $("#myAlbum-content").click(function () {
                     $('#zoom .close').on('click', close);
                     $('#zoom .previous').on('click', openPrevious);
                     $('#zoom .next').on('click', openNext);
-                    $(document).keydown(function(event) {
+                    $(document).keydown(function (event) {
                         if (!openedImage) {
                             return;
                         }
@@ -447,7 +447,7 @@ $("#myAlbum-content").click(function () {
                 })();
 
                 (function bindScrollControl() {
-                    $(window).on('mousewheel DOMMouseScroll', function(event) {
+                    $(window).on('mousewheel DOMMouseScroll', function (event) {
                         if (!openedImage) {
                             return;
                         }
@@ -458,34 +458,33 @@ $("#myAlbum-content").click(function () {
                 })();
             })(jQuery);
 
-            uploadPhoto6.onclick = function(){
+            uploadPhoto6.onclick = function () {
 
-                if(uploadPhoto6.style.color != "rgb(0, 0, 0)"){
-                    uploadPhoto6.style.color= "#000";
-                    uploadPhoto6.style.borderBottom="2px solid #D84C31";
-                    document.getElementById('admin-button').style.display="block";
-                    for(var i=0; i<myAlbumContent2Span.length; i++){
-                        myAlbumContent2Span[i].style.display="block";
-
-                    }
-                    for(var j=0;j<myAlbumContent2Li.length; j++){
-                        myAlbumContent2Li[j].style.background="#000";
-                        myAlbumContent2Li[j].style.opacity="0.9";
+                if (uploadPhoto6.style.color != "rgb(0, 0, 0)") {
+                    uploadPhoto6.style.color = "#000";
+                    uploadPhoto6.style.borderBottom = "2px solid #D84C31";
+                    document.getElementById('admin-button').style.display = "block";
+                    for (var i = 0; i < myAlbumContent2Span.length; i++) {
+                        myAlbumContent2Span[i].style.display = "block";
 
                     }
-                }
-                else{
-                    uploadPhoto6.style.color= "#9999A6";
-                    uploadPhoto6.style.borderBottom= "";
-                    document.getElementById('admin-button').style.display="none";
-                    for(var i=0; i<myAlbumContent2Span.length; i++){
-                        myAlbumContent2Span[i].style.background="rgb(255, 255, 255)";
-                        myAlbumContent2Span[i].style.color="#8b8be8";
-                        myAlbumContent2Span[i].style.display="none";
+                    for (var j = 0; j < myAlbumContent2Li.length; j++) {
+                        myAlbumContent2Li[j].style.background = "#000";
+                        myAlbumContent2Li[j].style.opacity = "0.9";
+
                     }
-                    for(var j=0;j<myAlbumContent2Li.length; j++){
-                        myAlbumContent2Li[j].style.background="";
-                        myAlbumContent2Li[j].style.opacity="";
+                } else {
+                    uploadPhoto6.style.color = "#9999A6";
+                    uploadPhoto6.style.borderBottom = "";
+                    document.getElementById('admin-button').style.display = "none";
+                    for (var i = 0; i < myAlbumContent2Span.length; i++) {
+                        myAlbumContent2Span[i].style.background = "rgb(255, 255, 255)";
+                        myAlbumContent2Span[i].style.color = "#8b8be8";
+                        myAlbumContent2Span[i].style.display = "none";
+                    }
+                    for (var j = 0; j < myAlbumContent2Li.length; j++) {
+                        myAlbumContent2Li[j].style.background = "";
+                        myAlbumContent2Li[j].style.opacity = "";
 
                     }
 
@@ -494,18 +493,18 @@ $("#myAlbum-content").click(function () {
             }
             //选中
 
-            for(var i=0; i<myAlbumContent2Span.length; i++){
-                myAlbumContent2Span[i].onclick = function() {
+            for (var i = 0; i < myAlbumContent2Span.length; i++) {
+                myAlbumContent2Span[i].onclick = function () {
                     //选中照片的id
-                    var id=$(this).attr("id");
+                    var id = $(this).attr("id");
                     //移动的目标相册名
-                    var imageName=$(this).attr("name");
+                    var imageName = $(this).attr("name");
                     if (this.style.background == "rgb(216, 76, 49)") {
                         this.style.background = "rgb(255, 255, 255)";
                         this.style.color = "#8b8be8";
                         //通过当前下标移除照片id
                         idArray.splice(i, 1);
-                        ImaNameArray.splice(i,1)
+                        ImaNameArray.splice(i, 1)
 
                     } else {
                         this.style.background = "#D84C31";
@@ -517,38 +516,38 @@ $("#myAlbum-content").click(function () {
                 }
             }
 
-            for(var i=0; i<adminButtonMenuLi.length; i++){
-                adminButtonMenuLi[i].onclick = function(){
+            for (var i = 0; i < adminButtonMenuLi.length; i++) {
+                adminButtonMenuLi[i].onclick = function () {
                     //alert(this.innerHTML)
-                    document.getElementById('popLayer2').style.display="block";
-                    document.getElementById('choose-group').style.display="block";
-                    document.getElementById('choose-group-span').innerHTML=this.innerHTML;
+                    document.getElementById('popLayer2').style.display = "block";
+                    document.getElementById('choose-group').style.display = "block";
+                    document.getElementById('choose-group-span').innerHTML = this.innerHTML;
                 }
             }
             //移动照片
-            var iconChacha9=document.getElementById('iconChacha9');
-            iconChacha9.onclick = function(){
-                document.getElementById('popLayer2').style.display="none";
-                document.getElementById('choose-group').style.display="none";
+            var iconChacha9 = document.getElementById('iconChacha9');
+            iconChacha9.onclick = function () {
+                document.getElementById('popLayer2').style.display = "none";
+                document.getElementById('choose-group').style.display = "none";
             }
-            var chooseGroupButton1=document.getElementById('choose-group-button1');
-            chooseGroupButton1.onclick = function(){
-                document.getElementById('popLayer2').style.display="none";
-                document.getElementById('choose-group').style.display="none";
+            var chooseGroupButton1 = document.getElementById('choose-group-button1');
+            chooseGroupButton1.onclick = function () {
+                document.getElementById('popLayer2').style.display = "none";
+                document.getElementById('choose-group').style.display = "none";
             }
             //点击删除选中
 
-            button2.onclick = function(){
-                document.getElementById('popLayer2').style.display="block";
-                document.getElementById('delete-group').style.display="block";
+            button2.onclick = function () {
+                document.getElementById('popLayer2').style.display = "block";
+                document.getElementById('delete-group').style.display = "block";
             }
-            iconChacha11.onclick = function(){
-                document.getElementById('popLayer2').style.display="none";
-                document.getElementById('delete-group').style.display="none";
+            iconChacha11.onclick = function () {
+                document.getElementById('popLayer2').style.display = "none";
+                document.getElementById('delete-group').style.display = "none";
             }
-            deleteGroupButton1.onclick = function(){
-                document.getElementById('popLayer2').style.display="none";
-                document.getElementById('delete-group').style.display="none";
+            deleteGroupButton1.onclick = function () {
+                document.getElementById('popLayer2').style.display = "none";
+                document.getElementById('delete-group').style.display = "none";
             }
         }
     });
@@ -560,65 +559,67 @@ $("#navMenu1").click(function () {
 });
 
 //上传图片
-var uploadPhotosPopContentButton =document.getElementById('upload-photos-pop-content-button');
-uploadPhotosPopContentButton.onclick=function(){
-    document.getElementById('upload-photos-pop-content-button').style.display="none";
-    document.getElementById('upload-photos-pop-content-footer').style.display="none";
-    document.getElementById('upload-photos-pop-content-footer2').style.display="block";
+var uploadPhotosPopContentButton = document.getElementById('upload-photos-pop-content-button');
+uploadPhotosPopContentButton.onclick = function () {
+    document.getElementById('upload-photos-pop-content-button').style.display = "none";
+    document.getElementById('upload-photos-pop-content-footer').style.display = "none";
+    document.getElementById('upload-photos-pop-content-footer2').style.display = "block";
 }
-var magId=0;
-function setImagePreviews(){
-    var docobj=document.getElementById("doc"+magId);
-    var dd=document.getElementById("dd");
-    var fileList=docobj.files;
-    for( var i=0;i<fileList.length;i++){
-        magId++;
-        $(dd).append("<div class='img-wrap' imgid='img"+(magId-1)+"'><img id='img"+(magId-1)+"'/><span class='closeimg"+(magId-1)+" close'>×</span><div class='img-button'><p>adhg.jpg</p></div></div>");
-        $(".fileinput-wrap [imgid=img"+(magId-1)+"]")[0].style.position="absolute";
-        $(".fileinput-wrap").append('<input class="inputfile" type="file" name="files" id="doc'+magId+'" imgid="img'+magId+'" onchange="javascript:setImagePreviews()" />');
-        $(".fileinput-wrap").append('<label for="doc'+magId+'" class="btn btn-default footer-button1">继续添加</label> ');
+var magId = 0;
 
-        $(".closeimg"+(magId-1)).on("click",function(e){
-            var id=$(this).parents(".img-wrap").attr("imgid");
+function setImagePreviews() {
+    var docobj = document.getElementById("doc" + magId);
+    var dd = document.getElementById("dd");
+    var fileList = docobj.files;
+    for (var i = 0; i < fileList.length; i++) {
+        magId++;
+        $(dd).append("<div class='img-wrap' imgid='img" + (magId - 1) + "'><img id='img" + (magId - 1) + "'/><span class='closeimg" + (magId - 1) + " close'>×</span><div class='img-button'><p>adhg.jpg</p></div></div>");
+        $(".fileinput-wrap [imgid=img" + (magId - 1) + "]")[0].style.position = "absolute";
+        $(".fileinput-wrap").append('<input class="inputfile" type="file" name="files" id="doc' + magId + '" imgid="img' + magId + '" onchange="javascript:setImagePreviews()" />');
+        $(".fileinput-wrap").append('<label for="doc' + magId + '" class="btn btn-default footer-button1">继续添加</label> ');
+
+        $(".closeimg" + (magId - 1)).on("click", function (e) {
+            var id = $(this).parents(".img-wrap").attr("imgid");
             $(this).parent().remove();
-            $(".fileinput-wrap input[imgid="+id+"]").remove();
+            $(".fileinput-wrap input[imgid=" + id + "]").remove();
         })
-        var imgObjPreview=document.getElementById("img"+(magId-1));
-        if(docobj.files&&docobj.files[i]){
-            imgObjPreview.style.display="block";
-            imgObjPreview.src=window.URL.createObjectURL(docobj.files[i]);
-        }else{
+        var imgObjPreview = document.getElementById("img" + (magId - 1));
+        if (docobj.files && docobj.files[i]) {
+            imgObjPreview.style.display = "block";
+            imgObjPreview.src = window.URL.createObjectURL(docobj.files[i]);
+        } else {
             docobj.select();
-            var imgsrc=document.selection.createRange().text;
-            var localImageId=document.getElementById("img"+(magId-1));
-            try{
-                localIamgeId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localIamgeId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src=imgsrc;
-            }catch(e){
+            var imgsrc = document.selection.createRange().text;
+            var localImageId = document.getElementById("img" + (magId - 1));
+            try {
+                localIamgeId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                localIamgeId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgsrc;
+            } catch (e) {
                 alert("上传图片出错")
                 return false;
             }
-            imgObjPreview.style.display="none";
+            imgObjPreview.style.display = "none";
             document.selection.empty();
         }
     }
     return true;
 }
+
 //时间格式处理，将时间戳转换成yyyy-mm-dd格式
-function fmtDate(obj){
-    var date =  new Date(obj);
-    var y = 1900+date.getYear();
-    var m = "0"+(date.getMonth()+1);
-    var d = "0"+date.getDate();
-    return y+"-"+m.substring(m.length-2,m.length)+"-"+d.substring(d.length-2,d.length);
+function fmtDate(obj) {
+    var date = new Date(obj);
+    var y = 1900 + date.getYear();
+    var m = "0" + (date.getMonth() + 1);
+    var d = "0" + date.getDate();
+    return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
 }
 
 
 //相册排序
-var albumSort=document.getElementById('album-sort');
-var albumSortLi=albumSort.getElementsByTagName('li');
-var albumSortWay="";
-for(var i=0;i<albumSortLi.length;i++) {
+var albumSort = document.getElementById('album-sort');
+var albumSortLi = albumSort.getElementsByTagName('li');
+var albumSortWay = "";
+for (var i = 0; i < albumSortLi.length; i++) {
     albumSortLi[i].onclick = function () {
         albumSortWay = this.innerHTML;
         var url = "";
@@ -639,13 +640,13 @@ for(var i=0;i<albumSortLi.length;i++) {
                 //加载相册 到album页面
                 var h = "";
                 for (var i = 0; i < data.album.length; i++) {
-                    var imageNum=data.imageNum[i];
-                    var albumName=data.album[i].albumName;
-                    var theme=data.album[i].albumType;
-                    var coverImg=data.coverList[i].url;
-                    var createtime=fmtDate(data.album[i].createTime);
+                    var imageNum = data.imageNum[i];
+                    var albumName = data.album[i].albumName;
+                    var theme = data.album[i].albumType;
+                    var coverImg = data.coverList[i].url;
+                    var createtime = fmtDate(data.album[i].createTime);
                     h += "<li class='content-about-li'>"
-                        + "<img src='"+coverImg+"'>"
+                        + "<img src='" + coverImg + "'>"
                         + "<div class='content-about-li-top'>"
                         + "<div class='content-about-li-top-a'>"
                         + "<a class='iconfont icon-huishouzhan1 icon1' title='删除相册'></a>"
@@ -653,9 +654,9 @@ for(var i=0;i<albumSortLi.length;i++) {
                         + "<a id='mod-album2' class='iconfont iconfont icon-point icon1' title='相册信息'></a>"
                         + "</div>"
                         + "<div class='bottun-title'>"
-                        + "<p class='bottun-title-p1'>"+albumName+"</p>"
-//                        + "<p>"+theme+"</p>"
-                        + "<p class='bottun-title-p2'>"+createtime+"<i class='iconfont icon-vertical_line'></i>"+imageNum+"图</p>"
+                        + "<p class='bottun-title-p1'>" + albumName + "</p>"
+                        //                        + "<p>"+theme+"</p>"
+                        + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
                         + "</div>"
                         + "</div>"
                         + "</li>"
@@ -664,9 +665,9 @@ for(var i=0;i<albumSortLi.length;i++) {
                 }
                 $("#myAlbum-content").html(h);
                 var modAlbum2 = document.getElementById('mod-album2');
-                modAlbum2.onclick = function(){
-                	modAlbum.style.display="block";
-                	popLayer2.style.display="block";
+                modAlbum2.onclick = function () {
+                    modAlbum.style.display = "block";
+                    popLayer2.style.display = "block";
                 }
                 for (var i = 0; i < myAlbumLi.length; i++) {
                     myAlbumLi[i].index = i;
@@ -679,15 +680,14 @@ for(var i=0;i<albumSortLi.length;i++) {
                         myAlbumContent2.style.display = "block";
                         open2.style.display = "block";
 
-                        str = (function (i) {
-                            aLi = i;
-                            return aLi;
-                        })(this.index);
-                        aLi = str;
-
-                        var aP = this.getElementsByTagName('p');
-                        aName = aP[0].innerHTML;
-
+                        // str = (function (i) {
+                        //     aLi = i;
+                        //     return aLi;
+                        // })(this.index);
+                        // aLi = str;
+                        //
+                        // var aP = this.getElementsByTagName('p');
+                        aName = this.innerHTML;
                     }
 
                 }
@@ -699,17 +699,18 @@ for(var i=0;i<albumSortLi.length;i++) {
 
 // //时间控件
 // function nextTimes(){
-var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate() ,H = myDate.getHours(), S = myDate.getMinutes();
+var myDate = new Date(), Y = myDate.getFullYear(), M = myDate.getMonth() + 1, D = myDate.getDate(),
+    H = myDate.getHours(), S = myDate.getMinutes();
 var M2 = M + 1;
 //处理月是一位的情况
-if((M + '').length == 1){
+if ((M + '').length == 1) {
     M = '0' + (M + '');
 }
-if((M2 + '').length == 1){
+if ((M2 + '').length == 1) {
     M2 = '0' + (M2 + '');
 }
 //处理日是一位的情况
-if((D + '').length == 1){
+if ((D + '').length == 1) {
     D = '0' + (D + '')
 }
 var curDay = Y + '-' + M + '-' + D;
@@ -717,46 +718,44 @@ var curDay2 = Y + '-' + M2 + '-' + D;
 var hou = H + ':' + S;
 // console.log(curDay2)
 $('#logOutTime').val(curDay + 'T' + hou)
-$("#logOutTime").attr("min",curDay + 'T' + hou)
-$("#logOutTime").attr("max",curDay2 + 'T' + hou)
-
-
+$("#logOutTime").attr("min", curDay + 'T' + hou)
+$("#logOutTime").attr("max", curDay2 + 'T' + hou)
 
 
 //选择上传
-var sendStyleLi1=document.getElementById('send-style-li1');
-var sendStyleLi2=document.getElementById('send-style-li2');
-var logOutTime=document.getElementById('logOutTime');
-var nowTime=document.getElementById('nowTime');
-var nextTime=document.getElementById('nextTime');
+var sendStyleLi1 = document.getElementById('send-style-li1');
+var sendStyleLi2 = document.getElementById('send-style-li2');
+var logOutTime = document.getElementById('logOutTime');
+var nowTime = document.getElementById('nowTime');
+var nextTime = document.getElementById('nextTime');
 //定时上传
-sendStyleLi1.onclick = function(){
-    nextTime.style.display="none";
-    nowTime.style.display="block";
-    logOutTime.style.display="block";
+sendStyleLi1.onclick = function () {
+    nextTime.style.display = "none";
+    nowTime.style.display = "block";
+    logOutTime.style.display = "block";
 }
 $("#nowTime").click(function () {
     $("#upload-form").submit();
 });
 //实时上传
-sendStyleLi2.onclick = function(){
-    nextTime.style.display="block";
-    nowTime.style.display="none";
-    logOutTime.style.display="none";
+sendStyleLi2.onclick = function () {
+    nextTime.style.display = "block";
+    nowTime.style.display = "none";
+    logOutTime.style.display = "none";
 }
 
 $("#button1").click(function () {
     $.ajax({
-        async : false,
+        async: false,
         type: "post",
         url: "/pca/album/albumInfo",
         dataType: "json",
-        success: function (data){
-            uploadPhotosGroup.style.display="block"
+        success: function (data) {
+            uploadPhotosGroup.style.display = "block"
             var h = "";
             for (var i = 0; i < data.album.length; i++) {
-                var albumName=data.album[i].albumName;
-                h += "<li id='batch-button' class='album-sort-li'>"+albumName+"</li>"
+                var albumName = data.album[i].albumName;
+                h += "<li id='batch-button' class='album-sort-li'>" + albumName + "</li>"
             }
             $("#admin-button-menu").html(h);
         }
@@ -766,35 +765,35 @@ $("#button1").click(function () {
 
 
 $("#admin-button-menu").on('mouseenter', function () {
-    $(".album-sort-li").click(function() {
-        if(idArray.length==0){
+    $(".album-sort-li").click(function () {
+        if (idArray.length == 0) {
             alert("您还未选择照片");
-        }else {
+        } else {
 
-            var Uarry=$("#admin-button-menu li");
-            var count=$(this).index();
-            var album=Uarry.eq(count).text();
+            var Uarry = $("#admin-button-menu li");
+            var count = $(this).index();
+            var album = Uarry.eq(count).text();
             $("#choose-group-span").html(album);
-            document.getElementById('choose-group').style.display="block";
+            document.getElementById('choose-group').style.display = "block";
             $(".Create-Album-button2").click(function () {
                 $.ajax({
-                    async : false,
+                    async: false,
                     type: "post",
                     url: "/pca/image/moveImage",
                     //true传递数组
                     traditional: true,
-                    data:{imageId:idArray,albumName:album},
+                    data: {imageId: idArray, albumName: album},
                     dataType: "json",
-                    success: function (data){
-                    if (data){
-                        alert("移动成功")
-                        document.getElementById('choose-group').style.display="none";
-                        window.location.href=window.location.href;
-                    } else{
-                        alert("移动失败")
-                        document.getElementById('choose-group').style.display="none";
-                        window.location.href=window.location.href;
-                    }
+                    success: function (data) {
+                        if (data) {
+                            alert("移动成功")
+                            document.getElementById('choose-group').style.display = "none";
+                            window.location.href = window.location.href;
+                        } else {
+                            alert("移动失败")
+                            document.getElementById('choose-group').style.display = "none";
+                            window.location.href = window.location.href;
+                        }
                     }
 
                 });
@@ -807,27 +806,27 @@ $("#admin-button-menu").on('mouseenter', function () {
 function deleteImg() {
     $.ajax({
         async: false,
-        type:"post",
-        url:"/pca/image/deleteImage",
-        data: {imageId: idArray,aName:aName},
+        type: "post",
+        url: "/pca/image/deleteImage",
+        data: {imageId: idArray, aName: aName},
         traditional: true,
         dataType: "json",
         success: function (data) {
-            if (data){
+            if (data) {
                 alert("删除成功")
                 // window.location.href="myAlbum";
                 window.location.href = window.location.href;
-                }
+            }
 
         }
     });
 }
 
 function downLoadImg() {
-    var arr=new Array();
-    $.each(ImaNameArray,function(index,value){
+    var arr = new Array();
+    $.each(ImaNameArray, function (index, value) {
         //拼接照片的完整路径
-       var imagePath="F:/demos"+value;
+        var imagePath = "F:/demos" + value;
         arr.push(imagePath);
     });
     $("#hidden-input").val(arr);
@@ -841,12 +840,12 @@ var modAlbum = document.getElementById('mod-album');
 var uploadPhoto4 = document.getElementById('uploadPhoto4');
 var closeMod = document.getElementById('close-mod');
 
-uploadPhoto4.onclick = function(){
-	modAlbum.style.display="block";
-	popLayer2.style.display="block";
+uploadPhoto4.onclick = function () {
+    modAlbum.style.display = "block";
+    popLayer2.style.display = "block";
 }
 
-closeMod.onclick = function(){
-	modAlbum.style.display="none";
-	popLayer2.style.display="none";
+closeMod.onclick = function () {
+    modAlbum.style.display = "none";
+    popLayer2.style.display = "none";
 }
