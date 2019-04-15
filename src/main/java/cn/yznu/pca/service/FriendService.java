@@ -146,6 +146,17 @@ public interface FriendService {
 
     List <FriendVerification> test();
 
+    /**
+     *  根据分组名和用户id查找分组id
+     * @param user,groupname
+     */
+    int searchFriendsGroup(User user,String groupname);
 
+
+    /**
+     *  用户id好友id修改分组
+     * @param user,user1,groupname
+     */
+    boolean moveFriendToNewGroup(User user,User user1,int friendsGroupId);
 
 }
