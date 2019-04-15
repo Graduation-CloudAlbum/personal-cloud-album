@@ -253,4 +253,15 @@ public class FriendServiceImpl implements FriendService {
         return  fvListRefUser;
     }
 
+    @Override
+    public int searchFriendsGroup(User user, String groupname) {
+
+        return permissionGroupMapper.searchFriendsGroup(user.getId(),groupname).getId();
+    }
+
+    @Override
+    public boolean moveFriendToNewGroup(User user, User user1, int friendsGroupId) {
+        return userRelationMapper.moveFriendsToNewGroup(user.getId(),user1.getId(),friendsGroupId);
+    }
+
 }
