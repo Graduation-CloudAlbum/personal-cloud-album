@@ -135,17 +135,10 @@
             <div>
                 <div class="Buy-type">黄金套餐<a style="font-size: 15px;">(内包含10个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios1" value="10" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（10元）</a> </label></div>
 
-<<<<<<< HEAD
                 <div class="Buy-type">铂金会员<a style="font-size: 15px;">(内包含50个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios2" value="35" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（30元）</a> </label></div>
 
                 <div class="Buy-type">钻石会员<a style="font-size: 15px;">(内包含100个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 54px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios3" value="50" checked><a style="margin-left: 74px;font-size: 15px;">我要这个（50元）</a> </label></div>
 				<div id="custom" class="buy-con">自定义购买</div>
-=======
-                <div class="Buy-type">铂金套餐<a style="font-size: 15px;">(内包含50个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios2" value="30" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（30元）</a> </label></div>
-
-                <div class="Buy-type">钻石套餐<a style="font-size: 15px;">(内包含100个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 54px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios3" value="50" checked><a style="margin-left: 74px;font-size: 15px;">我要这个（50元）</a> </label></div>
-
->>>>>>> 4043305bfc581dcc3351ecdad2d3b4ef6fcb2be1
             </div>
             
             <div id="Buy-Expansion-button2" class="Buy-Expansion-button2"><p>购买</p></div>
