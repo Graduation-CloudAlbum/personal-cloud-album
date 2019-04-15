@@ -42,29 +42,16 @@
 					<i class="icon iconfont">&#xe626;</i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>
 				</div>
 				<div class="content-wrap">
-					<form id="payForm" action="/pca/alipay/goAlipay/" method="post">
+					<form id="payForm" action="/pca/alipay/goAlipay/" method="post" style="width: 50%;height: 400px;padding: 10px;margin-left: 25%;">
 					    <input type="hidden" id="orderId" name="orderId" value="${order.id }" />
-					    <table>
-					        <tr>
-					            <td>
-					                订单编号: ${order.id}
-					            </td>
-					        </tr>
-					        <td>
-					            产品名称: ${order.productName}
-					        </td>
-					        <tr>
-					        </tr>
-					        <td>
-					            订单价格: ${order.payment}
-					        </td>
-					        <tr>
-					        </tr>
-					        <td>
-					            <input type="submit" value="前往支付宝付款">
-					        </td>
-					        </tr>
-					    </table>
+					    
+					    <div>
+						    <div style="text-align: center;font-size: 20px;">订单编号: ${order.id}</div>
+						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品名称: ${order.productName}</div>
+						    <div style="text-align: centet;text-align: center; margin-top: 54px;">订单价格: ${order.payment}元</div>
+						    <input type="submit" value="前往支付宝付款" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
+					    </div>
+					    
 					    <%--<script>--%>
 					        <%--function pay() {--%>
 					            <%--var orderId = $('input[name=orderId]').val();--%>
