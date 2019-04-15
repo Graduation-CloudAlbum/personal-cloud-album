@@ -172,6 +172,74 @@ Expansion.onclick=function(){
     document.getElementById('popLayer2').style.display="block";
     $("input[type='radio']").removeAttr('checked');
 }
+//自定义购买
+var BuyExpansion2 = document.getElementById('Buy-Expansion2');
+var custom = document.getElementById('custom');
+var standard = document.getElementById('standard');
+var BuyExpansion = document.getElementById('Buy-Expansion');
+custom.onclick=function(){
+	BuyExpansion2.style.display="block";
+	BuyExpansion.style.display="none";
+}
+standard.onclick=function(){
+	BuyExpansion2.style.display="none";
+	BuyExpansion.style.display="block";
+}
+
+
+
+function sum(obj) {
+	var z = document.getElementById("z");  
+	var value=z.value;
+    var min=1;
+    var max=999;
+    if(parseInt(value)<min||parseInt(value)>max){
+        alert('最大输入为800G');
+        z.value=1;
+    }
+	if(z.value>=100){
+		all.value=parseInt(z.value)*0.5;
+	}  
+	else if(z.value>=50){
+		all.value=parseInt(z.value)*0.7;
+	}
+	else{
+		all.value=parseInt(z.value);
+	}
+	
+	
+	
+//	if(a.value!='')
+//	{
+//	y.value=parseInt(a.value);
+//	h.value=parseInt(z.value)-parseInt(a.value);
+//	}
+//	if(a.value!=''&&b.value!='')
+//	{
+//	y.value=parseInt(b.value)+parseInt(a.value);
+//	h.value=parseInt(z.value)-parseInt(a.value)-parseInt(b.value);
+//	}
+//	if(a.value!=''&&b.value!=''&&c.value!='')
+//	{
+//	y.value=parseInt(b.value)+parseInt(a.value)+parseInt(c.value);
+//	h.value=parseInt(z.value)-parseInt(a.value)-parseInt(b.value)-parseInt(c.value);
+//	}
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //获取用户选择的扩容服务
 $("#Buy-Expansion-button2").click(function () {
     var meal=$("input[type='radio']:checked").val();
@@ -182,6 +250,12 @@ var iconChacha6	= document.getElementById('iconChacha6');
 iconChacha6.onclick	=function(){
     document.getElementById('popLayer2').style.display="none";
     document.getElementById('Buy-Expansion').style.display="none";
+
+}
+var iconChacha7	= document.getElementById('iconChacha7');
+iconChacha7.onclick	=function(){
+    document.getElementById('popLayer2').style.display="none";
+    document.getElementById('Buy-Expansion2').style.display="none";
 
 }
 //个人简介 账户安全 空间容量

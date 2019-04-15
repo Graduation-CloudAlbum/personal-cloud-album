@@ -329,6 +329,12 @@
 /***************************************************弹窗3、**************************************************************/
 
 #Buy-Expansion{
+    display: none;
+}
+#Buy-Expansion2{
+    display: none; 
+}
+.Buy-Expansion{
     position:absolute;
     margin: 0 auto;
     top:30%;
@@ -340,7 +346,6 @@
     background: #fff;
     border-radius: 0.5%;
 }
-
 .Buy-Expansion-button1{
     width: 80px;
     background: #fff;
@@ -378,14 +383,18 @@
 }
 .Buy-type{
     padding-left: 12%;
-    color: red;
+    color: #D84C31;
     width: 100%;
     height: 50px;
-    font-size: 25px;
+    font-size: 21px;
 }
 .buy-con{
 	font-size: 12px;
     width: 100%;
-    padding-left: 77.5%;
+    padding-left: 75%;
+    cursor: pointer;
+}
+.buy-con:hover{
+	text-decoration: underline;
 }
 

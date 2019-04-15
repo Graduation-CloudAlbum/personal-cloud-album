@@ -130,17 +130,31 @@
     <!-- ***************************************************弹窗 购买空间***************************************************-->
     <div class="father">
         <div id="Buy-Expansion" class="Buy-Expansion">
-            <div class="popup-header"><h4>购买空间</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
+            <div class="popup-header"><h4>扩充空间</h4><i id="iconChacha6" class="iconfont icon-chacha1"></i></div>
             <div>
                 <div class="Buy-type">黄金会员<a style="font-size: 15px;">(内包含10个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios1" value="10" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（10元）</a> </label></div>
 
-                <div class="Buy-type">铂金会员<a style="font-size: 15px;">(内包含50个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios2" value="30" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（30元）</a> </label></div>
+                <div class="Buy-type">铂金会员<a style="font-size: 15px;">(内包含50个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 62px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios2" value="35" checked><a style="margin-left: 82px;font-size: 15px;">我要这个（30元）</a> </label></div>
 
                 <div class="Buy-type">钻石会员<a style="font-size: 15px;">(内包含100个G的额外使用空间)</a><label class="radio-inline"><input style="margin-left: 54px;top: 0px;" type="radio" name="optionsRadiosinline" id="optionsRadios3" value="50" checked><a style="margin-left: 74px;font-size: 15px;">我要这个（50元）</a> </label></div>
-
+				<div id="custom" class="buy-con">自定义购买</div>
             </div>
-            <div class="buy-con">自定义购买</div>
+            
             <div id="Buy-Expansion-button2" class="Buy-Expansion-button2"><p>购买</p></div>
+        </div>
+        <div id="Buy-Expansion2" class="Buy-Expansion">
+            <div class="popup-header"><h4>扩充空间</h4><i id="iconChacha7" class="iconfont icon-chacha1"></i></div>
+            <div>
+			    <p style="font-size: 20px;text-align: center;margin-bottom: 31px;">总容量：10G</p>
+				<span style=" margin-left: 12%;font-size: 16px;">请输入您想购买的空间大小:</span>
+				<input id="z" type="text" Max="999" onkeyup="sum(this);this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="margin-left: 33px;">G
+			    <input type="text" id="all" style="border:0px solid white;width:25px;margin-left: 17px;">元			
+
+				<div id="standard" class="buy-con" style="margin-top: 18px;">套餐购买</div>
+			    <p style="margin-top: 32px;text-align: center;color: #777;">更多方式，敬请期待...</p>
+			</div>
+            
+            <div id="Buy-Expansion-button" class="Buy-Expansion-button2"><p>购买</p></div>
         </div>
     </div>
 
