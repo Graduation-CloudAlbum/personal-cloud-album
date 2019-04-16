@@ -480,5 +480,20 @@ public class FriendController {
        }
     }
 
+    /**
+     * 用户删除好友
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/deleteFriends")
+    @ResponseBody
+    public ModelAndView  deleteFriends(HttpServletRequest request,
+                                HttpServletResponse response) {
+        User user=(User)request.getSession().getAttribute("user");
+        User user1=(User)request.getSession().getAttribute("user1");
+        System.out.println("用户id"+user.getId()+"朋友id"+user1.getId());
+        ModelAndView mav = new ModelAndView("myFriend");
+        friendService.deleteFriends(user,user1);
+        return mav;
+    }
+
 
 }
