@@ -4,10 +4,7 @@ import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.FriendVerification;
 import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.User;
-import cn.yznu.pca.service.AlbumService;
-import cn.yznu.pca.service.FriendService;
-import cn.yznu.pca.service.ImageService;
-import cn.yznu.pca.service.UserService;
+import cn.yznu.pca.service.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -39,6 +36,9 @@ public class FriendController {
     private UserService userService;
 
     @Autowired
+    private PermissionGroupService permissionGroupService;
+
+    @Autowired
     private FriendService friendService;
 
     @Autowired
@@ -50,7 +50,7 @@ public class FriendController {
     /**
      * 进入我的好友页面查询该用户下所有好友方法
      */
-    @RequestMapping("/myFriend")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/myFriend")
     @ResponseBody
     public ModelAndView myFriend(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
@@ -71,7 +71,7 @@ public class FriendController {
     /**
      * 点击好友分组显示该用户好友分组下的所有朋友
      */
-    @RequestMapping("/selectMyFriend")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectMyFriend")
     @ResponseBody
     public ModelAndView selectMyFriend(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
@@ -91,7 +91,7 @@ public class FriendController {
     /**
      * 点击显示该用户家人分组下的所有朋友
      */
-    @RequestMapping("/selectMyFamily")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectMyFamily")
     @ResponseBody
     public ModelAndView selectMyFamily(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
@@ -111,7 +111,7 @@ public class FriendController {
     /**
      * 点击显示该用户同事分组下的所有朋友
      */
-    @RequestMapping("/selectMyColleague")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectMyColleague")
     @ResponseBody
     public ModelAndView selectMyColleague(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
@@ -131,7 +131,7 @@ public class FriendController {
     /**
      * 点击显示该用户同学分组下的所有朋友
      */
-    @RequestMapping("/selectMyClassmate")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectMyClassmate")
     @ResponseBody
     public ModelAndView selectMyClassmate(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
@@ -151,7 +151,7 @@ public class FriendController {
     /**
      * 点击显示该用户陌生人分组下的所有朋友
      */
-    @RequestMapping("/selectMyStranger")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectMyStranger")
     @ResponseBody
     public ModelAndView selectMyStranger(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
@@ -171,7 +171,7 @@ public class FriendController {
     /**
      * 添加好友，并添加好友验证
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/addFriend")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/addFriend")
     @ResponseBody
     public boolean addFriend(@Param("Validationmessage") String Validationmessage,
                                   @Param("userName") String userName,
@@ -209,7 +209,7 @@ public class FriendController {
     /**
      * 通过好友验证
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/passFriendVerification")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/passFriendVerification")
     @ResponseBody
     public ModelAndView passFriendVerification(@Param("friendVerificationId") int friendVerificationId,
                                                HttpServletRequest request,
@@ -223,7 +223,7 @@ public class FriendController {
     /**
      * 查询该用户下所有朋友验证消息
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/selectAllFriendVerification")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/selectAllFriendVerification")
     @ResponseBody
     public Map<String,Object>  passFriendVerification(HttpServletRequest request,
                                                HttpServletResponse response) {
@@ -240,7 +240,7 @@ public class FriendController {
     /**
      * 创建好友分组
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/createFriendGroup")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/createFriendGroup")
     @ResponseBody
     public boolean createFriendGroup(@Param("groupName") String groupName,
                                                HttpServletRequest request,
@@ -259,7 +259,7 @@ public class FriendController {
     /**
      * 搜索好友
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/searchFriends")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/searchFriends")
     @ResponseBody
     public Map<String,?> searchFriends(@Param("friendName") String friendName,
                                        HttpServletRequest request,
@@ -277,7 +277,7 @@ public class FriendController {
     /**
      * 删除好友分组
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/deleteFriendsGroup")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/deleteFriendsGroup")
     @ResponseBody
     public boolean deleteFriendsGroup(@Param("groupName") String groupName,
                                      HttpServletRequest request,
@@ -331,7 +331,7 @@ public class FriendController {
     /**
      * 点击好友头像进入好友空间存session
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/inFriendSpace2/{friend_id}")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/inFriendSpace2/{friend_id}")
     @ResponseBody
     public ModelAndView  inFriendSpace2(@PathVariable int friend_id,
                                         HttpServletRequest request,
@@ -349,12 +349,14 @@ public class FriendController {
         request.getSession().setAttribute("friend_albumNum",friend_albumNum);
         request.getSession().setAttribute("friend_imageNum2",friend_imageNum2);
         request.getSession().setAttribute("friend_friendNum",friend_friendNum);
-
-
         User user = (User) request.getSession().getAttribute("user");
+        List<?> list = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(list);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         request.getSession().setAttribute("friend_id",friend_id);
         System.out.println("sssssssssss"+ request.getSession().getAttribute("friend_id"));
         mav.addObject("friend_id",friend_id);
+        mav.addObject("friendgroup", friendgroup);
         return  mav;
     }
 
@@ -457,5 +459,26 @@ public class FriendController {
         }
 
     }
+    /**
+     * 用户拒绝好友验证请求
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/moveFriends")
+    @ResponseBody
+    public boolean  moveFriends(@Param("friendsGroupName") String friendsGroupName,
+                                              HttpServletRequest request,
+                                              HttpServletResponse response) {
+        User user=(User)request.getSession().getAttribute("user");
+        User user1=(User)request.getSession().getAttribute("user1");
+        System.out.println("用户id"+user.getId()+"朋友id"+user1.getId()+"移动至的分组名"+friendsGroupName);
+        int friendsGroupId=friendService.searchFriendsGroup(user,friendsGroupName);
+        System.out.println("拿到的分组id"+friendsGroupId);
+        boolean result=friendService.moveFriendToNewGroup(user,user1,friendsGroupId);
+       if(result){
+           return true;
+       }else {
+           return false;
+       }
+    }
+
 
 }

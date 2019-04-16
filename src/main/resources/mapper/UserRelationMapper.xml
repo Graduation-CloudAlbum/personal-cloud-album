@@ -259,7 +259,7 @@
 
   <!--查找我的好友-->
   <select id="selectMyFriend" resultMap="BaseResultMap">
-    select d.nick_name,d.user_icon from
+    select d.nick_name,d.user_icon,d.id from
     user_relation c right join user d on
     (c.user_id_two=d.id) where user_id=#{user_id,jdbcType=INTEGER} and permission_group_id=#{permission_group_id,jdbcType=INTEGER} and status=0
   </select>
@@ -280,6 +280,13 @@
   <delete id="deleteUserRelationTwo">
     DELETE from user_relation where user_id=#{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
   </delete>
+
+  <!--移动好友至默认分组-->
+  <update id="moveFriendsToNewGroup">
+    update user_relation
+    set permission_group_id = #{permission_group_id,jdbcType=INTEGER}
+    where user_id = #{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
+  </update>
 
 
 </mapper>

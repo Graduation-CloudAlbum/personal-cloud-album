@@ -44,25 +44,23 @@
 			<div class="main-container">
 				
 				<div class="content-header">
-					<i class="icon iconfont icon-zhifu">&#xe626;</i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>
+					<i class="icon iconfont icon-zhifu"></i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>
 				</div>
 				<div class="content-wrap">
-					<form action="/pca/alipay/createOrder" method="post" style="width: 50%;height: 400px;padding: 10px;margin-left: 25%;border:1px solid red">
+					<form action="/pca/alipay/createOrder" method="post" style="width: 50%;height: 400px;padding: 10px;margin-left: 25%;">
 					    <input type="hidden" id="productName" name="productName" value="${productName}" />
 					    <input type="hidden" id="payment" name="payment" value="${payment}" />
-						<table>
-							<tr><td style="font-size:20px">产品名称: ${productName}</td></tr>
-						    
-						    <tr><td style="font-size:20px">产品价格: ${payment}</td></tr>
-						    
-						    <tr>
-						        <td>
-						            <input type="submit" value="生成订单" />
-						            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
-						            <%--<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
-						        </td>
-						    </tr>
-						</table>
+					    <div>
+						    <div style="text-align: center;font-size: 20px;">产品名称: 钻石会员(包含100个G的额外使用空间)</div>
+						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品价格: 50元</div>
+						    <input type="submit" value="生成订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
+					    </div>
+					    
+						
+						            
+			            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
+			            <%--<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
+						       
 					</form>
 					<%--<script type="text/javascript">--%>
 					

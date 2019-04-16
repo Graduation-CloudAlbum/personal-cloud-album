@@ -304,6 +304,8 @@ function fmtDate(obj){
 
 
 //移动好友
+
+var moveFriendsButton2 = document.getElementById('move-friends-button2');
 var moveFriendsGroup = document.getElementById('moveFriends-group');
 var moveFriends = document.getElementById('move-friends');
 var friendGroup = document.getElementById('friend-group');
@@ -311,6 +313,7 @@ var friendGroupLi = friendGroup.getElementsByTagName('li');
 var moveFriendsButton1 = document.getElementById('move-friends-button1');
 var iconChacha11 = document.getElementById('iconChacha11');
 var fLi=""
+var friendsGroupName="";
 for(var i=0; i<friendGroupLi.length;i++){
 	friendGroupLi[i].index = i;
 	friendGroupLi[i].onclick = function(){
@@ -322,7 +325,22 @@ for(var i=0; i<friendGroupLi.length;i++){
 			return moveFriendsGroup.innerHTML;
 		})(this.index);
 		moveFriendsGroup.innerHTML=str
+        friendsGroupName=str;
 	}
+}
+
+moveFriendsButton2.onclick = function(){
+    $.ajax({
+        type: "post",
+        url:"/pca/friend/moveFriends",
+        data: {"friendsGroupName": friendsGroupName},
+        dataType: "json",
+        success: function (data) {
+            alert("移动好友成功");
+            moveFriends.style.display="none";
+            popLayer2.style.display="none";
+    }
+    });
 }
 moveFriendsButton1.onclick = function(){
 	moveFriends.style.display="none";

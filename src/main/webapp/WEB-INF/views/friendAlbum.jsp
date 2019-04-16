@@ -61,9 +61,9 @@
 						<li class="content-menu-li group-menu" href="<%=basePath%>/friend/myFriend">
 							<a>移动好友</a>
 							<ul id="friend-group" class="friend-group">
-								<li class="friend-group-li">同事</li>
-								<li class="friend-group-li">家人</li>
-								<li class="friend-group-li">陌生人</li>
+								<c:forEach items="${friendgroup}" var="friendgroup">
+									<li class="friend-group-li">${friendgroup.permissionType}</li>
+								</c:forEach>
 							</ul>
 						</li>
 						<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
@@ -153,7 +153,7 @@
 		<div id="move-friends" class="accept-friends">
 			<div class="popup-header"><h4>移动好友</h4><i id="iconChacha11" class="iconfont icon-chacha1"></i></div>
 			<div id="move-friends-content" class="select-first1-ok">确认移动好友至<span id="moveFriends-group">陌生人</span>?</div>		
-			<div id="move-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
+			<div id="move-friends-button1" class="default-button1"><p>取消</p></div><div id="move-friends-button2" class="default-button2"><p>确定</p></div>
 		</div>
 <!--/******************************************************************************删除好友**********************************************/-->
 		<div id="delete-friends-pop" class="accept-friends">
@@ -161,24 +161,13 @@
 			<div id="delete-friends-content" class="select-first1-ok">确认删除好友?</div>		
 			<div id="delete-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
 		</div>
-
-
-
-
-
-
-
-
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>
-
-
-
 	</div>
-
-
-	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friendAlbum.js"></script>
+	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
+	<%--<script src="<%=basePath%>/resource/js/zoom.min.js"></script>--%>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>
 </html>

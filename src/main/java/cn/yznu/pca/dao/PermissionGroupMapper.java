@@ -30,4 +30,8 @@ public interface PermissionGroupMapper {
     int updateByPrimaryKey(PermissionGroup record);
 
     boolean deleteFriendGroup(@Param("id") int id);
+
+    PermissionGroup searchFriendsGroup(@Param("user_id") int user_id,@Param("permission_type") String permission_type);
+
+    boolean deleteFriendGroup(@Param("user_id") int user_id,@Param("user_id_two") int user_id_two);
 }
