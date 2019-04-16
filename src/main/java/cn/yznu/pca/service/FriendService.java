@@ -159,4 +159,11 @@ public interface FriendService {
      */
     boolean moveFriendToNewGroup(User user,User user1,int friendsGroupId);
 
+    /**
+     *  用户删除好友
+     * @param user,user1
+     */
+    boolean deleteFriends(User user,User user1);
+
+
 }

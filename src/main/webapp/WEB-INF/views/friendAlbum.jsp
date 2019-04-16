@@ -48,7 +48,7 @@
 			<div class="main-container">
 				
 				<div class="content-header">
-					<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span >江川的相册空间</span></a>
+					<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span ><%=user1.getNickName()%>的相册空间</span></a>
 				</div>
 				<ul class="content-menu" >
 
@@ -67,7 +67,7 @@
 							</ul>
 						</li>
 						<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
-						<li class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>返回</a></li>
+						<li class="content-menu-li" src="<%=basePath%>/friend/myFriend"><a>返回</a></li>
 				</ul>
 
 				<div class="content-wrap">
@@ -137,9 +137,9 @@
 			</div>
 		</div>	
 
-<!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
+ <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
 		<div id="accept-friends" class="accept-friends">
-			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha8" class="iconfont icon-chacha1"></i></div>
+			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha30" class="iconfont icon-chacha1"></i></div>
 			<div id="accept-friends-left" class="select-first1">我的好友分组</div>
 			<div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
 			<ul id="accept-friends-group" class="menu-group1">
@@ -159,7 +159,7 @@
 		<div id="delete-friends-pop" class="accept-friends">
 			<div class="popup-header"><h4>删除好友</h4><i id="iconChacha12" class="iconfont icon-chacha1"></i></div>
 			<div id="delete-friends-content" class="select-first1-ok">确认删除好友?</div>		
-			<div id="delete-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
+			<div id="delete-friends-button1" class="default-button1"><p>取消</p></div><div id="delete-friends-button2" class="default-button2"><p>确定</p></div>
 		</div>
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>

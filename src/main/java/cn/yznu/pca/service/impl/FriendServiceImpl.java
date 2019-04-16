@@ -264,4 +264,9 @@ public class FriendServiceImpl implements FriendService {
         return userRelationMapper.moveFriendsToNewGroup(user.getId(),user1.getId(),friendsGroupId);
     }
 
+    @Override
+    public boolean deleteFriends(User user, User user1) {
+        return userRelationMapper.deleteUserRelation(user.getId(),user1.getId());
+    }
+
 }
