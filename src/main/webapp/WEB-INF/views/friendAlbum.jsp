@@ -137,15 +137,15 @@
 			</div>
 		</div>	
 
-<!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
+ <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
 		<div id="accept-friends" class="accept-friends">
-			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha8" class="iconfont icon-chacha1"></i></div>
+			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha30" class="iconfont icon-chacha1"></i></div>
 			<div id="accept-friends-left" class="select-first1">我的好友分组</div>
 			<div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
 			<ul id="accept-friends-group" class="menu-group1">
-				<c:forEach items="${friendgroup}" var="friendgroup">
-					<li class="menu-group-li1">${friendgroup.permissionType}</li>
-				</c:forEach>
+				<li class="menu-group-li1">陌生人</li>
+				<li class="menu-group-li1">家人</li> 
+				<li class="menu-group-li1">同事</li>
 			</ul>
 			<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
 		</div>
