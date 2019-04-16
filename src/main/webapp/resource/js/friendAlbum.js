@@ -304,7 +304,7 @@ function fmtDate(obj){
 
 
 //移动好友
-
+var deleteFriendsButton2 = document.getElementById('delete-friends-button2');
 var moveFriendsButton2 = document.getElementById('move-friends-button2');
 var moveFriendsGroup = document.getElementById('moveFriends-group');
 var moveFriends = document.getElementById('move-friends');
@@ -328,7 +328,12 @@ for(var i=0; i<friendGroupLi.length;i++){
         friendsGroupName=str;
 	}
 }
-
+//删除好友
+deleteFriendsButton2.onclick = function(){
+    window.location.href="/pca/friend/deleteFriends";
+    alert("删除成功！");
+}
+//移动好友
 moveFriendsButton2.onclick = function(){
     $.ajax({
         type: "post",
