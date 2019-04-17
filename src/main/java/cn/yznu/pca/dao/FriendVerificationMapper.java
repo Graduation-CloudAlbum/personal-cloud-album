@@ -40,6 +40,10 @@ public interface FriendVerificationMapper {
 
     boolean deleteFriendVerifications(int id);
 
+    boolean passfriendVerifications(int id);
+
+    FriendVerification seachFriendIdByFriendVerifications(int id);
+
 
 
 }
