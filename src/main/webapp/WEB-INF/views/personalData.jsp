@@ -9,6 +9,7 @@
 <%@ page import="cn.yznu.pca.model.User" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -191,17 +192,17 @@
         </div>
     </div>
     <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
-		<div id="accept-friends" class="accept-friends">
-			<div class="popup-header"><h4>陌生人</h4><i id="iconChacha30" class="iconfont icon-chacha1"></i></div>
-			<div id="accept-friends-left" class="select-first1">我的好友分组</div>
-			<div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
-			<ul id="accept-friends-group" class="menu-group1">
-				<li class="menu-group-li1">陌生人</li>
-				<li class="menu-group-li1">家人</li> 
-				<li class="menu-group-li1">同事</li>
-			</ul>
-			<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
-		</div>
+    <div id="accept-friends" class="accept-friends">
+        <div class="popup-header"><h4>将好友添加至--</h4><i id="iconChacha30" class="iconfont icon-chacha1"></i></div>
+        <div id="accept-friends-left" class="select-first1">我的好友分组</div>
+        <div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
+        <ul id="accept-friends-group" class="menu-group1">
+            <c:forEach items="${friendgroup}" var="friendgroup">
+                <li class="menu-group-li1">${friendgroup.permissionType}</li>
+            </c:forEach>
+        </ul>
+        <div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div id="accept-friends-button2" class="default-button2"><p>确定</p></div>
+    </div>
 		
     <div id="popLayer" class="popLayer"></div>
     <div id="popLayer2" class="popLayer2"></div>
