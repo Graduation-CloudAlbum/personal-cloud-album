@@ -596,6 +596,17 @@ html,body{
 	line-height: 35px;
 }
 
+/********************************buttom********************************************/
+
+#move-friends{
+	display: none;
+}
+#delete-friends-pop{
+	display: none;
+}
+#delete-album{
+	display: none;
+}
 
 
 
