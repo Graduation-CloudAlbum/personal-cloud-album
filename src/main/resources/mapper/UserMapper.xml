@@ -332,7 +332,8 @@
   <select id="searchFriends" resultMap="BaseResultMap">
     select *
     from user
-    where nick_name = #{nickName,jdbcType=VARCHAR} or user_name=#{nickName,jdbcType=VARCHAR}
+    where nick_name  LIKE "%"#{nickName}"%" or user_name LIKE "%"#{nickName}"%"
+
   </select>
 
   <select id="getFriendInformation" resultType="cn.yznu.pca.model.User">
