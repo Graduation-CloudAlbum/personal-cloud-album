@@ -270,6 +270,10 @@ html,body{
 	line-height: 35px;
 	border-left: 3px solid #D84C31;
 	width: 250px;
+	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .popup-header i{
 	font-size: 16px;

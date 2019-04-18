@@ -253,14 +253,14 @@ $().ready(function getAlbum() {
                     myAlbumContent2.style.display = "block";
                     open2.style.display = "block";
 
-                    str = (function (i) {
-                        aLi = i;
-                        return aLi;
-                    })(this.index);
-                    aLi = str;
-
-                    var aP = this.getElementsByTagName('p');
-                    aName = aP[0].innerHTML;
+                    // str = (function (i) {
+                    //     aLi = i;
+                    //     return aLi;
+                    // })(this.index);
+                    // aLi = str;
+                    //
+                    // var aP = this.getElementsByTagName('p');
+                    aName = this.innerHTML;
 
                 }
 

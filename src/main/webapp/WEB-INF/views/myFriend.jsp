@@ -194,8 +194,8 @@
     <div id="popLayer2" class="popLayer2"></div>
 
 </div>
-
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+<%--<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>--%>
 <script type="text/javascript" src="<%=basePath%>/resource/js/addfriend.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myFriend.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>

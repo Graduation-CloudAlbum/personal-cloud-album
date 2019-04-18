@@ -58,11 +58,22 @@ friendsVerification.onclick = function(){
             $("#receiveFriendVerifications").html(h);
             //发送的验证消息
             var f = "";
+            var status=[];
             for (var i = 0; i < data.friendVerificationsTwo.length; i++) {
+            	if(data.friendVerificationsTwo[i].state==0){
+            		status[i]="未审核";
+            	}
+            	else if(data.friendVerificationsTwo[i].state==1){
+            		status[i]="通过";
+            	}
+            	else if(data.friendVerificationsTwo[i].state==2){
+            		status[i]="拒绝";
+            	}
+            	
                 f += "<tr>"
                     +" <td>"+data.friendVerificationsTwo[i].friend.nickName+"</td>"
                     + "<td>"+data.friendVerificationsTwo[i].note+"</td>"
-                    +"<td>"+data.friendVerificationsTwo[i].state+"</td>"
+                    +"<td>"+status[i]+"</td>"
                     + "<td><button class='btn  delete' onclick='deleteFriendVerifications(\""+data.friendVerificationsTwo[i].id+"\")'>删除</button></td>"
                     +"</tr>"
             }

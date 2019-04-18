@@ -4,7 +4,7 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    request.getSession().getAttribute("user");
+    //request.getSession().getAttribute("user");
     request.setCharacterEncoding("UTF-8");
     User user= (User) request.getSession().getAttribute("user");
 %>
@@ -51,9 +51,9 @@
 					    <input type="hidden" id="productName" name="productName" value="${productName}" />
 					    <input type="hidden" id="payment" name="payment" value="${payment}" />
 					    <div>
-						    <div style="text-align: center;font-size: 20px;">产品名称: 钻石会员(包含100个G的额外使用空间)</div>
-						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品价格: 50元</div>
-						    <input type="submit" value="生成订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
+						    <div style="text-align: center;font-size: 20px;">产品名称: ${productName}</div>
+						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
+						    <input type="submit" value="生成订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
 					    </div>
 					    
 						
@@ -144,8 +144,8 @@
 
 	</div>
 
-
-	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+<%--	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>--%>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 	
 	

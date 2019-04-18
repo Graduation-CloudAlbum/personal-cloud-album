@@ -60,8 +60,8 @@
         <a href="/pca/user/getpass"  class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>
     </div>
 </div>
-
-<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>
+<%--<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>--%>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/login.js" ></script>
 </body>
 

@@ -14,7 +14,7 @@ $("#register").click( function (){
                     alert("注册成功，请进入邮箱激活账号");
                     window.location.href="/pca/user/login";
                 } else {
-                    alert("注册失败,该邮箱已被注册");
+                    alert("注册失败,请重试");
                     $("#i-input-password").val("");
                     $("#i-input-email").val("");
                 }
