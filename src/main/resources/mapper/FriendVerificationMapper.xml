@@ -129,11 +129,22 @@
     update friend_verification SET state=2 where id=#{id,jdbcType=INTEGER}
   </update>
 
+  <!--通过好友请求-->
+  <update id="passfriendVerifications">
+    update friend_verification SET state=1 where id=#{id,jdbcType=INTEGER}
+  </update>
+
   <!--删除已发送的好友请求-->
   <delete id="deleteFriendVerifications">
     DELETE  from  friend_verification where id=#{id,jdbcType=INTEGER}
   </delete>
 
+
+  <!--通过验证消息查找好友id-->
+  <select id="seachFriendIdByFriendVerifications"  resultMap="BaseResultMap">
+    select * from
+    friend_verification  where id=#{id,jdbcType=INTEGER}
+  </select>
 
 
 

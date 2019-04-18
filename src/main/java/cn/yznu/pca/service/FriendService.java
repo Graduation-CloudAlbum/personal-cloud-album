@@ -111,7 +111,7 @@ public interface FriendService {
 
     /**
      *  删除好友分组
-     * @param user,groupname
+     * @param
      */
     boolean deleteFriendsGroup(int defaultint,int permissionGroupId);
 
@@ -138,7 +138,7 @@ public interface FriendService {
 
 
     /**
-     *  拒绝好友请求
+     *  删除好友请求
      * @param friendVerifications_id
      */
     boolean deleteFriendVerifications(int friendVerifications_id);
@@ -165,5 +165,15 @@ public interface FriendService {
      */
     boolean deleteFriends(User user,User user1);
 
+    /**
+     *  通过用户id和好友id更新好友表状态
+     * @param user_id_two,user_id
+     */
+    boolean acceptfriendVerifications(int user_id,int user_id_two,int friendsGroup_id,int friendVerifications_id_Two);
 
+    /**
+     *  通过用户id和好友id更新好友表状态
+     * @param friendVerifications_id_Two
+     */
+    int seachFriendIdByFriendVerifications(int friendVerifications_id_Two);
 }

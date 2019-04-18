@@ -2,6 +2,7 @@ package cn.yznu.pca.controller;
 
 import cn.yznu.pca.model.RecycleBin;
 import cn.yznu.pca.model.User;
+import cn.yznu.pca.service.FriendService;
 import cn.yznu.pca.service.RecycleBinService;
 import cn.yznu.pca.utils.MD5Util;
 import com.alibaba.fastjson.JSON;
@@ -28,6 +29,8 @@ import java.util.List;
 public class RecycleBinController {
     @Autowired
     private RecycleBinService recycleBinService;
+    @Autowired
+    private FriendService friendService;
 
     /**
      * 进入回收站页面
@@ -40,6 +43,10 @@ public class RecycleBinController {
         List<RecycleBin> recycleBins=recycleBinService.getRecycleBin(user.getId());
         String jsonArray = JSON.toJSONString(recycleBins);
         JSONArray allrecycleBins = JSONArray.parseArray(jsonArray);
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray2 = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray2);
+        request.setAttribute("friendgroup", friendgroup);
         mav.addObject("allrecycleBins", allrecycleBins);
         mav.addObject("recycleBins",recycleBins);
         return mav;

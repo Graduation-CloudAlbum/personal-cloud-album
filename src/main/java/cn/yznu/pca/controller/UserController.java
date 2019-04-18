@@ -9,6 +9,8 @@ import cn.yznu.pca.utils.FormatUtil;
 import cn.yznu.pca.utils.MD5Util;
 import cn.yznu.pca.utils.MailUtil;
 import cn.yznu.pca.utils.Sid;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
@@ -81,6 +83,10 @@ public class UserController {
         int imageNum=imageService.getAllImageNum(id);
         List list = friendService.selectAllMyFriend(user);
         int friendNum=list.size();
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        request.setAttribute("friendgroup", friendgroup);
         request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
         request.getSession().setAttribute("imageNum",imageNum);
@@ -88,17 +94,32 @@ public class UserController {
         return "personalData";
     }
     @RequestMapping("/myAlbum")
-    public  String myAlbum(){
+    public  String myAlbum(HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        request.setAttribute("friendgroup", friendgroup);
         return "myAlbum";
     }
 
     @RequestMapping("/myFriend")
-    public  String myFriend(){
+    public  String myFriend(HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        request.setAttribute("friendgroup", friendgroup);
         return "myFriend";
     }
 
     @RequestMapping("/recycleBin")
-    public  String recycleBin(){
+    public  String recycleBin(HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        request.setAttribute("friendgroup", friendgroup);
         return "recycleBin";
     }
 

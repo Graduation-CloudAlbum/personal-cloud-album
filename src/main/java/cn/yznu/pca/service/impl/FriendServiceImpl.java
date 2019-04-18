@@ -269,4 +269,18 @@ public class FriendServiceImpl implements FriendService {
         return userRelationMapper.deleteUserRelation(user.getId(),user1.getId());
     }
 
+    @Override
+    public boolean acceptfriendVerifications(int user_id, int user_id_two, int friendsGroup_id,int friendVerifications_id_Two) {
+        userRelationMapper.updateUserRelationStatus(user_id,user_id_two);
+        userRelationMapper.updateUserRelationStatus(user_id_two,user_id);
+        userRelationMapper.moveFriendsToNewGroup(user_id,user_id_two,friendsGroup_id);
+        friendVerificationMapper.passfriendVerifications(friendVerifications_id_Two);
+        return false;
+    }
+
+    @Override
+    public int seachFriendIdByFriendVerifications(int friendVerifications_id_Two) {
+        return friendVerificationMapper.seachFriendIdByFriendVerifications(friendVerifications_id_Two).getUserId();
+    }
+
 }

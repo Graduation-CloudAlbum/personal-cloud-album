@@ -288,5 +288,11 @@
     where user_id = #{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
   </update>
 
+  <!--修改好友表状态-->
+  <update id="updateUserRelationStatus">
+    update user_relation
+    set status = 0
+    where user_id = #{user_id,jdbcType=INTEGER} and user_id_two=#{user_id_two,jdbcType=INTEGER}
+  </update>
 
 </mapper>

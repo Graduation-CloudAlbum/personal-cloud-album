@@ -492,8 +492,32 @@ public class FriendController {
         System.out.println("用户id"+user.getId()+"朋友id"+user1.getId());
         ModelAndView mav = new ModelAndView("myFriend");
         friendService.deleteFriends(user,user1);
+        friendService.deleteFriends(user1,user);
         return mav;
     }
+
+    /**
+     * 用户删除好友
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/acceptFriendsInformation")
+    @ResponseBody
+    public boolean  acceptFriendsInformation(@Param("acceptGroupName") String acceptGroupName,@Param("friendVerifications_id_Two") int friendVerifications_id_Two,HttpServletRequest request,
+                                       HttpServletResponse response) {
+        User user=(User)request.getSession().getAttribute("user");
+        int group_id=friendService.searchFriendsGroup(user,acceptGroupName);
+        System.out.println("分组id为"+group_id);
+        if(group_id!=0){
+            int friend_id=friendService.seachFriendIdByFriendVerifications(friendVerifications_id_Two);
+            System.out.println("好友id为"+friend_id);
+            friendService.acceptfriendVerifications(user.getId(),friend_id,group_id,friendVerifications_id_Two);
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
 
 }

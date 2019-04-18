@@ -39,4 +39,7 @@ public interface UserRelationMapper {
     boolean deleteUserRelation(@Param("user_id") int user_id,@Param("user_id_two") int user_id_two);
 
     boolean moveFriendsToNewGroup(@Param("user_id") int user_id,@Param("user_id_two") int user_id_two,@Param("permission_group_id") int permission_group_id);
+
+    boolean updateUserRelationStatus(@Param("user_id") int user_id,@Param("user_id_two") int user_id_two);
+
 }
