@@ -131,7 +131,7 @@ public class ImageController {
             for (int i = 0; i < pictureFile.length - 1; i++) {
                 MultipartFile file = pictureFile[i];
                 //设置本地保存路径
-                String localPath = "F:\\demos\\upload\\";
+                String localPath = "D:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
                 //获取照片大小,以B(字节)为单位保存
@@ -181,7 +181,7 @@ public class ImageController {
                 MultipartFile file = pictureFile[i];
 
                 //设置本地保存路径
-                String localPath = "F:\\demos\\upload\\";
+                String localPath = "D:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
                 String name = UUID.randomUUID().toString().replaceAll("-", "");
                 //获取照片大小,以B(字节)为单位保存

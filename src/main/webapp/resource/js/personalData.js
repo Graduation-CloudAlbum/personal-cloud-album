@@ -225,22 +225,15 @@ function sum(obj) {
 //	h.value=parseInt(z.value)-parseInt(a.value)-parseInt(b.value)-parseInt(c.value);
 //	}
  }
+//自定义购买
+function purchase(){
+    var meal=$("z").val();
+    window.location.href="/pca/alipay/goConfirm/"+meal;
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//获取用户选择的扩容服务
+//获取用户选择的套餐
 $("#Buy-Expansion-button2").click(function () {
     var meal=$("input[type='radio']:checked").val();
     window.location.href="/pca/alipay/goConfirm/"+meal;

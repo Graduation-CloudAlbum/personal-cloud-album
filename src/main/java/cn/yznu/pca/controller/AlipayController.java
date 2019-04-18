@@ -56,20 +56,24 @@ public class AlipayController {
         //@Param("productName")String productName, @Param("payment")String payment,
         System.out.println("选择的套餐是:"+meal);
         int meal1=10;
-        int meal2=30;
+        int meal2=35;
+        int meal3=50;
         String productName="";
         int payment=0;
 
         if (Integer.parseInt(meal)==meal1){
-             productName="黄金会员(包含10个G的额外使用空间)";
+             productName="黄金套餐(包含10个G的额外使用空间)";
              payment=10;
         }else if(Integer.parseInt(meal)==meal2) {
-             productName="铂金会员(包含50个G的额外使用空间)";
-             payment = 30;
+             productName="铂金套餐(包含50个G的额外使用空间)";
+             payment = 35;
 
-        }else{
-             productName="钻石会员(包含100个G的额外使用空间)";
+        }else if (Integer.parseInt(meal)==meal3){
+             productName="钻石套餐(包含100个G的额外使用空间)";
              payment=50;
+        }else {
+            productName="自定义购买额外使用空间";
+            payment=50;
         }
         //request.getSession().setAttribute("productName",productName);
         //request.getSession().setAttribute("payment",payment);
