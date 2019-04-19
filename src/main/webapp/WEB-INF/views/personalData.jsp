@@ -151,7 +151,7 @@
 			    <p style="font-size: 20px;text-align: center;margin-bottom: 31px;">总容量：10G</p>
 				<span style=" margin-left: 12%;font-size: 16px;">请输入您想购买的空间大小:</span>
 				<input id="z" type="text" Max="999" value="1" onkeyup="sum(this);this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="margin-left: 33px;">G
-			    <input type="text" id="all" style="border:0px solid white;width:25px;margin-left: 17px;">元			
+			    <input type="text" id="all" value="1" style="border:0px solid white;width:25px;margin-left: 17px;">元
 
 				<div id="standard" class="buy-con" style="margin-top: 18px;">套餐购买</div>
 			    <p style="margin-top: 32px;text-align: center;color: #777;">更多方式，敬请期待...</p>

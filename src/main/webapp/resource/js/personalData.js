@@ -228,9 +228,10 @@ function sum(obj) {
 function purchase(){
     var z = document.getElementById("z");
     var all = document.getElementById("all");
-    var meal=z.value;
-    var fee=all.value;
-    alert(meal+fee);
+    // var meal=z.value;
+    // var fee=all.value;
+    var meal=z.value+"&"+all.value;
+    alert(meal);
     //window.location.href="/pca/alipay/goConfirm/"+meal&fee;
 }
 
