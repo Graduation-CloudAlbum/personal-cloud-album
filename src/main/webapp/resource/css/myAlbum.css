@@ -680,12 +680,7 @@
     color: #FFF;
     cursor: pointer;
 }
-.mod-album .cover-link:hover .cover-bg, .mod-album .cover-link:hover .cover-bg-txt {
-    display: block;
-}
-.mod-album .cover-link:hover .num-bg-txt, .mod-album .cover-link:hover .num-bg{
-    display: none;
-}
+
 
 
 
@@ -712,6 +707,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    padding-left: 12px;
 }
 .mod-album .info .intro {
     height: 137px;
@@ -723,7 +719,10 @@
     color: #666;
 }
 .lh24 {
-    line-height: 24px;
+    height: 58px;
+    overflow: hidden;
+    text-indent: 14px;
+    margin-top: 30px;
 }
 .mod-album .info .time {
     padding-top: 5px;
@@ -765,22 +764,25 @@
 	display: none;
 }
 
-.mode-title-p{    margin-top: 30px;}
-.mode-theme-p{    margin-top: 10px;}
-.descp{
-	font-size: 14px;
-    color: #333;
-}
+.mode-title-p{    margin-top: 40px;}
+.mode-theme-p{    margin-top: 20px;}
 .mode-album-button2{
 	 border: 1px solid #00A8D8;
     position: absolute;
-    right: 20px;
+    right: 108px;
     padding: 5px 13px;
     bottom: 73px;
     background: #00A8D8;
     color:#fff;
+    cursor: pointer;
 }
-
+.mod-radio{
+	margin-top:30px;
+}
+.quanxian{
+	color: #333;
+    margin-left: 88px;
+}
 
 
 

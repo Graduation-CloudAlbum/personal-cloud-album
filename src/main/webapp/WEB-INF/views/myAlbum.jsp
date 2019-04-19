@@ -249,22 +249,20 @@
 					<img class="pic" src="../img/Album-cover1.jpg">
 					<span class="num-bg op30 bdRc"></span>
 					<span class="num-bg-txt f16">0</span>
-					<span class="cover-bg op60"></span>
-					<span class="cover-bg-txt f16">更换封面</span>
+					
 				</a>
 			</div>
 			<div class="info">
 				<div id="mod-text" class="text">
 					<p class="title">gjhj</p>
-					<p style="padding-left: 13px;">主题</p>
-					<p class="intro clrB6 lh24">暂无相册简介</p>
+					<p style="padding-left: 13px; margin-top: 40px;">主题：家人</p>
+					<p class="intro clrB6 lh24">权限：公开</p>
 					<p class="time">2019-03-08 12:00:00</p>
 				</div>
 				<div id="mod-text2" class="text">
 					<p class="mode-title-p">标题：<input type="text" id="mode-title" class="mode-title" value=""></p>
 					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value=""></p>
-					<span class="descp">简介：</span><textarea id="mode-desc" style="margin-top: 10px;" rows="4" cols="22" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name="">我的世界我做主。</textarea>
-					<div class="create-radio">
+					<div class="mod-radio">权限：
 			          <input type="radio" name="identity2" value="公开" checked="checked" />公开
 			          <input type="radio" name="identity2" value="私有" />私有
 			        </div>

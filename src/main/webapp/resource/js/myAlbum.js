@@ -233,7 +233,7 @@ $().ready(function getAlbum() {
                     + "<div class='bottun-title'>"
                     + "<p class='bottun-title-p1'>" + albumName + "</p>"
                     + "<p class='theme'>("+theme+")</p>"
-                    + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
+                    + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图<span class='icon iconfont icon-bukejian quanxian'></span></p>"
                     + "</div>"
                     + "</div>"
                     + "</li>"
