@@ -256,6 +256,7 @@
 			<div class="info">
 				<div id="mod-text" class="text">
 					<p class="title">gjhj</p>
+					<p style="padding-left: 13px;">主题</p>
 					<p class="intro clrB6 lh24">暂无相册简介</p>
 					<p class="time">2019-03-08 12:00:00</p>
 				</div>
