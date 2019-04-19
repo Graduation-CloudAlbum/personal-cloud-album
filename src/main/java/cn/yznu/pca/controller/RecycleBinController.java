@@ -46,6 +46,8 @@ public class RecycleBinController {
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray2 = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         mav.addObject("allrecycleBins", allrecycleBins);
         mav.addObject("recycleBins",recycleBins);
