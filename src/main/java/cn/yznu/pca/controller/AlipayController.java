@@ -3,9 +3,12 @@ package cn.yznu.pca.controller;
 import cn.yznu.pca.model.PurchaseRecord;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.model.UserSpace;
+import cn.yznu.pca.service.FriendService;
 import cn.yznu.pca.service.PurchaseRecordService;
 import cn.yznu.pca.service.UserSpaceService;
 import cn.yznu.pca.utils.*;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.Product;
@@ -21,10 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yangbaiwan
@@ -41,6 +41,10 @@ public class AlipayController {
 
     @Autowired
     private UserSpaceService userSpaceService;
+
+
+    @Autowired
+    private FriendService friendService;
 
     @Autowired
     private Sid sid;
@@ -82,6 +86,15 @@ public class AlipayController {
         mv.addObject("payment", payment);
         System.out.println("商品名是："+productName);
         System.out.println("价格是："+payment);
+        //好友验证
+        User user= (User) request.getSession().getAttribute("user");
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
+        request.setAttribute("friendgroup", friendgroup);
         return mv;
     }
 
@@ -136,7 +149,7 @@ public class AlipayController {
      * @throws Exception
      */
     @RequestMapping("/goPay/{orderId}")
-    public ModelAndView goPay(@PathVariable("orderId") String orderId) throws Exception {
+    public ModelAndView goPay(HttpServletRequest request,@PathVariable("orderId") String orderId) throws Exception {
         System.out.println("goPay接收到的订单id是："+orderId);
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
         System.out.println(orderId);
@@ -145,6 +158,14 @@ public class AlipayController {
         System.out.println("商品是："+order.getProductName());
         System.out.println("金额是："+order.getPayment());
         ModelAndView mv = new ModelAndView("goPay");
+        User user= (User) request.getSession().getAttribute("user");
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
+        request.setAttribute("friendgroup", friendgroup);
         mv.addObject("order", order);
         return mv;
     }
