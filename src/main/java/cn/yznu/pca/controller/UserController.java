@@ -86,6 +86,9 @@ public class UserController {
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("albumNum",albumNum);
@@ -99,6 +102,9 @@ public class UserController {
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         return "myAlbum";
     }
@@ -109,6 +115,9 @@ public class UserController {
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         return "myFriend";
     }
@@ -119,6 +128,9 @@ public class UserController {
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         return "recycleBin";
     }
