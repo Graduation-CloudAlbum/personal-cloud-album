@@ -135,7 +135,9 @@ public class AlipayController {
         order.setProductName(productName);
         order.setPayment(payment);
         purchaseRecordService.saveOrder(order);
-
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         ModelAndView mv = new ModelAndView("goPay");
         mv.addObject("order", order);
 
