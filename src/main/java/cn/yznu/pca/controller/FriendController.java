@@ -350,6 +350,9 @@ public class FriendController {
         request.getSession().setAttribute("friend_imageNum2",friend_imageNum2);
         request.getSession().setAttribute("friend_friendNum",friend_friendNum);
         User user = (User) request.getSession().getAttribute("user");
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        System.out.println("验证消息的个数"+newFriendNumber);
+        request.setAttribute("newFriendNumber", newFriendNumber);
         List<?> list = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
