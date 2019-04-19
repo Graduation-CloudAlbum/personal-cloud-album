@@ -135,9 +135,14 @@ public class AlipayController {
         order.setProductName(productName);
         order.setPayment(payment);
         purchaseRecordService.saveOrder(order);
+        //好友验证
+        List<?> friendgrouplist = friendService.selectFriendGroup(user);
+        String jsonArray = JSON.toJSONString(friendgrouplist);
+        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         int newFriendNumber=friendService.searchNewFriend(user.getId());
         System.out.println("验证消息的个数"+newFriendNumber);
         request.setAttribute("newFriendNumber", newFriendNumber);
+        request.setAttribute("friendgroup", friendgroup);
         ModelAndView mv = new ModelAndView("goPay");
         mv.addObject("order", order);
 
