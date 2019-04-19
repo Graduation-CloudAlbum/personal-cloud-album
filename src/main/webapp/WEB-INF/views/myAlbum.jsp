@@ -32,8 +32,8 @@
        <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li">
             	<span class="icon iconfont my-xiaoxi">&#xe629;</span>
-            	我的消息${newFriendNumber }
-            	<input type="text" id="friendNumber" class="friendNumber" value="1234">
+            	我的消息
+            	<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }">
             </div>
             <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
             <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
