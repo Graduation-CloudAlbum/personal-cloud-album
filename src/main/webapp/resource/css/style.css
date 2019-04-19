@@ -612,6 +612,19 @@ html,body{
 	display: none;
 }
 
+.friendNumber{
+	border: 0px solid white;
+    width: 20px;
+    background: red;
+    border-radius: 50%;
+    height: 20px;
+    position: absolute;
+    right: 61px;
+    top: 7px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+}
 
 
 
