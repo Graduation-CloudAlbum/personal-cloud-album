@@ -1,3 +1,19 @@
+var friendNumber=document.getElementById('friendNumber');
+if(friendNumber.value>0){
+	friendNumber.style.display="block";
+	if(friendNumber.value>99){
+		friendNumber.value="n"
+	}
+}
+else{
+	friendNumber.style.display="none";
+}
+
+
+
+
+
+
 var friendsVerification=document.getElementById('friends-Verification');
 
 //拒绝好友请求
@@ -195,3 +211,16 @@ function acceptfriendsbutton(friendVerifications_id){
     acceptFriends.style.display="block";
     document.getElementById('popLayer2').style.display="block";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
