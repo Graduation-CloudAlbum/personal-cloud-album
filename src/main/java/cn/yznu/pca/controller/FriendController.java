@@ -62,6 +62,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("FriendGroup", list);
         mav.addObject("friendgroup", friendgroup);
         mav.addObject("allfriend", allfriend);
@@ -83,6 +85,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("allfriend", allfriend);
         mav.addObject("friendgroup", friendgroup);
         return mav;
@@ -103,6 +107,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("allfriend", allfriend);
         mav.addObject("friendgroup", friendgroup);
         return mav;
@@ -123,6 +129,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("allfriend", allfriend);
         mav.addObject("friendgroup", friendgroup);
         return mav;
@@ -143,6 +151,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("allfriend", allfriend);
         mav.addObject("friendgroup", friendgroup);
         return mav;
@@ -163,6 +173,8 @@ public class FriendController {
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        int newFriendNumber=friendService.searchNewFriend(user.getId());
+        request.setAttribute("newFriendNumber", newFriendNumber);
         mav.addObject("allfriend", allfriend);
         mav.addObject("friendgroup", friendgroup);
         return mav;
@@ -351,7 +363,6 @@ public class FriendController {
         request.getSession().setAttribute("friend_friendNum",friend_friendNum);
         User user = (User) request.getSession().getAttribute("user");
         int newFriendNumber=friendService.searchNewFriend(user.getId());
-        System.out.println("验证消息的个数"+newFriendNumber);
         request.setAttribute("newFriendNumber", newFriendNumber);
         List<?> list = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(list);
