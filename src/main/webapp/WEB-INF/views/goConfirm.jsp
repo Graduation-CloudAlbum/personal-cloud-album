@@ -54,7 +54,7 @@
 					    <div>
 						    <div style="text-align: center;font-size: 20px;">产品名称: ${productName}</div>
 						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
-						    <input type="submit" value="生成订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
+						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
 					    </div>
 					    
 						
