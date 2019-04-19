@@ -131,9 +131,9 @@
 			<div id="accept-friends-left" class="select-first1">我的好友分组</div>
 			<div id="accept-friends-right" class="select-right1"><span><i class="iconfont icon-iconfontjiantou jiantou"></i></span></div>
 			<ul id="accept-friends-group" class="menu-group1">
-				<li class="menu-group-li1">陌生人</li>
-				<li class="menu-group-li1">家人</li> 
-				<li class="menu-group-li1">同事</li>
+				<c:forEach items="${friendgroup}" var="friendgroup">
+					<li class="menu-group-li1">${friendgroup.permissionType}</li>
+				</c:forEach>
 			</ul>
 			<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div class="default-button2"><p>确定</p></div>
 		</div>
