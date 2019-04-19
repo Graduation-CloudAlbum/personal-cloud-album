@@ -283,4 +283,10 @@ public class FriendServiceImpl implements FriendService {
         return friendVerificationMapper.seachFriendIdByFriendVerifications(friendVerifications_id_Two).getUserId();
     }
 
+    @Override
+    public int searchNewFriend(int user_id) {
+        List<FriendVerification> list=friendVerificationMapper.selectAllFriendVerification(user_id);
+        return list.size();
+    }
+
 }
