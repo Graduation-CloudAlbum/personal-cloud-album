@@ -254,14 +254,24 @@
 				</a>
 			</div>
 			<div class="info">
-				<div class="text">
+				<div id="mod-text" class="text">
 					<p class="title">gjhj</p>
 					<p class="intro clrB6 lh24">暂无相册简介</p>
 					<p class="time">2019-03-08 12:00:00</p>
 				</div>
-				<div class="fns clearFix">				 
+				<div id="mod-text2" class="text">
+					<p class="mode-title-p">标题：<input type="text" id="mode-title" class="mode-title" value=""></p>
+					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value=""></p>
+					<span class="descp">简介：</span><textarea id="mode-desc" style="margin-top: 10px;" rows="4" cols="22" maxlength="70" placeholder="请输入个人简介（可为空，不超过70个字符)" name="">我的世界我做主。</textarea>
+					<div class="create-radio">
+			          <input type="radio" name="identity2" value="公开" checked="checked" />公开
+			          <input type="radio" name="identity2" value="私有" />私有
+			        </div>
+			        <div id="mode-album-button2" class="mode-album-button2"><p>确定</p></div>
+				</div>
+				<div class="fns clearFix">				 	
 					<a id="close-mod" class="btn-cancel icoMod fR" title="关闭" ><i class="icon iconfont icon-chacha"></i></a>
-					<a class="btn-sure icoMod fR mod-click"  title="修改相册信息"><i class="icon iconfont icon-bianji"></i></a>
+					<a id="modifyAlbum" class="btn-sure icoMod fR mod-click"  title="修改相册信息"><i class="icon iconfont icon-bianji"></i></a>
 				</div>
 			</div>
 		</div>
@@ -269,7 +279,8 @@
 		<div id="delete-album" class="accept-friends">
 			<div class="popup-header"><h4>删除相册</h4><i id="iconChacha12" class="iconfont icon-chacha1"></i></div>
 			<div id="delete-album-content" class="select-first1-ok">确认删除相册<span id="delete-album-group">家人</span>?</div>		
-			<div id="delete-album-button1" class="default-button1"><p>取消</p></div><div id="delete-album-button2" class="default-button2"><p>确定</p></div>
+			<div id="delete-album-button1" class="default-button1"><p>取消</p></div>
+			<div id="delete-album-button2" class="default-button2"><p>确定</p></div>
 		</div>
 
 

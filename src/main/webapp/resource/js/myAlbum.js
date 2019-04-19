@@ -231,8 +231,8 @@ $().ready(function getAlbum() {
                     + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<span class='bottun-title-p1'>" + albumName + "</span>"
-                    //                    + "<p>"+theme+"</p>"
+                    + "<p class='bottun-title-p1'>" + albumName + "</p>"
+                    + "<p class='theme'>("+theme+")</p>"
                     + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
                     + "</div>"
                     + "</div>"
@@ -652,7 +652,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         + "</div>"
                         + "<div class='bottun-title'>"
                         + "<p class='bottun-title-p1'>" + albumName + "</p>"
-                        //                        + "<p>"+theme+"</p>"
+                        + "<p class='theme'>("+theme+")</p>"
                         + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
                         + "</div>"
                         + "</div>"
@@ -843,6 +843,23 @@ closeMod.onclick = function () {
     modAlbum.style.display = "none"; 
     popLayer2.style.display = "none";
 }
+var modifyAlbum = document.getElementById('modifyAlbum');
+var modText = document.getElementById('mod-text');
+var modText2 = document.getElementById('mod-text2');
+var flage=1;
+modifyAlbum.onclick = function(){
+	if(flage==1){
+		modText2.style.display="block";
+		modText.style.display="none";
+		flage=0;
+	}
+	else{
+		modText2.style.display="none";
+		modText.style.display="block";
+		flage=1;
+	}
+}
+
 //删除相册
 var deleteAlbum = document.getElementById('delete-album');
 //var delAlbum2 = document.getElementById('del-album2');
