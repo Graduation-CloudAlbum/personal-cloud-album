@@ -32,7 +32,7 @@
        <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li">
             	<span class="icon iconfont my-xiaoxi">&#xe629;</span>
-            	我的消息${newFriendNumber}
+            	我的消息
             	<input type="text" class="friendNumber" value="${newFriendNumber}">
             </div>
             <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
