@@ -199,23 +199,6 @@ public class UserController {
 
     }
 
-    //@RequestMapping("/getPass")
-    //public String getPass(@Param("email")String email,@Param("password")String password,HttpServletRequest request){
-    //    User user= userService.selectUserByUserName(email);
-    //    user.setUserPassword(password);
-    //    userService.updateUser(user);
-    //    //userService.changePassword(user.getId(),password);
-    //    //String password=user.getUserPassword();
-    //    ////将用户输入的密码进行MD5转码后比较
-    //    //String oldp=MD5Util.md5Jdk(password);
-    //    //if (password.equals(oldp)){
-    //    //    userService.changePassword(user.getId(),MD5Util.md5Jdk(password));
-    //    //    return "success";
-    //    //}else {
-    //    //    return "fail";
-    //    //}
-    //    return "login";
-    //}
     @RequestMapping("/activate")
     public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
         User user= userService.selectUserByUserName(username);
@@ -265,7 +248,7 @@ public class UserController {
     public String changeIcon(HttpServletRequest request ,Image image, @RequestParam(value="file")MultipartFile pictureFile) throws Exception{
         User user= (User) request.getSession().getAttribute("user");
         //设置本地保存路径
-        String localPath="F:\\demos\\upload\\";
+        String localPath="D:\\demos\\upload\\";
         //以icon+用户id的方式命名头像照片
         String name = UUID.randomUUID().toString().replaceAll("-", "");
         //获取照片大小,以B/KB/MB为单位保存
@@ -309,21 +292,5 @@ public class UserController {
         }
 
     }
-
-    //@ResponseBody
-    //@RequestMapping("/resetPassword")
-    //public String resetPassword(@Param("oldPassword")String oldPassword,
-    //                             @Param("newPasssword1")String newPassword1,HttpServletRequest request){
-    //    User user= (User) request.getSession().getAttribute("user");
-    //    String password=user.getUserPassword();
-    //    //将用户输入的密码进行MD5转码后比较
-    //    String oldp=MD5Util.md5Jdk(oldPassword);
-    //    if (password.equals(oldp)){
-    //        userService.changePassword(user.getId(),MD5Util.md5Jdk(newPassword1));
-    //        return "success";
-    //    }else {
-    //        return "fail";
-    //    }
-    //}
 
 }

@@ -157,7 +157,7 @@
 			    <p style="margin-top: 32px;text-align: center;color: #777;">更多方式，敬请期待...</p>
 			</div>
             
-            <div id="Buy-Expansion-button" class="Buy-Expansion-button2" onclick=""><p>购买</p></div>
+            <div id="Buy-Expansion-button" class="Buy-Expansion-button2" onclick="purchase()"><p>购买</p></div>
         </div>
     </div>
 

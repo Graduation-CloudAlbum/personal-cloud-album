@@ -226,7 +226,7 @@ $().ready(function getAlbum() {
                 var h1="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
                 var h2="<span class='icon iconfont icon-kaifangtouming quanxian'></span></p>";
                 var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
-                if(data.status[i]==1){
+                if("1"==data.album[i].status){
                 	h4[i]=h2;
                 }
                 else{
@@ -243,7 +243,7 @@ $().ready(function getAlbum() {
                     + "<div class='bottun-title'>"
                     + "<p class='bottun-title-p1'>" + albumName + "</p>"
                     + "<p class='theme'>("+theme+")</p>"
-                    + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]
+                    + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                     + "</div>"
                     + "</div>"
                     + "</li>"
@@ -652,6 +652,16 @@ for (var i = 0; i < albumSortLi.length; i++) {
                     var theme = data.album[i].albumType;
                     var coverImg = data.coverList[i].url;
                     var createtime = fmtDate(data.album[i].createTime);
+                    var h4=[];
+                    var h1="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
+                    var h2="<span class='icon iconfont icon-kaifangtouming quanxian'></span></p>";
+                    var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
+                    if("1"==data.album[i].status){
+                        h4[i]=h2;
+                    }
+                    else{
+                        h4[i]=h1;
+                    }
                     h += "<li class='content-about-li'>"
                         + "<img src='" + coverImg + "'>"
                         + "<div class='content-about-li-top'>"
@@ -663,7 +673,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         + "<div class='bottun-title'>"
                         + "<p class='bottun-title-p1'>" + albumName + "</p>"
                         + "<p class='theme'>("+theme+")</p>"
-                        + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图</p>"
+                        + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                         + "</div>"
                         + "</div>"
                         + "</li>"
