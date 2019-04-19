@@ -176,4 +176,10 @@ public interface FriendService {
      * @param friendVerifications_id_Two
      */
     int seachFriendIdByFriendVerifications(int friendVerifications_id_Two);
+
+    /**
+     *  通过用户id查找未读消息
+     * @param userid
+     */
+    int searchNewFriend(int userid);
 }
