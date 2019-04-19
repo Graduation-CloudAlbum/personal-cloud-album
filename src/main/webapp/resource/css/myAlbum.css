@@ -700,8 +700,8 @@
     overflow: hidden;
 }
 .mod-album .info .title {
-    height: 60px;
-    padding-top: 5px;
+        height: 78px;
+    padding-top: 31px;
     font-size: 26px;
     line-height: 60px;
     overflow: hidden;
@@ -764,7 +764,7 @@
 	display: none;
 }
 
-.mode-title-p{    margin-top: 40px;}
+.mode-title-p{    margin-top: 60px;}
 .mode-theme-p{    margin-top: 20px;}
 .mode-album-button2{
 	 border: 1px solid #00A8D8;
