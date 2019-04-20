@@ -170,7 +170,7 @@ var Expansion = document.getElementById('Expansion');
 Expansion.onclick=function(){
     document.getElementById('Buy-Expansion').style.display="block";
     document.getElementById('popLayer2').style.display="block";
-    $("input[type='radio']").removeAttr('checked');
+    // $("input[type='radio']").removeAttr('checked');
 }
 //自定义购买
 var BuyExpansion2 = document.getElementById('Buy-Expansion2');
@@ -206,8 +206,7 @@ function sum(obj) {
 	else{
 		all.value=parseInt(z.value);
 	}
-	
-	
+
 	
 //	if(a.value!='')
 //	{
@@ -227,8 +226,13 @@ function sum(obj) {
  }
 //自定义购买
 function purchase(){
-    var meal=$("z").val();
-    window.location.href="/pca/alipay/goConfirm/"+meal;
+    var z = document.getElementById("z");
+    var all = document.getElementById("all");
+    // var meal=z.value;
+    // var fee=all.value;
+    var meal=z.value+"&"+all.value;
+    alert(meal);
+    //window.location.href="/pca/alipay/goConfirm/"+meal&fee;
 }
 
 
