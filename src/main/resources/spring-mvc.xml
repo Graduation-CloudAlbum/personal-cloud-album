@@ -54,7 +54,7 @@
     <bean id="baseTransaction"
           class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
         <property name="transactionManager" ref="transactionManager"/>
-        <property name="target" ref="imageController" ></property>
+<!--        <property name="target" ref="imageController" ></property>-->
         <!--没有设置目标类,要把事务设置在DAO的话,就这样写,另外配置个bean就可以了-->
         <property name="transactionAttributes">
             <props> <prop key="*">PROPAGATION_REQUIRED</prop> </props>

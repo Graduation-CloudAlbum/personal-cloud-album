@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
-    <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
 </head>
 <body>
 <div class="wrapper">
@@ -26,7 +26,7 @@
 				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
 				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
-			<div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
+			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
 
 		<div class="content">
@@ -49,8 +49,8 @@
 					    
 					    <div>
 						    <div style="text-align: center;font-size: 20px;">订单编号: ${order.id}</div>
-						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品名称: ${order.productName}</div>
-						    <div style="text-align: centet;text-align: center; margin-top: 54px;">订单价格: ${order.payment}元</div>
+						    <div style="text-align: center;text-align: center; margin-top: 54px;">产品名称: ${order.productName}</div>
+						    <div style="text-align: center;text-align: center; margin-top: 54px;">订单价格: ${order.payment}元</div>
 						    <input type="submit" value="前往支付宝付款" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
 					    </div>
 					    
@@ -122,13 +122,10 @@
 	</div>
 
 	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
-<%--	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>--%>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/logout.js"></script>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
-	
-	
-	
-	
-	
+
 
 </body>
 </html>

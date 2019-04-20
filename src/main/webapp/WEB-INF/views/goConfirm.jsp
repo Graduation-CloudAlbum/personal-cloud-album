@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
-    <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
 				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
-			<div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
+			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
 
 		<div class="content">
@@ -53,7 +53,7 @@
 					    <input type="hidden" id="payment" name="payment" value="${payment}" />
 					    <div>
 						    <div style="text-align: center;font-size: 20px;">产品名称: ${productName}</div>
-						    <div style="text-align: centet;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
+						    <div style="text-align: center;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
 						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
 					    </div>
 					    
@@ -136,21 +136,13 @@
 		</c:forEach>
 	</ul>
 	<div id="accept-friends-button1" class="default-button1"><p>取消</p></div><div id="accept-friends-button2" class="default-button2"><p>确定</p></div>
-</div>
+	</div>
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>
-
-
-
-
 	</div>
-
-	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
-<%--	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>--%>
-	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
-	
-	
-
-
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/logout.js"></script>
 </body>
 </html>
