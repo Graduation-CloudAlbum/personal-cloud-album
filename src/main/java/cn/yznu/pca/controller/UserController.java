@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
@@ -290,6 +291,15 @@ public class UserController {
         }else {
             return "fail";
         }
+
+    }
+    @RequestMapping("/logOut")
+    @ResponseBody
+    public String logOut(HttpServletRequest request){
+        //ModelAndView mav=new ModelAndView("index");
+        request.getSession().removeAttribute("user");
+        request.getSession().invalidate();
+        return "logout";
 
     }
 

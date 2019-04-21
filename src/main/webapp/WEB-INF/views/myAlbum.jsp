@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/zoom.css" media="all" />
+    <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
 </head>
 <body>
 <div class="wrapper">
@@ -38,7 +39,7 @@
             <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
             <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
-        <div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
+        <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
 
     <div class="content">
@@ -294,7 +295,9 @@
 
 </div>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/myAlbum.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/logout.js"></script>
 </body>
 </html>

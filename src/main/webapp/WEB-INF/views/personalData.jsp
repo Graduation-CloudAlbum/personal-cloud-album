@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
+    <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
     <title>1024Album - 个人中心</title>
 </head>
 <body>
@@ -42,7 +43,7 @@
             <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
             <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
-        <div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
+        <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
 
     <div class="content">
@@ -209,8 +210,8 @@
     <div id="popLayer2" class="popLayer2"></div>
 </div>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
-<%--<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>--%>
-<%--<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js"></script>--%>
+<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
+<script type="text/javascript" src="<%=basePath%>/resource/js/logout.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/personalData.js"></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>

@@ -228,6 +228,10 @@ $().ready(function getAlbum() {
                 var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
 
                 if("1"==data.album[i].status){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0391f546343d0a2d600fab3aa917aa4071a7ccff
                 	h4[i]=h2;
                 }
                 else{
@@ -242,7 +246,7 @@ $().ready(function getAlbum() {
                     + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<p class='bottun-title-p1'>" + albumName + "</p>"
+                    + "<span class='bottun-title-p1'>" + albumName + "</span>"
                     + "<p class='theme'>("+theme+")</p>"
                     + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                     + "</div>"
@@ -276,8 +280,6 @@ $().ready(function getAlbum() {
                 }
 
             }
-           
-
         }
     });
 });
@@ -672,7 +674,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                         + "</div>"
                         + "<div class='bottun-title'>"
-                        + "<p class='bottun-title-p1'>" + albumName + "</p>"
+                        + "<span class='bottun-title-p1'>" + albumName + "</span>"
                         + "<p class='theme'>("+theme+")</p>"
                         + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                         + "</div>"
@@ -889,12 +891,16 @@ var iconChacha12 = document.getElementById('iconChacha12');
 function delAlbum2(){
 	deleteAlbum.style.display = "block";
 	popLayer2.style.display="block";
+
 }
 deleteAlbumButton1.onclick = function(){
 	deleteAlbum.style.display="none";
 	popLayer2.style.display="none";
+    alert("点击了删除相册")
 }
+//关闭按钮
 iconChacha12.onclick = function(){
 	deleteAlbum.style.display="none";
 	popLayer2.style.display="none";
+
 }

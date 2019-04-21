@@ -64,21 +64,34 @@ public class AlipayController {
         int meal3=50;
         String productName="";
         int payment=0;
+        if (meal.contains("&")){
+         /**
+         * 自定义购买方式
+         * length 参数长度
+         * size 用户输入的大小
+         * fee 所需要的金额
+         */
+         int length=meal.length();
+         String size=meal.substring(0,meal.indexOf("&"));
+         String fee=meal.substring(meal.indexOf("&")+1,length);
+         productName="自定义购买额外"+size+"G使用空间";
+         payment=Integer.parseInt(fee);
+         }else {
+            //选择套餐购买方式
+         if(Integer.parseInt(meal)==meal1){
+            productName="黄金套餐(包含10个G的额外使用空间)";
+            payment=10;
 
-        if (Integer.parseInt(meal)==meal1){
-             productName="黄金套餐(包含10个G的额外使用空间)";
-             payment=10;
-        }else if(Integer.parseInt(meal)==meal2) {
-             productName="铂金套餐(包含50个G的额外使用空间)";
-             payment = 35;
+         }else if(Integer.parseInt(meal)==meal2) {
+            productName="铂金套餐(包含50个G的额外使用空间)";
+            payment = 35;
 
-        }else if (Integer.parseInt(meal)==meal3){
-             productName="钻石套餐(包含100个G的额外使用空间)";
+         }else if (Integer.parseInt(meal)==meal3){
+            productName="钻石套餐(包含100个G的额外使用空间)";
              payment=50;
-        }else {
-            productName="自定义购买额外使用空间";
-            payment=50;
-        }
+         }
+     }
+
         //request.getSession().setAttribute("productName",productName);
         //request.getSession().setAttribute("payment",payment);
         ModelAndView mv = new ModelAndView("goConfirm");

@@ -23,6 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/friendAlbum.css"/>
 	<link rel="stylesheet"  href="<%=basePath%>/resource/css/zoom.css" media="all" />
+	<link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
 </head>
 <body>
 	<div class="wrapper">
@@ -35,7 +36,7 @@
 				</div>
 				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
-			<div class="header-right2"><span class="icon iconfont" title="退出">&#xe64c;</span></div>
+			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
 
 		<div class="content">
@@ -166,10 +167,10 @@
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>
 	</div>
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friendAlbum.js"></script>
-	<script src="<%=basePath%>/resource/js/jquery-2.0.3.min.js"></script>
-	<%--<script src="<%=basePath%>/resource/js/zoom.min.js"></script>--%>
+	<script type="text/javascript" src="<%=basePath%>/resource/js/logout.js"></script>
 	<script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>
 </body>
 </html>
