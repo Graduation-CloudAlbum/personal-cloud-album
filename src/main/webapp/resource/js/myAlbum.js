@@ -237,7 +237,7 @@ $().ready(function getAlbum() {
                     + "<img src='" + coverImg + "'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
-                    + "<a class='iconfont icon-huishouzhan1 icon1' onclick='delAlbum2()' title='删除相册'></a>"
+                    + "<a class='iconfont icon-huishouzhan1 icon1' onclick='delAlbum2(aName)' title='删除相册'></a>"
                    // + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
                     + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                     + "</div>"
@@ -887,12 +887,13 @@ var iconChacha12 = document.getElementById('iconChacha12');
 function delAlbum2(){
 	deleteAlbum.style.display = "block";
 	popLayer2.style.display="block";
+    alert(aName)
 
 }
+//取消删除
 deleteAlbumButton1.onclick = function(){
 	deleteAlbum.style.display="none";
 	popLayer2.style.display="none";
-    alert("点击了删除相册")
 }
 //关闭按钮
 iconChacha12.onclick = function(){

@@ -261,7 +261,7 @@
 					<p class="time">2019-03-08 12:00:00</p>
 				</div>
 				<div id="mod-text2" class="text">
-					<p class="mode-title-p">标题：<input type="text" id="mode-title" class="mode-title" value=""></p>
+					<p class="mode-title-p">名称：<input type="text" id="mode-title" class="mode-title" value=""></p>
 					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value=""></p>
 					<div class="mod-radio">权限：
 			          <input type="radio" name="identity2" value="公开" checked="checked" />公开
