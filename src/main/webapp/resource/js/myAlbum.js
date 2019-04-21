@@ -226,11 +226,9 @@ $().ready(function getAlbum() {
                 var h1="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
                 var h2="<span class='icon iconfont icon-kaifangtouming quanxian'></span></p>";
                 var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
-<<<<<<< HEAD
-                if(data.status[i]=="1"){
-=======
+
                 if("1"==data.album[i].status){
->>>>>>> b2da9caedbe6dfcd779a86c4cb1594269053f53f
+
                 	h4[i]=h2;
                 }
                 else{
@@ -279,11 +277,9 @@ $().ready(function getAlbum() {
                 }
 
             }
-           
-
         }
-    });
 });
+
 //点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
 $("#myAlbum-content").click(function () {
     var albumName = aName;
@@ -900,4 +896,4 @@ deleteAlbumButton1.onclick = function(){
 iconChacha12.onclick = function(){
 	deleteAlbum.style.display="none";
 	popLayer2.style.display="none";
-}
+}})
