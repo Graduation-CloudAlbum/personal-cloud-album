@@ -243,7 +243,7 @@ $().ready(function getAlbum() {
                     + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<p class='bottun-title-p1'>" + albumName + "</p>"
+                    + "<span class='bottun-title-p1'>" + albumName + "</span>"
                     + "<p class='theme'>("+theme+")</p>"
                     + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                     + "</div>"
