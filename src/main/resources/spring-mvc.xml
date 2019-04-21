@@ -28,6 +28,28 @@
     <!--<mvc:resources location="/resource/" mapping="/resource/**/*.*" />-->
 
 
+    <mvc:interceptors>
+        <!-- 检查用户权限，对于部分不需要权限的路径进行排除 -->
+        <mvc:interceptor>
+            <!-- 先匹配所有路径，然后排除不需要检查的路径 -->
+            <mvc:mapping path="/**" />
+            <!-- 与登录相关的请求 -->
+            <mvc:exclude-mapping path="/user/login" />
+            <mvc:exclude-mapping path="/user/index" />
+            <mvc:exclude-mapping path="/user/register" />
+            <mvc:exclude-mapping path="/user/getpass" />
+            <!-- 以下是静态资源 -->
+            <mvc:exclude-mapping path="/resource/images/**" />
+            <mvc:exclude-mapping path="/resource/img/**" />
+            <mvc:exclude-mapping path="/resource/css/**" />
+            <mvc:exclude-mapping path="/bootstrap/**" />
+            <mvc:exclude-mapping path="/resource/js/**" />
+            <!-- 用户是否已经登录的检查 -->
+            <bean id="loginInterceptor" class="cn.yznu.pca.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
     <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

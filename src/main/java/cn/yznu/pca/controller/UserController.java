@@ -299,7 +299,6 @@ public class UserController {
         //ModelAndView mav=new ModelAndView("index");
         request.getSession().removeAttribute("user");
         request.getSession().invalidate();
-        //mav.addObject("account", "100w");
         return "logout";
 
     }
