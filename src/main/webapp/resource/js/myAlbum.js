@@ -551,8 +551,10 @@ $().ready(function getAlbum() {
                         }
                     });
 
+                    
+                    
                 }
-
+                
             }
         }
     });
@@ -699,7 +701,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         // aLi = str;
                         //
                         // var aP = this.getElementsByTagName('p');
-                        aName = this.innerHTML;
+                        //aName = this.innerHTML;
                     }
 
                 }
@@ -878,7 +880,6 @@ modifyAlbum.onclick = function(){
 		flage=1;
 	}
 }
-
 //删除相册
 var deleteAlbum = document.getElementById('delete-album');
 //var delAlbum2 = document.getElementById('del-album2');

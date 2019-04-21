@@ -264,9 +264,10 @@
 					<p class="mode-title-p">标题：<input type="text" id="mode-title" class="mode-title" value=""></p>
 					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value=""></p>
 					<div class="mod-radio">权限：
-			          <input type="radio" name="identity2" value="公开" checked="checked" />公开
-			          <input type="radio" name="identity2" value="私有" />私有
+			          <input type="radio" name="identity2" value="公开" checked="checked" style="margin-right:5px"/>公开
+			          <input type="radio" name="identity2" value="私有" style="margin-left: 30px;margin-right:5px"/>私有
 			        </div>
+			        <p style="font-size: 13px;margin-left: 59px; margin-top: 20px;color: #8b7d7d;">部分可见</p>
 			        <div id="mode-album-button2" class="mode-album-button2"><p>确定</p></div>
 				</div>
 				<div class="fns clearFix">				 	
