@@ -228,16 +228,12 @@ $().ready(function getAlbum() {
                 var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
 
                 if("1"==data.album[i].status){
-<<<<<<< HEAD
-=======
-
->>>>>>> 0391f546343d0a2d600fab3aa917aa4071a7ccff
                 	h4[i]=h2;
                 }
                 else{
                 	h4[i]=h1;
                 }
-                h += "<li class='content-about-li'>"
+                h += "<li class='content-about-li albumLi'>"
                     + "<img src='" + coverImg + "'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
@@ -284,7 +280,7 @@ $().ready(function getAlbum() {
     });
 });
 //点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
-$("#myAlbum-content").click(function () {
+$(".albumLi").click(function () {
     var albumName = aName;
     $.ajax({
         async: false,
