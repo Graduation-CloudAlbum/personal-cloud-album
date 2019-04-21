@@ -233,16 +233,16 @@ $().ready(function getAlbum() {
                 else{
                 	h4[i]=h1;
                 }
-                h += "<li class='content-about-li albumLi'>"
+                h += "<li class='content-about-li'>"
                     + "<img src='" + coverImg + "'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
                     + "<a class='iconfont icon-huishouzhan1 icon1' onclick='delAlbum2()' title='删除相册'></a>"
-                    + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                   // + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
                     + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<span class='bottun-title-p1'>" + albumName + "</span>"
+                    + "<span class='bottun-title-p1' onclick='albumClick(albumName)'>" + albumName + "</span>"
                     + "<p class='theme'>("+theme+")</p>"
                     + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                     + "</div>"
@@ -666,7 +666,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         + "<div class='content-about-li-top'>"
                         + "<div class='content-about-li-top-a'>"
                         + "<a  class='iconfont icon-huishouzhan1 icon1' onclick='delAlbum2()' title='删除相册'></a>"
-                        + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
+                        //+ "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
                         + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
                         + "</div>"
                         + "<div class='bottun-title'>"
