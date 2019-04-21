@@ -226,11 +226,8 @@ $().ready(function getAlbum() {
                 var h1="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
                 var h2="<span class='icon iconfont icon-kaifangtouming quanxian'></span></p>";
                 var h3="<span class='icon iconfont icon-bukejian quanxian'></span></p>";
-<<<<<<< HEAD
-                if(data.status[i]=="1"){
-=======
+
                 if("1"==data.album[i].status){
->>>>>>> b2da9caedbe6dfcd779a86c4cb1594269053f53f
                 	h4[i]=h2;
                 }
                 else{
