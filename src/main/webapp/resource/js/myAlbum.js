@@ -921,19 +921,48 @@ function downLoadImg() {
     $("#uploadPhoto6").click();
 }
 
-$("#mod-radio2").click(function () {
-    var type=$("input[type='radio']:checked").val();
-    if(type=="公开"){
-    	$("#part").css({ display: "block" });
-    }
-    else{
-    	$("#part").css({ display: "none" });
-    }
-});
+//$("#mod-radio2").click(function () {
+//    var type=$("input[type='radio']:checked").val();
+//    if(type=="公开"){
+//    	$("#part").css({ display: "block" });
+//    }
+//    else{
+//    	$("#part").css({ display: "none" });
+//    }
+//});
 //部分可见
-$("#part").click(function () {
-	$(".Partially-visible").css({ display: "block" });
-});
+//$("#part").click(function () {
+//	$(".Partially-visible").css({ display: "block" });
+//});
+$("#selectStyle2").change(function(){
+	alert($(this).children('option:selected').val()); 
+	var text=$(this).children('option:selected').val();
+	if(text=="部分可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分可见");
+		$(".allfrinedP2").text("当前部分可见");
+	}
+	else if(text=="部分不可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分不可见");
+		$(".allfrinedP2").text("当前部分不可见");
+	}
+})
+$("#selectStyle").change(function(){
+	alert($(this).children('option:selected').val()); 
+	var text=$(this).children('option:selected').val();
+	if(text=="部分可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分可见");
+		$(".allfrinedP2").text("当前部分可见");
+	}
+	else if(text=="部分不可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分不可见");
+		$(".allfrinedP2").text("当前部分不可见");
+	}
+})
+
 //关闭部分可见
 $(".Partially-visible-top1").click(function () {
 	$(".Partially-visible").css({ display: "none" });
