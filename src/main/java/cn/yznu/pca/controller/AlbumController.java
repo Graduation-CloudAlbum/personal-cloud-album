@@ -114,7 +114,7 @@ public class AlbumController {
     public String deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
         String status1="0";
         String status2="1";
-        String status="";
+        String status=null;
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         List albumlist =albumService.selectAlbumByName(userId,albumName);
@@ -127,12 +127,15 @@ public class AlbumController {
          * 其中20,21均代表回收站，方便还原相册时将相册状态重置
          */
         String albumStatus=album.getStatus();
+        System.out.println("albumStatus:"+albumStatus);
         if (albumStatus==status1){
            status="20";
+           return status;
+
         }else if (albumStatus==status2){
             status="21";
+            return status;
         }
-
         albumService.deleteAlbum(albumId,status);
         imageService.deleteImageByAlbumId(albumId);
         return "ok";
@@ -207,7 +210,7 @@ public class AlbumController {
         for(int i = 0; i < albumlist.size() ; i++) {
             Album album= (Album) albumlist.get(i);
             albumId=album.getId();
-            //用户某个相册下照片数量
+            //用户某个相册里照片数量
             int imageNum=imageService.imageNum(user.getId(),albumId);
             //获取每个相册下最近一张照片作为相册封面展示图
             Image coverImage=imageService.getFirstOne(user.getId(),albumId);

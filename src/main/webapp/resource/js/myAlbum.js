@@ -262,6 +262,23 @@ $().ready(function getAlbum() {
             	//获取相册名 alert(text.text())
             	 $("#delete-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
+            	 var delAlbumName=text.text();
+                alert(delAlbumName)
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: "/pca/album/deleteAlbum",
+                    data: {albumName: delAlbumName},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            alert("删除成功")
+                            // window.location.href="myAlbum";
+                            window.location.href = window.location.href;
+                        }
+
+                    }
+                });
             	});           
             //取消删除
             deleteAlbumButton1.onclick = function(){
@@ -307,9 +324,9 @@ $().ready(function getAlbum() {
             }
 
             //部分可见
-            var identity2=document.getElementsByName("identity2");
-            var meal=$("input[type='radio']:checked").val();
-            alert(meal)
+            // var identity2=document.getElementsByName("identity2");
+            // var meal=$("input[type='radio']:checked").val();
+            // alert(meal)
 //            function quanxian2(){
 //            	for(var i=0;i<identity2.length;i++){
 //            		if(identity2[i].checked==true){//得到选中的单选按钮如果要得到值 那么可以：
@@ -914,7 +931,7 @@ function downLoadImg() {
     var arr = new Array();
     $.each(ImaNameArray, function (index, value) {
         //拼接照片的完整路径
-        var imagePath = "F:/demos" + value;
+        var imagePath = "D:/demos" + value;
         arr.push(imagePath);
     });
     $("#hidden-input").val(arr);
@@ -922,4 +939,7 @@ function downLoadImg() {
     $("#uploadPhoto6").click();
 }
 
-
+$("#mode-album-button2").click(function () {
+    var meal=$("input[type='radio']:checked").val();
+    alert(meal)
+});
