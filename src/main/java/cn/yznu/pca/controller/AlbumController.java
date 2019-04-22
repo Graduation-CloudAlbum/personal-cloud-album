@@ -7,17 +7,11 @@ import cn.yznu.pca.service.ImageService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yangbaiwan
@@ -269,10 +263,17 @@ public class AlbumController {
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/someFriendCanSee")
     @ResponseBody
-    public String  someFriendCanSee(@PathVariable int friend_id,
+    public String  someFriendCanSee(@RequestParam(value = "checkID[]")  Integer[]  friendId,@Param("album_name") String album_name,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
-
+        User user= (User) request.getSession().getAttribute("user");
+        List<Integer>  list= Arrays.asList(friendId);
+        int albumId=0;
+        List<Album> album=albumService.selectAlbumByName(user.getId(),album_name);
+        for(Album s:album){
+            albumId=s.getId();
+        }
+        albumService.setPerssonalPromission(user.getId(),albumId,list,0);
         return "myAlbum";
     }
 
