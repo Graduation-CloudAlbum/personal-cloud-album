@@ -180,9 +180,17 @@
         <div class="popup-header"><h4>创建相册</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
         <input id="Create-Album-input" type="text" placeholder="请输入相册名称"  name="">
         <input id="Create-Album-input2" type="text" placeholder="请输入相册主题"  name="">
-        <div class="create-radio">
+        <div class="create-radio">权限设置：
+        	<select id="selectStyle2" style="height: 30px;width: 110px;margin-left: 14px;">
+	          	<option value="全部可见">全部可见</option>
+	          	<option value="仅自己可见">仅自己可见</option>
+	          	<option value="部分可见">部分可见</option>
+	          	<option value="部分不可见">部分不可见</option>
+	          </select>
+	           <!--
             <input type="radio" name="identity" value="公开" checked="checked" />公开
             <input type="radio" name="identity" value="私有" />私有
+            -->
         </div>
         <div class="Create-Album-button1" id="Create-Album-button1"><p>取消</p></div><div id="Create-Album-button2" class="Create-Album-button2"><p>确定</p></div>
     </div>

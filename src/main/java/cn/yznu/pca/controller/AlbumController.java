@@ -291,14 +291,15 @@ public class AlbumController {
 
     }
     /**
-     * 点击好友头像进入好友空间存session
+     * 相册部分好友可见权限控制
      */
-    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/updateFriendPromission")
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/someFriendCanSee")
     @ResponseBody
-    public String  updateFriendPromission(@PathVariable int friend_id,
+    public String  someFriendCanSee(@PathVariable int friend_id,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
 
         return "myAlbum";
     }
+
 }

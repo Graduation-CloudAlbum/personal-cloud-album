@@ -90,4 +90,16 @@ public class AlbumServiceImpl implements AlbumService {
         }
         return true;
     }
+
+    @Override
+    public Boolean setAlbumPrivateOrPublic(int album_id, int status) {
+        if(status==1){
+            mapper.updateAlbumByOne(album_id);
+            userPromissionMapper.deleteAllByAlbumId(album_id);
+        }else{
+            mapper.updateAlbumByZero(album_id);
+            userPromissionMapper.deleteAllByAlbumId(album_id);
+        }
+        return true;
+    }
 }

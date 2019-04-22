@@ -934,7 +934,20 @@ function downLoadImg() {
 //$("#part").click(function () {
 //	$(".Partially-visible").css({ display: "block" });
 //});
-
+$("#selectStyle2").change(function(){
+	alert($(this).children('option:selected').val()); 
+	var text=$(this).children('option:selected').val();
+	if(text=="部分可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分可见");
+		$(".allfrinedP2").text("当前部分可见");
+	}
+	else if(text=="部分不可见"){
+		$(".Partially-visible").css({ display: "block" });
+		$(".Partially-visible-top-title").text("权限设置:部分不可见");
+		$(".allfrinedP2").text("当前部分不可见");
+	}
+})
 $("#selectStyle").change(function(){
 	alert($(this).children('option:selected').val()); 
 	var text=$(this).children('option:selected').val();
