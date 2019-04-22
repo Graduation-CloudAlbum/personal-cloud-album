@@ -263,11 +263,21 @@
 				<div id="mod-text2" class="text">
 					<p class="mode-title-p">名称：<input type="text" id="mode-title" class="mode-title" value="家人"></p>
 					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value="家人"></p>
+					<!--
 					<div id="mod-radio2" class="mod-radio">权限：
 			          <input class="redioA" type="radio" name="identity2" value="公开" checked="checked" style="margin-right:5px" onkeyup="quanxian2()"/>公开
 			          <input class="redioA" type="radio" name="identity2" value="私有" style="margin-left: 30px;margin-right:5px" onkeyup="quanxian2()"/>私有
 			        </div>
 			        <p id="part" class="part">部分可见</p>
+			        -->
+			        <div id="mod-radio2" class="mod-radio">权限：
+			          <select id="selectStyle" style="height: 30px;width: 100px;">
+			          	<option value="全部可见">全部可见</option>
+			          	<option value="仅自己可见">仅自己可见</option>
+			          	<option value="部分可见">部分可见</option>
+			          	<option value="部分不可见">部分不可见</option>
+			          </select>
+			        </div>
 			        <div id="mode-album-button2" class="mode-album-button2"><p>确定</p></div>
 				</div>
 				<div class="fns clearFix">				 	
@@ -278,12 +288,11 @@
 		</div>
 		<!-- ***************************************************相册信息权限设置，部分可见***************************************************-->
 		<div class="Partially-visible">
-			<div class="Partially-visible-top">权限设置:部分可见
+			<div class="Partially-visible-top"><div class="Partially-visible-top-title">权限设置:部分可见</div>
 				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span class="Partially-visible-top2">确定</span></div>
 			</div>
 			<ul class="Partially-visible-left">
 				<div class="allfrinedP2">当前部分可见</div>
-				
 				<li class="Partially-visible-leftLi">
 					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
 					<div class="Partially-visible-leftLi-content">
@@ -293,7 +302,7 @@
 				</li>
 			</ul>
 			<ul class="Partially-visible-right">
-				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>(设置该好友可见)全选</div>
+				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>设置(全选)</div>
 				<li class="Partially-visible-rightLi">
 					<input name="friend" type="checkbox" value="1342432@qq.com" />
 					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
