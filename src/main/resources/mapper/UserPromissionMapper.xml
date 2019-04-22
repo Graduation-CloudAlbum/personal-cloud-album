@@ -240,8 +240,27 @@
       jurisdiction = #{jurisdiction,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
+  <!--检查好友权限能否看用户相册-->
   <select id="checkFriendPower" resultMap="BaseResultMap" parameterType="cn.yznu.pca.model.UserPromission" >
     select * from user_promission where user_id = #{user_id,jdbcType=INTEGER} and friend_id=#{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
   </select>
+
+  <!--检查好友权限是否存在-->
+  <select id="checkFriendPowerIsExist" resultMap="BaseResultMap">
+    select * from user_promission  where user_id=#{user_id,jdbcType=INTEGER} and friend_id=#{friend_id,jdbcType=INTEGER} and album_id=#{album_id,jdbcType=INTEGER}
+  </select>
+
+  <update id="updateUserPromission" parameterType="cn.yznu.pca.model.UserPromission" >
+    update user_promission
+    set jurisdiction = #{jurisdiction,jdbcType=INTEGER}
+    where user_id = #{user_id,jdbcType=INTEGER} and friend_id = #{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="insertUserPromission" parameterType="cn.yznu.pca.model.UserPromission" >
+    update user_promission
+    set jurisdiction = #{jurisdiction,jdbcType=INTEGER}
+    where user_id = #{user_id,jdbcType=INTEGER} and friend_id = #{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
+  </insert>
+
+
 </mapper>
