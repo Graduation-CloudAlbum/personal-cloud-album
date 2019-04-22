@@ -252,14 +252,14 @@
   </update>
 <!--查找我的所有好友-->
   <select id="selectAllMyFriend" resultMap="BaseResultMap">
-    select d.nick_name,d.user_icon,d.id from
+    select d.nick_name,d.user_icon,d.id,d.user_name from
     user_relation c right join user d on
     (c.user_id_two=d.id) where user_id=#{id,jdbcType=INTEGER} and status=0
   </select>
 
   <!--查找我的好友-->
   <select id="selectMyFriend" resultMap="BaseResultMap">
-    select d.nick_name,d.user_icon,d.id from
+    select d.nick_name,d.user_icon,d.id,d.user_name from
     user_relation c right join user d on
     (c.user_id_two=d.id) where user_id=#{user_id,jdbcType=INTEGER} and permission_group_id=#{permission_group_id,jdbcType=INTEGER} and status=0
   </select>
