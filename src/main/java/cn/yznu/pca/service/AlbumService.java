@@ -75,11 +75,18 @@ public interface AlbumService {
     List selectAlbumByName(int userId,String albumName);
 
     /**
-     * 通过相册名查找相册
+     * 设置用户相册部分好友可见权限
      * @param user_id 用户id
      * @param album_id 相册id
      * @return
      */
     Boolean setPerssonalPromission(int user_id, int album_id, List<User> friend, int jurisdiction);
 
+    /**
+     * 设置相册公开或者私有权限
+     * @param album_id 相册id
+     * @param status 相册状态
+     * @return
+     */
+    Boolean setAlbumPrivateOrPublic(int album_id, int status);
 }
