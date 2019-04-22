@@ -305,9 +305,9 @@
 <!--/******************************************************************************删除相册**********************************************/-->
 		<div id="delete-album" class="accept-friends">
 			<div class="popup-header"><h4>删除相册</h4><i id="iconChacha12" class="iconfont icon-chacha1"></i></div>
-			<div id="delete-album-content" class="select-first1-ok">确认删除相册<span id="delete-album-group">家人</span>?</div>		
+			<div id="delete-album-content" class="select-first1-ok">确认删除相册<span id="delete-album-group"></span>?</div>
 			<div id="delete-album-button1" class="default-button1"><p>取消</p></div>
-			<div id="delete-album-button2" class="default-button2"><p>确定</p></div>
+			<div id="delete-album-button2" class="default-button2" onclick="deleteAlbum();"><p>确定</p></div>
 		</div>
 
 

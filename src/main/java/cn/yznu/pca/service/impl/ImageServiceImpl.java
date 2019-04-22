@@ -43,7 +43,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public int deleteImageByAlbumId(Integer albumId) {
-        return 0;
+        return imageMapper.updateImageStatusInAlbum(albumId);
     }
 
     @Override

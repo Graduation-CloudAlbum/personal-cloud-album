@@ -1,9 +1,11 @@
 package cn.yznu.pca.controller;
 import cn.yznu.pca.model.Album;
 import cn.yznu.pca.model.Image;
+import cn.yznu.pca.model.RecycleBin;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
+import cn.yznu.pca.service.RecycleBinService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,8 @@ public class AlbumController {
     private AlbumService albumService;
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private RecycleBinService recycleBinService;
 
     /**
      * 首页展示的相册（查看相册）
@@ -116,6 +120,8 @@ public class AlbumController {
     public String deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
         String status1="0";
         String status2="1";
+        String status3="20";
+        String status4="21";
         String status=null;
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
@@ -129,17 +135,37 @@ public class AlbumController {
          * 其中20,21均代表回收站，方便还原相册时将相册状态重置
          */
         String albumStatus=album.getStatus();
-        System.out.println("albumStatus:"+albumStatus);
-        if (albumStatus==status1){
-           status="20";
-           return status;
-
-        }else if (albumStatus==status2){
-            status="21";
-            return status;
+        System.out.println("原来的albumStatus:"+albumStatus);
+        if (albumStatus.equals(status1)){
+            List<Image> list=imageService.getImage("1",userId,albumId);
+            List<RecycleBin> recycleBinList=new ArrayList<>();
+            for (int i=0;i<list.size();i++){
+                int imageId=list.get(i).getId();
+                RecycleBin recycleBin=new RecycleBin();
+                recycleBin.setAlbumId(albumId);
+                recycleBin.setImageId(imageId);
+                recycleBin.setUserId(userId);
+                recycleBinList.add(recycleBin);
+            }
+            recycleBinService.insertRecycleBin(recycleBinList);
+            imageService.deleteImageByAlbumId(albumId);
+            albumService.deleteAlbum(albumId,status4);
+        } if (albumStatus.equals(status2)){
+            List<Image> list=imageService.getImage("0",userId,albumId);
+            List<RecycleBin> recycleBinList=new ArrayList<>();
+            for (int i=0;i<list.size();i++){
+                int imageId=list.get(i).getId();
+                RecycleBin recycleBin=new RecycleBin();
+                recycleBin.setAlbumId(albumId);
+                recycleBin.setImageId(imageId);
+                recycleBin.setUserId(userId);
+                recycleBinList.add(recycleBin);
+            }
+            recycleBinService.insertRecycleBin(recycleBinList);
+            imageService.deleteImageByAlbumId(albumId);
+            albumService.deleteAlbum(albumId,status4);
         }
-        albumService.deleteAlbum(albumId,status);
-        imageService.deleteImageByAlbumId(albumId);
+
         return "ok";
     }
 

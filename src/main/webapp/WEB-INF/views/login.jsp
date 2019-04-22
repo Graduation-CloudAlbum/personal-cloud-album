@@ -40,8 +40,8 @@
         </div>
         <div class="tip center">
             <div class="txt txt-right">
-                <a href="/pca/user/register" >立即注册</a><span>或</span>
-                <a href="/pca/user/getpass" >找回密码</a>
+<%--                <a href="/pca/user/register" >立即注册</a><span>或</span>--%>
+<%--                <a href="/pca/user/getpass" >找回密码</a>--%>
             </div>
         </div>
         <div class="result"></div>
@@ -56,8 +56,8 @@
     <div class="inner-right">
 
         <a href="/pca/user/index"  class="link"><span class="link-drop"></span> <span class="link-txt">首页</span></a>
-        <a href="/pca/user/register" class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>
-        <a href="/pca/user/getpass"  class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>
+<%--        <a href="/pca/user/register" class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>--%>
+<%--        <a href="/pca/user/getpass"  class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>--%>
     </div>
 </div>
 <%--<script type="text/javascript" src="<%=basePath%>/resource/js/jquery-3.2.1.min.js" ></script>--%>
