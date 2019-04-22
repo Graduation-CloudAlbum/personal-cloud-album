@@ -323,25 +323,7 @@ $().ready(function getAlbum() {
             	}
             }
 
-            //部分可见
-            // var identity2=document.getElementsByName("identity2");
-            // var meal=$("input[type='radio']:checked").val();
-            // alert(meal)
-//            function quanxian2(){
-//            	for(var i=0;i<identity2.length;i++){
-//            		if(identity2[i].checked==true){//得到选中的单选按钮如果要得到值 那么可以：
-//            		alert(identity2[i].value);//弹出选中单选按钮的值
-//            		}
-//            	}
-//            }
-//            var part=document.getElementById('part');  
-//            if(publick.value=="公开"){
-//            	alert()
-//            	part.style.display="block";
-//            }
-//            else if(publick2.value=="私有"){
-//            	part.style.display="none";
-//            }
+            
             //点击相册
             for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;
@@ -939,7 +921,36 @@ function downLoadImg() {
     $("#uploadPhoto6").click();
 }
 
-$("#mode-album-button2").click(function () {
+$("#mod-radio2").click(function () {
     var type=$("input[type='radio']:checked").val();
-    alert(type)
+    if(type=="公开"){
+    	$("#part").css({ display: "block" });
+    }
+    else{
+    	$("#part").css({ display: "none" });
+    }
 });
+//部分可见
+$("#part").click(function () {
+	$(".Partially-visible").css({ display: "block" });
+});
+//关闭部分可见
+$(".Partially-visible-top1").click(function () {
+	$(".Partially-visible").css({ display: "none" });
+});
+//点击部分可见全选
+function PartiallyVisibleAll() {
+    var flag = document.getElementById("allP").checked;
+    var cks = document.getElementsByName("friend"); 
+    if (flag) { 
+        for ( var i = 0; i < cks.length; i++) { 
+            cks[i].checked = true;  
+        }
+    }
+    else {
+        for ( var i = 0; i < cks.length; i++) { 
+            cks[i].checked = false;       
+        }
+    }  
+}
+
