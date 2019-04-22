@@ -205,9 +205,12 @@ public class FriendServiceImpl implements FriendService {
         for(Album album:list){
              power=album.getStatus();
         }
+        System.out.println("大权限的值"+power);
         if(power.equals("1")){
+            System.out.println("大权现是"+"true");
             return true;
         }else {
+            System.out.println("大权现是"+"false");
             return false;
         }
     }
@@ -216,13 +219,16 @@ public class FriendServiceImpl implements FriendService {
     public int checkFriendPower(int user_id, int friend_id, int albumId) {
         List<UserPromission> list=userPromissionMapper.checkFriendPower(user_id,friend_id,albumId);
         if(list.size()==0){
+            System.out.println("小权现是"+"3");
             return 3;
         }else {
             int power=0;
             for(UserPromission userPromission:list){
                 power=userPromission.getJurisdiction();
             }
+            System.out.println("小权现是"+power);
             return power;
+
         }
 
     }

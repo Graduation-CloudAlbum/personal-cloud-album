@@ -73,17 +73,18 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Boolean setPerssonalPromission(int user_id, int album_id, List<User> friend, int jurisdiction) {
+    public Boolean setPerssonalPromission(int user_id, int album_id, List<Integer> friend, int jurisdiction) {
         UserPromission userPromission=new UserPromission();
-        for(User s:friend){
-            List<?> list=userPromissionMapper.checkFriendPowerIsExist(user_id,s.getId(),album_id);
+        mapper.updateAlbumByZero(album_id);
+        for(Integer s:friend){
+            List<?> list=userPromissionMapper.checkFriendPowerIsExist(user_id,s,album_id);
             if(list.size()!=0){
-                userPromissionMapper.updateUserPromission(user_id,s.getId(),album_id,jurisdiction);
+                userPromissionMapper.updateUserPromission(user_id,s,album_id,jurisdiction);
             }else{
                 userPromission.setStatus("0");
                 userPromission.setUserId(user_id);
                 userPromission.setAlbumId(album_id);
-                userPromission.setFriendId(s.getId());
+                userPromission.setFriendId(s);
                 userPromission.setJurisdiction(jurisdiction);
                 userPromissionMapper.insert(userPromission);
             }

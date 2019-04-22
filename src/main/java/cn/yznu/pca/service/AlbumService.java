@@ -80,7 +80,7 @@ public interface AlbumService {
      * @param album_id 相册id
      * @return
      */
-    Boolean setPerssonalPromission(int user_id, int album_id, List<User> friend, int jurisdiction);
+    Boolean setPerssonalPromission(int user_id, int album_id, List<Integer> friend, int jurisdiction);
 
     /**
      * 设置相册公开或者私有权限

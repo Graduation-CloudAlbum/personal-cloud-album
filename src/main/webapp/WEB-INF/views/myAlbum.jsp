@@ -297,7 +297,7 @@
 		<!-- ***************************************************相册信息权限设置，部分可见***************************************************-->
 		<div class="Partially-visible">
 			<div class="Partially-visible-top"><div class="Partially-visible-top-title">权限设置:部分可见</div>
-				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span class="Partially-visible-top2">确定</span></div>
+				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span id="personalPromission" class="Partially-visible-top2">确定</span></div>
 			</div>
 			<ul class="Partially-visible-left">
 				<div class="allfrinedP2">当前部分可见</div>
@@ -306,17 +306,19 @@
 					<div class="Partially-visible-leftLi-content">
 						<span class="Partially-visible-span2">黄兰</span>
 						<span class="Partially-visible-span2">1723432@qq.com</span>
-					</div>	
+					</div>
 				</li>
 			</ul>
 			<ul class="Partially-visible-right">
 				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>设置(全选)</div>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
+                <c:forEach items="${allfriend}" var="allfriend">
+                    <li class="Partially-visible-rightLi">
+                        <input name="friend" type="checkbox" value="${allfriend.friend.id}" />
+                        <img class="Partially-visible-img" src="${allfriend.friend.userIcon}" >
+                        <span class="Partially-visible-span">${allfriend.friend.nickName}</span>
+                        <span class="Partially-visible-span">${allfriend.friend.userName}</span>
+                    </li>
+                </c:forEach>
 			</ul>
 		</div>
 <!--/******************************************************************************删除相册**********************************************/-->
