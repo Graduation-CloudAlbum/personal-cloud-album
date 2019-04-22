@@ -1,6 +1,7 @@
 package cn.yznu.pca.service;
 
 import cn.yznu.pca.model.Album;
+import cn.yznu.pca.model.User;
 
 import java.util.List;
 
@@ -72,4 +73,13 @@ public interface AlbumService {
      * @return
      */
     List selectAlbumByName(int userId,String albumName);
+
+    /**
+     * 通过相册名查找相册
+     * @param user_id 用户id
+     * @param album_id 相册id
+     * @return
+     */
+    Boolean setPerssonalPromission(int user_id, int album_id, List<User> friend, int jurisdiction);
+
 }
