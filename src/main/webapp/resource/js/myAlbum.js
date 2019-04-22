@@ -356,7 +356,18 @@ $().ready(function getAlbum() {
                             $("#open2").html("共" + data.imageList.length + "张照片");
                             $("#myAlbum-content2").html(h);
 
-
+                            //为空
+                            $(".content-about-li").click(function(){
+                        		if($(".content-about2-li").length>0){
+                        			$("#noNumber2").css({ display: "none" });
+                        			$(".content-button").css({ display: "block" });
+                        		}
+                        		else{
+                        			$("#noNumber2").css({ display: "block" });
+                        			$(".content-button").css({ display: "none" });
+                        		}
+                        	})
+                        	
                             (function ($) {
                                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
@@ -512,7 +523,7 @@ $().ready(function getAlbum() {
                                     });
                                 })();
                             })(jQuery);
-
+                            
                             uploadPhoto6.onclick = function () {
 
                                 if (uploadPhoto6.style.color != "rgb(0, 0, 0)") {
@@ -987,4 +998,17 @@ $(document).ready(function(){
 		   console.log(checkID);
 	    })
 	});
+
+//为空
+$(document).ready(function(){
+	if($("#myAlbum-content li").length>0){
+		$("#noNumber").css({ display: "none" });
+		$(".content-button").css({ display: "block" });
+	}
+	else{
+		$("#noNumber").css({ display: "block" });
+		$(".content-button").css({ display: "none" });
+	}
+});
+
 

@@ -25,7 +25,6 @@ for(var i=0;i<recycleTableTr.length;i++){
         }
     }
 }
-
 // for(var i=1; i<recycleTableTr.length; i++){
 //     var recycleTableTrButton1 = recycleTableTr[i].getElementsByTagName('td');
 //     var recycleTableTrButton = recycleTableTrButton1[6].getElementsByTagName('button');
@@ -272,3 +271,14 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
         $(this).fadeOut("fast");  
     });  
 }  
+//为空
+$(document).ready(function(){
+	if($("#recycle-table tr").length>1){
+		$(".recycle-table").css({ display: "block" });
+		$(".content-about5").css({ display: "none" });
+	}
+	else{
+		$(".recycle-table").css({ display: "none" });
+		$(".content-about5").css({ display: "block" });
+	}
+});

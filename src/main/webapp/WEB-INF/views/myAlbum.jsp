@@ -117,7 +117,14 @@
                     <span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
                 </div>
                 <div class="content-footer"></div>
+                
+                <div id="noNumber" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
+            	</div>
+            	<div id="noNumber2" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
+            	</div>
             </div>
+            
+             
         </div>
     </div>
     <!-- ***************************************************弹窗 ***************************************************-->
