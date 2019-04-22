@@ -1,6 +1,6 @@
 var myAlbumContent = document.getElementById('myAlbum-content');
 var myAlbumContent2 = document.getElementById('myAlbum-content2');
-//var myAlbumLi=myAlbumContent.getElementsByTagName('li');
+var myAlbumLiDel=myAlbumContent.getElementsByTagName('li');
 var myAlbumLi = myAlbumContent.getElementsByTagName('span');
 var myAlbumMenu1 = document.getElementById('myAlbum-menu1');
 var myAlbumMenu2 = document.getElementById('myAlbum-menu2');
@@ -237,12 +237,12 @@ $().ready(function getAlbum() {
                     + "<img src='" + coverImg + "'>"
                     + "<div class='content-about-li-top'>"
                     + "<div class='content-about-li-top-a'>"
-                    + "<a class='iconfont icon-huishouzhan1 icon1' onclick='delAlbum2(aName)' title='删除相册'></a>"
+                    + "<a class='iconfont icon-huishouzhan1 icon1 deleteA'  title='删除相册'></a>"
                    // + "<a class='iconfont icon-fenxiang1 icon2' title='分享相册'></a>"
-                    + "<a class='iconfont iconfont icon-point icon1' onclick='uploadPhoto4()' title='相册信息'></a>"
+                    + "<a class='iconfont iconfont icon-point icon1 modeA' title='相册信息'></a>"
                     + "</div>"
                     + "<div class='bottun-title'>"
-                    + "<span class='bottun-title-p1' onclick='albumClick(albumName)'>" + albumName + "</span>"
+                    + "<span class='bottun-title-p1' >" + albumName + "</span>"
                     + "<p class='theme'>("+theme+")</p>"
                     + "<p class='bottun-title-p2'>" + createtime + "<i class='iconfont icon-vertical_line'></i>" + imageNum + "图"+h4[i]+"</p>"
                     + "</div>"
@@ -252,7 +252,61 @@ $().ready(function getAlbum() {
 
             }
             $("#myAlbum-content").html(h);
-            
+          //删除相册
+            var deleteAlbum = document.getElementById('delete-album');
+            //var delAlbum2 = document.getElementById('del-album2');
+            var deleteAlbumButton1 = document.getElementById('delete-album-button1');
+            var iconChacha12 = document.getElementById('iconChacha12');
+            $(".deleteA").click(function(){
+            	 var text=$(this).parent().siblings().find('span');
+            	//获取相册名 alert(text.text())
+            	 $("#delete-album").css({ display: "block" });
+            	 $("#popLayer2").css({ display: "block" });
+            	});           
+            //取消删除
+            deleteAlbumButton1.onclick = function(){
+            	deleteAlbum.style.display="none";
+            	popLayer2.style.display="none";
+            }
+            //关闭按钮
+            iconChacha12.onclick = function(){
+            	deleteAlbum.style.display="none";
+            	popLayer2.style.display="none";
+
+            }
+          //编辑相册
+            var modAlbum = document.getElementById('mod-album');
+            //var uploadPhoto4 = document.getElementById('uploadPhoto4');
+            var closeMod = document.getElementById('close-mod');
+            $(".modeA").click(function(){
+            	 var text=$(this).parent().siblings().find('span');
+            	//获取相册名 alert(text.text())
+            	 $("#mod-album").css({ display: "block" });
+            	 $("#popLayer2").css({ display: "block" });
+            	});   
+
+            closeMod.onclick = function () {
+                modAlbum.style.display = "none"; 
+                popLayer2.style.display = "none";
+            }
+            var modifyAlbum = document.getElementById('modifyAlbum');
+            var modText = document.getElementById('mod-text');
+            var modText2 = document.getElementById('mod-text2');
+            var flage=1;
+            modifyAlbum.onclick = function(){
+            	if(flage==1){
+            		modText2.style.display="block";
+            		modText.style.display="none";
+            		flage=0;
+            	}
+            	else{
+            		modText2.style.display="none";
+            		modText.style.display="block";
+            		flage=1;
+            	}
+            }
+
+            //点击相册
             for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;
                 myAlbumLi[i].onclick = function () {
@@ -850,55 +904,3 @@ function downLoadImg() {
 }
 
 
-//编辑相册
-var modAlbum = document.getElementById('mod-album');
-//var uploadPhoto4 = document.getElementById('uploadPhoto4');
-var closeMod = document.getElementById('close-mod');
-
-function uploadPhoto4() {
-    modAlbum.style.display = "block";
-    popLayer2.style.display = "block";
-}
-
-closeMod.onclick = function () {
-    modAlbum.style.display = "none"; 
-    popLayer2.style.display = "none";
-}
-var modifyAlbum = document.getElementById('modifyAlbum');
-var modText = document.getElementById('mod-text');
-var modText2 = document.getElementById('mod-text2');
-var flage=1;
-modifyAlbum.onclick = function(){
-	if(flage==1){
-		modText2.style.display="block";
-		modText.style.display="none";
-		flage=0;
-	}
-	else{
-		modText2.style.display="none";
-		modText.style.display="block";
-		flage=1;
-	}
-}
-//删除相册
-var deleteAlbum = document.getElementById('delete-album');
-//var delAlbum2 = document.getElementById('del-album2');
-var deleteAlbumButton1 = document.getElementById('delete-album-button1');
-var iconChacha12 = document.getElementById('iconChacha12');
-function delAlbum2(){
-	deleteAlbum.style.display = "block";
-	popLayer2.style.display="block";
-    alert(aName)
-
-}
-//取消删除
-deleteAlbumButton1.onclick = function(){
-	deleteAlbum.style.display="none";
-	popLayer2.style.display="none";
-}
-//关闭按钮
-iconChacha12.onclick = function(){
-	deleteAlbum.style.display="none";
-	popLayer2.style.display="none";
-
-}
