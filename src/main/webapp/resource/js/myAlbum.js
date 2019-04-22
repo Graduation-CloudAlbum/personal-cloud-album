@@ -982,4 +982,14 @@ function PartiallyVisibleAll() {
         }
     }  
 }
+//选中封装数组
+$(document).ready(function(){
+	   $('.Partially-visible-top2').click(function(){
+	        var checkID = [];//定义一个空数组 
+	        $("input[name='friend']:checked").each(function(i){//把所有被选中的复选框的值存入数组
+	            checkID[i] =$(this).val();
+	        }); 
+		   console.log(checkID);
+	    })
+	});
 
