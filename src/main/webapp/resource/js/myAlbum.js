@@ -306,6 +306,25 @@ $().ready(function getAlbum() {
             	}
             }
 
+            //部分可见
+            var identity2=document.getElementsByName("identity2");
+            var meal=$("input[type='radio']:checked").val();
+            alert(meal)
+//            function quanxian2(){
+//            	for(var i=0;i<identity2.length;i++){
+//            		if(identity2[i].checked==true){//得到选中的单选按钮如果要得到值 那么可以：
+//            		alert(identity2[i].value);//弹出选中单选按钮的值
+//            		}
+//            	}
+//            }
+//            var part=document.getElementById('part');  
+//            if(publick.value=="公开"){
+//            	alert()
+//            	part.style.display="block";
+//            }
+//            else if(publick2.value=="私有"){
+//            	part.style.display="none";
+//            }
             //点击相册
             for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;

@@ -785,6 +785,18 @@
 }
 
 
+.part{
+	font-size: 13px;
+	margin-left: 59px; 
+	margin-top: 20px;
+	color: #8b7d7d;
+	cursor: pointer;
+	display: none;
+}
+.part:hover{
+	text-decoration: underline;
+	
+}
 
 
 
