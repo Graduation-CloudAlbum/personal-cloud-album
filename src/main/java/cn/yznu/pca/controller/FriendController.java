@@ -418,7 +418,7 @@ public class FriendController {
         //相册权限
         boolean power=friendService.checkAlbumPower(albumId);
         //私人权限
-        int power_two=friendService.checkFriendPower(userId,friend_id,albumId);
+        int power_two=friendService.checkFriendPower(friend_id,userId,albumId);
         if(power==true&&power_two==3){
             return true;
         }else if(power==true&&power_two==0){
