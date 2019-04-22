@@ -305,25 +305,7 @@ $().ready(function getAlbum() {
             closeMod.onclick = function () {
                 modAlbum.style.display = "none"; 
                 popLayer2.style.display = "none";
-            }
-            var modifyAlbum = document.getElementById('modifyAlbum');
-            var modText = document.getElementById('mod-text');
-            var modText2 = document.getElementById('mod-text2');
-            var flage=1;
-            modifyAlbum.onclick = function(){
-            	if(flage==1){
-            		modText2.style.display="block";
-            		modText.style.display="none";
-            		flage=0;
-            	}
-            	else{
-            		modText2.style.display="none";
-            		modText.style.display="block";
-            		flage=1;
-            	}
-            }
-
-            
+            }          
             //点击相册
             for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;
