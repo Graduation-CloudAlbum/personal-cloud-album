@@ -294,27 +294,10 @@
 				<li class="Partially-visible-leftLi">
 					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
 					<div class="Partially-visible-leftLi-content">
-						<span class="Partially-visible-span2">江川</span>
-						<span class="Partially-visible-span2">1723432@qq.com</span>
-					</div>	
-				</li>
-				<li class="Partially-visible-leftLi">
-					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
-					<div class="Partially-visible-leftLi-content">
 						<span class="Partially-visible-span2">黄兰</span>
 						<span class="Partially-visible-span2">1723432@qq.com</span>
 					</div>	
 				</li>
-				
-				
-				<li class="Partially-visible-leftLi">
-					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
-					<div class="Partially-visible-leftLi-content">
-						<span class="Partially-visible-span2">黄兰</span>
-						<span class="Partially-visible-span2">1723432@qq.com</span>
-					</div>	
-				</li>
-				
 				
 			</ul>
 			<ul class="Partially-visible-right">
