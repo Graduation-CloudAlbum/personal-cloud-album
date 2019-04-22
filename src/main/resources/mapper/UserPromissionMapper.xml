@@ -262,5 +262,9 @@
     where user_id = #{user_id,jdbcType=INTEGER} and friend_id = #{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
   </insert>
 
+  <delete id="deleteAllByAlbumId">
+    delete * from user_promission where album_id= #{album_id,jdbcType=INTEGER}
+  </delete>
+
 
 </mapper>
