@@ -940,6 +940,6 @@ function downLoadImg() {
 }
 
 $("#mode-album-button2").click(function () {
-    var meal=$("input[type='radio']:checked").val();
-    alert(meal)
+    var type=$("input[type='radio']:checked").val();
+    alert(type)
 });
