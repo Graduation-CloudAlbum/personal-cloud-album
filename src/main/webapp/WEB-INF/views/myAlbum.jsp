@@ -261,9 +261,9 @@
 					<p class="time">2019-03-08 12:00:00</p>
 				</div>
 				<div id="mod-text2" class="text">
-					<p class="mode-title-p">名称：<input type="text" id="mode-title" class="mode-title" value=""></p>
-					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value=""></p>
-					<div class="mod-radio">权限：
+					<p class="mode-title-p">名称：<input type="text" id="mode-title" class="mode-title" value="家人"></p>
+					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value="家人"></p>
+					<div id="mod-radio2" class="mod-radio">权限：
 			          <input class="redioA" type="radio" name="identity2" value="公开" checked="checked" style="margin-right:5px" onkeyup="quanxian2()"/>公开
 			          <input class="redioA" type="radio" name="identity2" value="私有" style="margin-left: 30px;margin-right:5px" onkeyup="quanxian2()"/>私有
 			        </div>
@@ -275,6 +275,89 @@
 					<a id="modifyAlbum" class="btn-sure icoMod fR mod-click"  title="修改相册信息"><i class="icon iconfont icon-bianji"></i></a>
 				</div>
 			</div>
+		</div>
+		<!-- ***************************************************相册信息权限设置，部分可见***************************************************-->
+		<div class="Partially-visible">
+			<div class="Partially-visible-top">权限设置:部分可见
+				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span class="Partially-visible-top2">确定</span></div>
+			</div>
+			<ul class="Partially-visible-left">
+				<div class="allfrinedP2">当前部分可见</div>
+				
+				<li class="Partially-visible-leftLi">
+					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
+					<div class="Partially-visible-leftLi-content">
+						<span class="Partially-visible-span2">黄兰</span>
+						<span class="Partially-visible-span2">1723432@qq.com</span>
+					</div>	
+				</li>
+				<li class="Partially-visible-leftLi">
+					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
+					<div class="Partially-visible-leftLi-content">
+						<span class="Partially-visible-span2">江川</span>
+						<span class="Partially-visible-span2">1723432@qq.com</span>
+					</div>	
+				</li>
+				<li class="Partially-visible-leftLi">
+					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
+					<div class="Partially-visible-leftLi-content">
+						<span class="Partially-visible-span2">黄兰</span>
+						<span class="Partially-visible-span2">1723432@qq.com</span>
+					</div>	
+				</li>
+				
+				
+				<li class="Partially-visible-leftLi">
+					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
+					<div class="Partially-visible-leftLi-content">
+						<span class="Partially-visible-span2">黄兰</span>
+						<span class="Partially-visible-span2">1723432@qq.com</span>
+					</div>	
+				</li>
+				
+				
+			</ul>
+			<ul class="Partially-visible-right">
+				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>(设置该好友可见)全选</div>
+				
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				<li class="Partially-visible-rightLi">
+					<input name="friend" type="checkbox" value="1342432@qq.com" />
+					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
+					<span class="Partially-visible-span">黄兰</span>
+					<span class="Partially-visible-span">1723432@qq.com</span>
+				</li>
+				
+			</ul>
 		</div>
 <!--/******************************************************************************删除相册**********************************************/-->
 		<div id="delete-album" class="accept-friends">

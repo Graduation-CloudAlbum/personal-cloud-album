@@ -798,7 +798,97 @@
 	
 }
 
+/***********************************************************部分可见*************************************************************/
+.Partially-visible{
+	position: absolute;
+    left: 45%;
+    top: 22%;
+    width: 650px;
+    height: 390px;
+    overflow: hidden;
+    margin-left: -250px;
+    z-index: 150;
+    background:#fff;
+    display:none;
+}
+.Partially-visible-top{
+	width: 100%;
+    height: 60px;
+    color: #b18585;
+    padding: 15px;
+    font-size: 24px;
+	border-bottom: 1px solid #b18585;
+}
+.Partially-visible-top1{
+	font-size: 14px;
+	cursor: pointer;
+}
+.Partially-visible-top2{
+	font-size: 14px;
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.Partially-visible-left{
+	width:200px;
+	height:330px;
+	float: left;
+	border-right:1px solid #777;
+	overflow-y:auto;
+	padding-bottom: 15px;
+}
+.Partially-visible-left .Partially-visible-leftLi{
+	color: #333;
+    font-size: 17px;
+    padding-left:18px;
+    width:100%;
+    height: 40px;
+}
+.allfrinedP2{
+	padding: 18px 15px;
+}
+.Partially-visible-leftLi-content{
+	width: 100px;
+    float: left;
+}
+.Partially-visible-img2{
+	width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    float: left;
+}
+.Partially-visible-span2{
+	font-size: 13px;
+    color: #897373;
+    margin-left: 10px;
+}
 
 
 
-
+.Partially-visible-right{
+	width:450px;
+	height:330px;
+	float: left;
+	padding-top:5px;
+	overflow-y:auto;
+}
+.allfrinedP{
+	padding: 5px 18px;
+}
+.Partially-visible-right .Partially-visible-rightLi{
+	 padding: 5px 18px;
+}
+.Partially-visible-img{
+	width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+.Partially-visible-span{
+	font-size: 13px;
+    color: #897373;
+    margin-left: 10px;
+}
+#allP{
+	margin-right: 15px;
+}
