@@ -6,6 +6,7 @@ var myAlbumMenu1 = document.getElementById('myAlbum-menu1');
 var myAlbumMenu2 = document.getElementById('myAlbum-menu2');
 var open = document.getElementById('open');
 var open2 = document.getElementById('open2');
+var album_name="";
 
 var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
@@ -297,6 +298,7 @@ $().ready(function getAlbum() {
             var closeMod = document.getElementById('close-mod');
             $(".modeA").click(function(){
             	 var text=$(this).parent().siblings().find('span');
+                album_name=text.text();
             	//获取相册名 alert(text.text())
             	 $("#mod-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
@@ -984,11 +986,22 @@ function PartiallyVisibleAll() {
 }
 //选中封装数组
 $(document).ready(function(){
-	   $('.Partially-visible-top2').click(function(){
+	   $("#personalPromission").click(function(){
 	        var checkID = [];//定义一个空数组 
 	        $("input[name='friend']:checked").each(function(i){//把所有被选中的复选框的值存入数组
 	            checkID[i] =$(this).val();
-	        }); 
+	        });
+           $.ajax({
+               async: false,
+               type: "post",
+               url: "/pca/album/someFriendCanSee",
+               data: {"checkID[]":checkID,album_name:album_name},
+               traditional: true,
+               dataType: "json",
+               success: function (data) {
+
+               }
+           });
 		   console.log(checkID);
 	    })
 	});
