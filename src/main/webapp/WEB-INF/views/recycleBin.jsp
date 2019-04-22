@@ -74,7 +74,7 @@
                                 <td>15天<input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
                                 <td><button class="btn btn-info pimg2">查看</button></td>
                             </tr>
-                            <li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>
+                            <%--<li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>--%>
                         </c:forEach>
 
                         </tbody>

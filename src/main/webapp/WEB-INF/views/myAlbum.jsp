@@ -291,6 +291,7 @@
 						<span class="Partially-visible-span2">1723432@qq.com</span>
 					</div>	
 				</li>
+<<<<<<< HEAD
 				<li class="Partially-visible-leftLi">
 					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
 					<div class="Partially-visible-leftLi-content">
@@ -299,47 +300,17 @@
 					</div>	
 				</li>
 				
+=======
+>>>>>>> 9c18e2128b470bbdd99f6ec887dce9b353d4c905
 			</ul>
 			<ul class="Partially-visible-right">
 				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>(设置该好友可见)全选</div>
-				
 				<li class="Partially-visible-rightLi">
 					<input name="friend" type="checkbox" value="1342432@qq.com" />
 					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
 					<span class="Partially-visible-span">黄兰</span>
 					<span class="Partially-visible-span">1723432@qq.com</span>
 				</li>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
-				<li class="Partially-visible-rightLi">
-					<input name="friend" type="checkbox" value="1342432@qq.com" />
-					<img class="Partially-visible-img" src="<%=basePath%>/img/1.jpg" >
-					<span class="Partially-visible-span">黄兰</span>
-					<span class="Partially-visible-span">1723432@qq.com</span>
-				</li>
-				
 			</ul>
 		</div>
 <!--/******************************************************************************删除相册**********************************************/-->
