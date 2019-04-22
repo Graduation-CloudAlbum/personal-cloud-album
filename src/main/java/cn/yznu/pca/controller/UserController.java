@@ -107,6 +107,16 @@ public class UserController {
         System.out.println("验证消息的个数"+newFriendNumber);
         request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
+        //所有好友
+        List<?> list2 = friendService.selectAllMyFriend(user);
+        String jsonArray2 = JSON.toJSONString(list2);
+        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        request.setAttribute("allfriend", allfriend);
+        //具有权限的好友
+        List<?> list3 = friendService.selectAllMyFriend(user);
+        String jsonArray3 = JSON.toJSONString(list3);
+        JSONArray friendHavePromission = JSONArray.parseArray(jsonArray3);
+        request.setAttribute("friendHavePromission", friendHavePromission);
         return "myAlbum";
     }
 
