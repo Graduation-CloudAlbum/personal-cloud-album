@@ -930,10 +930,14 @@ $("#mod-radio2").click(function () {
     	$("#part").css({ display: "none" });
     }
 });
+//部分可见
 $("#part").click(function () {
 	$(".Partially-visible").css({ display: "block" });
 });
-
+//关闭部分可见
+$(".Partially-visible-top1").click(function () {
+	$(".Partially-visible").css({ display: "none" });
+});
 //点击部分可见全选
 function PartiallyVisibleAll() {
     var flag = document.getElementById("allP").checked;
@@ -949,6 +953,4 @@ function PartiallyVisibleAll() {
         }
     }  
 }
-$(".Partially-visible-top1").click(function () {
-	$(".Partially-visible").css({ display: "none" });
-});
+
