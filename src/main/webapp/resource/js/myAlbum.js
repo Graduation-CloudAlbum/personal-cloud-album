@@ -970,8 +970,11 @@ function downLoadImg() {
 //$("#part").click(function () {
 //	$(".Partially-visible").css({ display: "block" });
 //});
+
+var result_choose=0;
 $("#selectStyle2").change(function(){
 	//alert($(this).children('option:selected').val());
+    result_choose=0;
 	var text=$(this).children('option:selected').val();
 	if(text=="部分可见"){
 		$(".Partially-visible").css({ display: "block" });
@@ -985,6 +988,7 @@ $("#selectStyle2").change(function(){
 	}
 })
 $("#selectStyle").change(function(){
+    result_choose=1;
 	//alert($(this).children('option:selected').val());
 	var text=$(this).children('option:selected').val();
 	if(text=="部分可见"){
@@ -1020,22 +1024,56 @@ function PartiallyVisibleAll() {
 }
 //选中封装数组
 $(document).ready(function(){
-	   $("#personalPromission").click(function(){
-	        var checkID = [];//定义一个空数组 
-	        $("input[name='friend']:checked").each(function(i){//把所有被选中的复选框的值存入数组
-	            checkID[i] =$(this).val();
-	        });
-           $.ajax({
-               async: false,
-               type: "post",
-               url: "/pca/album/someFriendCanSee",
-               data: {"checkID[]":checkID,album_name:album_name},
-               traditional: true,
-               dataType: "json",
-               success: function (data) {
-
-               }
-           });
+    $("#personalPromission").click(function(){
+        var checkID = [];//定义一个空数组
+        $("input[name='friend']:checked").each(function(i){//把所有被选中的复选框的值存入数组
+            checkID[i] =$(this).val();
+        });
+        //编辑相册时部分好友处理
+        if(result_choose==1){
+            $.ajax({
+                async: false,
+                type: "post",
+                url: "/pca/album/someFriendCanSee",
+                data: {"checkID[]":checkID,album_name:album_name},
+                traditional: true,
+                dataType: "json",
+                success: function (data) {
+                    if(data){
+                        alert("修改成功");
+                        window.location.href = "/pca/user/myAlbum";
+                    }
+                }
+            });
+        }
+        //创建相册时部分好友处理
+        else{
+            //取消单选框的默认选中
+            var albumName = $.trim($("#Create-Album-input").val());
+            var theme = $.trim($("#Create-Album-input2").val());
+            var jurisdiction = "私有";
+            $.ajax({
+                async: false,
+                type: "post",
+                url: "/pca/album/createAlbumTwo",
+                data: {"albumName": albumName, "theme": theme, "jurisdiction": jurisdiction,"checkID[]":checkID,album_name:album_name},
+                traditional: true,
+                dataType: "json",
+                success: function (data) {
+                    if (data == 1) {
+                        alert("新建成功");
+                        window.location.href = "/pca/user/myAlbum";
+                    } else {
+                        alert("该相册已存在，换个名称试试");
+                        //置空输入框的值
+                        $("#Create-Album-input").val("");
+                        $("#Create-Album-input2").val("");
+                        //取消单选框的默认选中
+                        $("input[type='radio']").removeAttr('checked');
+                    }
+                }
+            });
+        }
 		   console.log(checkID);
 	    })
 	});
