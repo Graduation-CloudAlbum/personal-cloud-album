@@ -104,6 +104,57 @@ public class AlbumController {
     }
 
     /**
+     * 部分好友新建相册
+     * @param albumName 相册名
+     * @param theme 主题
+     * @param theme 权限
+     * @param request
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/createAlbumTwo")
+    @ResponseBody
+    public int createAlbumTwo(@Param("albumName") String albumName,@Param("theme") String theme,
+                           @Param("jurisdiction") String  jurisdiction,@RequestParam(value = "checkID[]")  Integer[]  friendId,
+                              @Param("album_name") String album_name, HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        String sta="";
+        String jsd1="公开";
+        String jsd2="私有";
+        if (jurisdiction.equals(jsd1)){
+            sta="0";
+        }else if (jurisdiction.equals(jsd2)){
+            sta="1";
+        }
+        Album album=new Album();
+        album.setAlbumName(albumName);
+        album.setUserId(userId);
+        album.setStatus(sta);
+        album.setAlbumType(theme);
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        //大于0表示相册名已存在，不可使用，返回0
+        if (albumlist.size()>0){
+            return 0;
+        }else{
+            //否则表示相册名可用，创建相册，返回1
+            int result= albumService.createAlbum(album);
+            if(result==1){
+                List<Integer>  list= Arrays.asList(friendId);
+                int albumId=0;
+                List<Album> albumTwo=albumService.selectAlbumByName(user.getId(),albumName);
+                for(Album s:albumTwo){
+                    albumId=s.getId();
+
+                }
+                albumService.setPerssonalPromission(user.getId(),albumId,list,0);
+            }
+            return 1;
+        }
+
+    }
+
+
+    /**
      * 删除相册，采用逻辑删除方式，置于回收站
      * @param albumName
      * @param request
