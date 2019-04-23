@@ -328,6 +328,8 @@ $().ready(function getAlbum() {
                              $("#selectStyle option[value='全部可见']").attr("selected",true);
                          }if (jurisdiction==0){
                             $("#selectStyle option[value='仅自己可见']").attr("selected",true);
+                        }if (jurisdiction==3){
+                            $("#selectStyle option[value='部分可见']").attr("selected",true);
                         }
                     }
 

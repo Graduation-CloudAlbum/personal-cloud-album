@@ -1,8 +1,5 @@
 package cn.yznu.pca.controller;
-import cn.yznu.pca.model.Album;
-import cn.yznu.pca.model.Image;
-import cn.yznu.pca.model.RecycleBin;
-import cn.yznu.pca.model.User;
+import cn.yznu.pca.model.*;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.RecycleBinService;
@@ -73,7 +70,16 @@ public class AlbumController {
         int userId=user.getId();
         List list=albumService.selectAlbumByName(userId,albumName);
         Album album=(Album) list.get(0);
-        return album;
+        int albumId=album.getId();
+        List<UserPromission> list1=userPromissionService.selectByAlbumId(albumId);
+        if (list1.size()!=0){
+            album.setStatus("3");
+            System.out.println("status is :"+album.getStatus());
+            return album;
+        }else {
+            return album;
+        }
+
     }
 
     /**

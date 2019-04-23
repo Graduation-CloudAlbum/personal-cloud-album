@@ -1,9 +1,12 @@
 package cn.yznu.pca.service.impl;
 
 import cn.yznu.pca.dao.UserPromissionMapper;
+import cn.yznu.pca.model.UserPromission;
 import cn.yznu.pca.service.UserPromissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -20,5 +23,10 @@ public class UserPromissionServiceImpl implements UserPromissionService {
     public boolean deletePromission(int albumId) {
 
         return userPromissionMapper.deleteAllByAlbumId(albumId);
+    }
+
+    @Override
+    public List<UserPromission> selectByAlbumId(Integer albumId) {
+        return userPromissionMapper.selectByAlbumId(albumId);
     }
 }
