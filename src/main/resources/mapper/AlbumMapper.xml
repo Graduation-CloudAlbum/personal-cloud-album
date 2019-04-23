@@ -236,8 +236,8 @@
     update album
     set
       album_name = #{albumName,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
-      album_type = #{albumType,jdbcType=VARCHAR}
+      status = #{jurisdiction,jdbcType=VARCHAR},
+      album_type = #{theme,jdbcType=VARCHAR}
     where id = #{albumId,jdbcType=INTEGER}
   </update>
 

@@ -157,31 +157,38 @@ uploadPhoto2.onclick = function () {
     document.getElementById('popLayer2').style.display = "block";
     document.getElementById('Create-Album').style.display = "block";
 }
-$("input[type='radio']").removeAttr('checked');
+// $("input[type='radio']").removeAttr('checked');
 $("#Create-Album-button2").click(function () {
     //取消单选框的默认选中
     var albumName = $.trim($("#Create-Album-input").val());
     var theme = $.trim($("#Create-Album-input2").val());
-    var jurisdiction = $("input[type='radio']:checked").val();
-    $.ajax({
-        type: "post",
-        url: "/pca/album/createAlbum",
-        data: {"albumName": albumName, "theme": theme, "jurisdiction": jurisdiction},
-        dataType: "json",
-        success: function (data) {
-            if (data == 1) {
-                alert("新建成功");
-                window.location.href = "/pca/user/myAlbum";
-            } else {
-                alert("该相册已存在，换个名称试试");
-                //置空输入框的值
-                $("#Create-Album-input").val("");
-                $("#Create-Album-input2").val("");
-                //取消单选框的默认选中
-                $("input[type='radio']").removeAttr('checked');
+    var jurisdiction =$("#selectStyle").val();
+    if (albumName == null || albumName == "" || theme == null || theme == ""){
+        alert("请输入正确的相册名或者主题")
+    }else{
+        //alert(jurisdiction);
+        $.ajax({
+            type: "post",
+            url: "/pca/album/createAlbum",
+            data: {"albumName": albumName, "theme": theme, "jurisdiction": jurisdiction},
+            dataType: "json",
+            success: function (data) {
+                if (data == 1) {
+                    alert("新建成功");
+                    window.location.href = "/pca/user/myAlbum";
+                } else {
+                    alert("该相册已存在，换个名称试试");
+                    //置空输入框的值
+                    $("#Create-Album-input").val("");
+                    $("#Create-Album-input2").val("");
+                    //取消单选框的默认选中
+                    $("input[type='radio']").removeAttr('checked');
+                }
             }
-        }
-    });
+        });
+    }
+    // var jurisdiction = $("input[type='radio']:checked").val();
+
 });
 //关闭创建相册
 var iconChacha3 = document.getElementById('iconChacha3');
@@ -264,7 +271,6 @@ $().ready(function getAlbum() {
             	 $("#delete-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
             	 var delAlbumName=text.text();
-                alert(delAlbumName)
                 $.ajax({
                     async: false,
                     type: "post",
@@ -293,6 +299,7 @@ $().ready(function getAlbum() {
 
             }
           //编辑相册
+            var albumId="0";
             var modAlbum = document.getElementById('mod-album');
             //var uploadPhoto4 = document.getElementById('uploadPhoto4');
             var closeMod = document.getElementById('close-mod');
@@ -300,14 +307,70 @@ $().ready(function getAlbum() {
             	 var text=$(this).parent().siblings().find('span');
                 album_name=text.text();
             	//获取相册名 alert(text.text())
+                //alert(text.text())
             	 $("#mod-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
+                //获取相册的基本信息
+            	 $.ajax({
+                    async: false,
+                    type: "post",
+                    url: "/pca/album/selectOneAlbum",
+                    data: { albumName: album_name},
+                    dataType: "json",
+                    success: function (data) {
+                          albumId=data.id;
+                         var albumName=data.albumName;
+                         var theme=data.albumType;
+                         var jurisdiction=data.status;
+                         $("#mode-title").val(albumName);
+                         $("#mode-theme").val(theme);
+                         if (jurisdiction==1){
+                             $("#selectStyle option[value='全部可见']").attr("selected",true);
+                         }if (jurisdiction==0){
+                            $("#selectStyle option[value='仅自己可见']").attr("selected",true);
+                        }
+                    }
+
+                });
+
             	});   
 
             closeMod.onclick = function () {
                 modAlbum.style.display = "none"; 
                 popLayer2.style.display = "none";
-            }          
+            }
+            $("#mode-album-button2").click(function () {
+                var albumName=$("#mode-title").val();
+                var theme=$("#mode-theme").val();
+
+                var jurisdiction;
+                if ($("#selectStyle").val()=="全部可见") {
+                    jurisdiction=1;
+
+                }if ($("#selectStyle").val()=="仅自己可见"){
+                    jurisdiction=0;
+
+                }if ($("#selectStyle").val()=="部分可见"){
+                    jurisdiction=0;
+                }
+                 // alert(albumId)
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: "/pca/album/updateAlbum",
+                    data: {"albumId":albumId,"albumName": albumName,"theme":theme,"jurisdiction":jurisdiction},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data==1){
+                            alert("修改成功")
+                            window.location.href = window.location.href;
+
+                        } else{
+                            alert("修改失败，请重试")
+                        }
+                    }
+                });
+            });
             //点击相册
             for (var i = 0; i < myAlbumLi.length; i++) {
                 myAlbumLi[i].index = i;
@@ -315,21 +378,10 @@ $().ready(function getAlbum() {
                     myAlbumMenu1.style.display = "none";
                     myAlbumContent.style.display = "none";
                     open.style.display = "none";
-
                     myAlbumMenu2.style.display = "block";
                     myAlbumContent2.style.display = "block";
                     open2.style.display = "block";
-
-                    // str = (function (i) {
-                    //     aLi = i;
-                    //     return aLi;
-                    // })(this.index);
-                    // aLi = str;
-                    //
-                    // var aP = this.getElementsByTagName('p');
                     aName = this.innerHTML;
-                    
-                    
                     var albumName = aName;
                     $.ajax({
                         async: false,
@@ -618,8 +670,6 @@ $().ready(function getAlbum() {
                         }
                     });
 
-                    
-                    
                 }
                 
             }
@@ -760,15 +810,6 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         myAlbumMenu2.style.display = "block";
                         myAlbumContent2.style.display = "block";
                         open2.style.display = "block";
-
-                        // str = (function (i) {
-                        //     aLi = i;
-                        //     return aLi;
-                        // })(this.index);
-                        // aLi = str;
-                        //
-                        // var aP = this.getElementsByTagName('p');
-                        //aName = this.innerHTML;
                     }
 
                 }
@@ -845,7 +886,7 @@ $("#button1").click(function () {
     });
 });
 
-
+//移动照片
 $("#admin-button-menu").on('mouseenter', function () {
     $(".album-sort-li").click(function () {
         if (idArray.length == 0) {
@@ -930,7 +971,7 @@ function downLoadImg() {
 //	$(".Partially-visible").css({ display: "block" });
 //});
 $("#selectStyle2").change(function(){
-	alert($(this).children('option:selected').val()); 
+	//alert($(this).children('option:selected').val());
 	var text=$(this).children('option:selected').val();
 	if(text=="部分可见"){
 		$(".Partially-visible").css({ display: "block" });
@@ -944,7 +985,7 @@ $("#selectStyle2").change(function(){
 	}
 })
 $("#selectStyle").change(function(){
-	alert($(this).children('option:selected').val()); 
+	//alert($(this).children('option:selected').val());
 	var text=$(this).children('option:selected').val();
 	if(text=="部分可见"){
 		$(".Partially-visible").css({ display: "block" });

@@ -63,6 +63,15 @@ public class AlbumController {
         map.put("coverList",coverList);
         return  map;
     }
+    @ResponseBody
+    @RequestMapping("selectOneAlbum")
+    public Object selectOneAlbum(@Param("albumName") String albumName,HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        List list=albumService.selectAlbumByName(userId,albumName);
+        Album album=(Album) list.get(0);
+        return album;
+    }
 
     /**
      * 新建相册
@@ -79,8 +88,9 @@ public class AlbumController {
         User user= (User) request.getSession().getAttribute("user");
         int userId=user.getId();
         String sta="";
-        String jsd1="公开";
-        String jsd2="私有";
+        String jsd1="全部可见";
+        String jsd2="仅自己可见";
+        //String jsd3="部分可见";
         if (jurisdiction.equals(jsd1)){
              sta="0";
         }else if (jurisdiction.equals(jsd2)){
@@ -171,13 +181,14 @@ public class AlbumController {
      */
     @RequestMapping("/updateAlbum")
     @ResponseBody
-    public int updateAlbum(@Param("albumName") String albumName,
+    public int updateAlbum(@Param("albumId") Integer albumId,@Param("albumName") String albumName,
                            @Param("theme") String theme,@Param("jurisdiction") String  jurisdiction,HttpServletRequest request){
-        User user= (User) request.getSession().getAttribute("user");
-        int userId=user.getId();
-        List albumlist =albumService.selectAlbumByName(userId,albumName);
-        Album album= (Album) albumlist.get(0);
-        int albumId=album.getId();
+        //User user= (User) request.getSession().getAttribute("user");
+        //int userId=user.getId();
+        //List albumlist =albumService.selectAlbumByName(userId,albumName);
+        //Album album= (Album) albumlist.get(0);
+        //int albumId=album.getId();
+        //Album album=albumService.selectAlbumById(albumId);
         int mark=albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
         return mark;
     }

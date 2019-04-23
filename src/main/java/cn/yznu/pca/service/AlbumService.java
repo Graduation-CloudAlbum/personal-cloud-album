@@ -64,7 +64,7 @@ public interface AlbumService {
      * @param albumId 相册id
      * @return
      */
-    int updateAlbum(int albumId,String albumName,String status,String theme);
+    int updateAlbum(int albumId,String albumName,String jurisdiction,String theme);
 
     /**
      * 通过相册名查找相册
@@ -73,6 +73,13 @@ public interface AlbumService {
      * @return
      */
     List selectAlbumByName(int userId,String albumName);
+
+    /**
+     * 通过相册id查找相册
+     * @param id 相册id
+     * @return
+     */
+    Album selectAlbumById(int id);
 
     /**
      * 设置用户相册部分好友可见权限
