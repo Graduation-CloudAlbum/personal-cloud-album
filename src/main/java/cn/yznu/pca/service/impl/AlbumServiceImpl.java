@@ -64,13 +64,18 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public int updateAlbum(int albumId, String albumName,String status, String theme) {
-        return mapper.updateAlbum(albumId,albumName,status,theme);
+    public int updateAlbum(int albumId, String albumName,String jurisdiction, String theme) {
+        return mapper.updateAlbum(albumId,albumName,jurisdiction,theme);
     }
 
     @Override
     public List selectAlbumByName(int userId, String albumName) {
         return mapper.selectAlbumByName(userId,albumName);
+    }
+
+    @Override
+    public Album selectAlbumById(int id) {
+        return mapper.selectByPrimaryKey(id);
     }
 
     @Override

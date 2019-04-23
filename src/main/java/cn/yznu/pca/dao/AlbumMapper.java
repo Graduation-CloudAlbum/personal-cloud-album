@@ -43,7 +43,7 @@ public interface AlbumMapper {
 
     int updateById(@Param("status")String status,@Param("albumId")int albumId);
 
-    int updateAlbum(@Param("albumId")int albumId,@Param("albumName")String albumName,@Param("status")String status,@Param("albumId")String theme);
+    int updateAlbum(@Param("albumId")int albumId,@Param("albumName")String albumName,@Param("jurisdiction")String jurisdiction,@Param("theme")String theme);
 
     List checkAlbumPower(Integer album_id);
 
