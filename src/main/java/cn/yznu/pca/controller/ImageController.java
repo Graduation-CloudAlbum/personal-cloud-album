@@ -122,12 +122,13 @@ public class ImageController {
         final int userId = user.getId();
         //处理页面传过来的时间字符串，用空格替换T
         String loutTime = logOutTime.replaceAll("T", " ");
+        System.out.println("logOutTime is"+logOutTime);
         //设置日期格式
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //转换成date
-        Date date=sdf.parse(loutTime);
+       // Date date=sdf.parse(loutTime);
         //logOutTime为空，表示未设置定时上传
-        if ("" == logOutTime || null == logOutTime) {
+        if ("" == logOutTime || null == logOutTime||("").equals(logOutTime)) {
             for (int i = 0; i < pictureFile.length - 1; i++) {
                 MultipartFile file = pictureFile[i];
                 //设置本地保存路径
@@ -177,7 +178,7 @@ public class ImageController {
             Date time = calendar.getTime();
             Timer timer = new Timer();
 
-            for (int i = 0; i < pictureFile.length - 1; i++) {
+            for (int i = 0; i < pictureFile.length-1; i++) {
                 MultipartFile file = pictureFile[i];
 
                 //设置本地保存路径
