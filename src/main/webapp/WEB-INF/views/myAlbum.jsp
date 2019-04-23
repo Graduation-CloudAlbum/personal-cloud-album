@@ -160,7 +160,7 @@
                         <input type="datetime-local" id="logOutTime" name="logOutTime" />
                         <label id="nowTime" class="btn btn-info footer-button3" type="submit"><p>定时上传</p></label>
 
-                        <button id="nextTime" class="btn btn-info footer-button3"  type="submit"><p>开始上传</p></button>
+                        <label id="nextTime" class="btn btn-info footer-button3"  type="submit"><p>开始上传</p></label>
                     </div>                
                            
                 </form>

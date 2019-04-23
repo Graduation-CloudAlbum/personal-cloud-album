@@ -128,103 +128,103 @@ public class ImageController {
        // //转换成date
        //// Date date=sdf.parse(loutTime);
        // //logOutTime为空，表示未设置定时上传
-        if ("" == loutTime || null == loutTime||("").equals(loutTime)) {
-            System.out.println("pictureFile.length is :"+pictureFile.length);
-            for (int i = 0; i < pictureFile.length ; i++) {
-                MultipartFile file = pictureFile[i];
-                //设置本地保存路径
-                String localPath = "D:\\demos\\upload\\";
-                //使用UUID给图片重命名，并去掉四个“-”
-                String name = UUID.randomUUID().toString().replaceAll("-", "");
-                //获取照片大小,以B(字节)为单位保存
-                String fileSize = String.valueOf(file.getSize());
-                //获取文件的扩展名
-                String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-                //设置图片上传的虚拟路径
-                String url = "/upload/";
-                //保存照片到硬盘
-                file.transferTo(new File(localPath + "/" + name + "." + ext));
-                //保存照片名
-                image.setImageName(name);
-                //保存照片大小
-                image.setImageSize(fileSize);
-                //设置所属用户
-                image.setUserId(userId);
-                //保存到相册
-                image.setAlbumId(albumId);
-                //保存照片url
-                image.setUrl(url + name + "." + ext);
-                //上传照片
-                imageService.upload(image);
-                //计算所有照片占用的空间
-                UserSpace userSpace = userSpaceService.getSpace(userId);
-                //总空间
-                String all = userSpace.getAllSpace();
-                //获取所有照片占用的空间
-                String used = userSpace.getUsedSpace();
-                //计算剩余可用空间
-                String available = FormatUtil.minus(all, used);
-                //更新用户的空间信息
-                userSpaceService.updateSpace(userId, all, used, available);
-            }
-        }else {
-            //截取时间字符串中的年、月、日、分，设置定时任务触发时间
-            Calendar calendar = Calendar.getInstance();
-            int year = Integer.valueOf(loutTime.substring(0, 4));
-            int month = Integer.valueOf(loutTime.substring(5, 7));
-            int day = Integer.valueOf(loutTime.substring(8, 10));
-            int hour = Integer.valueOf(loutTime.substring(11, 13));
-            int minute = Integer.valueOf(loutTime.substring(14, 16));
-            calendar.set(year, month - 1, day, hour, minute, 0);
-            Date time = calendar.getTime();
-            Timer timer = new Timer();
-
-            for (int i = 0; i < pictureFile.length; i++) {
-                MultipartFile file = pictureFile[i];
-                System.out.println("pictureFile.length is :"+pictureFile.length);
-                //设置本地保存路径
-                String localPath = "D:\\demos\\upload\\";
-                //使用UUID给图片重命名，并去掉四个“-”
-                String name = UUID.randomUUID().toString().replaceAll("-", "");
-                //获取照片大小,以B(字节)为单位保存
-                String fileSize = String.valueOf(file.getSize());
-                //获取文件的扩展名
-                String ext = FilenameUtils.getExtension(file.getOriginalFilename());
-                //设置图片上传的虚拟路径
-                String url = "/upload/";
-                //保存照片到硬盘
-                file.transferTo(new File(localPath + "/" + name + "." + ext));
-                //保存照片名
-                image.setImageName(name);
-                //保存照片大小
-                image.setImageSize(fileSize);
-                //设置所属用户
-                image.setUserId(userId);
-                //保存到相册
-                image.setAlbumId(albumId);
-                //保存照片url
-                image.setUrl(url + name + "." + ext);
-                //开始定时任务
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        System.out.println("定时任务开始了");
-                        imageService.upload(image);
-                        //计算所有照片占用的空间
-                        UserSpace userSpace = userSpaceService.getSpace(userId);
-                        //总空间
-                         String all = userSpace.getAllSpace();
-                        //获取所有照片占用的空间
-                         String used = userSpace.getUsedSpace();
-                        //计算剩余可用空间
-                         String available = FormatUtil.minus(all, used);
-                        //更新用户的空间信息
-                        userSpaceService.updateSpace(userId, all, used, available);
-                    }
-                }, time);
-
-            }
-        }
+       // if ("" == loutTime || null == loutTime||("").equals(loutTime)) {
+       //     System.out.println("pictureFile.length is :"+pictureFile.length);
+       //     for (int i = 0; i < pictureFile.length ; i++) {
+       //         MultipartFile file = pictureFile[i];
+       //         //设置本地保存路径
+       //         String localPath = "D:\\demos\\upload\\";
+       //         //使用UUID给图片重命名，并去掉四个“-”
+       //         String name = UUID.randomUUID().toString().replaceAll("-", "");
+       //         //获取照片大小,以B(字节)为单位保存
+       //         String fileSize = String.valueOf(file.getSize());
+       //         //获取文件的扩展名
+       //         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+       //         //设置图片上传的虚拟路径
+       //         String url = "/upload/";
+       //         //保存照片到硬盘
+       //         file.transferTo(new File(localPath + "/" + name + "." + ext));
+       //         //保存照片名
+       //         image.setImageName(name);
+       //         //保存照片大小
+       //         image.setImageSize(fileSize);
+       //         //设置所属用户
+       //         image.setUserId(userId);
+       //         //保存到相册
+       //         image.setAlbumId(albumId);
+       //         //保存照片url
+       //         image.setUrl(url + name + "." + ext);
+       //         //上传照片
+       //         imageService.upload(image);
+       //         //计算所有照片占用的空间
+       //         UserSpace userSpace = userSpaceService.getSpace(userId);
+       //         //总空间
+       //         String all = userSpace.getAllSpace();
+       //         //获取所有照片占用的空间
+       //         String used = userSpace.getUsedSpace();
+       //         //计算剩余可用空间
+       //         String available = FormatUtil.minus(all, used);
+       //         //更新用户的空间信息
+       //         userSpaceService.updateSpace(userId, all, used, available);
+       //     }
+       // }else {
+       //     //截取时间字符串中的年、月、日、分，设置定时任务触发时间
+       //     Calendar calendar = Calendar.getInstance();
+       //     int year = Integer.valueOf(loutTime.substring(0, 4));
+       //     int month = Integer.valueOf(loutTime.substring(5, 7));
+       //     int day = Integer.valueOf(loutTime.substring(8, 10));
+       //     int hour = Integer.valueOf(loutTime.substring(11, 13));
+       //     int minute = Integer.valueOf(loutTime.substring(14, 16));
+       //     calendar.set(year, month - 1, day, hour, minute, 0);
+       //     Date time = calendar.getTime();
+       //     Timer timer = new Timer();
+       //
+       //     for (int i = 0; i < pictureFile.length; i++) {
+       //         MultipartFile file = pictureFile[i];
+       //         System.out.println("pictureFile.length is :"+pictureFile.length);
+       //         //设置本地保存路径
+       //         String localPath = "D:\\demos\\upload\\";
+       //         //使用UUID给图片重命名，并去掉四个“-”
+       //         String name = UUID.randomUUID().toString().replaceAll("-", "");
+       //         //获取照片大小,以B(字节)为单位保存
+       //         String fileSize = String.valueOf(file.getSize());
+       //         //获取文件的扩展名
+       //         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
+       //         //设置图片上传的虚拟路径
+       //         String url = "/upload/";
+       //         //保存照片到硬盘
+       //         file.transferTo(new File(localPath + "/" + name + "." + ext));
+       //         //保存照片名
+       //         image.setImageName(name);
+       //         //保存照片大小
+       //         image.setImageSize(fileSize);
+       //         //设置所属用户
+       //         image.setUserId(userId);
+       //         //保存到相册
+       //         image.setAlbumId(albumId);
+       //         //保存照片url
+       //         image.setUrl(url + name + "." + ext);
+       //         //开始定时任务
+       //         timer.schedule(new TimerTask() {
+       //             @Override
+       //             public void run() {
+       //                 System.out.println("定时任务开始了");
+       //                 imageService.upload(image);
+       //                 //计算所有照片占用的空间
+       //                 UserSpace userSpace = userSpaceService.getSpace(userId);
+       //                 //总空间
+       //                  String all = userSpace.getAllSpace();
+       //                 //获取所有照片占用的空间
+       //                  String used = userSpace.getUsedSpace();
+       //                 //计算剩余可用空间
+       //                  String available = FormatUtil.minus(all, used);
+       //                 //更新用户的空间信息
+       //                 userSpaceService.updateSpace(userId, all, used, available);
+       //             }
+       //         }, time);
+       //
+       //     }
+       // }
 
             return "myAlbum";
 

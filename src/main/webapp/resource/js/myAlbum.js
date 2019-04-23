@@ -1157,9 +1157,12 @@ sendStyleLi2.onclick = function () {
     nowTime.style.display = "none";
     logOutTime.style.display = "none";
 }
-// $("#nextTime").click(function () {
-//     alert("点击了实时上传")
-// });
+$("#nextTime").click(function () {
+    //alert("点击了实时上传")
+    $("#logOutTime").val("");
+    //alert($("#logOutTime").val());
+    $("#upload-form").submit();
+});
 $("#button1").click(function () {
     $.ajax({
         async: false,
