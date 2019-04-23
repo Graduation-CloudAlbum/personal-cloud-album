@@ -423,7 +423,7 @@ $().ready(function getAlbum() {
                         		}
                         	})
                         	
-                            (function ($) {
+                            // (function ($) {
                                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
                                 var zoom = $('#zoom').hide(),
@@ -577,7 +577,7 @@ $().ready(function getAlbum() {
                                         event.cancelBubble = false;
                                     });
                                 })();
-                            })(jQuery);
+                            // })(jQuery);
                             
                             uploadPhoto6.onclick = function () {
 
@@ -813,6 +813,8 @@ for (var i = 0; i < albumSortLi.length; i++) {
                         myAlbumMenu2.style.display = "block";
                         myAlbumContent2.style.display = "block";
                         open2.style.display = "block";
+                        aName = this.innerHTML;
+                        alert(aName)
                     }
 
                 }
