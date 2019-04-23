@@ -50,38 +50,46 @@
                 <i class="iconfont icon-huishouzhan1"></i> <span>回收站</span>
             </div>
             <ul class="content-menu">
-                    <li id="deleteAll" class="content-menu-li"><a>清空回收站</a></li>
-                    <li id="updateAll" class="content-menu-li"><a>还原所有项目</a></li>
-                    <li id="table-header5"><button id="button1" class="btn btn-info">还原选中</button><button id="button2" class="btn btn-info">删除选中</button></li>
-                </ul>
-                <div class="content-about">
-                    <table id="recycle-table" class="recycle-table">
-                        <tr class="table-tr">
-                            <th class="th1"><input id="all" name="photoTop" type="checkbox" value="" onchange="dianjigou()"/></th>
-                            <th>照片</th>
-                            <th>照片大小</th>
-                            <th>删除时间</th>
-                            <th>有效时间</th>
-                            <th>操作</th>             
+                <li id="deleteAll" class="content-menu-li"><a>清空回收站</a></li>
+                <li id="updateAll" class="content-menu-li"><a>还原所有项目</a></li>
+                <li id="table-header5"><button id="button1" class="btn btn-info">还原选中</button><button id="button2" class="btn btn-info">删除选中</button></li>
+            </ul>
+            <div class="content-about">
+                <table id="recycle-table" class="recycle-table">
+                    <tr class="table-tr">
+                        <th class="th1"><input id="all" name="photoTop" type="checkbox" value="" onchange="dianjigou()"/></th>
+                        <th>照片</th>
+                        <th>照片大小</th>
+                        <th>删除时间</th>
+                        <th>有效时间</th>
+                        <th>操作</th>             
+                    </tr>
+                    <tbody>
+                    <c:forEach items="${recycleBins}" var="recycleBins">
+                        <tr>
+                            <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
+                            <td><img class="pimg" src="${recycleBins.image.url}" /></td>
+                            <td>${recycleBins.image.imageSize}</td>
+                            <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                            <td>15天<input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
+                            <td><button class="btn btn-info pimg2">查看</button></td>
                         </tr>
-                        <tbody>
-                        <c:forEach items="${recycleBins}" var="recycleBins">
-                            <tr>
-                                <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
-                                <td><img class="pimg" src="${recycleBins.image.url}" /></td>
-                                <td>${recycleBins.image.imageSize}</td>
-                                <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                <td>15天<input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
-                                <td><button class="btn btn-info pimg2">查看</button></td>
-                            </tr>
-                            <%--<li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>--%>
-                        </c:forEach>
+                        <%--<li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>--%>
+                    </c:forEach>
 
-                        </tbody>
-                    </table>
-                </div>
-
+                    </tbody>
+                </table>
+                
+                <div class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
+            	</div>
+            
+            
             </div>
+					
+            </div>
+            
+            
+            
         </div>
         <!-- ***************************************************弹窗 ***************************************************-->
         <!-- ***************************************************清空回收站 ***************************************************-->

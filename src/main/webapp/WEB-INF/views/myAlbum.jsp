@@ -117,7 +117,14 @@
                     <span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
                 </div>
                 <div class="content-footer"></div>
+                
+                <div id="noNumber" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
+            	</div>
+            	<div id="noNumber2" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
+            	</div>
             </div>
+            
+             
         </div>
     </div>
     <!-- ***************************************************弹窗 ***************************************************-->
@@ -262,12 +269,7 @@
 				</a>
 			</div>
 			<div class="info">
-				<div id="mod-text" class="text">
-					<p class="title">gjhj</p>
-					<p style="padding-left: 13px; margin-top: 40px;">主题：家人</p>
-					<p class="intro clrB6 lh24">权限：公开</p>
-					<p class="time">2019-03-08 12:00:00</p>
-				</div>
+				
 				<div id="mod-text2" class="text">
 					<p class="mode-title-p">名称：<input type="text" id="mode-title" class="mode-title" value="家人"></p>
 					<p class="mode-theme-p">主题：<input type="text" id="mode-theme" class="mode-title" value="家人"></p>
