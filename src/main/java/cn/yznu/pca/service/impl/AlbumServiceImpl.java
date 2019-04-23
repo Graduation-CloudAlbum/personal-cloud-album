@@ -53,8 +53,9 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public int createAlbum(Album album) {
-        return mapper.insert(album);
+    public int createAlbum(Album album){
+        mapper.insert(album);
+        return 1;
     }
 
     @Override
