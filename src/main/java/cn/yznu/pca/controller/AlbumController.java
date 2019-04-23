@@ -248,7 +248,6 @@ public class AlbumController {
             albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
             return 1;
         }else {
-
             albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
             userPromissionService.deletePromission(albumId);
             return 1;
@@ -363,7 +362,7 @@ public class AlbumController {
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/someFriendCanSee")
     @ResponseBody
-    public String  someFriendCanSee(@RequestParam(value = "checkID[]")  Integer[]  friendId,@Param("album_name") String album_name,
+    public boolean  someFriendCanSee(@RequestParam(value = "checkID[]")  Integer[]  friendId,@Param("album_name") String album_name,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         User user= (User) request.getSession().getAttribute("user");
@@ -374,7 +373,7 @@ public class AlbumController {
             albumId=s.getId();
         }
         albumService.setPerssonalPromission(user.getId(),albumId,list,0);
-        return "myAlbum";
+        return true;
     }
 
 }
