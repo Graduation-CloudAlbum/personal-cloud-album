@@ -339,6 +339,7 @@ $().ready(function getAlbum() {
                 modAlbum.style.display = "none"; 
                 popLayer2.style.display = "none";
             }
+            //修改相册
             $("#mode-album-button2").click(function () {
                 var albumName=$("#mode-title").val();
                 var theme=$("#mode-theme").val();
@@ -351,7 +352,7 @@ $().ready(function getAlbum() {
                     jurisdiction=0;
 
                 }if ($("#selectStyle").val()=="部分可见"){
-                    jurisdiction=0;
+                    jurisdiction=3;
                 }
                  // alert(albumId)
                 $.ajax({
@@ -679,9 +680,9 @@ $().ready(function getAlbum() {
 //点击相册，获取对应的相册名传递到后台，并将返回的数据展示到页面
 
 //在左侧导航栏点击“我的相册”时调用相册获取方法
-$("#navMenu1").click(function () {
-    getAlbum();
-});
+// $("#navMenu1").click(function () {
+//     getAlbum();
+// });
 
 //上传图片
 var uploadPhotosPopContentButton = document.getElementById('upload-photos-pop-content-button');
@@ -799,7 +800,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
 
                 }
                 $("#myAlbum-content").html(h);
-                
+
                 for (var i = 0; i < myAlbumLi.length; i++) {
                     myAlbumLi[i].index = i;
                     myAlbumLi[i].onclick = function () {
@@ -813,7 +814,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                     }
 
                 }
-               
+
             }
         });
     }
@@ -866,7 +867,9 @@ sendStyleLi2.onclick = function () {
     nowTime.style.display = "none";
     logOutTime.style.display = "none";
 }
-
+// $("#nextTime").click(function () {
+//     alert("点击了实时上传")
+// });
 $("#button1").click(function () {
     $.ajax({
         async: false,

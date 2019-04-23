@@ -243,8 +243,8 @@ public class AlbumController {
         //Album album= (Album) albumlist.get(0);
         //int albumId=album.getId();
         Album album=albumService.selectAlbumById(albumId);
-        String staus=album.getStatus();
-        if (staus.equals(jurisdiction)){
+        //String staus=album.getStatus();
+        if (jurisdiction.equals("3")){
             albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
             return 1;
         }else {
