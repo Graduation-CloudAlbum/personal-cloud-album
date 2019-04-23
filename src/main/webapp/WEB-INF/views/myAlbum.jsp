@@ -192,7 +192,6 @@
 	          	<option value="全部可见">全部可见</option>
 	          	<option value="仅自己可见">仅自己可见</option>
 	          	<option value="部分可见">部分可见</option>
-	          	<option value="部分不可见">部分不可见</option>
 	          </select>
 	           <!--
             <input type="radio" name="identity" value="公开" checked="checked" />公开
@@ -285,7 +284,6 @@
 			          	<option value="全部可见">全部可见</option>
 			          	<option value="仅自己可见">仅自己可见</option>
 			          	<option value="部分可见">部分可见</option>
-			          	<option value="部分不可见">部分不可见</option>
 			          </select>
 			        </div>
 			        <div id="mode-album-button2" class="mode-album-button2"><p>确定</p></div>
