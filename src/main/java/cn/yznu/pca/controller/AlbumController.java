@@ -6,6 +6,7 @@ import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.RecycleBinService;
+import cn.yznu.pca.service.UserPromissionService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ public class AlbumController {
     private ImageService imageService;
     @Autowired
     private RecycleBinService recycleBinService;
+    @Autowired
+    private UserPromissionService userPromissionService;
 
     /**
      * 首页展示的相册（查看相册）
@@ -188,9 +191,18 @@ public class AlbumController {
         //List albumlist =albumService.selectAlbumByName(userId,albumName);
         //Album album= (Album) albumlist.get(0);
         //int albumId=album.getId();
-        //Album album=albumService.selectAlbumById(albumId);
-        int mark=albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
-        return mark;
+        Album album=albumService.selectAlbumById(albumId);
+        String staus=album.getStatus();
+        if (staus.equals(jurisdiction)){
+            albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
+            return 1;
+        }else {
+
+            albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
+            userPromissionService.deletePromission(albumId);
+            return 1;
+        }
+
     }
 
     /**

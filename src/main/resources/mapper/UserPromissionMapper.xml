@@ -256,14 +256,9 @@
     where user_id = #{user_id,jdbcType=INTEGER} and friend_id = #{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
   </update>
 
-  <insert id="insertUserPromission" parameterType="cn.yznu.pca.model.UserPromission" >
-    update user_promission
-    set jurisdiction = #{jurisdiction,jdbcType=INTEGER}
-    where user_id = #{user_id,jdbcType=INTEGER} and friend_id = #{friend_id,jdbcType=INTEGER} and album_id = #{album_id,jdbcType=INTEGER}
-  </insert>
 
   <delete id="deleteAllByAlbumId">
-    delete * from user_promission where album_id= #{album_id,jdbcType=INTEGER}
+    delete  from user_promission where album_id= #{album_id,jdbcType=INTEGER}
   </delete>
 
 
