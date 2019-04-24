@@ -3,6 +3,8 @@ package cn.yznu.pca.service;
 import cn.yznu.pca.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author yangbaiwan
  * @date 2018-09-29
@@ -83,4 +85,10 @@ public interface UserService {
      * @return user
      */
     User getFriendInformation(int id);
+    /**
+     * 查询已有权限好友
+     * @param album_id 相册id
+     * @return
+     */
+    List<User> selectFriendHavePromission(int album_id);
 }
