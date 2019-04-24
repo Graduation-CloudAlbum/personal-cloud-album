@@ -167,6 +167,7 @@ public class ImageController {
                 //更新用户的空间信息
                 userSpaceService.updateSpace(userId, all, used, available);
             }
+            return "myAlbum";
         }else {
             //截取时间字符串中的年、月、日、分，设置定时任务触发时间
             Calendar calendar = Calendar.getInstance();
@@ -224,9 +225,8 @@ public class ImageController {
                 }, time);
 
             }
-        }
-
             return "myAlbum";
+        }
 
     }
         /**

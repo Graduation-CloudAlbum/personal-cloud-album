@@ -40,6 +40,7 @@
             <mvc:exclude-mapping path="/user/getpass" />
             <mvc:exclude-mapping path="/user/checkLogin" />
             <mvc:exclude-mapping path="/user/doRegister" />
+            <mvc:exclude-mapping path="/user/activate" />
             <!-- 以下是静态资源 -->
             <mvc:exclude-mapping path="/resource/images/**" />
             <mvc:exclude-mapping path="/resource/img/**" />
