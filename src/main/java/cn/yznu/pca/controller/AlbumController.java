@@ -214,11 +214,11 @@ public class AlbumController {
                 }
                 recycleBinService.insertRecycleBin(recycleBinList);
                 imageService.deleteImageByAlbumId(albumId);
-                albumService.deleteAlbum(albumId,status4);
+                albumService.deleteAlbum(albumId,status3);
             }
             //否则，该相册为空，只修改相册状态即可
             else{
-                albumService.deleteAlbum(albumId,status4);
+                albumService.deleteAlbum(albumId,status3);
 
             }
         return 1;
@@ -237,11 +237,11 @@ public class AlbumController {
                 }
                 recycleBinService.insertRecycleBin(recycleBinList);
                 imageService.deleteImageByAlbumId(albumId);
-                albumService.deleteAlbum(albumId, status3);
+                albumService.deleteAlbum(albumId, status4);
             }
             //否则，该相册为空，只修改相册状态即可
             else {
-                albumService.deleteAlbum(albumId, status3);
+                albumService.deleteAlbum(albumId, status4);
 
             }
         }
