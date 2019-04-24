@@ -299,16 +299,12 @@
 			<div class="Partially-visible-top"><div class="Partially-visible-top-title">权限设置:部分可见</div>
 				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span id="personalPromission" class="Partially-visible-top2">确定</span></div>
 			</div>
-			<ul class="Partially-visible-left">
-				<div class="allfrinedP2">当前部分可见</div>
-				<li class="Partially-visible-leftLi">
-					<img class="Partially-visible-img2" src="<%=basePath%>/img/1.jpg" >
-					<div class="Partially-visible-leftLi-content">
-						<span class="Partially-visible-span2">黄兰</span>
-						<span class="Partially-visible-span2">1723432@qq.com</span>
-					</div>
-				</li>
-			</ul>
+            <ul>
+                <div class="allfrinedP">已有权限好友</div>
+                <ul id="showFriendHavePromission" class="Partially-visible-left">
+
+                </ul>
+            </ul>
 			<ul class="Partially-visible-right">
 				<div class="allfrinedP"><input id="allP" name="friendTop" type="checkbox" value="" onchange="PartiallyVisibleAll()"/>设置(全选)</div>
                 <c:forEach items="${allfriend}" var="allfriend">
