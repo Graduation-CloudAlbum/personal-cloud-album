@@ -1300,10 +1300,9 @@ $("#selectStyle").change(function(){
             success: function (data) {
                 console.log(data);
                 var g = "";
-                g+="<li class='Partially-visible-leftLi'>"
-                    +"<div class='allfrinedP2'>当前部分可见</div>"
-                    +"</li>"
-                $("#showFriendHavePromission").html(g);
+                g+="<div class='allfrinedP2'>当前部分可见</div>";
+                   
+               // $("#showFriendHavePromission").html(g);
                 var h = "";
                 for (var i = 0; i < data.users.length; i++) {
 
@@ -1315,7 +1314,7 @@ $("#selectStyle").change(function(){
                         + "</div>"
                         +"</li>"
                 }
-                $("#showFriendHavePromission").html(h);
+                $("#showFriendHavePromission").html(g+h);
             }
         });
 		$(".Partially-visible").css({ display: "block" });

@@ -300,7 +300,7 @@
 				<div style="position: absolute;right: 15px;top: 24px;"><span class="Partially-visible-top1">取消</span><span id="personalPromission" class="Partially-visible-top2">确定</span></div>
 			</div>
             <ul>
-                <div class="allfrinedP">已有权限好友</div>
+                
                 <ul id="showFriendHavePromission" class="Partially-visible-left">
 
                 </ul>
