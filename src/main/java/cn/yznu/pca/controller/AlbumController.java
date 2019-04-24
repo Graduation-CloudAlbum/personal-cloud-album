@@ -1,8 +1,5 @@
 package cn.yznu.pca.controller;
-import cn.yznu.pca.model.Album;
-import cn.yznu.pca.model.Image;
-import cn.yznu.pca.model.RecycleBin;
-import cn.yznu.pca.model.User;
+import cn.yznu.pca.model.*;
 import cn.yznu.pca.service.AlbumService;
 import cn.yznu.pca.service.ImageService;
 import cn.yznu.pca.service.RecycleBinService;
@@ -73,7 +70,16 @@ public class AlbumController {
         int userId=user.getId();
         List list=albumService.selectAlbumByName(userId,albumName);
         Album album=(Album) list.get(0);
-        return album;
+        int albumId=album.getId();
+        List<UserPromission> list1=userPromissionService.selectByAlbumId(albumId);
+        if (list1.size()!=0){
+            album.setStatus("3");
+            System.out.println("status is :"+album.getStatus());
+            return album;
+        }else {
+            return album;
+        }
+
     }
 
     /**
@@ -115,6 +121,57 @@ public class AlbumController {
         }
 
     }
+
+    /**
+     * 部分好友新建相册
+     * @param albumName 相册名
+     * @param theme 主题
+     * @param theme 权限
+     * @param request
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/createAlbumTwo")
+    @ResponseBody
+    public int createAlbumTwo(@Param("albumName") String albumName,@Param("theme") String theme,
+                           @Param("jurisdiction") String  jurisdiction,@RequestParam(value = "checkID[]")  Integer[]  friendId,
+                              @Param("album_name") String album_name, HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        String sta="";
+        String jsd1="公开";
+        String jsd2="私有";
+        if (jurisdiction.equals(jsd1)){
+            sta="0";
+        }else if (jurisdiction.equals(jsd2)){
+            sta="1";
+        }
+        Album album=new Album();
+        album.setAlbumName(albumName);
+        album.setUserId(userId);
+        album.setStatus(sta);
+        album.setAlbumType(theme);
+        List albumlist=albumService.selectAlbumByName(userId,albumName);
+        //大于0表示相册名已存在，不可使用，返回0
+        if (albumlist.size()>0){
+            return 0;
+        }else{
+            //否则表示相册名可用，创建相册，返回1
+            int result= albumService.createAlbum(album);
+            if(result==1){
+                List<Integer>  list= Arrays.asList(friendId);
+                int albumId=0;
+                List<Album> albumTwo=albumService.selectAlbumByName(user.getId(),albumName);
+                for(Album s:albumTwo){
+                    albumId=s.getId();
+
+                }
+                albumService.setPerssonalPromission(user.getId(),albumId,list,0);
+            }
+            return 1;
+        }
+
+    }
+
 
     /**
      * 删除相册，采用逻辑删除方式，置于回收站
@@ -192,12 +249,11 @@ public class AlbumController {
         //Album album= (Album) albumlist.get(0);
         //int albumId=album.getId();
         Album album=albumService.selectAlbumById(albumId);
-        String staus=album.getStatus();
-        if (staus.equals(jurisdiction)){
+        //String staus=album.getStatus();
+        if (jurisdiction.equals("3")){
             albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
             return 1;
         }else {
-
             albumService.updateAlbum(albumId,albumName,jurisdiction,theme);
             userPromissionService.deletePromission(albumId);
             return 1;
@@ -312,7 +368,7 @@ public class AlbumController {
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/someFriendCanSee")
     @ResponseBody
-    public String  someFriendCanSee(@RequestParam(value = "checkID[]")  Integer[]  friendId,@Param("album_name") String album_name,
+    public boolean  someFriendCanSee(@RequestParam(value = "checkID[]")  Integer[]  friendId,@Param("album_name") String album_name,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         User user= (User) request.getSession().getAttribute("user");
@@ -323,7 +379,7 @@ public class AlbumController {
             albumId=s.getId();
         }
         albumService.setPerssonalPromission(user.getId(),albumId,list,0);
-        return "myAlbum";
+        return true;
     }
 
 }

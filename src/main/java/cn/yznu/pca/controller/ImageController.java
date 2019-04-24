@@ -118,18 +118,19 @@ public class ImageController {
 
         User user = (User) request.getSession().getAttribute("user");
         int albumId = (int) request.getSession().getAttribute("albumId");
-        //获取用户ID
+       // //获取用户ID
         final int userId = user.getId();
-        //处理页面传过来的时间字符串，用空格替换T
+       // //处理页面传过来的时间字符串，用空格替换T
         String loutTime = logOutTime.replaceAll("T", " ");
-        System.out.println("logOutTime is"+logOutTime);
+        System.out.println("logOutTime1 is"+loutTime);
         //设置日期格式
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //转换成date
        // Date date=sdf.parse(loutTime);
         //logOutTime为空，表示未设置定时上传
-        if ("" == logOutTime || null == logOutTime||("").equals(logOutTime)) {
-            for (int i = 0; i < pictureFile.length - 1; i++) {
+        if ("" == loutTime || null == loutTime||("").equals(loutTime)) {
+            System.out.println("pictureFile.length is :"+pictureFile.length/2);
+            for (int i = 0; i < pictureFile.length/2 ; i++) {
                 MultipartFile file = pictureFile[i];
                 //设置本地保存路径
                 String localPath = "D:\\demos\\upload\\";
@@ -178,9 +179,9 @@ public class ImageController {
             Date time = calendar.getTime();
             Timer timer = new Timer();
 
-            for (int i = 0; i < pictureFile.length-1; i++) {
+            for (int i = 0; i < pictureFile.length/2; i++) {
                 MultipartFile file = pictureFile[i];
-
+                System.out.println("pictureFile.length is :"+pictureFile.length/2);
                 //设置本地保存路径
                 String localPath = "D:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
@@ -224,6 +225,7 @@ public class ImageController {
 
             }
         }
+
             return "myAlbum";
 
     }

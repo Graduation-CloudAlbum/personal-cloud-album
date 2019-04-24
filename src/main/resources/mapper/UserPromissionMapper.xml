@@ -261,5 +261,10 @@
     delete  from user_promission where album_id= #{album_id,jdbcType=INTEGER}
   </delete>
 
-
+  <select id="selectByAlbumId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from user_promission
+    where album_id = #{albumId,jdbcType=INTEGER}
+  </select>
 </mapper>

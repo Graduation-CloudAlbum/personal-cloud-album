@@ -36,4 +36,7 @@ public interface UserPromissionMapper {
     int updateUserPromission(@Param("user_id")int user_id,@Param("friend_id")int friend_id,@Param("album_id")int album_id,@Param("jurisdiction")int jurisdiction);
 
     boolean deleteAllByAlbumId(int album_id);
+
+    List<UserPromission> selectByAlbumId(Integer albumId);
+
 }
