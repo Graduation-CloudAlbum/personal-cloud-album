@@ -1,9 +1,6 @@
 package cn.yznu.pca.controller;
 import cn.yznu.pca.model.*;
-import cn.yznu.pca.service.AlbumService;
-import cn.yznu.pca.service.ImageService;
-import cn.yznu.pca.service.RecycleBinService;
-import cn.yznu.pca.service.UserPromissionService;
+import cn.yznu.pca.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +21,8 @@ public class AlbumController {
     private AlbumService albumService;
     @Autowired
     private ImageService imageService;
+    @Autowired
+    private UserService userService;
     @Autowired
     private RecycleBinService recycleBinService;
     @Autowired
@@ -397,5 +396,24 @@ public class AlbumController {
         albumService.setPerssonalPromission(user.getId(),albumId,list,0);
         return true;
     }
+    @RequestMapping("/selectFriendWhoHavePromission")
+    @ResponseBody
+    public  Map<String,Object>   selectFriendWhoHavePromission( HttpServletRequest request,@Param("album_name") String album_name){
+        User user= (User) request.getSession().getAttribute("user");
+        Map<String,Object> map=new HashMap<>();
+        List<Album> album=albumService.selectAlbumByName(user.getId(),album_name);
+        int albumId=0;
+        for(Album s:album){
+            albumId=s.getId();
+        }
+        List<User> users=userService.selectFriendHavePromission(albumId);
+        for(User s:users){
+            System.out.println(s.getNickName()+s.getUserIcon()+s.getUserName());
+        }
+        map.put("users",users);
+        return  map;
+
+    }
+
 
 }

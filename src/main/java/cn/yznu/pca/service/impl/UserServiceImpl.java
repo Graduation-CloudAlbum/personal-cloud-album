@@ -1,10 +1,13 @@
 package cn.yznu.pca.service.impl;
 
 import cn.yznu.pca.dao.UserMapper;
+import cn.yznu.pca.dao.UserPromissionMapper;
 import cn.yznu.pca.model.User;
 import cn.yznu.pca.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author yangbaiwan
@@ -14,6 +17,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper mapper;
+
+    @Autowired
+    private UserPromissionMapper userPromissionMapper;
 
     @Override
     public void register(User user) {
@@ -67,6 +73,12 @@ public class UserServiceImpl implements UserService {
     public User checkLogin(String username, String password) {
 
         return mapper.selectByUserNameAndPwd(username, password);
+    }
+
+    @Override
+    public List<User> selectFriendHavePromission(int album_id) {
+
+        return mapper.selectFriendWhoHavePromission(album_id);
     }
 
 }

@@ -344,4 +344,11 @@
     where id = #{id,jdbcType=INTEGER}
     and  user_type!='0'
   </select>
+
+  <!--查找已有权限好友-->
+  <select id="selectFriendWhoHavePromission" resultMap="BaseResultMap">
+    select d.nick_name,d.user_icon,d.id,d.user_name,c.album_id from
+    user_promission c left join user d on
+    (c.friend_id=d.id) where album_id=#{album_id,jdbcType=INTEGER}
+  </select>
 </mapper>

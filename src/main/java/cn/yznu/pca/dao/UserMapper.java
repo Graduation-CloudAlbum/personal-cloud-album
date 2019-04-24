@@ -60,4 +60,6 @@ public interface UserMapper {
     int updateUser(User user);
 
     User getFriendInformation(@Param("id")int id);
+
+    List<User> selectFriendWhoHavePromission(int album_id);
 }
