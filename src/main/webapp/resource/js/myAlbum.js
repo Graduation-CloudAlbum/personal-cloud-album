@@ -7,7 +7,7 @@ var myAlbumMenu2 = document.getElementById('myAlbum-menu2');
 var open = document.getElementById('open');
 var open2 = document.getElementById('open2');
 var album_name="";
-
+var updateInformationButton=document.getElementById('mode-album-button2');
 var uploadPhoto1 = document.getElementById('uploadPhoto1');
 var uploadPhoto3 = document.getElementById('uploadPhoto3');
 var iconChacha1 = document.getElementById('icon-chacha1');
@@ -306,7 +306,8 @@ $().ready(function getAlbum() {
             $(".modeA").click(function(){
             	 var text=$(this).parent().siblings().find('span');
                 album_name=text.text();
-            	//获取相册名 alert(text.text())
+                //获取相册名
+                //alert(album_name);
                 //alert(text.text())
             	 $("#mod-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
@@ -1283,11 +1284,41 @@ $("#selectStyle2").change(function(){
 		$(".allfrinedP2").text("当前部分不可见");
 	}
 })
+
+//编辑相册部分可见
 $("#selectStyle").change(function(){
     result_choose=1;
 	//alert($(this).children('option:selected').val());
 	var text=$(this).children('option:selected').val();
 	if(text=="部分可见"){
+        $.ajax({
+            async: false,
+            type: "post",
+            url: "/pca/album/selectFriendWhoHavePromission",
+            data: {album_name:album_name},
+            traditional: true,
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                var g = "";
+                g+="<li class='Partially-visible-leftLi'>"
+                    +"<div class='allfrinedP2'>当前部分可见</div>"
+                    +"</li>"
+                $("#showFriendHavePromission").html(g);
+                var h = "";
+                for (var i = 0; i < data.users.length; i++) {
+
+                    h+= "<li class='Partially-visible-leftLi'>"
+                        +"<img class='Partially-visible-img2' src='"+data.users[i].userIcon+"'>"
+                        +"<div class='Partially-visible-leftLi-content'>"
+                        + "<span class='Partially-visible-span2'>"+data.users[i].nickName+"</span>"
+                        + "<span class='Partially-visible-span2'>"+data.users[i].userName+"</span>"
+                        + "</div>"
+                        +"</li>"
+                }
+                $("#showFriendHavePromission").html(h);
+            }
+        });
 		$(".Partially-visible").css({ display: "block" });
 		$(".Partially-visible-top-title").text("权限设置:部分可见");
 		$(".allfrinedP2").text("当前部分可见");
@@ -1336,8 +1367,7 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function (data) {
                     if(data){
-                        alert("修改成功");
-                        window.location.href = "/pca/user/myAlbum";
+                        updateInformationButton.click();
                     }
                 }
             });
