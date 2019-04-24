@@ -1267,25 +1267,13 @@ function downLoadImg() {
 //	$(".Partially-visible").css({ display: "block" });
 //});
 
-var result_choose=0;
-$("#selectStyle2").change(function(){
-	//alert($(this).children('option:selected').val());
-    result_choose=0;
-	var text=$(this).children('option:selected').val();
-	if(text=="部分可见"){
-		$(".Partially-visible").css({ display: "block" });
-		$(".Partially-visible-top-title").text("权限设置:部分可见");
-		$(".allfrinedP2").text("当前部分可见");
-	}
-	else if(text=="部分不可见"){
-		$(".Partially-visible").css({ display: "block" });
-		$(".Partially-visible-top-title").text("权限设置:部分不可见");
-		$(".allfrinedP2").text("当前部分不可见");
-	}
-})
 
+var id = document.getElementById("selectStyle");
+id.addEventListener('change',function(){
+	//alert(1);
+//单一添加下拉改变事件
 //编辑相册部分可见
-$("#selectStyle").change(function(){
+//$("#selectStyle>option").change(function(){
     result_choose=1;
 	//alert($(this).children('option:selected').val());
 	var text=$(this).children('option:selected').val();
@@ -1318,15 +1306,24 @@ $("#selectStyle").change(function(){
             }
         });
 		$(".Partially-visible").css({ display: "block" });
-		$(".Partially-visible-top-title").text("权限设置:部分可见");
-		$(".allfrinedP2").text("当前部分可见");
+		
 	}
-	else if(text=="部分不可见"){
-		$(".Partially-visible").css({ display: "block" });
-		$(".Partially-visible-top-title").text("权限设置:部分不可见");
-		$(".allfrinedP2").text("当前部分不可见");
+	
+//})
+});
+
+id.onmousedown = function(){//当按下鼠标按钮的时候
+	this.sindex = this.selectedIndex;//把当前选中的值得索引赋给下拉选中的索引
+	this.selectedIndex = -1;//把下拉选中的索引改变为-1,也就是没有!
+}
+id.onmouseout = function(){//当鼠标移开的时候
+	var index = id.selectedIndex;//获取下拉选中的索引
+	if(index == -1){//如果为-1,就是根本没有选
+		this.selectedIndex = this.sindex;//就把下拉选中的索引改变成之前选中的值得索引,就默认选择的是之前选中的值
 	}
-})
+	
+}
+
 
 //关闭部分可见
 $(".Partially-visible-top1").click(function () {
