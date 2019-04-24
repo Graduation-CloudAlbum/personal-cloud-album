@@ -1189,7 +1189,6 @@ $("#admin-button-menu").on('mouseenter', function () {
         if (idArray.length == 0) {
             alert("您还未选择照片");
         } else {
-
             var Uarry = $("#admin-button-menu li");
             var count = $(this).index();
             var album = Uarry.eq(count).text();

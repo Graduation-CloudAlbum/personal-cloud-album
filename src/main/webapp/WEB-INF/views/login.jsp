@@ -52,6 +52,8 @@
     <div class="inner-bg inner-drop"></div>
     <div class="wrapper-bar inner-left">©2019 1024album <a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备19003347号</a>
         <span style="padding-left:10px"></span>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010202000746" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="<%=basePath%>/resource/images/beian.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">渝公网安备 50010202000746号</p></a>
+
     </div>
     <div class="inner-right">
 

@@ -62,9 +62,9 @@
                 <li class="content-menu-li uploadPhoto5">
                     <a>排序方式</a>
                     <ul id="album-sort" class="album-sort">
-                        <li class="album-sort-li">按相册名称排序</li>
-                        <li class="album-sort-li">按相册主题排序</li>
-                        <li class="album-sort-li">按更新时间排序</li>
+                        <li class="album-sort-li nameA">按相册名称排序</li>
+                        <li class="album-sort-li nameB">按相册主题排序</li>
+                        <li class="album-sort-li nameC">按更新时间排序</li>
                     </ul>
                 </li>
             </ul>
