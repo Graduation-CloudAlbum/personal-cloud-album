@@ -181,7 +181,7 @@ public class AlbumController {
      */
     @RequestMapping("/deleteAlbum")
     @ResponseBody
-    public String deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
+    public int deleteAlbum(@Param("albumName") String albumName, HttpServletRequest request){
         String status1="0";
         String status2="1";
         String status3="20";
@@ -201,36 +201,52 @@ public class AlbumController {
         String albumStatus=album.getStatus();
         System.out.println("原来的albumStatus:"+albumStatus);
         if (albumStatus.equals(status1)){
-            List<Image> list=imageService.getImage("1",userId,albumId);
-            List<RecycleBin> recycleBinList=new ArrayList<>();
-            for (int i=0;i<list.size();i++){
-                int imageId=list.get(i).getId();
-                RecycleBin recycleBin=new RecycleBin();
-                recycleBin.setAlbumId(albumId);
-                recycleBin.setImageId(imageId);
-                recycleBin.setUserId(userId);
-                recycleBinList.add(recycleBin);
-            }
-            recycleBinService.insertRecycleBin(recycleBinList);
-            imageService.deleteImageByAlbumId(albumId);
-            albumService.deleteAlbum(albumId,status4);
-        } if (albumStatus.equals(status2)){
             List<Image> list=imageService.getImage("0",userId,albumId);
             List<RecycleBin> recycleBinList=new ArrayList<>();
-            for (int i=0;i<list.size();i++){
-                int imageId=list.get(i).getId();
-                RecycleBin recycleBin=new RecycleBin();
-                recycleBin.setAlbumId(albumId);
-                recycleBin.setImageId(imageId);
-                recycleBin.setUserId(userId);
-                recycleBinList.add(recycleBin);
+            //！=0表示该相册有照片，先把照片置于回收站，再把相册置于回收站
+            if(list.size()!=0){
+                for (int i=0;i<list.size();i++){
+                    int imageId=list.get(i).getId();
+                    RecycleBin recycleBin=new RecycleBin();
+                    recycleBin.setAlbumId(albumId);
+                    recycleBin.setImageId(imageId);
+                    recycleBin.setUserId(userId);
+                    recycleBinList.add(recycleBin);
+                }
+                recycleBinService.insertRecycleBin(recycleBinList);
+                imageService.deleteImageByAlbumId(albumId);
+                albumService.deleteAlbum(albumId,status4);
             }
-            recycleBinService.insertRecycleBin(recycleBinList);
-            imageService.deleteImageByAlbumId(albumId);
-            albumService.deleteAlbum(albumId,status4);
-        }
+            //否则，该相册为空，只修改相册状态即可
+            else{
+                albumService.deleteAlbum(albumId,status4);
 
-        return "ok";
+            }
+        return 1;
+        } if (albumStatus.equals(status2)) {
+            List<Image> list = imageService.getImage("0", userId, albumId);
+            List<RecycleBin> recycleBinList = new ArrayList<>();
+            //！=0表示该相册有照片，先把照片置于回收站，再把相册置于回收站
+            if (list.size() != 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    int imageId = list.get(i).getId();
+                    RecycleBin recycleBin = new RecycleBin();
+                    recycleBin.setAlbumId(albumId);
+                    recycleBin.setImageId(imageId);
+                    recycleBin.setUserId(userId);
+                    recycleBinList.add(recycleBin);
+                }
+                recycleBinService.insertRecycleBin(recycleBinList);
+                imageService.deleteImageByAlbumId(albumId);
+                albumService.deleteAlbum(albumId, status3);
+            }
+            //否则，该相册为空，只修改相册状态即可
+            else {
+                albumService.deleteAlbum(albumId, status3);
+
+            }
+        }
+        return 1;
     }
 
     /**
