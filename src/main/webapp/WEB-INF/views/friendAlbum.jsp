@@ -78,7 +78,7 @@
 						<div class="content-about-personal">
 							
 							<label  class="img-lable">
-								<img id="image2" src="<%=basePath%>/img/default-c.png">
+								<img id="image2" src="<%=user1.getUserIcon()%>">
 								
 							</label>
 							<p class="content-about-personal-admin"><%=user1.getNickName()%></p>
