@@ -315,18 +315,18 @@ var iconChacha11 = document.getElementById('iconChacha11');
 var fLi=""
 var friendsGroupName="";
 for(var i=0; i<friendGroupLi.length;i++){
-	friendGroupLi[i].index = i;
-	friendGroupLi[i].onclick = function(){
-		moveFriends.style.display="block";
-		popLayer2.style.display="block";
-		str = (function(i){
-			fLi=friendGroupLi[i].innerHTML;
-			moveFriendsGroup.innerHTML=fLi;
-			return moveFriendsGroup.innerHTML;
-		})(this.index);
-		moveFriendsGroup.innerHTML=str
+    friendGroupLi[i].index = i;
+    friendGroupLi[i].onclick = function(){
+        moveFriends.style.display="block";
+        popLayer2.style.display="block";
+        str = (function(i){
+            fLi=friendGroupLi[i].innerHTML;
+            moveFriendsGroup.innerHTML=fLi;
+            return moveFriendsGroup.innerHTML;
+        })(this.index);
+        moveFriendsGroup.innerHTML=str
         friendsGroupName=str;
-	}
+    }
 }
 //删除好友
 deleteFriendsButton2.onclick = function(){
@@ -344,16 +344,16 @@ moveFriendsButton2.onclick = function(){
             alert("移动好友成功");
             moveFriends.style.display="none";
             popLayer2.style.display="none";
-    }
+        }
     });
 }
 moveFriendsButton1.onclick = function(){
-	moveFriends.style.display="none";
-	popLayer2.style.display="none";
+    moveFriends.style.display="none";
+    popLayer2.style.display="none";
 }
 iconChacha11.onclick = function(){
-	moveFriends.style.display="none";
-	popLayer2.style.display="none";
+    moveFriends.style.display="none";
+    popLayer2.style.display="none";
 }
 
 //删除好友
@@ -362,14 +362,14 @@ var deleteFriendsPop = document.getElementById('delete-friends-pop');
 var deleteFriendsButton1 = document.getElementById('delete-friends-button1');
 var iconChacha12 = document.getElementById('iconChacha12');
 deleteFriends.onclick = function(){
-	deleteFriendsPop.style.display = "block";
-	popLayer2.style.display="block";
+    deleteFriendsPop.style.display = "block";
+    popLayer2.style.display="block";
 }
 deleteFriendsButton1.onclick = function(){
-	deleteFriendsPop.style.display="none";
-	popLayer2.style.display="none";
+    deleteFriendsPop.style.display="none";
+    popLayer2.style.display="none";
 }
 iconChacha12.onclick = function(){
-	deleteFriendsPop.style.display="none";
-	popLayer2.style.display="none";
+    deleteFriendsPop.style.display="none";
+    popLayer2.style.display="none";
 }
