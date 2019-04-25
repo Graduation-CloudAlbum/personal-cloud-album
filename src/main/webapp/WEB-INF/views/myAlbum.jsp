@@ -123,7 +123,10 @@
             	<div id="noNumber2" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
             	</div>
             </div>
-            
+             <form id="image-download-form" action="/pca/image/download">
+                <input id="hidden-input" type="hidden" name="image" value="" >
+             </form>
+
              
         </div>
     </div>
