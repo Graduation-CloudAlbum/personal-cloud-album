@@ -69,9 +69,12 @@
                         <tr>
                             <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
                             <td><img class="pimg" src="${recycleBins.image.url}" /></td>
-                            <td>${recycleBins.image.imageSize}</td>
+                            <td>${recycleBins.image.imageSize}B</td>
                             <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                            <td>15天<input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
+                            <td>15天
+                                <%--<jsp:useBean id="now" class="java.util.Date" scope="page"/>--%>
+                                <%--<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" />--%>
+                                <input type="hidden" name="album_id" value="${recycleBins.albumId}" /></td>
                             <td><button class="btn btn-info pimg2">查看</button></td>
                         </tr>
                         <%--<li  class="content-about-menu-li" onclick="selectOnde('${friendgroup.permissionType}','<%=path%>',this)">${friendgroup.permissionType}</li>--%>

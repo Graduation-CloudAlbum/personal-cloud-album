@@ -211,7 +211,8 @@ CreateAlbumButton1.onclick = function () {
 // var myAlbumMenu2=document.getElementById('myAlbum-menu2');
 // var open=document.getElementById('open');
 // var open2=document.getElementById('open2');
-var aLi = "";
+// var aLi = "";
+var delAlbumName="";
 //首页点击的相册名
 var aName = "";
 //动态加载首页相册
@@ -270,23 +271,11 @@ $().ready(function getAlbum() {
             	//获取相册名 alert(text.text())
             	 $("#delete-album").css({ display: "block" });
             	 $("#popLayer2").css({ display: "block" });
-            	 var delAlbumName=text.text();
-                $.ajax({
-                    async: false,
-                    type: "post",
-                    url: "/pca/album/deleteAlbum",
-                    data: {albumName: delAlbumName},
-                    dataType: "json",
-                    success: function (data) {
-                        if (data) {
-                            alert("删除成功")
-                            // window.location.href="myAlbum";
-                            window.location.href = window.location.href;
-                        }
+            	  delAlbumName=text.text();
+            	 $("#delete-album-group").text(delAlbumName);
+            	});
 
-                    }
-                });
-            	});           
+
             //取消删除
             deleteAlbumButton1.onclick = function(){
             	deleteAlbum.style.display="none";
@@ -1221,7 +1210,22 @@ $("#admin-button-menu").on('mouseenter', function () {
     })
 
 });
-
+function deleteAlbum(){
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/pca/album/deleteAlbum",
+        data: {albumName: delAlbumName},
+        dataType: "json",
+        success: function (data) {
+            if (data) {
+                alert("删除成功")
+                // window.location.href="myAlbum";
+                window.location.href = window.location.href;
+            }
+        }
+    });
+}
 function deleteImg() {
     $.ajax({
         async: false,

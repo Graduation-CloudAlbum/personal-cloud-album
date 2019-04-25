@@ -70,7 +70,7 @@
 							</ul>
 						</li>
 						<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
-						<li class="content-menu-li" src="<%=basePath%>/friend/myFriend"><a>返回</a></li>
+						<li class="content-menu-li" ><a href="/pca/friend/myFriend">返回</a></li>
 				</ul>
 
 				<div class="content-wrap">
@@ -78,7 +78,7 @@
 						<div class="content-about-personal">
 							
 							<label  class="img-lable">
-								<img id="image2" src="<%=basePath%>/img/default-c.png">
+								<img id="image2" src="<%=user1.getUserIcon()%>">
 								
 							</label>
 							<p class="content-about-personal-admin"><%=user1.getNickName()%></p>
