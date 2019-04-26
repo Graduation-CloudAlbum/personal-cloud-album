@@ -75,15 +75,24 @@ public class RecycleBinController {
             list2.add(recycleBin.getAlbumId());
             System.out.println("拿到相册id"+recycleBin.getAlbumId());
         }
-        boolean recycleBinsResult=recycleBinService.recoverSomeImage(list);
-        boolean recycleBinsResult2=recycleBinService.delManyRecycleBin(list);
-        boolean recycleBinsResult3=recycleBinService.updateAlbumByList(list2);
-        if(recycleBinsResult&&recycleBinsResult2&&recycleBinsResult3){
-            return true;
-        }
-       else{
+        int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
+        int Available_space=recycleBinService.selectAvailable_space(user.getId());
+        System.out.println("测试一下还原照片所需空间大小"+someImageSize);
+        System.out.println("测试一下剩余空间大小"+Available_space);
+        if(someImageSize>Available_space){
             return false;
+        }else {
+            boolean recycleBinsResult=recycleBinService.recoverSomeImage(list);
+            boolean recycleBinsResult2=recycleBinService.delManyRecycleBin(list);
+            boolean recycleBinsResult3=recycleBinService.updateAlbumByList(list2);
+            if(recycleBinsResult&&recycleBinsResult2&&recycleBinsResult3){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
+
     }
 
     /**
@@ -160,17 +169,26 @@ public class RecycleBinController {
         for (RecycleBin recycleBin : recycleBins2) {
             list2.add(recycleBin.getAlbumId());
         }
-        boolean recycleBinsResult =recycleBinService.recoverAllRecycleBin(list);
-        if(recycleBinsResult){
-            recycleBinService.updateAlbumByList(list2);
-            boolean recycleBinsResult2=recycleBinService.deleteAllRecycleBin(user.getId());
-            if(recycleBinsResult2){
-                return true;
+        int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
+        int Available_space=recycleBinService.selectAvailable_space(user.getId());
+        System.out.println("测试一下还原照片所需空间大小"+someImageSize);
+        System.out.println("测试一下剩余空间大小"+Available_space);
+        if(someImageSize>Available_space){
+            return false;
+        }else {
+            boolean recycleBinsResult =recycleBinService.recoverAllRecycleBin(list);
+            if(recycleBinsResult){
+                recycleBinService.updateAlbumByList(list2);
+                boolean recycleBinsResult2=recycleBinService.deleteAllRecycleBin(user.getId());
+                if(recycleBinsResult2){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
                 return false;
             }
-        }else{
-                return false;
         }
+
     }
 }
