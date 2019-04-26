@@ -42,4 +42,7 @@ public interface ImageMapper {
     Image selectFirst(@Param("userId")Integer userId,@Param("albumId")Integer albumId);
 
     int updateImageStatusInAlbum(@Param("albumId")Integer albumId);
+
+    List<Image> getSomeRecycleImaeSize(List list);
+
 }
