@@ -218,10 +218,13 @@ public class FriendServiceImpl implements FriendService {
     @Override
     public int checkFriendPower(int user_id, int friend_id, int albumId) {
         List<UserPromission> list=userPromissionMapper.checkFriendPower(user_id,friend_id,albumId);
+        //为空赋值为3
         if(list.size()==0){
             System.out.println("小权现是"+"3");
             return 3;
-        }else {
+        }
+        //不为空则正常赋值
+        else {
             int power=0;
             for(UserPromission userPromission:list){
                 power=userPromission.getJurisdiction();
