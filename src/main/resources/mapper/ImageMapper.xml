@@ -311,4 +311,13 @@ select *
   <select id="selectFirst" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select * from image where  user_id = #{userId,jdbcType=INTEGER} and album_id= #{albumId,jdbcType=INTEGER} and status='0' order by id asc limit 1
   </select>
+
+
+  <!--根据照片id并计算所有相片大小之和-->
+  <select id="getSomeRecycleImaeSize" resultMap="BaseResultMap">
+    select * from image where id in
+    <foreach collection="list" open="(" separator="," close=")" item="id">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </select>
 </mapper>
