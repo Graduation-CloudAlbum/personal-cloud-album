@@ -1,10 +1,10 @@
 package cn.yznu.pca.service.impl;
 
-import cn.yznu.pca.dao.AlbumMapper;
-import cn.yznu.pca.dao.RecycleBinMapper;
-import cn.yznu.pca.dao.UserRelationMapper;
+import cn.yznu.pca.dao.*;
 import cn.yznu.pca.model.Album;
+import cn.yznu.pca.model.Image;
 import cn.yznu.pca.model.RecycleBin;
+import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.model.example.PermissionGroupExample;
 import cn.yznu.pca.model.example.RecycleBinExample;
 import cn.yznu.pca.service.RecycleBinService;
@@ -25,6 +25,12 @@ public class RecycleBinServiceImpl implements RecycleBinService {
 
     @Autowired
     AlbumMapper albumMapper;
+
+    @Autowired
+    ImageMapper imageMapper;
+
+    @Autowired
+    UserSpaceMapper userSpaceMapper;
     @Override
     public List<RecycleBin> getRecycleBin(int userId) {
         List <RecycleBin> recycleBins=recycleBinMapper.selectMyRecycleBin(userId);
@@ -90,6 +96,28 @@ public class RecycleBinServiceImpl implements RecycleBinService {
     @Override
     public int insertRecycleBin(List list) {
         return recycleBinMapper.insertRecycle(list);
+    }
+
+
+
+    @Override
+    public int getSomeRecycleImaeSize(List list) {
+        List<Image> SumImageSize=imageMapper.getSomeRecycleImaeSize(list);
+        int SumImageSizeNumber=0;
+        for(Image s:SumImageSize){
+            SumImageSizeNumber = SumImageSizeNumber + Integer.parseInt(s.getImageSize());
+        }
+        return SumImageSizeNumber;
+    }
+
+    @Override
+    public int selectAvailable_space(int user_id) {
+        List<UserSpace> userSpaces=userSpaceMapper.selectAvailable_space(user_id);
+        int Available_space=0;
+        for (UserSpace s:userSpaces){
+            Available_space=Integer.parseInt(s.getAvailableSpace());
+        }
+        return Available_space;
     }
 
 
