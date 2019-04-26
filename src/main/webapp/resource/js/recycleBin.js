@@ -142,8 +142,14 @@ updateRecycleButton3.onclick = function(){
         data:{check_val:check_val},
         dataType: "json",
         success: function (data) {
-            alert("还原成功")
-            window.location.href="/pca/recycleBin/myRecycleBin"
+            if(data){
+                alert("还原成功！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
+            }else {
+                alert("还原所需空间不足，还原失败！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
+            }
+
         }
     });
 }
@@ -188,7 +194,7 @@ updateRecycleButton5.onclick = function(){
         url: "/pca/recycleBin/deleteAllRecycleBin/"+deleteRecycleInput,
         dataType: "json",
         success: function (data) {
-            if (data){
+            if (data==true){
                 alert("清空回收站成功！")
                 window.location.href="/pca/recycleBin/myRecycleBin"
             }
@@ -208,12 +214,12 @@ updateRecycleButton6.onclick = function(){
         url: "/pca/recycleBin/recoverAllRecycleBin",
         dataType: "json",
         success: function (data) {
-            if (data){
+            if(data==true){
                 alert("还原成功！")
                 window.location.href="/pca/recycleBin/myRecycleBin"
-            }
-            else{
-                alert("还原失败！")
+            }else {
+                alert("还原所需空间不足，还原失败！")
+                window.location.href="/pca/recycleBin/myRecycleBin"
             }
         }
     });
