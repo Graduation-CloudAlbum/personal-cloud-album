@@ -389,27 +389,32 @@ public class AlbumController {
         User user= (User) request.getSession().getAttribute("user");
         List<Integer>  list= Arrays.asList(friendId);
         int albumId=0;
+        //通过用户id和相册名确定唯一相册id
         List<Album> album=albumService.selectAlbumByName(user.getId(),album_name);
         for(Album s:album){
             albumId=s.getId();
         }
+        //设置部分可见好友
         albumService.setPerssonalPromission(user.getId(),albumId,list,0);
         return true;
     }
+    /**
+     * 页面展示具有权限得好友
+     * @return
+     */
     @RequestMapping("/selectFriendWhoHavePromission")
     @ResponseBody
     public  Map<String,Object>   selectFriendWhoHavePromission( HttpServletRequest request,@Param("album_name") String album_name){
         User user= (User) request.getSession().getAttribute("user");
         Map<String,Object> map=new HashMap<>();
+        //通过用户id和相册名确定唯一相册id
         List<Album> album=albumService.selectAlbumByName(user.getId(),album_name);
         int albumId=0;
         for(Album s:album){
             albumId=s.getId();
         }
+        //通过相册id查询具有权限得好友
         List<User> users=userService.selectFriendHavePromission(albumId);
-        for(User s:users){
-            System.out.println(s.getNickName()+s.getUserIcon()+s.getUserName());
-        }
         map.put("users",users);
         return  map;
 
