@@ -1,5 +1,6 @@
 package cn.yznu.pca.dao;
 
+import cn.yznu.pca.model.RecycleBin;
 import cn.yznu.pca.model.UserSpace;
 import cn.yznu.pca.model.example.UserSpaceExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,6 @@ public interface UserSpaceMapper {
     int updateByPrimaryKeySelective(UserSpace record);
 
     int updateByUserId(@Param("userId")int userId,@Param("all")String all,@Param("used")String used,@Param("available")String available);
+
+    List<UserSpace>selectAvailable_space(int user_id);
 }
