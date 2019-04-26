@@ -104,7 +104,6 @@ public class UserController {
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         int newFriendNumber=friendService.searchNewFriend(user.getId());
-        System.out.println("验证消息的个数"+newFriendNumber);
         request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         //所有好友
@@ -127,7 +126,6 @@ public class UserController {
         String jsonArray = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         int newFriendNumber=friendService.searchNewFriend(user.getId());
-        System.out.println("验证消息的个数"+newFriendNumber);
         request.setAttribute("newFriendNumber", newFriendNumber);
         request.setAttribute("friendgroup", friendgroup);
         return "myFriend";
