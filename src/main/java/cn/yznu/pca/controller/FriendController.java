@@ -54,16 +54,21 @@ public class FriendController {
     @ResponseBody
     public ModelAndView myFriend(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
-        friendService.test();
+        //查询好友分组
         List<?> list = friendService.selectFriendGroup(user);
+        //查询所有好友
         List<?> list2 = friendService.selectAllMyFriend(user);
         ModelAndView mav = new ModelAndView("myFriend");
+        //将好友分组变为json格式
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+        //将好友列表变为json格式
         String jsonArray2 = JSON.toJSONString(list2);
         JSONArray allfriend = JSONArray.parseArray(jsonArray2);
+        //将新的好友数存入
         int newFriendNumber=friendService.searchNewFriend(user.getId());
         request.setAttribute("newFriendNumber", newFriendNumber);
+        //将json存入mav
         mav.addObject("FriendGroup", list);
         mav.addObject("friendgroup", friendgroup);
         mav.addObject("allfriend", allfriend);
@@ -78,8 +83,11 @@ public class FriendController {
     public ModelAndView selectMyFriend(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("myFriend");
         User user = (User) request.getSession().getAttribute("user");
+        //获取该用户对应的我的好友id
         int permissiongroupid=friendService.selectAddFriendGroup(user.getId(),"我的好友");
+        //将好友分组存入list
         List<?> list = friendService.selectFriendGroup(user);
+        //查询该分组下我的所有好友
         List<?> list2 = friendService.selectMyFriend(user,permissiongroupid);
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
@@ -240,8 +248,10 @@ public class FriendController {
     public Map<String,Object>  passFriendVerification(HttpServletRequest request,
                                                HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
+        //查询已收到的所有好友验证消息
         List<FriendVerification> friendVerifications=friendService.selectAllFriendVerification(user);
         Map<String,Object> map=new HashMap<>();
+        //查询已发送的所有好友验证消息
         List<FriendVerification> friendVerificationsTwo=friendService.selectAllSandFriendVerification(user);
         map.put("friendVerifications",friendVerifications);
         map.put("friendVerificationsTwo",friendVerificationsTwo);
@@ -258,8 +268,10 @@ public class FriendController {
                                                HttpServletRequest request,
                                                HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
-        boolean date2=friendService.checkFriendsGroup(user,groupName);
-        if(date2){
+        //查询分组信息
+        boolean data2=friendService.checkFriendsGroup(user,groupName);
+        //判断是否已有分组
+        if(data2){
             friendService.createFriendsGroup(user,groupName);
             return true;
         }
@@ -276,10 +288,7 @@ public class FriendController {
     public Map<String,?> searchFriends(@Param("friendName") String friendName,
                                        HttpServletRequest request,
                                        HttpServletResponse response) {
-        User user = (User) request.getSession().getAttribute("user");
         List<User> users=friendService.searchFriends(friendName);
-//        String jsonArray = JSON.toJSONString(users);
-//        JSONArray users2 = JSONArray.parseArray(jsonArray);
         Map<String, List<?>> maps=new HashMap<>();
         maps.put("users",users);
         return maps;
@@ -295,6 +304,7 @@ public class FriendController {
                                      HttpServletRequest request,
                                      HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
+        //删除分组时将该分组下好友全部转移至默认好友分组
         int i=friendService.selectAddFriendGroup(user.getId(),groupName);
         int a=friendService.selectAddFriendGroup(user.getId(),"我的好友");
         friendService.deleteFriendsGroup(a,i);
@@ -309,7 +319,7 @@ public class FriendController {
     public Map<String,Object>  inFriendSpace(HttpServletRequest request,
                                       HttpServletResponse response) {
         int friend_id2= (int) request.getSession().getAttribute("friend_id");
-        System.out.println("66666666"+friend_id2);
+        //获取盆友的所有相册
         List albumlist =albumService.getAlbum(friend_id2);
         Map<String,Object> map=new HashMap<>();
         int albumId=0;
@@ -349,26 +359,32 @@ public class FriendController {
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         ModelAndView mav=new  ModelAndView("friendAlbum");
+        //获取该朋友的信息
         User user1 = userService.getFriendInformation(friend_id);
-        System.out.println("sdasdasdasd"+user1.getSynopsis());
+        //将朋友信息存入session
         request.getSession().setAttribute("user1",user1);
-//        User user1=userService.selectUserById(friend_id2);
+        //查询相册数量
         int friend_albumNum=albumService.getAlbumNum(friend_id);
+        //查询照片数量
         int friend_imageNum2=imageService.getAllImageNum(friend_id);
+        //查询好友数量
         List list2 = friendService.selectAllMyFriend(user1);
         int friend_friendNum=list2.size();
+        //将对应值存入session
         request.getSession().setAttribute("user1",user1);
         request.getSession().setAttribute("friend_albumNum",friend_albumNum);
         request.getSession().setAttribute("friend_imageNum2",friend_imageNum2);
         request.getSession().setAttribute("friend_friendNum",friend_friendNum);
         User user = (User) request.getSession().getAttribute("user");
+        //查询新的好友消息
         int newFriendNumber=friendService.searchNewFriend(user.getId());
+        //将数字存入session
         request.setAttribute("newFriendNumber", newFriendNumber);
+        //查询我的好友分组
         List<?> list = friendService.selectFriendGroup(user);
         String jsonArray = JSON.toJSONString(list);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray);
         request.getSession().setAttribute("friend_id",friend_id);
-        System.out.println("sssssssssss"+ request.getSession().getAttribute("friend_id"));
         mav.addObject("friend_id",friend_id);
         mav.addObject("friendgroup", friendgroup);
         return  mav;
@@ -383,9 +399,6 @@ public class FriendController {
     public Map  checkAlbumPower(@Param("albumName") String albumName,HttpServletRequest request,
                                         HttpServletResponse response) {
         int friend_id= (int) request.getSession().getAttribute("friend_id");
-//        User user= (User) request.getSession().getAttribute("friend_id");
-//        int userId=user.getId();
-        System.out.println("相册名是："+albumName);
         //通过用户id和相册名获取到唯一相册
         List albumlist=albumService.selectAlbumByName(friend_id,albumName);
         Album album = (Album) albumlist.get(0);
@@ -393,9 +406,7 @@ public class FriendController {
         int albumId=album.getId();
         String  satus="0";
         List list=imageService.getImage(satus,friend_id,albumId);
-        //Image coverIma= (Image) list.get(0);
         Map map=new HashMap();
-        //map.put("coverIma",coverIma);
         map.put("imageList",list);
         return map;
     }
@@ -412,6 +423,7 @@ public class FriendController {
         int userId=user.getId();
         //通过用户id和相册名获取到唯一相册
         List albumlist=albumService.selectAlbumByName(friend_id,albumName);
+        //拿到唯一相册实体
         Album album = (Album) albumlist.get(0);
         //获取该相册id
         int albumId=album.getId();
@@ -419,6 +431,7 @@ public class FriendController {
         boolean power=friendService.checkAlbumPower(albumId);
         //私人权限
         int power_two=friendService.checkFriendPower(friend_id,userId,albumId);
+        //判断权限
         if(power==true&&power_two==3){
             return true;
         }else if(power==true&&power_two==0){
@@ -443,7 +456,6 @@ public class FriendController {
                                                @Param("friendId") String friendId,
                                                HttpServletRequest request,
                                                HttpServletResponse response) {
-        System.out.println("数据yonghuid"+userId+"ssss"+friendVerifications_id+"ddd"+friendId);
         int user_id=Integer.parseInt(userId);
         int friend_id=Integer.parseInt(friendId);
         int friendVerificationsId=Integer.parseInt(friendVerifications_id);
@@ -457,7 +469,7 @@ public class FriendController {
     }
 
     /**
-     * 用户拒绝好友验证请求
+     * 用户拒绝好友验证请求并删除相关数据
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/deleteFriendVerifications")
     @ResponseBody
@@ -474,7 +486,7 @@ public class FriendController {
 
     }
     /**
-     * 用户拒绝好友验证请求
+     * 移动好友去新的分组
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/moveFriends")
     @ResponseBody
@@ -483,9 +495,9 @@ public class FriendController {
                                               HttpServletResponse response) {
         User user=(User)request.getSession().getAttribute("user");
         User user1=(User)request.getSession().getAttribute("user1");
-        System.out.println("用户id"+user.getId()+"朋友id"+user1.getId()+"移动至的分组名"+friendsGroupName);
+        //查询分组id
         int friendsGroupId=friendService.searchFriendsGroup(user,friendsGroupName);
-        System.out.println("拿到的分组id"+friendsGroupId);
+        //移动好友是否成功
         boolean result=friendService.moveFriendToNewGroup(user,user1,friendsGroupId);
        if(result){
            return true;
@@ -503,7 +515,6 @@ public class FriendController {
                                 HttpServletResponse response) {
         User user=(User)request.getSession().getAttribute("user");
         User user1=(User)request.getSession().getAttribute("user1");
-        System.out.println("用户id"+user.getId()+"朋友id"+user1.getId());
         ModelAndView mav = new ModelAndView("myFriend");
         friendService.deleteFriends(user,user1);
         friendService.deleteFriends(user1,user);
@@ -511,18 +522,19 @@ public class FriendController {
     }
 
     /**
-     * 用户删除好友
+     * 用户接受好友验证请求
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/acceptFriendsInformation")
     @ResponseBody
     public boolean  acceptFriendsInformation(@Param("acceptGroupName") String acceptGroupName,@Param("friendVerifications_id_Two") int friendVerifications_id_Two,HttpServletRequest request,
                                        HttpServletResponse response) {
         User user=(User)request.getSession().getAttribute("user");
+        //拿到分组id
         int group_id=friendService.searchFriendsGroup(user,acceptGroupName);
-        System.out.println("分组id为"+group_id);
         if(group_id!=0){
+            //拿到好友id
             int friend_id=friendService.seachFriendIdByFriendVerifications(friendVerifications_id_Two);
-            System.out.println("好友id为"+friend_id);
+            //用户接受好友请求
             friendService.acceptfriendVerifications(user.getId(),friend_id,group_id,friendVerifications_id_Two);
             return true;
         }
