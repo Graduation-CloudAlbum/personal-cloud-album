@@ -40,9 +40,11 @@ public class RecycleBinController {
     public ModelAndView myRecycleBin(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
         ModelAndView mav = new ModelAndView("recycleBin");
+        //拿到该用户所有回收站信息
         List<RecycleBin> recycleBins=recycleBinService.getRecycleBin(user.getId());
         String jsonArray = JSON.toJSONString(recycleBins);
         JSONArray allrecycleBins = JSONArray.parseArray(jsonArray);
+        //拿到好友分组
         List<?> friendgrouplist = friendService.selectFriendGroup(user);
         String jsonArray2 = JSON.toJSONString(friendgrouplist);
         JSONArray friendgroup = JSONArray.parseArray(jsonArray2);
@@ -63,28 +65,32 @@ public class RecycleBinController {
     public boolean someImageRecovery(HttpServletRequest request, HttpServletResponse response,
                                  @RequestParam(value="check_val[]") Integer[] check_val) {
         User user = (User) request.getSession().getAttribute("user");
-
         List list=new ArrayList();
         List list2=new ArrayList();
+        //将相片id存入list
         for (Integer integer : check_val) {
             list.add(integer.intValue());
-            System.out.println("前台送的数据为"+integer.intValue());
         }
+        //拿到对应相册id并存入list2
         List<RecycleBin> recycleBins=recycleBinService.selectAlbumByList(list);
         for (RecycleBin recycleBin : recycleBins) {
             list2.add(recycleBin.getAlbumId());
-            System.out.println("拿到相册id"+recycleBin.getAlbumId());
         }
+        //查询所还原照片占用空间之和
         int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
+        //查询用户剩余空间
         int Available_space=recycleBinService.selectAvailable_space(user.getId());
-        System.out.println("测试一下还原照片所需空间大小"+someImageSize);
-        System.out.println("测试一下剩余空间大小"+Available_space);
+        //判断是否有足够空间还原照片
         if(someImageSize>Available_space){
             return false;
         }else {
+            //还原照片
             boolean recycleBinsResult=recycleBinService.recoverSomeImage(list);
+            //删除回收站记录
             boolean recycleBinsResult2=recycleBinService.delManyRecycleBin(list);
+            //更新相册状态
             boolean recycleBinsResult3=recycleBinService.updateAlbumByList(list2);
+            //判断操作是否都成功
             if(recycleBinsResult&&recycleBinsResult2&&recycleBinsResult3){
                 return true;
             }
@@ -105,12 +111,16 @@ public class RecycleBinController {
                                         @RequestParam(value="check_val[]") Integer[] check_val) {
         User user = (User) request.getSession().getAttribute("user");
         List list=new ArrayList();
+        //取出照片id存入list
         for (Integer integer : check_val) {
             list.add(integer.intValue());
         }
+        //校验密码是否正确
         if(user.getUserPassword().equals(MD5Util.md5Jdk(deleteRecycleInput2))){
+            //删除回收站表里数据
             boolean recycleBinsResult2=recycleBinService.delManyRecycleBin(list);
             if(recycleBinsResult2){
+                //删除相片表里数据
                 recycleBinService.deleteImageByList(list);
                 return true;
             }
@@ -171,8 +181,6 @@ public class RecycleBinController {
         }
         int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
         int Available_space=recycleBinService.selectAvailable_space(user.getId());
-        System.out.println("测试一下还原照片所需空间大小"+someImageSize);
-        System.out.println("测试一下剩余空间大小"+Available_space);
         if(someImageSize>Available_space){
             return false;
         }else {
