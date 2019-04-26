@@ -74,4 +74,19 @@ public interface RecycleBinService {
      * @return
      */
     int insertRecycleBin(List list);
+
+
+    /**
+     * 查询拿到id的相片所占空间总大小
+     * @param list 参数相片id
+     * @return
+     */
+    int getSomeRecycleImaeSize(List list);
+
+    /**
+     * 查询剩余空间
+     * @param user_id 参数相片id
+     * @return
+     */
+    int selectAvailable_space(int user_id);
 }
