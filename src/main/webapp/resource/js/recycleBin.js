@@ -17,36 +17,7 @@ function dianjigou() {
         document.getElementById('table-header5').style.display="none";
     }  
 }
-for(var i=0;i<recycleTableTr.length;i++){
-    var aInput=this.document.getElementsByTagName('input')
-    for(var j=1;j<aInput.length;j++){
-        aInput[j].onchange = function(){
-            document.getElementById('table-header5').style.display="block";
-        }
-    }
-}
-// for(var i=1; i<recycleTableTr.length; i++){
-//     var recycleTableTrButton1 = recycleTableTr[i].getElementsByTagName('td');
-//     var recycleTableTrButton = recycleTableTrButton1[6].getElementsByTagName('button');
-//     //点击查看
-//     recycleTableTrButton[0].onclick = function(){
-//         document.getElementById('see-photo').style.display="block";
-        
-//     }
-//     //点击删除
-//     recycleTableTrButton[1].onclick = function(){
 
-//     }
-//     //点击还原
-//     recycleTableTrButton[2].onclick = function(){
-
-//     }
-// }
-// var iconChacha3 = document.getElementById('iconChacha3');
-// iconChacha3.onclick = function(){
-//     document.getElementById('see-photo').style.display="none";
-//     document.getElementById('popLayer2').style.display="block";
-// }
 //清空回收站
 var deleteAll = document.getElementById('deleteAll');
 deleteAll.onclick = function(){

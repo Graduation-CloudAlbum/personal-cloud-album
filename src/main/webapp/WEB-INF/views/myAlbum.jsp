@@ -36,7 +36,7 @@
             	我的消息
             	<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber}">
             </div>
-            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
+<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
             <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
@@ -70,7 +70,7 @@
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
-                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>
+<%--                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
                 <div id="admin-button" class="admin-button">
                     <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
@@ -123,7 +123,10 @@
             	<div id="noNumber2" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
             	</div>
             </div>
-            
+             <form id="image-download-form" action="/pca/image/download">
+                <input id="hidden-input" type="hidden" name="image" value="" >
+             </form>
+
              
         </div>
     </div>

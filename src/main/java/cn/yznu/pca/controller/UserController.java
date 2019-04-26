@@ -214,7 +214,9 @@ public class UserController {
     public  String activate(@Param("code") String code,@Param("username") String username, HttpServletRequest request){
         User user= userService.selectUserByUserName(username);
         //激活账户
+        System.out.println("code is :"+code);
         user.setUserType(code);
+        System.out.println(user.getUserType());
         userService.updateUser(user);
        //初始化空间
         UserSpace userSpace= new UserSpace();
@@ -236,6 +238,7 @@ public class UserController {
         permissionGroupService.insert(permissionGroup1);
         return "login";
     }
+
     @ResponseBody
     @RequestMapping("/checkLogin")
     public String  checkLogin(@Param("username") String username, @Param("password") String password,HttpServletRequest request){

@@ -30,7 +30,7 @@
         <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
             <input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>
+<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
             <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
@@ -57,7 +57,7 @@
             <div class="content-about">
                 <table id="recycle-table" class="recycle-table">
                     <tr class="table-tr">
-                        <th class="th1"><input id="all" name="photo" type="checkbox" value="" onchange="dianjigou()"/></th>
+                        <th class="th1"><input id="all" name="photoTop" type="checkbox" value="" onchange="dianjigou()"/></th>
                         <th>照片</th>
                         <th>照片大小</th>
                         <th>删除时间</th>

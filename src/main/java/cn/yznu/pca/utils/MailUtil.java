@@ -43,6 +43,8 @@ public class MailUtil {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication("13212348680@163.com", "Yangbw2019");
+                    //return new PasswordAuthentication("13212348680@163.com", "y248795961");
+
                 }
             });
 
