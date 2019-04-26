@@ -431,7 +431,7 @@ public class FriendController {
         boolean power=friendService.checkAlbumPower(albumId);
         //私人权限
         int power_two=friendService.checkFriendPower(friend_id,userId,albumId);
-        //判断权限
+        //判断权限，power_two为3时表示小权限表中无数据
         if(power==true&&power_two==3){
             return true;
         }else if(power==true&&power_two==0){
