@@ -216,7 +216,7 @@ public class ImageController {
                 logger.info("保存照片"+i+" ---路径是："+image1.getUrl());
                 UserSpace userSpace = userSpaceService.getSpace(userId);
                 //判断剩余空间是否足够，若剩余空间足够
-                if (Integer.parseInt(image.getImageSize())<=Integer.parseInt(userSpace.getAvailableSpace())){
+                if (Integer.parseInt(image1.getImageSize())<=Integer.parseInt(userSpace.getAvailableSpace())){
 
                     timer.schedule(new TimerTask() {
                         int i=0;
