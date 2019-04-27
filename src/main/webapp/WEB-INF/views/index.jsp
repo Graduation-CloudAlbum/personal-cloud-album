@@ -18,7 +18,7 @@
         </h1>
             <!--<h2 class="intro icoIndex">记录你一生的精彩时光</h2>-->
             <div class="fns">
-<%--                <a class="link-btn btn-register" href="/pca/user/register" >注册</a>--%>
+<%--    <a class="link-btn btn-register" href="/pca/user/register" >注册</a>--%>
         <a class="link-btn btn-register" href="/pca/user/index" >主页</a>
         <a class="link-btn btn-login" href="/pca/user/login">登录</a>
             </div>

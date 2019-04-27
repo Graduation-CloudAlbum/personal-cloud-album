@@ -58,8 +58,8 @@ public class MailUtil {
             message.setSubject("1024Album账户激活邮件");
 
             //设置内容
-            //String msg = "<h1>点击<a href='http://www.1024album.cn/pca/user/activate?code=" + code + "&username="+username+"'>此处</a>激活账户<h1>";
-            String msg = "<h1>点击<a href='http://localhost:8080/pca/user/activate?code=" + code + "&username="+username+"'>此处</a>激活账户<h1>";
+            String msg = "<h1>点击<a href='http://www.1024album.cn/pca/user/activate?code=" + code + "&username="+username+"'>此处</a>激活账户<h1>";
+            //String msg = "<h1>点击<a href='http://localhost:8080/pca/user/activate?code=" + code + "&username="+username+"'>此处</a>激活账户<h1>";
             message.setContent(msg, "text/html;charset=utf-8");
             //发送邮件
             Transport.send(message);
@@ -75,8 +75,6 @@ public class MailUtil {
      * @throws MessagingException
      */
     public static void sendMail2(String toMail,String pass) throws MessagingException {
-        //8位随机密码
-        // String pass=Sid.resetPass();
         //设置邮件服务器
         Properties properties = new Properties();
         //可以设置邮件服务器
