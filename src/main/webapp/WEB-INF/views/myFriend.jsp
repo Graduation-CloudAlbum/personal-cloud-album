@@ -14,7 +14,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>myFriend</title>
+    <title>我的好友 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myFriend.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>

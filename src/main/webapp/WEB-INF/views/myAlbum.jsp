@@ -7,7 +7,6 @@
 --%>
 
 <%@ page import="cn.yznu.pca.model.User" %>
-<%@ page import="cn.yznu.pca.model.Album" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
@@ -18,7 +17,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>myAlbum</title>
+    <title>我的相册 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
@@ -36,8 +35,6 @@
             	我的消息
             	<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber}">
             </div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -70,15 +67,11 @@
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
-<%--                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
                 <div id="admin-button" class="admin-button">
                     <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
                     <div id="button1" class="btn admin-button-li uploadPhoto7">移动
                         <ul id="admin-button-menu" class="album-sort2">
-                            <%--<li class="album-sort-li">我的家人</li>--%>
-                            <%--<li class="album-sort-li">我的朋友</li>--%>
-                            <%--<li class="album-sort-li">我的同学</li>--%>
                         </ul>
                     </div>
 
@@ -89,28 +82,8 @@
 
             <div class="content-wrap">
                 <ul id="myAlbum-content" class="content-about">
-
-
                 </ul>
                 <ul id="myAlbum-content2" class="content-about2 gallery">
-
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-
                 </ul>
                 <div class="content-button">
                     <div class="content-button-fenge"></div>

@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>确认购买空间</title>
+    <title>确认购买空间 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>

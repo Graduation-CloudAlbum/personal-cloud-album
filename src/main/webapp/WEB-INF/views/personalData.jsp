@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
-    <title>1024Album - 个人中心</title>
+    <title>个人中心 - 1024Album</title>
 </head>
 <body>
 <div class="wrapper">
@@ -61,7 +61,6 @@
                 <li id="ModifyingData" class="content-menu-li"><a>修改资料</a></li>
                 <li id="ChangetheAvatar" class="content-menu-li"><a>更换头像</a></li>
                 <li id="ChangePassword" class="content-menu-li"><a>修改密码</a></li>
-                <%--<li class="content-menu-li"><a>邀请注册</a></li>--%>
                 <li id="Expansion" class="content-menu-li"><a>扩充空间</a></li>
             </ul>
             <div class="content-wrap">

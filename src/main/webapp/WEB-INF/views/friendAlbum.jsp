@@ -15,7 +15,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>myFriend</title>
+	<title>好友相册 - 1024Album</title>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 	<link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>

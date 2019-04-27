@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>1024Album - 记录生活 留住感动</title>
+    <title>首页 - 1024Album - 记录生活 留住感动</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/index.css">
 </head>
 <body>
@@ -18,8 +18,8 @@
         </h1>
             <!--<h2 class="intro icoIndex">记录你一生的精彩时光</h2>-->
             <div class="fns">
-                <a class="link-btn btn-register" href="/pca/user/register" >注册</a>
-<%--        <a class="link-btn btn-register" href="/pca/user/index" >主页</a>--%>
+<%--                <a class="link-btn btn-register" href="/pca/user/register" >注册</a>--%>
+        <a class="link-btn btn-register" href="/pca/user/index" >主页</a>
         <a class="link-btn btn-login" href="/pca/user/login">登录</a>
             </div>
         </div>
