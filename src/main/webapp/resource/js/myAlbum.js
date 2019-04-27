@@ -1238,7 +1238,7 @@ function deleteImg() {
             if (data) {
                 alert("删除成功")
                 // window.location.href="myAlbum";
-                window.location.href = window.location.href;
+                window.location.href ="/pca/user/myAlbum";
             }
 
         }
@@ -1254,7 +1254,8 @@ function downLoadImg() {
     });
     $("#hidden-input").val(arr);
     $("#image-download-form").submit();
-     $("#uploadPhoto6").click();
+    $("#uploadPhoto6").click()
+
 }
 
 //$("#mod-radio2").click(function () {

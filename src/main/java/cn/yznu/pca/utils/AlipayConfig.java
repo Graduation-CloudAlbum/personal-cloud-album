@@ -1,6 +1,6 @@
 package cn.yznu.pca.utils;
 
-/**
+/**支付宝支付所需的配置类
  * @author yangbaiwan
  * @date 2019-03-11
  */

@@ -258,13 +258,6 @@ public class AlbumController {
     @ResponseBody
     public int updateAlbum(@Param("albumId") Integer albumId,@Param("albumName") String albumName,
                            @Param("theme") String theme,@Param("jurisdiction") String  jurisdiction,HttpServletRequest request){
-        //User user= (User) request.getSession().getAttribute("user");
-        //int userId=user.getId();
-        //List albumlist =albumService.selectAlbumByName(userId,albumName);
-        //Album album= (Album) albumlist.get(0);
-        //int albumId=album.getId();
-        Album album=albumService.selectAlbumById(albumId);
-        //String staus=album.getStatus();
         if (jurisdiction.equals("3")){
             albumService.updateAlbum(albumId,albumName,"0",theme);
             return 1;

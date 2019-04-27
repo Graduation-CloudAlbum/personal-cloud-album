@@ -54,13 +54,6 @@
 				<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span ><%=user1.getNickName()%>的相册空间</span></a>
 			</div>
 			<ul class="content-menu" >
-
-				<%--<div class="content-about-personal" style="width: 100%;height: 100px" >--%>
-
-
-				<%--&lt;%&ndash;<div class="content-about-personal-num1"><p style="text-align: center" class="content-about-personal-num-p1">个人签名</p></div>&ndash;%&gt;--%>
-				<%--&lt;%&ndash;<div class="content-about-personal-num2"><p style="text-align: center" class="content-about-personal-num-p1">撒旦发射点</p></div>&ndash;%&gt;--%>
-				<%--</div>--%>
 				<li class="content-menu-li group-menu" href="<%=basePath%>/friend/myFriend">
 					<a>移动好友</a>
 					<ul id="friend-group" class="friend-group">

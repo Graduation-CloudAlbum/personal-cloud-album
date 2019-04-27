@@ -1,7 +1,7 @@
 package cn.yznu.pca.utils;
 
 /**
- * 内存大小转换工具类
+ * 空间大小转换及计算工具类
  * @author yangbaiwan
  * @date 2018-11-07
  */

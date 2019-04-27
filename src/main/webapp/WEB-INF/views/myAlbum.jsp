@@ -143,7 +143,7 @@
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
 
                     <div id="upload-photos-pop-content-footer" class="upload-photos-pop-content-footer">
-                        <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传500张相片</span>
+                        <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传50张相片</span>
                     </div>
                     <div id="upload-photos-pop-content-footer2" class="upload-photos-pop-content-footer2 fileinput-wrap">
                         <%--<span>共一张相片（4.31K）</span>--%>

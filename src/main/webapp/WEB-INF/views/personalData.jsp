@@ -40,8 +40,6 @@
         <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
             <input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -79,7 +77,6 @@
                         <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
                         <div class="content-about-personal-num3"><p class="content-about-personal-num-p1"><%=friendNum%></p><p class="content-about-personal-num-p2">好友数</p></div>
 
-                        <%--<div class="content-about-personal-num"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">分享辑</p></div>--%>
                     </div>
                     <div class="content-about-info">
                         <div id="content-about-info-no1" class="content-about-info-no1">

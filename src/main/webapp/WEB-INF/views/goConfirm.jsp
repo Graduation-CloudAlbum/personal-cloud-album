@@ -27,8 +27,6 @@
 			<div class="header-right">
 				<div id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
 				<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
 			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
@@ -43,10 +41,10 @@
 			</div>
 			<!-- right -->
 			<div class="main-container">
-				
-				<div class="content-header">
-					<i class="icon iconfont icon-zhifu"></i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>
-				</div>
+
+<%--				<div class="content-header">--%>
+<%--					<i class="icon iconfont icon-zhifu"></i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>--%>
+<%--				</div>--%>
 				<div class="content-wrap">
 					<form action="/pca/alipay/createOrder" method="post" style="width: 50%;height: 400px;padding: 10px;margin-left: 25%;">
 					    <input type="hidden" id="productName" name="productName" value="${productName}" />
@@ -56,35 +54,12 @@
 						    <div style="text-align: center;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
 						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
 					    </div>
-					    
-						
-						            
-			            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
-			            <%--<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
-						       
+
+
 					</form>
-					<%--<script type="text/javascript">--%>
-					
-					    <%--function createOrder() {--%>
-					
-					        <%--$.ajax({--%>
-					            <%--// async : false,--%>
-					            <%--url: "/pca/alipay/createOrder",--%>
-					            <%--type: "POST",--%>
-					            <%--data: {"productName": $("#productName").val(), "payment": $("#payment").val()},--%>
-					            <%--dataType: "json",--%>
-					            <%--success: function(data) {--%>
-					                <%--alert("data是："+data);--%>
-					                <%--var orderId=data;--%>
-					                <%--// 确认订单后, 进入创建订单页面--%>
-					                <%--window.location.href =  "/pca/alipay/goPay/"+orderId;--%>
-					
-					            <%--}--%>
-					        <%--});--%>
-					
-					    <%--}--%>
-					
-					<%--</script>--%>
+
+
+
 				</div>
 				
 				</div>

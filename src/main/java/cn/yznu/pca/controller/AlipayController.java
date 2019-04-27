@@ -91,9 +91,6 @@ public class AlipayController {
              payment=50;
          }
      }
-
-        //request.getSession().setAttribute("productName",productName);
-        //request.getSession().setAttribute("payment",payment);
         ModelAndView mv = new ModelAndView("goConfirm");
         mv.addObject("productName", productName);
         mv.addObject("payment", payment);
@@ -118,24 +115,6 @@ public class AlipayController {
      * @return
      * @throws Exception
      */
-    //@RequestMapping("/createOrder")
-    //@ResponseBody
-    //public String createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord pcr,HttpServletRequest request) throws Exception {
-    //    User user= (User) request.getSession().getAttribute("user");
-    //    int userId=user.getId();
-    //    //String payment=(String) request.getSession().getAttribute("payment");
-    //    String orderId = Sid.Onumber();
-    //    pcr.setUserId(userId);
-    //    pcr.setId(orderId);
-    //    pcr.setCreateTime(new Date());
-    //    pcr.setProductName(productName);
-    //    pcr.setPayment(payment);
-    //    pcr.setStatus(OrderStatusEnum.WAIT_PAY.key);
-    //    purchaseRecordService.saveOrder(pcr);
-    //
-    //    return orderId;
-    //}
-
     @RequestMapping("/createOrder")
     public ModelAndView createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord order,HttpServletRequest request) throws Exception {
         User user= (User) request.getSession().getAttribute("user");
@@ -348,7 +327,7 @@ public class AlipayController {
 
         boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type); //调用SDK验证签名
 
-        //——请在这里编写您的程序（以下代码仅作参考）——
+        //——请在这里编写程序（以下代码仅作参考）——
 
 		/* 实际验证过程建议商户务必添加以下校验：
 		1、需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，
