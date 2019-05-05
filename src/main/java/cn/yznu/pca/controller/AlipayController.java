@@ -107,7 +107,21 @@ public class AlipayController {
         request.setAttribute("friendgroup", friendgroup);
         return mv;
     }
+    @RequestMapping(value = "/createOrder2")
+    @ResponseBody
+    public String createOrder(PurchaseRecord order,@Param("productName")String productName, @Param("payment")String payment,HttpServletRequest request) throws Exception {
+        User user= (User) request.getSession().getAttribute("user");
+        int userId=user.getId();
+        String orderId = Sid.Onumber();
+        order.setId(orderId);
+        order.setUserId(userId);
+        order.setStatus(OrderStatusEnum.WAIT_PAY.key);
+        order.setProductName(productName);
+        order.setPayment(payment);
+        purchaseRecordService.saveOrder(order);
 
+        return orderId;
+    }
     /**
      * 分段提交
      * 	第一段：创建订单，保存订单
@@ -117,6 +131,8 @@ public class AlipayController {
      */
     @RequestMapping("/createOrder")
     public ModelAndView createOrder(@Param("productName")String productName, @Param("payment")String payment,PurchaseRecord order,HttpServletRequest request) throws Exception {
+        log.info("....创建订单....");
+        System.out.println("进入创建订单。。。。。。。。。。");
         User user= (User) request.getSession().getAttribute("user");
             int userId=user.getId();
         String orderId = Sid.Onumber();
@@ -147,27 +163,27 @@ public class AlipayController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/goPay/{orderId}")
-    public ModelAndView goPay(HttpServletRequest request,@PathVariable("orderId") String orderId) throws Exception {
-        System.out.println("goPay接收到的订单id是："+orderId);
-        PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
-        System.out.println(orderId);
-        System.out.println("********开始创建订单*********");
-        System.out.println("订单编号是："+order.getId());
-        System.out.println("商品是："+order.getProductName());
-        System.out.println("金额是："+order.getPayment());
-        ModelAndView mv = new ModelAndView("goPay");
-        User user= (User) request.getSession().getAttribute("user");
-        List<?> friendgrouplist = friendService.selectFriendGroup(user);
-        String jsonArray = JSON.toJSONString(friendgrouplist);
-        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-        int newFriendNumber=friendService.searchNewFriend(user.getId());
-        System.out.println("验证消息的个数"+newFriendNumber);
-        request.setAttribute("newFriendNumber", newFriendNumber);
-        request.setAttribute("friendgroup", friendgroup);
-        mv.addObject("order", order);
-        return mv;
-    }
+    //@RequestMapping("/goPay")
+    //public ModelAndView goPay(HttpServletRequest request,@PathVariable("orderId") String orderId) throws Exception {
+    //    System.out.println("goPay接收到的订单id是："+orderId);
+    //    PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
+    //    System.out.println(orderId);
+    //    System.out.println("********开始创建订单*********");
+    //    System.out.println("订单编号是："+order.getId());
+    //    System.out.println("商品是："+order.getProductName());
+    //    System.out.println("金额是："+order.getPayment());
+    //    ModelAndView mv = new ModelAndView("goPay");
+    //    User user= (User) request.getSession().getAttribute("user");
+    //    List<?> friendgrouplist = friendService.selectFriendGroup(user);
+    //    String jsonArray = JSON.toJSONString(friendgrouplist);
+    //    JSONArray friendgroup = JSONArray.parseArray(jsonArray);
+    //    int newFriendNumber=friendService.searchNewFriend(user.getId());
+    //    System.out.println("验证消息的个数"+newFriendNumber);
+    //    request.setAttribute("newFriendNumber", newFriendNumber);
+    //    request.setAttribute("friendgroup", friendgroup);
+    //    mv.addObject("order", order);
+    //    return mv;
+    //}
 
     /**
      *
@@ -178,7 +194,10 @@ public class AlipayController {
     public String goAlipay(@Param("orderId") String orderId, HttpServletRequest request, HttpServletRequest response) throws Exception {
         System.out.println("orderId是:"+orderId);
         PurchaseRecord order = purchaseRecordService.getOrderById(orderId);
-
+        System.out.println("********开始创建订单*********");
+        System.out.println("订单编号是："+order.getId());
+        System.out.println("商品是："+order.getProductName());
+        System.out.println("金额是："+order.getPayment());
         //获得初始化的AlipayClient
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
 
@@ -186,18 +205,19 @@ public class AlipayController {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         alipayRequest.setReturnUrl(AlipayConfig.return_url);
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
-
         //商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no =orderId;
         //付款金额，必填
         String total_amount = String.valueOf(Float.valueOf(order.getPayment()));
         //订单名称，必填
         String subject = order.getProductName();
+        //String subject = "expandSpace";
         //商品描述，可空
-        String body = "用户订购商品：" +order.getProductName();
-
+        String body = "1024Album扩容服务：" +order.getProductName();
+        //String body = "1024Album";
+        log.info("进入log:"+out_trade_no+"-"+total_amount+"-"+subject+"-"+body);
         // 该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。
-        String timeout_express = "1c";
+        String timeout_express = "15m";
 
         alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
                 + "\"total_amount\":\""+ total_amount +"\","
@@ -205,10 +225,9 @@ public class AlipayController {
                 + "\"body\":\""+ body +"\","
                 + "\"timeout_express\":\""+ timeout_express +"\","
                 + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
-
         //请求
         String result = alipayClient.pageExecute(alipayRequest).getBody();
-
+        System.out.println(result);
         return result;
     }
 

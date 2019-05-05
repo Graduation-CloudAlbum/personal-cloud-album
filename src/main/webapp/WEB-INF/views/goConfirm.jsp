@@ -52,8 +52,10 @@
 					    <div>
 						    <div style="text-align: center;font-size: 20px;">产品名称: ${productName}</div>
 						    <div style="text-align: center;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
-						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
-					    </div>
+<%--						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">--%>
+							<input type="submit" value="确认购买" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
+<%--							<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
+						</div>
 
 
 					</form>
@@ -115,6 +117,23 @@
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>
 	</div>
+<%--<script type="text/javascript">--%>
+
+<%--	function createOrder() {--%>
+<%--		$.ajax({--%>
+<%--			url: "/pca/alipay/createOrder2",--%>
+<%--			type: "POST",--%>
+<%--			data: {"productName": $("#productName").val(), "payment": $("#payment").val()},--%>
+<%--			dataType: "json",--%>
+<%--			success: function(data) {--%>
+<%--				alert(data)--%>
+<%--					// 提交订单成功后, 进入购买页面--%>
+<%--					window.location.href = "/pca/alipay/goAlipay?orderId=" + data;--%>
+<%--			}--%>
+<%--		});--%>
+<%--	}--%>
+
+<%--</script>--%>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>

@@ -25,13 +25,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>personalData</title>
+    <title>个人中心 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
-    <title>个人中心 - 1024Album</title>
+
 </head>
 <body>
 <div class="wrapper">

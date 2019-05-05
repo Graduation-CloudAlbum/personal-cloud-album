@@ -57,7 +57,7 @@
     <div class="inner-right">
 
         <a href="/pca/user/index"  class="link"><span class="link-drop"></span> <span class="link-txt">首页</span></a>
-<%--        <a href="/pca/user/register" class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>--%>
+        <a href="/pca/user/register" class="link"><span class="link-drop"></span> <span class="link-txt">注册</span></a>
         <a href="/pca/user/getpass"  class="link"><span class="link-drop"></span> <span class="link-txt">找回密码</span></a>
     </div>
 </div>

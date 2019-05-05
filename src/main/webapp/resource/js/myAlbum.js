@@ -47,21 +47,7 @@ var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
 
 var bLi = "";
 var chooseName = "";
-// uploadPhotosRight.onclick = function(){
-//     uploadPhotosGroup.style.display="block"
-// }
-// for(var i=0;i<uploadPhotosGroupLi.length;i++){
-//     uploadPhotosGroupLi[i].index = i;
-//     uploadPhotosGroupLi[i].onclick = function(){
-//         str = (function(i){
-//             bLi=uploadPhotosGroupLi[i].innerHTML;
-//             uploadPhotosLeft.innerHTML=bLi;
-//             return uploadPhotosLeft.innerHTML;
-//         })(this.index);
-//         uploadPhotosGroup.style.display="none"
-//         uploadPhotosLeft.innerHTML=str
-//     }
-// }
+
 
 //在主页点击“上传照片”按钮，动态加载可选择的相册
 $("#upload-photos-right").click(function () {
@@ -1152,6 +1138,8 @@ $("#nextTime").click(function () {
     $("#logOutTime").val("");
     //alert($("#logOutTime").val());
     $("#upload-form").submit();
+    iconChacha1.click();
+    alert("上传成功")
 });
 $("#button1").click(function () {
     $.ajax({
@@ -1257,20 +1245,6 @@ function downLoadImg() {
     $("#uploadPhoto6").click()
 
 }
-
-//$("#mod-radio2").click(function () {
-//    var type=$("input[type='radio']:checked").val();
-//    if(type=="公开"){
-//    	$("#part").css({ display: "block" });
-//    }
-//    else{
-//    	$("#part").css({ display: "none" });
-//    }
-//});
-//部分可见
-//$("#part").click(function () {
-//	$(".Partially-visible").css({ display: "block" });
-//});
 
 
 var id = document.getElementById("selectStyle");

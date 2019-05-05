@@ -52,12 +52,12 @@
 						    <input type="submit" value="前往支付宝付款" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
 					    </div>
 					    
-					    <%--<script>--%>
-					        <%--function pay() {--%>
-					            <%--var orderId = $('input[name=orderId]').val();--%>
-					            <%--window.location.href ="/pca/alipay/goAlipay/"+orderId;--%>
-					        <%--}--%>
-					    <%--</script>--%>
+<%--					    <script>--%>
+<%--					        function pay() {--%>
+<%--					            var orderId = $('input[name=orderId]').val();--%>
+<%--					            window.location.href ="/pca/alipay/goAlipay/"+orderId;--%>
+<%--					        }--%>
+<%--					    </script>--%>
 					</form>
 				</div>
 				

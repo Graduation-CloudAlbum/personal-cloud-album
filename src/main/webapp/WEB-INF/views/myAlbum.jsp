@@ -7,6 +7,7 @@
 --%>
 
 <%@ page import="cn.yznu.pca.model.User" %>
+<%@ page import="cn.yznu.pca.model.Album" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%  String path = request.getContextPath();
