@@ -379,7 +379,8 @@ $().ready(function getAlbum() {
                                     //+ "<form id='image-download-form' action='/pca/image/download'>"
                                     //+ "<input id='hidden-input' type='hidden' name='image' value='' >"
                                     + "<span id='" + imgId + "' class='icon iconfont photo-admin'name='" + imgUrl + "'>&#xe627;</span>"
-                                    + "<a href='" + imgUrl + "' ><img src='" + imgUrl + "'/></a>"
+                                    + "<i class='icon iconfont icon-lvjing lvjing demo__option-img' ></i>"
+                                    + "<a href='" + imgUrl + "' ><img class='demo__option-img1' src='" + imgUrl + "'/></a>"
                                    // + "</form>"
                                     + "</div>"
 
@@ -398,7 +399,40 @@ $().ready(function getAlbum() {
                         			$(".content-button").css({ display: "none" });
                         		}
                         	})
-                        	
+                        	 //《滤镜
+                                var inputField = document.querySelector(".demo__input-img")
+
+                                var iPhoto="";
+								function pickSample(iPhoto) {
+								  updateImages(data.imageList[iPhoto].url)
+								  inputField.value = data.imageList[iPhoto].url
+								}
+							
+								function updateImages(src) {
+								  var imgs = document.querySelectorAll(".demo__item img")
+								  for (var i = 0; i < imgs.length; i++) imgs[i].src = src
+								}
+							
+								document.addEventListener("click", function(event) {
+									var iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+									
+									//alert(event.target.className)
+									if ( /demo__option-img/.test(event.target.className) ) {
+										pickSample( iPhoto );
+									}
+								  
+								}, false)
+							
+								inputField.addEventListener("input", function() {
+								  updateImages(this.value)
+								}, false)
+							
+								inputField.addEventListener("focus", function() {
+								  this.select()
+								}, false)
+							
+								pickSample(document.querySelector(".demo__option-img1"))
+								//滤镜》
                             // (function ($) {
                                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
@@ -808,7 +842,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
                                         //+ "<form id='image-download-form' action='/pca/image/download'>"
                                         //+ "<input id='hidden-input' type='hidden' name='image' value='' >"
                                         + "<span id='" + imgId + "' class='icon iconfont photo-admin'name='" + imgUrl + "'>&#xe627;</span>"
-                                        + "<i class='icon iconfont lvjing demo__option-img' >&#xe871;</i>"
+                                        + "<i class='icon iconfont icon-lvjing lvjing demo__option-img' ></i>"
                                         + "<a href='" + imgUrl + "' ><img class='demo__option-img1' src='" + imgUrl + "'/></a>"
                                        // + "</form>"
                                         + "</div>"
