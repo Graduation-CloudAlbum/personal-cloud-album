@@ -419,7 +419,7 @@ $().ready(function getAlbum() {
 									//alert(event.target.className)
 									if ( /demo__option-img/.test(event.target.className) ) {
 										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
-										 alert(iPhoto)
+										 //alert(iPhoto)
 										pickSample( iPhoto );
 									}
 								  

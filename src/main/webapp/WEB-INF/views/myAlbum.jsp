@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="<%=basePath%>/resource/css/zoom.css" media="all" />
     <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
     
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/lv-css/default.css">
+    
 	<link rel="stylesheet" href="<%=basePath%>/resource/lv-css/demo-site.min.css">
 </head>
 <body>

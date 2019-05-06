@@ -55,7 +55,7 @@
             <div class="content-about">
                 <table id="recycle-table" class="recycle-table">
                     <tr class="table-tr">
-                        <th class="th1"><input id="all" name="photoTop" type="checkbox" value="" onchange="dianjigou()"/></th>
+                        <th class="th1"><input id="all" name="photo" type="checkbox" value="" onchange="dianjigou()"/></th>
                         <th>照片</th>
                         <th>照片大小</th>
                         <th>删除时间</th>
@@ -65,7 +65,7 @@
                     <tbody>
                     <c:forEach items="${recycleBins}" var="recycleBins">
                         <tr>
-                            <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
+                            <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" onchange="dianjigou()"/></td>
                             <td><img class="pimg" src="${recycleBins.image.url}" /></td>
                             <td>${recycleBins.image.imageSize}B</td>
                             <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
