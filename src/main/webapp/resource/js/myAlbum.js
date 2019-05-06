@@ -414,10 +414,12 @@ $().ready(function getAlbum() {
 								}
 							
 								document.addEventListener("click", function(event) {
-									var iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+									
 									
 									//alert(event.target.className)
 									if ( /demo__option-img/.test(event.target.className) ) {
+										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+										 alert(iPhoto)
 										pickSample( iPhoto );
 									}
 								  
@@ -431,7 +433,7 @@ $().ready(function getAlbum() {
 								  this.select()
 								}, false)
 							
-								pickSample(document.querySelector(".demo__option-img1"))
+								//pickSample(document.querySelector(".demo__option-img1"))
 								//滤镜》
                             // (function ($) {
                                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
@@ -878,9 +880,10 @@ for (var i = 0; i < albumSortLi.length; i++) {
 								}
 							
 								document.addEventListener("click", function(event) {
-									var iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+									//var iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
 									//alert(event.target.className)
 									if ( /demo__option-img/.test(event.target.className) ) {
+										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
 										pickSample( iPhoto );
 									}
 								  
@@ -894,7 +897,7 @@ for (var i = 0; i < albumSortLi.length; i++) {
 								  this.select()
 								}, false)
 							
-								pickSample(document.querySelector(".demo__option-img1"))
+								//pickSample(document.querySelector(".demo__option-img1"))
 								//滤镜》
                                 (function($) {
                                     $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
