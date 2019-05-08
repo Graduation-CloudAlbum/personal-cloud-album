@@ -10,6 +10,7 @@ $("#loginButton").click(function () {
         dataType: "json",
         complete: function (result) {
             if (result.responseText == "success") {
+                //进入相册
                 window.location.href = "/pca/user/myAlbum";
             } else {
                 alert("用户名或密码错误 请重试");

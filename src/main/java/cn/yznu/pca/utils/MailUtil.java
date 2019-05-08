@@ -27,7 +27,9 @@ public class MailUtil {
         properties.setProperty("mail.transport.protocol", "SMTP");
         //可以设置邮件服务器
         properties.setProperty("mail.host", "smtp.163.com");
+        //身份验证
         properties.setProperty("mail.smtp.auth", "true");
+        //邮箱端口号
         properties.setProperty("mail.port","465");
         // SSL加密
         MailSSLSocketFactory sf = null;
@@ -42,6 +44,7 @@ public class MailUtil {
             Session session = Session.getInstance(properties, new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
+                    //设置发件邮箱和授权码
                     return new PasswordAuthentication("13212348680@163.com", "Yangbw2019");
                     //return new PasswordAuthentication("13212348680@163.com", "y248795961");
 
@@ -50,11 +53,11 @@ public class MailUtil {
 
             //创建邮件
             Message message = new MimeMessage(session);
-            //设置收件人地址
+            //设置发件人地址
             message.setFrom(new InternetAddress("13212348680@163.com"));
             //抄送
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
-            //设置邮件的主体
+            //设置邮件的主题
             message.setSubject("1024Album账户激活邮件");
 
             //设置内容

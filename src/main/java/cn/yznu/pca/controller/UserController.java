@@ -159,6 +159,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/doRegister")
     public  String register(@Param("username") String username, @Param("password") String password,HttpServletRequest request) throws MessagingException {
+        //查询邮箱是否注册
         int flag = userService.isExistUserName(username);
         //用户名未被使用
         if(flag==0) {

@@ -17,10 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author jiangchuan
@@ -288,8 +285,15 @@ public class FriendController {
     public Map<String,?> searchFriends(@Param("friendName") String friendName,
                                        HttpServletRequest request,
                                        HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("user");
         List<User> users=friendService.searchFriends(friendName);
-        Map<String, List<?>> maps=new HashMap<>();
+        for (int i=0;i<users.size();i++){
+          String name=users.get(i).getUserName();
+            if (name.equals(user.getUserName())){
+                users.remove(i);
+            }
+        }
+            Map<String, List<?>> maps=new HashMap<>();
         maps.put("users",users);
         return maps;
     }
