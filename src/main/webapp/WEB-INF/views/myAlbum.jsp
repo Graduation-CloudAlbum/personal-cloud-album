@@ -72,6 +72,14 @@
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
+                <li id="admin-button" class="table-header5">
+                	<div id="button3" class="table-header5-li" onclick="downLoadImg()">下载</div>
+                	<div id="button1" class="table-header5-li">移动
+                	<ul id="admin-button-menu" class="album-sort2">
+                        </ul></div>
+                    <div id="button2" class="table-header5-li">删除</div>
+                </li>
+                <!-- 
                 <div id="admin-button" class="admin-button">
                     <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
                     <div id="button1" class="btn admin-button-li uploadPhoto7">移动
@@ -80,7 +88,7 @@
                     </div>
 
                     <button id="button2" class="btn admin-button-li">删除</button>
-                </div>
+                </div> -->
             </ul>
 
 
@@ -343,7 +351,8 @@
             <tbody id="receiveFriendVerifications">
             </tbody>
         </table>
-
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
     </div>
 </div>
 

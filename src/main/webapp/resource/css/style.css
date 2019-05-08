@@ -196,11 +196,13 @@ html,body{
 #admin-button{
 	display: none
 }
+/*
 .admin-button{
 	position: absolute;
 	right: 10px;
 	line-height: 44px;
 }
+*/
 .admin-button-li{
 	height: 30px;
 	background: #D84C31;
@@ -657,4 +659,29 @@ html,body{
     width: 30px;
     height: 30px;
     line-height: 30px;
+}
+
+.table-header5{
+    display: none;
+    padding-left: 15px;
+    width: 250px;   
+    height: 39px;
+    float: right;
+    line-height: 36px;
+}
+ .table-header5-li{
+	color:#D84C31;
+	float:left;
+	margin-right:10px;
+	cursor:pointer;
+	margin-top: 5px;
+}
+.table1{
+	display:none;
+}
+.table2{
+	display:none;
+}
+.friends1{
+	display:none;
 }

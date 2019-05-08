@@ -41,17 +41,7 @@
     margin-right: 10px;
 }
 /* D84C31 */
-#table-header5{
-    display: none;
-    padding-left: 15px;
-    width: 250px;   
-    float: right;
-    line-height: 36px;
-}
-#table-header5 button{
-    background: #cecbcb;
-    margin-right: 15px;
-}
+
 /******************清空回收站********************************/
 #delete-recycle{
 	position: absolute;

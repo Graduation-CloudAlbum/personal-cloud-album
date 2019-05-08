@@ -50,7 +50,7 @@
             <ul class="content-menu">
                 <li id="deleteAll" class="content-menu-li"><a>清空回收站</a></li>
                 <li id="updateAll" class="content-menu-li"><a>还原所有项目</a></li>
-                <li id="table-header5"><button id="button1" class="btn btn-info">还原选中</button><button id="button2" class="btn btn-info">删除选中</button></li>
+                <li id="table-header5" class="table-header5"><div id="button1" class="table-header5-li">还原选中</div><div id="button2" class="table-header5-li">删除选中</div></li>
             </ul>
             <div class="content-about">
                 <table id="recycle-table" class="recycle-table">
@@ -155,6 +155,8 @@
                 </tbody>
             </table>
 
+			<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+            <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
         </div>
     </div>
 <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->

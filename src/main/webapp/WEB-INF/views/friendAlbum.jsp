@@ -130,6 +130,8 @@
 			</tbody>
 		</table>
 
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
 	</div>
 </div>
 

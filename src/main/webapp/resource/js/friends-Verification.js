@@ -123,6 +123,21 @@ accept.onclick = function(){
 
 	send.style.color="#9999A6";
 	send.style.borderBottom="";
+	
+	//为空
+
+	$(document).ready(function(){
+		if($("#accept-Verification tr").length>1){
+			$("#accept-Verification").css({ display: "block" });
+			$(".table1").css({ display: "none" });
+			$(".table2").css({ display: "none" });
+		}
+		else{
+			$("#accept-Verification").css({ display: "none" });
+			$(".table1").css({ display: "block" });
+			$(".table2").css({ display: "none" });
+		}
+	});
 }
 //发出验证
 var send=document.getElementById('send');
@@ -134,6 +149,19 @@ send.onclick = function(){
 
 	accept.style.color="#9999A6";
 	accept.style.borderBottom="";
+	
+	$(document).ready(function(){
+		if($("#send-Verification tr").length>1){
+			$("#send-Verification").css({ display: "block" });
+			$(".table2").css({ display: "none" });
+			$(".table1").css({ display: "none" });
+		}
+		else{
+			$("#send-Verification").css({ display: "none" });
+			$(".table2").css({ display: "block" });
+			$(".table1").css({ display: "none" });
+		}
+	});
 }
 // var VerificationMenu=document.getElementById('Verification-menu');
 // var VerificationMenuLi = VerificationMenu.getElementsByTagName('li');
@@ -212,9 +240,19 @@ function acceptfriendsbutton(friendVerifications_id){
     document.getElementById('popLayer2').style.display="block";
 }
 
-
-
-
+//为空
+$(document).ready(function(){
+	if($("#accept-Verification tr").length>1){
+		$("#accept-Verification").css({ display: "block" });
+		$(".table1").css({ display: "none" });
+		$(".table2").css({ display: "none" });
+	}
+	else{
+		$("#accept-Verification").css({ display: "none" });
+		$(".table1").css({ display: "block" });
+		$(".table2").css({ display: "none" });
+	}
+});
 
 
 

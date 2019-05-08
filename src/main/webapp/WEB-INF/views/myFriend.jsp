@@ -57,6 +57,7 @@
                             <li onclick="inFriendSpace('${node.friend.id}','<%=path%>',this)" class="friends-content-li"><img src="${node.friend.userIcon}" ><p>${node.friend.nickName}</p></li>
                         </c:forEach>
                     </ul>
+                    <div class="content-about5 friends1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
                         <c:forEach items="${friendgroup}" var="friendgroup">
@@ -173,7 +174,8 @@
                 <tbody id="receiveFriendVerifications">
                 </tbody>
             </table>
-
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
         </div>
     </div>
 <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
