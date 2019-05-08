@@ -86,7 +86,7 @@ $().ready(function getAlbum() {
 
                                             var zoom = $('#zoom').hide(),
                                                 zoomContent = $('#zoom .content'),
-                                                overlay = '<div class="overlay"></div>',
+                                                overlay = '<div class="overlay"></div><i style="position: absolute;bottom: 5px;left: 5px;font-size: 20px; color: #fff;">1024</i>',
                                                 zoomedIn = false,
                                                 openedImage = null,
                                                 windowWidth = $(window).width(),
