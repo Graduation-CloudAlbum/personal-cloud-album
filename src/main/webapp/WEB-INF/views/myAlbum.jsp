@@ -104,139 +104,7 @@
                 <div class="content-footer"></div>
                 
                 
-                	<div class="demo__input-area">
-
-	  <fieldset class="demo__option-field">
-		<!-- <legend>Choose a sample image:</legend>
-		  <img class="demo__option-img" src="../img/1.jpg" alt="girl image">
-		  <img class="demo__option-img" src="../img/2.jpg" alt="austin image">
-		  <img class="demo__option-img" src="../img/3.jpg" alt="tahoe image">
-		  <img class="demo__option-img" src="../img/4.jpg" alt="bike image">
-		  <img class="demo__option-img" src="../img/5.jpg" alt="lake geneva image">
-		<br> -->
-		<label class="demo__input-label">
-		  Or paste in a link to your own photo:
-		  <input class="demo__input-img" type="text">
-		</label>
-	  </fieldset>
-
-	  <small class="demo__note">Hovering over any of these images (or clicking on mobile) will remove the filter effect to visualize the changes.</small>
-	</div>
-	<div style="text-align:center;clear:both">
-	<!-- <script src="gg_bd_ad_720x90.js" type="text/javascript"></script>
-	<script src="follow.js" type="text/javascript"></script> -->
-</div>
-	<ul class="demo__list">
-	  <li class="demo__item">
-		<figure>
-		  <img>
-		  <figcaption>#nofilter</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="aden">
-		  <img>
-		  <figcaption>Aden</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="reyes">
-		  <img>
-		  <figcaption>Reyes</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="perpetua">
-		  <img>
-		  <figcaption>Perpetua</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="inkwell">
-		  <img>
-		  <figcaption>Inkwell</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="earlybird">
-		  <img>
-		  <figcaption>Earlybird</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="toaster">
-		  <img>
-		  <figcaption>Toaster</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="walden">
-		  <img>
-		  <figcaption>Walden</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="hudson">
-		  <img>
-		  <figcaption>Hudson</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="gingham">
-		  <img>
-		  <figcaption>Gingham</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="mayfair">
-		  <img>
-		  <figcaption>Mayfair</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="lofi">
-		  <img>
-		  <figcaption>Lo-fi</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="xpro2">
-		  <img>
-		  <figcaption>X-Pro II</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="_1977">
-		  <img>
-		  <figcaption>1977</figcaption>
-		</figure>
-	  </li>
-	  <li class="demo__item">
-		<figure class="brooklyn">
-		  <img>
-		  <figcaption>Brooklyn</figcaption>
-		</figure>
-	  </li>
-	</ul>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+    
                 
                 <div id="noNumber" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
             	</div>
@@ -449,8 +317,129 @@
 			<div id="delete-album-button2" class="default-button2" onclick="deleteAlbum();"><p>确定</p></div>
 		</div>
 
+<!--/******************************************************************************滤镜**********************************************/-->
+ 		<div id="lvjingPhoto" class="upload-photos">
+        	<div class="upload-photos-pop">
+	             <div class="upload-photos-pop-header">
+	                <span id="upload-album-choose">滤镜</span><i id="iconchacha13" class="iconfont icon-chacha1"></i>
+	            </div>
+	        <div class="content-lv">
+             <div class="demo__input-area">
 
-
+			  <fieldset class="demo__option-field">
+				
+				<label class="demo__input-label">
+				  Or paste in a link to your own photo:
+				  <input class="demo__input-img" type="text">
+				</label>
+			  </fieldset>
+		
+			  <small class="demo__note">Hovering over any of these images (or clicking on mobile) will remove the filter effect to visualize the changes.</small>
+			</div>
+			<div style="text-align:center;clear:both">
+			<!-- <script src="gg_bd_ad_720x90.js" type="text/javascript"></script>
+			<script src="follow.js" type="text/javascript"></script> -->
+		</div>
+			<ul class="demo__list">
+			  <li class="demo__item">
+				<figure>
+				  <img>
+				  <figcaption>#nofilter</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="aden">
+				  <img>
+				  <figcaption>Aden</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="reyes">
+				  <img>
+				  <figcaption>Reyes</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="perpetua">
+				  <img>
+				  <figcaption>Perpetua</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="inkwell">
+				  <img>
+				  <figcaption>Inkwell</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="earlybird">
+				  <img>
+				  <figcaption>Earlybird</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="toaster">
+				  <img>
+				  <figcaption>Toaster</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="walden">
+				  <img>
+				  <figcaption>Walden</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="hudson">
+				  <img>
+				  <figcaption>Hudson</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="gingham">
+				  <img>
+				  <figcaption>Gingham</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="mayfair">
+				  <img>
+				  <figcaption>Mayfair</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="lofi">
+				  <img>
+				  <figcaption>Lo-fi</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="xpro2">
+				  <img>
+				  <figcaption>X-Pro II</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="_1977">
+				  <img>
+				  <figcaption>1977</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="brooklyn">
+				  <img>
+				  <figcaption>Brooklyn</figcaption>
+				</figure>
+			  </li>
+			</ul>
+		                
+		                
+		                
+     
+                </div>
+             
+       	 	</div>
+    	</div>
 
 <!-- ***************************************************遮罩层***************************************************-->
     <div id="popLayer" class="popLayer"></div>

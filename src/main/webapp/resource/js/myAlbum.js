@@ -399,6 +399,20 @@ $().ready(function getAlbum() {
                         			$(".content-button").css({ display: "none" });
                         		}
                         	})
+                        	
+                        	 $("#iconchacha13").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "none" });
+                                	 $("#popLayer").css({ display: "none" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
+
+                               $(".lvjing").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "block" });
+                                	 $("#popLayer").css({ display: "block" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
                         	 //《滤镜
                                 var inputField = document.querySelector(".demo__input-img")
 
@@ -864,7 +878,20 @@ for (var i = 0; i < albumSortLi.length; i++) {
                                         $(".content-button").css({ display: "none" });
                                     }
                                 })
+                                //
+                                 $(".lvjing").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "block" });
+                                	 $("#popLayer").css({ display: "block" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
 
+                                $("#iconchacha13").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "none" });
+                                	 $("#popLayer").css({ display: "none" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
                                 //《滤镜
                                 var inputField = document.querySelector(".demo__input-img")
 
@@ -884,7 +911,8 @@ for (var i = 0; i < albumSortLi.length; i++) {
 									//alert(event.target.className)
 									if ( /demo__option-img/.test(event.target.className) ) {
 										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
-										pickSample( iPhoto );
+										 pickSample( iPhoto );
+								
 									}
 								  
 								}, false)
@@ -897,6 +925,10 @@ for (var i = 0; i < albumSortLi.length; i++) {
 								  this.select()
 								}, false)
 							
+								
+								
+								
+								
 								//pickSample(document.querySelector(".demo__option-img1"))
 								//滤镜》
                                 (function($) {
