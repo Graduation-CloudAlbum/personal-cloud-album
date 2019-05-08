@@ -337,8 +337,7 @@
 			  <small class="demo__note">Hovering over any of these images (or clicking on mobile) will remove the filter effect to visualize the changes.</small>
 			</div>
 			<div style="text-align:center;clear:both">
-			<!-- <script src="gg_bd_ad_720x90.js" type="text/javascript"></script>
-			<script src="follow.js" type="text/javascript"></script> -->
+			
 		</div>
 			<ul class="demo__list">
 			  <li class="demo__item">
