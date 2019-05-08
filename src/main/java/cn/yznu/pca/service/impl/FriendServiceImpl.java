@@ -64,7 +64,6 @@ public class FriendServiceImpl implements FriendService {
         userRelation.setUserIdTwo(user_two);
         userRelation.setStatus("1");
         userRelation.setPermissionGroupId(permisssionGroupId);
-        userRelation.setPermissionGroupIdTwo(1);
         userRelation2.setUserId(user_two);
         userRelation2.setUserIdTwo(user.getId());
         userRelation2.setStatus("1");
