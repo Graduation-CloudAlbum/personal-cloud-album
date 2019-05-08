@@ -63,7 +63,12 @@
 					</ul>
 				</li>
 				<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
-				<li class="content-menu-li" ><a href="/pca/friend/myFriend">返回</a></li>
+				<li class="content-menu-li" ><a href="/pca/friend/myFriend">返回好友</a></li>
+				<li id="photo-header" class="table-header5">
+					<div id="photo-header1" class="table-header5-li">相册:江川</div>
+					<div id="photo-header2" class="table-header5-li">返回相册</div>
+				</li>
+				
 			</ul>
 
 			<div class="content-wrap">
@@ -74,7 +79,7 @@
 							<img id="image2" src="<%=user1.getUserIcon()%>">
 
 						</label>
-						<p class="content-about-personal-admin"><%=user1.getNickName()%></p>
+						<p class="content-about-personal-admin"><%=user1.getUserName()%></p>
 						<p class="content-about-personal-desc"><%=user1.getSynopsis()%></p>
 						<div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=friend_albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
 						<div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=friend_imageNum2%></p><p class="content-about-personal-num-p2">相片数</p></div>
@@ -88,6 +93,7 @@
 				</div>
 				<ul id="myAlbum-content2" class="content-about2 gallery">
 				</ul>
+				<div class="content-about5 photo1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
 				<div class="content-button">
 					<div class="content-button-fenge"></div>
 					<span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
