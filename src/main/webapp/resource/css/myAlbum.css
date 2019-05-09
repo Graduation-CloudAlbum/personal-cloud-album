@@ -910,6 +910,8 @@
 .content-lv{
 	width:100%;
 	overflow-y: auto;
-	padding: 15px 100px;
+	padding: 15px 90px;
+	background: #fbf8f8;
+    height: 90%;
 }
 
