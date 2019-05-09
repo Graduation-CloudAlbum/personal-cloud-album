@@ -17,9 +17,9 @@
     font-weight: normal;
     font-size: 16px;
     color: #666;
-    background: #FFF8DC;
+    background: #fbf8f8;
     cursor: pointer;
-    line-height: 40px;
+    line-height: 30px;
     width: 300px;
 }
 .recycle-table td{

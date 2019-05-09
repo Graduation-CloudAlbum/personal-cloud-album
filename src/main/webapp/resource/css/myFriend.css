@@ -32,36 +32,37 @@
 }
 
 .content-about .friends-header{
-    width: 300px;
+    width: 200px;
     height: 50px;
-    background: #FFDEAD;
+    background: #c59095;
     position: absolute;
-    right:0px;
-    top:180px;
+    right:35px;
+    top:148px;
     font-size: 18px;
     font-family:"华文宋体";
     line-height: 50px;
     text-align: center;
+    color:#faf6ff;
 }
 .content-about .content-about-menu{
-    width:310px;
-    height: 400px;
-    background:#FFF8DC;
+    width:200px;
+    height: 205px;
+    background:#fbf8f8;
     border: 1px #EEEEEE solid;
     overflow-y:auto;
-    right:-10px;
-    top:229px;
+    right:35px;
+    top:198px;
     position: absolute;
 }
 .content-about .content-about-menu .content-about-menu-li{
     width: 100%;
-    height: 45px;
+    height: 35px;
     border: 1px #FAFAFA solid;
-    font-size: 18px;
+    font-size: 14px;
     font-family:"华文宋体";
     padding-left: 8%;
     padding-right: 8%;
-    line-height: 45px;
+    line-height: 35px;
 
     overflow: hidden;
     white-space: nowrap;
@@ -69,7 +70,7 @@
     cursor: pointer;
 }
 .content-about .content-about-menu .content-about-menu-li:hover{
-    background: #FAFAFA;
+    background: #c59095;
 }
 /***********************************弹窗创建分组***************************************************/
 #Create-friends-group{
