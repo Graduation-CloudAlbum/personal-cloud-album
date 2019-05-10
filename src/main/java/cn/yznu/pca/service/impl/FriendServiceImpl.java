@@ -297,8 +297,8 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Override
-    public boolean whenDeleteFriend(User user, User user_two) {
-        boolean result=userRelationMapper.deleteUserRelation(user.getId(),user_two.getId());
+    public boolean whenDeleteFriend(int user_id, int friend_id) {
+        boolean result=userPromissionMapper.whenDeleteFriend(user_id,friend_id);
         return result;
     }
 
