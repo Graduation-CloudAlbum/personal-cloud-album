@@ -81,12 +81,12 @@ public interface RecycleBinService {
      * @param list 参数相片id
      * @return
      */
-    int getSomeRecycleImaeSize(List list);
+    Long getSomeRecycleImaeSize(List list);
 
     /**
      * 查询剩余空间
      * @param user_id 参数相片id
      * @return
      */
-    int selectAvailable_space(int user_id);
+    Long selectAvailable_space(int user_id);
 }

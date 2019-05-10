@@ -1345,8 +1345,9 @@ function downLoadImg() {
     });
     $("#hidden-input").val(arr);
     $("#image-download-form").submit();
-    $("#uploadPhoto6").click()
-
+    $("#uploadPhoto6").click();
+    //window.location.href = window.location.href;
+    arr.length=0;
 }
 
 

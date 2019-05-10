@@ -120,7 +120,6 @@ public class ImageController {
         String loutTime = logOutTime.replaceAll("T", " ");
         logger.info("logOutTime is :"+loutTime);
         if (("").equals(loutTime)||logOutTime.length()==0) {
-            System.out.println("实时上传----pictureFile.length is :"+pictureFile.length/2);
             for (int i = 0; i < pictureFile.length/2 ; i++) {
                 MultipartFile file = pictureFile[i];
                 //设置本地保存路径
@@ -148,7 +147,7 @@ public class ImageController {
                 UserSpace userSpace = userSpaceService.getSpace(userId);
                 //判断剩余空间是否足够，剩余空间足够
                 System.out.println("image.getImageSize is :"+image.getImageSize());
-                if (Integer.parseInt(image.getImageSize())<=Integer.parseInt(userSpace.getAvailableSpace())){
+                if (Long.valueOf(image.getImageSize())<=Long.valueOf(userSpace.getAvailableSpace())){
                     //上传照片
                     imageService.upload(image);
                     //获取上传照片之后的空间大小

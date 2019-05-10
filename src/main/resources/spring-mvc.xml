@@ -32,7 +32,7 @@
         <!-- 检查用户权限，对于部分不需要权限的路径进行排除 -->
         <mvc:interceptor>
             <!-- 先匹配所有路径，然后排除不需要检查的路径 -->
-            <mvc:mapping path="/**" />
+            <mvc:mapping path="/**/**" />
             <!-- 与登录相关的请求 -->
             <mvc:exclude-mapping path="/user/login" />
             <mvc:exclude-mapping path="/user/index" />

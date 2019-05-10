@@ -77,9 +77,9 @@ public class RecycleBinController {
             list2.add(recycleBin.getAlbumId());
         }
         //查询所还原照片占用空间之和
-        int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
+        Long someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
         //查询用户剩余空间
-        int Available_space=recycleBinService.selectAvailable_space(user.getId());
+        Long Available_space=recycleBinService.selectAvailable_space(user.getId());
         //判断是否有足够空间还原照片
         if(someImageSize>Available_space){
             return false;
@@ -179,8 +179,8 @@ public class RecycleBinController {
         for (RecycleBin recycleBin : recycleBins2) {
             list2.add(recycleBin.getAlbumId());
         }
-        int someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
-        int Available_space=recycleBinService.selectAvailable_space(user.getId());
+        Long someImageSize=recycleBinService.getSomeRecycleImaeSize(list);
+        Long Available_space=recycleBinService.selectAvailable_space(user.getId());
         if(someImageSize>Available_space){
             return false;
         }else {

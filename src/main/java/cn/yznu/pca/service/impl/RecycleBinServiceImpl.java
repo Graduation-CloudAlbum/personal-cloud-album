@@ -101,21 +101,21 @@ public class RecycleBinServiceImpl implements RecycleBinService {
 
 
     @Override
-    public int getSomeRecycleImaeSize(List list) {
+    public Long getSomeRecycleImaeSize(List list) {
         List<Image> SumImageSize=imageMapper.getSomeRecycleImaeSize(list);
-        int SumImageSizeNumber=0;
+        long SumImageSizeNumber=0;
         for(Image s:SumImageSize){
-            SumImageSizeNumber = SumImageSizeNumber + Integer.parseInt(s.getImageSize());
+            SumImageSizeNumber = SumImageSizeNumber +Long.valueOf(s.getImageSize());
         }
         return SumImageSizeNumber;
     }
 
     @Override
-    public int selectAvailable_space(int user_id) {
+    public Long selectAvailable_space(int user_id) {
         List<UserSpace> userSpaces=userSpaceMapper.selectAvailable_space(user_id);
-        int Available_space=0;
+        long Available_space=0;
         for (UserSpace s:userSpaces){
-            Available_space=Integer.parseInt(s.getAvailableSpace());
+            Available_space=Long.valueOf(s.getAvailableSpace());
         }
         return Available_space;
     }
