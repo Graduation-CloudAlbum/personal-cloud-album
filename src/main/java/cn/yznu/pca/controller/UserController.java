@@ -190,7 +190,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/resetPass")
     public  String toGetPass(@Param("email")String email) throws MessagingException {
-        //int flag = userService.isExistUserName(email);
+        int flag = userService.isExistUserName(email);
         User user= userService.selectUserByUserName(email);
         //该邮箱存在
         if(user!=null) {
