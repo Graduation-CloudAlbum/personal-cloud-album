@@ -298,4 +298,10 @@ public class FriendServiceImpl implements FriendService {
         return list.size();
     }
 
+    @Override
+    public boolean whenDeleteFriend(User user, User user_two) {
+        boolean result=userRelationMapper.deleteUserRelation(user.getId(),user_two.getId());
+        return result;
+    }
+
 }
