@@ -51,7 +51,7 @@
 		<div class="main-container">
 
 			<div class="content-header">
-				<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span ><%=user1.getNickName()%>的相册空间</span></a>
+				<i class="iconfont icon-weibiaoti--"></i><a> <span ><%=user1.getNickName()%>的相册空间</span></a>
 			</div>
 			<ul class="content-menu" >
 				<li class="content-menu-li group-menu" href="<%=basePath%>/friend/myFriend">

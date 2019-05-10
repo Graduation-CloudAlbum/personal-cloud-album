@@ -190,10 +190,10 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/resetPass")
     public  String toGetPass(@Param("email")String email) throws MessagingException {
-        int flag = userService.isExistUserName(email);
+        //int flag = userService.isExistUserName(email);
+        User user= userService.selectUserByUserName(email);
         //该邮箱存在
-        if(flag!=0) {
-            User user= userService.selectUserByUserName(email);
+        if(user!=null) {
             //生成随机密码
             String randPass= Sid.resetPass();
             //对随机密码加密，将密文写入数据库
