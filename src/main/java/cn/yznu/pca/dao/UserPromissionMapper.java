@@ -39,4 +39,6 @@ public interface UserPromissionMapper {
 
     List<UserPromission> selectByAlbumId(Integer albumId);
 
+    boolean whenDeleteFriend(@Param("user_id") int user_id,@Param("friend_id") int friend_id);
+
 }
