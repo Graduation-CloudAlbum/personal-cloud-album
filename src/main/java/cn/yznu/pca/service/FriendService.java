@@ -188,5 +188,5 @@ public interface FriendService {
      * @param user 用户,user_two 好友
      * @return
      */
-    boolean whenDeleteFriend(User user,User user_two);
+    boolean whenDeleteFriend(int user_id,int friend_id);
 }
