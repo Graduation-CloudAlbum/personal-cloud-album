@@ -515,32 +515,14 @@ public class FriendController {
      */
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value = "/deleteFriends")
     @ResponseBody
-    public ModelAndView  deleteFriends(HttpServletRequest request,
+    public boolean  deleteFriends(HttpServletRequest request,
                                 HttpServletResponse response) {
         User user=(User)request.getSession().getAttribute("user");
         User user1=(User)request.getSession().getAttribute("user1");
-        ModelAndView mav = new ModelAndView("myFriend");
-
-        //查询好友分组
-        List<?> list = friendService.selectFriendGroup(user);
-        //查询所有好友
-        List<?> list2 = friendService.selectAllMyFriend(user);
-        //将好友分组变为json格式
-        String jsonArray = JSON.toJSONString(list);
-        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-        //将好友列表变为json格式
-        String jsonArray2 = JSON.toJSONString(list2);
-        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
-        //将新的好友数存入
-        int newFriendNumber=friendService.searchNewFriend(user.getId());
-        request.setAttribute("newFriendNumber", newFriendNumber);
-        //将json存入mav
-        mav.addObject("FriendGroup", list);
-        mav.addObject("friendgroup", friendgroup);
-        mav.addObject("allfriend", allfriend);
+        friendService.whenDeleteFriend(user.getId(),user1.getId());
         friendService.deleteFriends(user,user1);
         friendService.deleteFriends(user1,user);
-        return mav;
+        return true;
     }
 
     /**
