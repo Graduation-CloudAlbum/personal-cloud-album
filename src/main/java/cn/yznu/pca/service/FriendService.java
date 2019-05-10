@@ -182,4 +182,11 @@ public interface FriendService {
      * @param userid
      */
     int searchNewFriend(int userid);
+
+    /**
+     * 删除好友时删除好友相关权限
+     * @param user 用户,user_two 好友
+     * @return
+     */
+    boolean whenDeleteFriend(User user,User user_two);
 }
