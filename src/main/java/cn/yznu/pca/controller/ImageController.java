@@ -6,6 +6,7 @@ import cn.yznu.pca.service.*;
 import cn.yznu.pca.utils.FormatUtil;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.ibatis.annotations.Param;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,9 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -31,6 +35,7 @@ import java.util.zip.ZipOutputStream;
 @Controller
 @RequestMapping("/image")
 public class ImageController {
+    Logger logger= Logger.getLogger(ImageController.class);
     @Autowired
     private ImageService imageService;
 
@@ -107,29 +112,15 @@ public class ImageController {
      */
     @RequestMapping("/upload")
     public String upload(HttpServletRequest request, final Image image, String logOutTime, @RequestParam(value = "files", required = false) MultipartFile[] pictureFile) throws Exception {
-        ////1，获取原始文件名
-        //String originalFilename = multipartFile.getOriginalFilename();
-        ////2,截取源文件的文件名前缀,不带后缀
-        //String fileNamePrefix = originalFilename.substring(0,originalFilename.lastIndexOf("."));
-        ////3,加工处理文件名，原文件加上时间戳
-        //String newFileNamePrefix  = fileNamePrefix + System.currentTimeMillis();
-        ////4,得到新文件名
-        //String newFileName = newFileNamePrefix + originalFilename.substring(originalFilename.lastIndexOf("."));
-
         User user = (User) request.getSession().getAttribute("user");
         int albumId = (int) request.getSession().getAttribute("albumId");
-       // //获取用户ID
+        //获取用户ID
         final int userId = user.getId();
-       // //处理页面传过来的时间字符串，用空格替换T
+        //处理页面传过来的时间字符串，用空格替换T
         String loutTime = logOutTime.replaceAll("T", " ");
-        System.out.println("logOutTime1 is"+loutTime);
-        //设置日期格式
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        //转换成date
-       // Date date=sdf.parse(loutTime);
-        //logOutTime为空，表示未设置定时上传
-        if ("" == loutTime || null == loutTime||("").equals(loutTime)) {
-            System.out.println("pictureFile.length is :"+pictureFile.length/2);
+        logger.info("logOutTime is :"+loutTime);
+        if (("").equals(loutTime)||logOutTime.length()==0) {
+            System.out.println("实时上传----pictureFile.length is :"+pictureFile.length/2);
             for (int i = 0; i < pictureFile.length/2 ; i++) {
                 MultipartFile file = pictureFile[i];
                 //设置本地保存路径
@@ -154,21 +145,31 @@ public class ImageController {
                 image.setAlbumId(albumId);
                 //保存照片url
                 image.setUrl(url + name + "." + ext);
-                //上传照片
-                imageService.upload(image);
-                //计算所有照片占用的空间
                 UserSpace userSpace = userSpaceService.getSpace(userId);
-                //总空间
-                String all = userSpace.getAllSpace();
-                //获取所有照片占用的空间
-                String used = userSpace.getUsedSpace();
-                //计算剩余可用空间
-                String available = FormatUtil.minus(all, used);
-                //更新用户的空间信息
-                userSpaceService.updateSpace(userId, all, used, available);
+                //判断剩余空间是否足够，剩余空间足够
+                System.out.println("image.getImageSize is :"+image.getImageSize());
+                if (Integer.parseInt(image.getImageSize())<=Integer.parseInt(userSpace.getAvailableSpace())){
+                    //上传照片
+                    imageService.upload(image);
+                    //获取上传照片之后的空间大小
+                    UserSpace userSpace1 = userSpaceService.getSpace(userId);
+                    //总空间
+                    String all = userSpace1.getAllSpace();
+                    //获取已用的空间大小
+                    String used = userSpace1.getUsedSpace();
+                    //计算剩余可用空间
+                    String available = FormatUtil.minus(all, used);
+                    //更新用户的空间信息
+                    userSpaceService.updateSpace(userId, all, used, available);
+                    //return "myAlbum";
+                }else{
+                    return "fail";
+                }
+
             }
             return "myAlbum";
         }else {
+            logger.info("进入定时.....");
             //截取时间字符串中的年、月、日、分，设置定时任务触发时间
             Calendar calendar = Calendar.getInstance();
             int year = Integer.valueOf(loutTime.substring(0, 4));
@@ -178,11 +179,18 @@ public class ImageController {
             int minute = Integer.valueOf(loutTime.substring(14, 16));
             calendar.set(year, month - 1, day, hour, minute, 0);
             Date time = calendar.getTime();
+            logger.info("设置的时间是："+time);
+            logger.info("创建timer");
+            int length=(pictureFile.length)/2;
             Timer timer = new Timer();
-
-            for (int i = 0; i < pictureFile.length/2; i++) {
+            for (int i = 0; i < length; i++) {
+                final Image image1=new Image();
+                logger.info("开始"+i+"次循环.....");
+                System.out.println("定时上传"+i+"--length is :"+length);
+                //Timer timer = new Timer();
+                logger.info("创建file"+i);
                 MultipartFile file = pictureFile[i];
-                System.out.println("pictureFile.length is :"+pictureFile.length/2);
+                logger.info("设置本地保存路径"+i);
                 //设置本地保存路径
                 String localPath = "D:\\demos\\upload\\";
                 //使用UUID给图片重命名，并去掉四个“-”
@@ -196,37 +204,49 @@ public class ImageController {
                 //保存照片到硬盘
                 file.transferTo(new File(localPath + "/" + name + "." + ext));
                 //保存照片名
-                image.setImageName(name);
+                image1.setImageName(name);
                 //保存照片大小
-                image.setImageSize(fileSize);
+                image1.setImageSize(fileSize);
                 //设置所属用户
-                image.setUserId(userId);
+                image1.setUserId(userId);
                 //保存到相册
-                image.setAlbumId(albumId);
+                image1.setAlbumId(albumId);
                 //保存照片url
-                image.setUrl(url + name + "." + ext);
-                //开始定时任务
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        System.out.println("定时任务开始了");
-                        imageService.upload(image);
-                        //计算所有照片占用的空间
-                        UserSpace userSpace = userSpaceService.getSpace(userId);
-                        //总空间
-                         String all = userSpace.getAllSpace();
-                        //获取所有照片占用的空间
-                         String used = userSpace.getUsedSpace();
-                        //计算剩余可用空间
-                         String available = FormatUtil.minus(all, used);
-                        //更新用户的空间信息
-                        userSpaceService.updateSpace(userId, all, used, available);
-                    }
-                }, time);
+                image1.setUrl(url + name + "." + ext);
+                logger.info("保存照片"+i+" ---路径是："+image1.getUrl());
+                UserSpace userSpace = userSpaceService.getSpace(userId);
+                //判断剩余空间是否足够，若剩余空间足够
+                if (Integer.parseInt(image1.getImageSize())<=Integer.parseInt(userSpace.getAvailableSpace())){
+
+                    timer.schedule(new TimerTask() {
+                        int i=0;
+
+                        public void run() {
+                            logger.info("定时任务开始了");
+                            imageService.upload(image1);
+                            //计算所有照片占用的空间
+                            UserSpace userSpace1 = userSpaceService.getSpace(userId);
+                            //总空间
+                            String all = userSpace1.getAllSpace();
+                            //获取所有照片占用的空间
+                            String used = userSpace1.getUsedSpace();
+                            //计算剩余可用空间
+                            String available = FormatUtil.minus(all, used);
+                            //更新用户的空间信息
+                            userSpaceService.updateSpace(userId, all, used, available);
+                            i++;
+                        }
+
+                    }, time);
+                    continue;
+                }else{
+                    return "fail";
+                }
 
             }
-            return "myAlbum";
+
         }
+        return "myAlbum";
 
     }
         /**

@@ -12,7 +12,17 @@ function selectOnde(permissionType) {
         window.location.href="/pca/friend/selectMyStranger"
     }
 }
-
+//为空
+$(document).ready(function(){
+	if($(".friends-content-li").length>0){
+		$(".friends-content").css({ display: "block" });
+		$(".friends1").css({ display: "none" });
+	}
+	else{
+		$(".friends-content").css({ display: "none" });
+		$(".friends1").css({ display: "block" });
+	}
+});
 
 
 //点击添加分组

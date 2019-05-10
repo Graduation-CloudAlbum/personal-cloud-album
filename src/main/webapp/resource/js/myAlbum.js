@@ -47,21 +47,7 @@ var uploadPhotosGroupLi = uploadPhotosGroup.getElementsByTagName('li');
 
 var bLi = "";
 var chooseName = "";
-// uploadPhotosRight.onclick = function(){
-//     uploadPhotosGroup.style.display="block"
-// }
-// for(var i=0;i<uploadPhotosGroupLi.length;i++){
-//     uploadPhotosGroupLi[i].index = i;
-//     uploadPhotosGroupLi[i].onclick = function(){
-//         str = (function(i){
-//             bLi=uploadPhotosGroupLi[i].innerHTML;
-//             uploadPhotosLeft.innerHTML=bLi;
-//             return uploadPhotosLeft.innerHTML;
-//         })(this.index);
-//         uploadPhotosGroup.style.display="none"
-//         uploadPhotosLeft.innerHTML=str
-//     }
-// }
+
 
 //在主页点击“上传照片”按钮，动态加载可选择的相册
 $("#upload-photos-right").click(function () {
@@ -393,7 +379,8 @@ $().ready(function getAlbum() {
                                     //+ "<form id='image-download-form' action='/pca/image/download'>"
                                     //+ "<input id='hidden-input' type='hidden' name='image' value='' >"
                                     + "<span id='" + imgId + "' class='icon iconfont photo-admin'name='" + imgUrl + "'>&#xe627;</span>"
-                                    + "<a href='" + imgUrl + "' ><img src='" + imgUrl + "'/></a>"
+                                    + "<i class='icon iconfont icon-lvjing lvjing demo__option-img' ></i>"
+                                    + "<a href='" + imgUrl + "' ><img class='demo__option-img1' src='" + imgUrl + "'/></a>"
                                    // + "</form>"
                                     + "</div>"
 
@@ -413,12 +400,61 @@ $().ready(function getAlbum() {
                         		}
                         	})
                         	
+                        	 $("#iconchacha13").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "none" });
+                                	 $("#popLayer").css({ display: "none" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
+
+                               $(".lvjing").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "block" });
+                                	 $("#popLayer").css({ display: "block" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
+                        	 //《滤镜
+                                var inputField = document.querySelector(".demo__input-img")
+
+                                var iPhoto="";
+								function pickSample(iPhoto) {
+								  updateImages(data.imageList[iPhoto].url)
+								  inputField.value = data.imageList[iPhoto].url
+								}
+							
+								function updateImages(src) {
+								  var imgs = document.querySelectorAll(".demo__item img")
+								  for (var i = 0; i < imgs.length; i++) imgs[i].src = src
+								}
+							
+								document.addEventListener("click", function(event) {
+									
+									
+									//alert(event.target.className)
+									if ( /demo__option-img/.test(event.target.className) ) {
+										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+										 //alert(iPhoto)
+										pickSample( iPhoto );
+									}
+								  
+								}, false)
+							
+								inputField.addEventListener("input", function() {
+								  updateImages(this.value)
+								}, false)
+							
+								inputField.addEventListener("focus", function() {
+								  this.select()
+								}, false)
+							
+								//pickSample(document.querySelector(".demo__option-img1"))
+								//滤镜》
                             // (function ($) {
                                 $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
                                 var zoom = $('#zoom').hide(),
                                     zoomContent = $('#zoom .content'),
-                                    overlay = '<div class="overlay"></div>',
+                                    overlay = '<div class="overlay"></div><i style="position: absolute;bottom: 5px;left: 5px;font-size: 20px; color: #fff;">1024Album</i>',
                                     zoomedIn = false,
                                     openedImage = null,
                                     windowWidth = $(window).width(),
@@ -822,7 +858,8 @@ for (var i = 0; i < albumSortLi.length; i++) {
                                         //+ "<form id='image-download-form' action='/pca/image/download'>"
                                         //+ "<input id='hidden-input' type='hidden' name='image' value='' >"
                                         + "<span id='" + imgId + "' class='icon iconfont photo-admin'name='" + imgUrl + "'>&#xe627;</span>"
-                                        + "<a href='" + imgUrl + "' ><img src='" + imgUrl + "'/></a>"
+                                        + "<i class='icon iconfont icon-lvjing lvjing demo__option-img' ></i>"
+                                        + "<a href='" + imgUrl + "' ><img class='demo__option-img1' src='" + imgUrl + "'/></a>"
                                        // + "</form>"
                                         + "</div>"
 
@@ -841,13 +878,65 @@ for (var i = 0; i < albumSortLi.length; i++) {
                                         $(".content-button").css({ display: "none" });
                                     }
                                 })
+                                //
+                                 $(".lvjing").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "block" });
+                                	 $("#popLayer").css({ display: "block" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
 
+                                $("#iconchacha13").click(function(){
+                                	 $("#lvjingPhoto").css({ display: "none" });
+                                	 $("#popLayer").css({ display: "none" });
+                                   //  $("#noNumber2").css({ display: "block" });
+                                   
+                                })
+                                //《滤镜
+                                var inputField = document.querySelector(".demo__input-img")
+
+                                var iPhoto="";
+								function pickSample(iPhoto) {
+								  updateImages(data.imageList[iPhoto].url)
+								  inputField.value = data.imageList[iPhoto].url
+								}
+							
+								function updateImages(src) {
+								  var imgs = document.querySelectorAll(".demo__item img")
+								  for (var i = 0; i < imgs.length; i++) imgs[i].src = src
+								}
+							
+								document.addEventListener("click", function(event) {
+									//var iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+									//alert(event.target.className)
+									if ( /demo__option-img/.test(event.target.className) ) {
+										 iPhoto=Array.prototype.indexOf.call( document.querySelectorAll( '.demo__option-img' ), event.target );
+										 pickSample( iPhoto );
+								
+									}
+								  
+								}, false)
+							
+								inputField.addEventListener("input", function() {
+								  updateImages(this.value)
+								}, false)
+							
+								inputField.addEventListener("focus", function() {
+								  this.select()
+								}, false)
+							
+								
+								
+								
+								
+								//pickSample(document.querySelector(".demo__option-img1"))
+								//滤镜》
                                 (function($) {
                                     $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
                                     var zoom = $('#zoom').hide(),
                                         zoomContent = $('#zoom .content'),
-                                        overlay = '<div class="overlay"></div>',
+                                        overlay = '<div class="overlay"></div><i style="position: absolute;bottom: 5px;left: 5px;font-size: 20px; color: #fff;">1024Album</i>',
                                         zoomedIn = false,
                                         openedImage = null,
                                         windowWidth = $(window).width(),
@@ -1152,6 +1241,8 @@ $("#nextTime").click(function () {
     $("#logOutTime").val("");
     //alert($("#logOutTime").val());
     $("#upload-form").submit();
+    iconChacha1.click();
+    alert("上传成功")
 });
 $("#button1").click(function () {
     $.ajax({
@@ -1238,7 +1329,7 @@ function deleteImg() {
             if (data) {
                 alert("删除成功")
                 // window.location.href="myAlbum";
-                window.location.href = window.location.href;
+                window.location.href ="/pca/user/myAlbum";
             }
 
         }
@@ -1254,22 +1345,9 @@ function downLoadImg() {
     });
     $("#hidden-input").val(arr);
     $("#image-download-form").submit();
-     $("#uploadPhoto6").click();
-}
+    $("#uploadPhoto6").click()
 
-//$("#mod-radio2").click(function () {
-//    var type=$("input[type='radio']:checked").val();
-//    if(type=="公开"){
-//    	$("#part").css({ display: "block" });
-//    }
-//    else{
-//    	$("#part").css({ display: "none" });
-//    }
-//});
-//部分可见
-//$("#part").click(function () {
-//	$(".Partially-visible").css({ display: "block" });
-//});
+}
 
 
 var id = document.getElementById("selectStyle");

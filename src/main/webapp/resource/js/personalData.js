@@ -231,7 +231,6 @@ function purchase(){
     // var meal=z.value;
     // var fee=all.value;
     var meal=z.value+"&"+all.value;
-    alert(meal);
     window.location.href="/pca/alipay/goConfirm/"+meal;
 }
 

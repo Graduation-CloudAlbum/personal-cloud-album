@@ -15,7 +15,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>myFriend</title>
+	<title>好友相册 - 1024Album</title>
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
 	<link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
@@ -51,16 +51,9 @@
 		<div class="main-container">
 
 			<div class="content-header">
-				<i class="iconfont icon-weibiaoti--"></i><a href="../html/friendAlbum.html"> <span ><%=user1.getNickName()%>的相册空间</span></a>
+				<i class="iconfont icon-weibiaoti--"></i><a> <span ><%=user1.getNickName()%>的相册空间</span></a>
 			</div>
 			<ul class="content-menu" >
-
-				<%--<div class="content-about-personal" style="width: 100%;height: 100px" >--%>
-
-
-				<%--&lt;%&ndash;<div class="content-about-personal-num1"><p style="text-align: center" class="content-about-personal-num-p1">个人签名</p></div>&ndash;%&gt;--%>
-				<%--&lt;%&ndash;<div class="content-about-personal-num2"><p style="text-align: center" class="content-about-personal-num-p1">撒旦发射点</p></div>&ndash;%&gt;--%>
-				<%--</div>--%>
 				<li class="content-menu-li group-menu" href="<%=basePath%>/friend/myFriend">
 					<a>移动好友</a>
 					<ul id="friend-group" class="friend-group">
@@ -70,7 +63,12 @@
 					</ul>
 				</li>
 				<li id="delete-friends" class="content-menu-li" href="<%=basePath%>/friend/myFriend"><a>删除好友</a></li>
-				<li class="content-menu-li" ><a href="/pca/friend/myFriend">返回</a></li>
+				<li class="content-menu-li" ><a href="/pca/friend/myFriend">返回好友</a></li>
+				<li id="photo-header" class="table-header5">
+					<div id="photo-header1" class="table-header5-li">相册:江川</div>
+					<div id="photo-header2" class="table-header5-li">返回相册</div>
+				</li>
+				
 			</ul>
 
 			<div class="content-wrap">
@@ -81,7 +79,7 @@
 							<img id="image2" src="<%=user1.getUserIcon()%>">
 
 						</label>
-						<p class="content-about-personal-admin"><%=user1.getNickName()%></p>
+						<p class="content-about-personal-admin"><%=user1.getUserName()%></p>
 						<p class="content-about-personal-desc"><%=user1.getSynopsis()%></p>
 						<div class="content-about-personal-num1"><p class="content-about-personal-num-p1"><%=friend_albumNum%></p><p class="content-about-personal-num-p2">相册数</p></div>
 						<div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=friend_imageNum2%></p><p class="content-about-personal-num-p2">相片数</p></div>
@@ -95,6 +93,7 @@
 				</div>
 				<ul id="myAlbum-content2" class="content-about2 gallery">
 				</ul>
+				<div class="content-about5 photo1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
 				<div class="content-button">
 					<div class="content-button-fenge"></div>
 					<span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
@@ -137,6 +136,8 @@
 			</tbody>
 		</table>
 
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
 	</div>
 </div>
 

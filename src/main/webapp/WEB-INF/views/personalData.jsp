@@ -25,13 +25,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>personalData</title>
+    <title>个人中心 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/personalData.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
-    <title>1024Album - 个人中心</title>
+
 </head>
 <body>
 <div class="wrapper">
@@ -40,8 +40,6 @@
         <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
             <input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -63,7 +61,6 @@
                 <li id="ModifyingData" class="content-menu-li"><a>修改资料</a></li>
                 <li id="ChangetheAvatar" class="content-menu-li"><a>更换头像</a></li>
                 <li id="ChangePassword" class="content-menu-li"><a>修改密码</a></li>
-                <%--<li class="content-menu-li"><a>邀请注册</a></li>--%>
                 <li id="Expansion" class="content-menu-li"><a>扩充空间</a></li>
             </ul>
             <div class="content-wrap">
@@ -79,7 +76,6 @@
                         <div class="content-about-personal-num2"><p class="content-about-personal-num-p1"><%=imageNum%></p><p class="content-about-personal-num-p2">相片数</p></div>
                         <div class="content-about-personal-num3"><p class="content-about-personal-num-p1"><%=friendNum%></p><p class="content-about-personal-num-p2">好友数</p></div>
 
-                        <%--<div class="content-about-personal-num"><p class="content-about-personal-num-p1">0</p><p class="content-about-personal-num-p2">分享辑</p></div>--%>
                     </div>
                     <div class="content-about-info">
                         <div id="content-about-info-no1" class="content-about-info-no1">
@@ -190,7 +186,8 @@
                 <tbody id="receiveFriendVerifications">
                 </tbody>
             </table>
-
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
         </div>
     </div>
     <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->

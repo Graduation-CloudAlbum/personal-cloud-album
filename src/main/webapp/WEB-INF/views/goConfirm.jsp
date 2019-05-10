@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>确认购买空间</title>
+    <title>确认购买空间 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
@@ -27,8 +27,6 @@
 			<div class="header-right">
 				<div id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
 				<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
 			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
@@ -43,10 +41,10 @@
 			</div>
 			<!-- right -->
 			<div class="main-container">
-				
-				<div class="content-header">
-					<i class="icon iconfont icon-zhifu"></i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>
-				</div>
+
+<%--				<div class="content-header">--%>
+<%--					<i class="icon iconfont icon-zhifu"></i><a href="../html/friendAlbum.html"> <span >我的支付</span></a>--%>
+<%--				</div>--%>
 				<div class="content-wrap">
 					<form action="/pca/alipay/createOrder" method="post" style="width: 50%;height: 400px;padding: 10px;margin-left: 25%;">
 					    <input type="hidden" id="productName" name="productName" value="${productName}" />
@@ -54,37 +52,16 @@
 					    <div>
 						    <div style="text-align: center;font-size: 20px;">产品名称: ${productName}</div>
 						    <div style="text-align: center;text-align: center; margin-top: 54px;">产品价格: ${payment}元</div>
-						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">
-					    </div>
-					    
-						
-						            
-			            <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
-			            <%--<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
-						       
+<%--						    <input type="submit" value="创建订单" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;" onclick="createOrder()">--%>
+							<input type="submit" value="确认购买" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
+<%--							<input type="button" value="ajax提交，生成订单" onclick="createOrder()" />--%>
+						</div>
+
+
 					</form>
-					<%--<script type="text/javascript">--%>
-					
-					    <%--function createOrder() {--%>
-					
-					        <%--$.ajax({--%>
-					            <%--// async : false,--%>
-					            <%--url: "/pca/alipay/createOrder",--%>
-					            <%--type: "POST",--%>
-					            <%--data: {"productName": $("#productName").val(), "payment": $("#payment").val()},--%>
-					            <%--dataType: "json",--%>
-					            <%--success: function(data) {--%>
-					                <%--alert("data是："+data);--%>
-					                <%--var orderId=data;--%>
-					                <%--// 确认订单后, 进入创建订单页面--%>
-					                <%--window.location.href =  "/pca/alipay/goPay/"+orderId;--%>
-					
-					            <%--}--%>
-					        <%--});--%>
-					
-					    <%--}--%>
-					
-					<%--</script>--%>
+
+
+
 				</div>
 				
 				</div>
@@ -121,7 +98,8 @@
 					<tbody id="receiveFriendVerifications">
 					</tbody>
 				</table>
-				
+				<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+		        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>				
 			</div>
 		</div>	
 
@@ -140,6 +118,23 @@
 		<div id="popLayer" class="popLayer"></div>
 		<div id="popLayer2" class="popLayer2"></div>
 	</div>
+<%--<script type="text/javascript">--%>
+
+<%--	function createOrder() {--%>
+<%--		$.ajax({--%>
+<%--			url: "/pca/alipay/createOrder2",--%>
+<%--			type: "POST",--%>
+<%--			data: {"productName": $("#productName").val(), "payment": $("#payment").val()},--%>
+<%--			dataType: "json",--%>
+<%--			success: function(data) {--%>
+<%--				alert(data)--%>
+<%--					// 提交订单成功后, 进入购买页面--%>
+<%--					window.location.href = "/pca/alipay/goAlipay?orderId=" + data;--%>
+<%--			}--%>
+<%--		});--%>
+<%--	}--%>
+
+<%--</script>--%>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/jquery-confirm.min.js" ></script>
 <script type="text/javascript" src="<%=basePath%>/resource/js/friends-Verification.js"></script>

@@ -17,10 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author jiangchuan
@@ -290,8 +287,13 @@ public class FriendController {
                                        HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("user");
         List<User> users=friendService.searchFriends(friendName);
-        users.remove(user);
-        Map<String, List<?>> maps=new HashMap<>();
+        for (int i=0;i<users.size();i++){
+          String name=users.get(i).getUserName();
+            if (name.equals(user.getUserName())){
+                users.remove(i);
+            }
+        }
+            Map<String, List<?>> maps=new HashMap<>();
         maps.put("users",users);
         return maps;
     }
@@ -517,27 +519,9 @@ public class FriendController {
                                 HttpServletResponse response) {
         User user=(User)request.getSession().getAttribute("user");
         User user1=(User)request.getSession().getAttribute("user1");
+        ModelAndView mav = new ModelAndView("myFriend");
         friendService.deleteFriends(user,user1);
         friendService.deleteFriends(user1,user);
-        friendService.whenDeleteFriend(user,user1);
-        //查询好友分组
-        List<?> list = friendService.selectFriendGroup(user);
-        //查询所有好友
-        List<?> list2 = friendService.selectAllMyFriend(user);
-        ModelAndView mav = new ModelAndView("myFriend");
-        //将好友分组变为json格式
-        String jsonArray = JSON.toJSONString(list);
-        JSONArray friendgroup = JSONArray.parseArray(jsonArray);
-        //将好友列表变为json格式
-        String jsonArray2 = JSON.toJSONString(list2);
-        JSONArray allfriend = JSONArray.parseArray(jsonArray2);
-        //将新的好友数存入
-        int newFriendNumber=friendService.searchNewFriend(user.getId());
-        request.setAttribute("newFriendNumber", newFriendNumber);
-        //将json存入mav
-        mav.addObject("FriendGroup", list);
-        mav.addObject("friendgroup", friendgroup);
-        mav.addObject("allfriend", allfriend);
         return mav;
     }
 

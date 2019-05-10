@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>支付</title>
+    <title>支付 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
@@ -23,8 +23,6 @@
 			<div class="header-right">
 				<div id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
 				<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--				<div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-				<!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
 			</div>
 			<div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
 		</div>
@@ -54,12 +52,12 @@
 						    <input type="submit" value="前往支付宝付款" style="background: #D84C31;color:#fff; border: 1px solid red;padding: 7px 20px;float: right;margin-right: 104px; margin-top: 30px;">
 					    </div>
 					    
-					    <%--<script>--%>
-					        <%--function pay() {--%>
-					            <%--var orderId = $('input[name=orderId]').val();--%>
-					            <%--window.location.href ="/pca/alipay/goAlipay/"+orderId;--%>
-					        <%--}--%>
-					    <%--</script>--%>
+<%--					    <script>--%>
+<%--					        function pay() {--%>
+<%--					            var orderId = $('input[name=orderId]').val();--%>
+<%--					            window.location.href ="/pca/alipay/goAlipay/"+orderId;--%>
+<%--					        }--%>
+<%--					    </script>--%>
 					</form>
 				</div>
 				
@@ -97,7 +95,8 @@
 					<tbody id="receiveFriendVerifications">
 					</tbody>
 				</table>
-				
+			<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
 			</div>
 		</div>	
 

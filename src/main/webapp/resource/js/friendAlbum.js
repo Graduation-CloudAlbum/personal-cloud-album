@@ -51,7 +51,10 @@ $().ready(function getAlbum() {
                     var aP = this.getElementsByTagName('p');
                     aName=aP[0].innerHTML;
 
+                    document.getElementById('photo-header').style.display="block";
+                    document.getElementById('photo-header1').innerHTML="相册:"+aName
 
+               
                     var albumName=aName;
                     $.ajax({
                         type:"post",
@@ -81,12 +84,33 @@ $().ready(function getAlbum() {
                                             $("#open2").html("共"+ data.imageList.length+"张照片");
                                         }
                                         $("#myAlbum-content2").html(h);
+                                        //为空
+                                      //为空
+                                       //$(".content-about-li").click(function(){
+                                        	
+                                    		if($(".content-about2-li").length>0){
+                                    			//alert($(".content-about2-li").length)
+                                    			//$(".myAlbum-content2").css({ display: "block" });
+                                        		$(".photo1").css({ display: "none" });
+                                        		$("#open2").css({ display: "block" });
+                                        		$(".content-button-fenge").css({ display: "block" });
+                                    		}
+                                    		else{
+                                    			//alert($(".content-about2-li").length)
+                                    			//$(".myAlbum-content2").css({ display: "none" });
+                                        		$(".photo1").css({ display: "block" });
+                                        		$("#open2").css({ display: "none" });
+                                        		$(".content-button-fenge").css({ display: "none" });
+                                    		}
+                                    	//})
+                                       
+                                    
                                         (function($) {
                                             $('body').append('<div id="zoom"><a class="close"></a><a href="#previous" class="previous"></a><a href="#next" class="next"></a><div class="content loading"></div></div>');
 
                                             var zoom = $('#zoom').hide(),
                                                 zoomContent = $('#zoom .content'),
-                                                overlay = '<div class="overlay"></div>',
+                                                overlay = '<div class="overlay"></div><i style="position: absolute;bottom: 5px;left: 5px;font-size: 20px; color: #fff;">1024Album</i>',
                                                 zoomedIn = false,
                                                 openedImage = null,
                                                 windowWidth = $(window).width(),
@@ -251,6 +275,17 @@ $().ready(function getAlbum() {
 
                 }
             }
+            
+	          $("#photo-header2").click(function(){
+	        	$("#myAlbum-content2").css({ display: "none" });
+        		$("#myAlbum-content").css({ display: "block" });
+        		$("#open2").css({ display: "none" });
+        		$("#open").css({ display: "block" });
+        		$(".photo1").css({ display: "none" });
+        		$("#photo-header").css({ display: "none" });
+        		$(".content-button-fenge").css({ display: "block" });
+	    		
+	    	})
         }
     });
 });

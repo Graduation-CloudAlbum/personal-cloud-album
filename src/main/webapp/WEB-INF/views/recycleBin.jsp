@@ -16,7 +16,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>recycleBin</title>
+    <title>回收站 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
@@ -30,8 +30,6 @@
         <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
             <input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber }"></div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -52,7 +50,7 @@
             <ul class="content-menu">
                 <li id="deleteAll" class="content-menu-li"><a>清空回收站</a></li>
                 <li id="updateAll" class="content-menu-li"><a>还原所有项目</a></li>
-                <li id="table-header5"><button id="button1" class="btn btn-info">还原选中</button><button id="button2" class="btn btn-info">删除选中</button></li>
+                <li id="table-header5" class="table-header5"><div id="button1" class="table-header5-li">还原选中</div><div id="button2" class="table-header5-li">删除选中</div></li>
             </ul>
             <div class="content-about">
                 <table id="recycle-table" class="recycle-table">
@@ -67,7 +65,7 @@
                     <tbody>
                     <c:forEach items="${recycleBins}" var="recycleBins">
                         <tr>
-                            <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" /></td>
+                            <td class="th1"><input name="photo" type="checkbox" value="${recycleBins.imageId}" onchange="dianjigou()"/></td>
                             <td><img class="pimg" src="${recycleBins.image.url}" /></td>
                             <td>${recycleBins.image.imageSize}B</td>
                             <td><fmt:formatDate value="${recycleBins.createTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -157,6 +155,8 @@
                 </tbody>
             </table>
 
+			<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+            <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
         </div>
     </div>
 <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->

@@ -1,6 +1,7 @@
 var recycleTable = document.getElementById('recycle-table');
 var recycleTableTr = recycleTable.getElementsByTagName('tr');
 //点击勾勾
+
 function dianjigou() {
     var flag = document.getElementById("all").checked;
     var cks = document.getElementsByName("photo"); 
@@ -16,6 +17,16 @@ function dianjigou() {
         }
         document.getElementById('table-header5').style.display="none";
     }  
+    
+    for(var i=0;i<recycleTableTr.length;i++){
+        //var aInput=this.document.getElementsByTagName('input')
+    	var aInput=this.document.getElementsByName('photo')
+        for(var j=1;j<aInput.length;j++){
+            aInput[j].onchange = function(){
+                document.getElementById('table-header5').style.display="block";
+            }
+        }
+    }
 }
 
 //清空回收站

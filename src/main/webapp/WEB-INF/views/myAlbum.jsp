@@ -18,13 +18,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>myAlbum</title>
+    <title>我的相册 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myAlbum.css"/>
     <link rel="stylesheet" href="<%=basePath%>/resource/css/zoom.css" media="all" />
     <link rel="stylesheet" href="<%=basePath%>/resource/css/jquery-confirm.min.css"/>
+    
+    
+	<link rel="stylesheet" href="<%=basePath%>/resource/lv-css/demo-site.min.css">
 </head>
 <body>
 <div class="wrapper">
@@ -36,8 +39,6 @@
             	我的消息
             	<input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber}">
             </div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
         <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -70,53 +71,40 @@
             </ul>
             <ul id="myAlbum-menu2" class="content-menu">
                 <li class="content-menu-li"><a id="uploadPhoto3">上传照片</a></li>
-<%--                <li class="content-menu-li"><a id="uploadPhoto4">相册信息</a></li>--%>
                 <li id="uploadPhoto6" class="content-menu-li"><a>批量管理</a></li>
+                <li id="admin-button" class="table-header5">
+                	<div id="button3" class="table-header5-li" onclick="downLoadImg()">下载</div>
+                	<div id="button1" class="table-header5-li">移动
+                	<ul id="admin-button-menu" class="album-sort2">
+                        </ul></div>
+                    <div id="button2" class="table-header5-li">删除</div>
+                </li>
+                <!-- 
                 <div id="admin-button" class="admin-button">
                     <button id="button3" class="btn admin-button-li" onclick="downLoadImg()">下载</button>
                     <div id="button1" class="btn admin-button-li uploadPhoto7">移动
                         <ul id="admin-button-menu" class="album-sort2">
-                            <%--<li class="album-sort-li">我的家人</li>--%>
-                            <%--<li class="album-sort-li">我的朋友</li>--%>
-                            <%--<li class="album-sort-li">我的同学</li>--%>
                         </ul>
                     </div>
 
                     <button id="button2" class="btn admin-button-li">删除</button>
-                </div>
+                </div> -->
             </ul>
 
 
             <div class="content-wrap">
                 <ul id="myAlbum-content" class="content-about">
-
-
                 </ul>
                 <ul id="myAlbum-content2" class="content-about2 gallery">
-
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0008-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0008-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0014-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0014-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0019-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0019-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-                    <%--<div class="content-about2-li">--%>
-                        <!-- <span class="icon iconfont photo-admin">&#xe627;</span> -->
-                        <%--<a href="<%=basePath%>/resource/img/gallery/DSC_0061-660x441.jpg"><img src="<%=basePath%>/resource/img/gallery/DSC_0061-69x69.jpg" /></a>--%>
-                    <%--</div>--%>
-
                 </ul>
                 <div class="content-button">
                     <div class="content-button-fenge"></div>
                     <span id="open">(共0个相册)</span><span id="open2">(共0张照片)</span>
                 </div>
                 <div class="content-footer"></div>
+                
+                
+    
                 
                 <div id="noNumber" class="content-about5"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p>
             	</div>
@@ -143,7 +131,7 @@
                     <label id="upload-photos-pop-content-button" class="upload-photos-pop-content-button" for="doc0"><p>点击选择图片</p></label>
 
                     <div id="upload-photos-pop-content-footer" class="upload-photos-pop-content-footer">
-                        <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传500张相片</span>
+                        <div class="content-button-fenge"></div><span>可将相片拖拽至以上选择框，每次最多上传50张相片</span>
                     </div>
                     <div id="upload-photos-pop-content-footer2" class="upload-photos-pop-content-footer2 fileinput-wrap">
                         <%--<span>共一张相片（4.31K）</span>--%>
@@ -231,7 +219,8 @@
             <tbody id="receiveFriendVerifications">
             </tbody>
         </table>
-
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
     </div>
 </div>
 
@@ -328,8 +317,128 @@
 			<div id="delete-album-button2" class="default-button2" onclick="deleteAlbum();"><p>确定</p></div>
 		</div>
 
+<!--/******************************************************************************滤镜**********************************************/-->
+ 		<div id="lvjingPhoto" class="upload-photos">
+        	<div class="upload-photos-pop">
+	             <div class="upload-photos-pop-header">
+	                <span id="upload-album-choose">滤镜</span><i id="iconchacha13" class="iconfont icon-chacha1"></i>
+	            </div>
+	        <div class="content-lv">
+             <div class="demo__input-area">
 
-
+			  <fieldset class="demo__option-field">
+				
+				<label class="demo__input-label">
+				  Or paste in a link to your own photo:
+				  <input class="demo__input-img" type="text">
+				</label>
+			  </fieldset>
+		
+			  <small class="demo__note">Hovering over any of these images (or clicking on mobile) will remove the filter effect to visualize the changes.</small>
+			</div>
+			<div style="text-align:center;clear:both">
+			
+		</div>
+			<ul class="demo__list">
+			  <li class="demo__item">
+				<figure>
+				  <img>
+				  <figcaption>#nofilter</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="aden">
+				  <img>
+				  <figcaption>Aden</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="reyes">
+				  <img>
+				  <figcaption>Reyes</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="perpetua">
+				  <img>
+				  <figcaption>Perpetua</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="inkwell">
+				  <img>
+				  <figcaption>Inkwell</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="earlybird">
+				  <img>
+				  <figcaption>Earlybird</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="toaster">
+				  <img>
+				  <figcaption>Toaster</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="walden">
+				  <img>
+				  <figcaption>Walden</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="hudson">
+				  <img>
+				  <figcaption>Hudson</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="gingham">
+				  <img>
+				  <figcaption>Gingham</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="mayfair">
+				  <img>
+				  <figcaption>Mayfair</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="lofi">
+				  <img>
+				  <figcaption>Lo-fi</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="xpro2">
+				  <img>
+				  <figcaption>X-Pro II</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="_1977">
+				  <img>
+				  <figcaption>1977</figcaption>
+				</figure>
+			  </li>
+			  <li class="demo__item">
+				<figure class="brooklyn">
+				  <img>
+				  <figcaption>Brooklyn</figcaption>
+				</figure>
+			  </li>
+			</ul>
+		                
+		                
+		                
+     
+                </div>
+             
+       	 	</div>
+    	</div>
 
 <!-- ***************************************************遮罩层***************************************************-->
     <div id="popLayer" class="popLayer"></div>

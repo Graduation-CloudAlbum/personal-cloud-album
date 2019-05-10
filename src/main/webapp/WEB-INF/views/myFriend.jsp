@@ -14,7 +14,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>myFriend</title>
+    <title>我的好友 - 1024Album</title>
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/css/myFriend.css" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/resource/bootstrap-3.3.7-dist/css/bootstrap.css"/>
@@ -27,10 +27,7 @@
         <img src="<%=basePath%>/resource/images/logo.png">
         <div class="header-right">
             <div  id="friends-Verification" class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe629;</span>我的消息
-
             <input type="text" id="friendNumber" class="friendNumber" value="${newFriendNumber}"></div>
-<%--            <div class="header-menu-li"><span class="icon iconfont my-xiaoxi">&#xe616;</span>我的积分</div>--%>
-            <!-- <span id="aa" class="aa">1732859702</span><i class="iconfont icon-iconfontjiantou jiantou"></i> -->
         </div>
             <div class="header-right2"><span class="icon iconfont" title="退出" id="logout">&#xe64c;</span></div>
     </div>
@@ -60,6 +57,7 @@
                             <li onclick="inFriendSpace('${node.friend.id}','<%=path%>',this)" class="friends-content-li"><img src="${node.friend.userIcon}" ><p>${node.friend.nickName}</p></li>
                         </c:forEach>
                     </ul>
+                    <div class="content-about5 friends1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
                     <div class="friends-header">我的好友列表</div>
                     <ul class="content-about-menu">
                         <c:forEach items="${friendgroup}" var="friendgroup">
@@ -176,7 +174,8 @@
                 <tbody id="receiveFriendVerifications">
                 </tbody>
             </table>
-
+		<div class="content-about5 table1"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
+        <div class="content-about5 table2"><img src="<%=basePath%>/images/con-empty.png"><p>暂无记录</p></div>
         </div>
     </div>
 <!-- ***************************************************添加好友-》选择好友分组 ***************************************************-->
