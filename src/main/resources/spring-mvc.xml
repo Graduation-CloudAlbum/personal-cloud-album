@@ -37,6 +37,7 @@
             <mvc:exclude-mapping path="/user/login" />
             <mvc:exclude-mapping path="/user/index" />
             <mvc:exclude-mapping path="/user/register" />
+            <mvc:exclude-mapping path="/user/resetPass" />
             <mvc:exclude-mapping path="/user/getpass" />
             <mvc:exclude-mapping path="/user/checkLogin" />
             <mvc:exclude-mapping path="/user/doRegister" />
