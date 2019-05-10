@@ -365,8 +365,22 @@ for(var i=0; i<friendGroupLi.length;i++){
 }
 //删除好友
 deleteFriendsButton2.onclick = function(){
-    window.location.href="/pca/friend/deleteFriends";
-    alert("删除成功！");
+
+    $.ajax({
+        type: "post",
+        url:"/pca/friend/deleteFriends",
+        dataType: "json",
+        success: function (data) {
+            if(data){
+                alert("删除成功！");
+                window.location.href="/pca/friend/myFriend";
+            }else{
+                alert("删除失败！");
+            }
+
+        }
+    });
+
 }
 //移动好友
 moveFriendsButton2.onclick = function(){
