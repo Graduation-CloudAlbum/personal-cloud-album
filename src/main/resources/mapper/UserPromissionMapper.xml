@@ -267,4 +267,9 @@
     from user_promission
     where album_id = #{albumId,jdbcType=INTEGER}
   </select>
+
+
+  <delete id="whenDeleteFriend">
+    delete  from user_promission where user_id= #{user_id,jdbcType=INTEGER} and friend_id= #{friend_id,jdbcType=INTEGER}
+  </delete>
 </mapper>
