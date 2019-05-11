@@ -266,7 +266,7 @@ hr {
     display: block;
 }
 img {
-    display: block;
+   /* display: block;*/
     margin: auto;
     height: auto;
     max-height: 100%;
