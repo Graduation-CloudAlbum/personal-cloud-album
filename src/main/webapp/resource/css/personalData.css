@@ -201,7 +201,9 @@
     margin-left: 150px;
     border: 1px solid #DDD;
     text-align: center;
-    margin-top: 10px;
+    position: absolute;
+    right: 120px;
+    bottom: 24px;
     cursor: pointer;
 }
 .Modifying-data-button1 p{
