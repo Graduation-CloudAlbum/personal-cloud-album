@@ -14,6 +14,7 @@ else{
 
 
 
+
 var friendsVerification=document.getElementById('friends-Verification');
 
 //拒绝好友请求
@@ -94,6 +95,20 @@ friendsVerification.onclick = function(){
                     +"</tr>"
             }
             $("#sandFriendVerifications").html(f);
+            console.log(data.friendVerificationsTwo.length)
+          //为空
+           // $(document).ready(function(){
+            	if(data.friendVerificationsTwo.length>0){
+            		$("#accept-Verification").css({ display: "block" });
+            		$(".table1").css({ display: "none" });
+            		$(".table2").css({ display: "none" });
+            	}
+            	else{
+            		$("#accept-Verification").css({ display: "none" });
+            		$(".table1").css({ display: "block" });
+            		$(".table2").css({ display: "none" });
+            	}
+          //  });
         }
     });
 	document.getElementById('Verification').style.display="block";
@@ -240,19 +255,6 @@ function acceptfriendsbutton(friendVerifications_id){
     document.getElementById('popLayer2').style.display="block";
 }
 
-//为空
-$(document).ready(function(){
-	if($("#accept-Verification tr").length>1){
-		$("#accept-Verification").css({ display: "block" });
-		$(".table1").css({ display: "none" });
-		$(".table2").css({ display: "none" });
-	}
-	else{
-		$("#accept-Verification").css({ display: "none" });
-		$(".table1").css({ display: "block" });
-		$(".table2").css({ display: "none" });
-	}
-});
 
 
 

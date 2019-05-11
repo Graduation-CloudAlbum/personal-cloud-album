@@ -103,9 +103,7 @@ html,body{
 	padding-left: 60px;
 	cursor:pointer;
 	display: block;
-}
-.content .left .left-li i{
-	color: #CCCCCC;
+	color:#CCCCCC;
 }
 .content .left .left-li span{
 	/*color: #454545;*/
@@ -116,6 +114,10 @@ html,body{
 }
 .content .left .left-li:hover{
 	background: #151515;
+	color:#fff;
+}
+.content .left .left-li span:hover{
+	color:#fff;
 }
 .content .left  .nav-button{
 	width: 225px;
