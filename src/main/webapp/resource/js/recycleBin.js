@@ -21,7 +21,7 @@ function dianjigou() {
     for(var i=0;i<recycleTableTr.length;i++){
         //var aInput=this.document.getElementsByTagName('input')
     	var aInput=this.document.getElementsByName('photo')
-        for(var j=1;j<aInput.length;j++){
+        for(var j=0;j<aInput.length;j++){
             aInput[j].onchange = function(){
                 document.getElementById('table-header5').style.display="block";
             }
