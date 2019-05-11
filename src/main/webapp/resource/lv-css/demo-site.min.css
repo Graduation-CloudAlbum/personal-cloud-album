@@ -265,8 +265,8 @@ hr {
     margin: 2em auto;
     display: block;
 }
-img {
-   /* display: block;*/
+.demo__list img {
+   display: block;
     margin: auto;
     height: auto;
     max-height: 100%;
