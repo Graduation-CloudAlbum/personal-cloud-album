@@ -96,13 +96,13 @@
         <!-- ***************************************************清空回收站 ***************************************************-->
         <div id="delete-recycle">
             <div class="popup-header"><h4>清空回收站</h4><i id="iconChacha1" class="iconfont icon-chacha1"></i></div>
-            <input id="delete-recycle-input" type="text" placeholder="请输入登录密码继续清空操作"  name="">
+            <input id="delete-recycle-input" type="password" placeholder="请输入登录密码继续清空操作"  name="">
             <div class="delete-recycle-button1" id="delete-recycle-button1"><p>取消</p></div><div id="delete-recycle-button5" class="delete-recycle-button2"><p>清空</p></div>
         </div>
         <!-- ***************************************************删除选中 ***************************************************-->
         <div id="delete-recycle2">
             <div class="popup-header"><h4>彻底删除选中照片</h4><i id="iconChacha3" class="iconfont icon-chacha1"></i></div>
-            <input id="delete-recycle-input2" type="text" placeholder="请输入登录密码继续删除操作"  name="">
+            <input id="delete-recycle-input2" type="password" placeholder="请输入登录密码继续删除操作"  name="">
             <div class="delete-recycle-button1" id="delete-recycle-button3"><p>取消</p></div><div id="delete-recycle-button4" class="delete-recycle-button2"><p>清空</p></div>
         </div>
         <!-- ***************************************************还原回收站 ***************************************************-->
